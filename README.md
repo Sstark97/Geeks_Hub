@@ -11,6 +11,9 @@ $python3 -m venv .venv
 ```
 Lo siguiente es activar el entorno virtual e instalar los paquetes necesarios del archivo requirements.txt:
 ```bash
+# Linux
 $source .venv/bin/activate
+# Windows
+$source .venv/Scripts/activate
 $pip install -r requirements.txt
 ```
