@@ -1,9 +1,15 @@
 """Archivo de inicio de la aplicación."""
+import sys
 from bottle import get, run, template, static_file
+from model.suscription import Suscription
+from config.config import DATA_BASE
+sys.path.append('model')
 
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
+    suscripciones = Suscription(DATA_BASE)
+
     return template('index.tpl')
 
 @get("/static/<filepath:path>")

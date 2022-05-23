@@ -2,7 +2,7 @@
 import sqlite3
 from abc import ABC
 
-class Table(ABC):
+class Model(ABC):
     """Clase que representa un modelo de datos generico con todas sus operaciones basicas."""
     def __init__(self, db_name):
         self._table_name = ""
@@ -100,5 +100,5 @@ class Table(ABC):
         finally:
             if conn:
                 conn.close()
-                
+
         return row
