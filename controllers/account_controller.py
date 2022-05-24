@@ -1,4 +1,4 @@
-"""Archivo de Rutas de las Peliculas."""
+"""Archivo de Rutas de las Cuentas."""
 import sys
 from bottle import get
 from models.account import Account
@@ -7,7 +7,7 @@ sys.path.append('models')
 
 @get('/accounts')
 def account_index():
-    """Página de inicio de las Peliculas."""
+    """Página de inicio de las Cuentas."""
     cuentas = Account(DATA_BASE)
 
     # Añadir
