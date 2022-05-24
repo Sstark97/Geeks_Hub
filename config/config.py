@@ -2,3 +2,4 @@
 DATA_BASE = "./config/geeks_hub.db"
 SUSCRIPTION = "Suscripcion"
 FILM = "Pelicula"
+SERIES = "Serie"
