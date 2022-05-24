@@ -10,6 +10,6 @@ def index():
     """Página de inicio de la aplicación."""
     suscripciones = Suscription(DATA_BASE)
 
-    row = suscripciones.select(['*'], {'Tipo_Suscripcion': 'Basico', 'Precio': '8.99', 'Calidad_Videos': 'HD'})
+    row = suscripciones.select(['*'], {'Tipo_Suscripcion': 'Basico', 'Precio': '8.99'})
     
     return template('index.tpl')
