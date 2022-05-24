@@ -2,7 +2,7 @@
 from models.model import Model
 from config.config import SERIES
 
-class Film(Model):
+class Series(Model):
     """Clase que maneja la Tabla Serie."""
     def __init__(self, db_name):
         super().__init__(db_name)

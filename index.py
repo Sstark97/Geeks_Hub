@@ -1,9 +1,9 @@
 """Archivo de inicio de la aplicación."""
-import sys
 from bottle import get, run, template, static_file
 from controllers.film_controller import *
+from controllers.series_controller import *
 from controllers.suscription_controller import *
-sys.path.append('models')
+
 
 @get('/')
 def index():
