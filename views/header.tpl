@@ -15,18 +15,15 @@
     <link rel="stylesheet" href="/static/css/global.css">
 </head>
 <body>
-    
-    <header>
-        <ul class="head">
+    <main>
+        <header>
+            <ul class="head">
 
-            <li>
-                <a>
-                    <img src="/static/img/logo.png" alt="logo">
-                </a>
-            </li>
+                <li>
+                    <a>
+                        <img src="/static/img/logo.png" alt="logo">
+                    </a>
+                </li>
 
-        </ul>
-    </header>
-
-</body>
-</html>
+            </ul>
+        </header>
