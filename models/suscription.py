@@ -1,5 +1,5 @@
 """Fichero para el modelo Suscripciones."""
-from model import Model
+from models.model import Model
 
 class Suscription(Model):
     """Clase que maneja la Tabla Suscriciones."""

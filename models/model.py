@@ -92,6 +92,7 @@ class Model(ABC):
             cursor = conn.cursor()
             cursor.execute(query, (value,))
             row = cursor.fetchone()
+            print(row)
             conn.close()
         
         except sqlite3.Error as error:
