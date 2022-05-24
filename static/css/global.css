@@ -1,3 +1,39 @@
-body {
-    background-color: red;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --background_color: black;
+    --shadow_color: grey;
+    --main_color: blue;
+    --base_color: white;
+}
+
+header{
+    position: sticky;
+    z-index: 10000;
+    top: 0px;
+
+    width: 100%;
+    height: 5rem;
+    background-color: antiquewhite;
+}
+
+.head{
+    width: 100%;
+    height: 100%;
+}
+
+.head li, .head li a{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.head li a img{
+    width: 7rem;
 }
