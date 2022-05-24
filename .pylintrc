@@ -587,7 +587,3 @@ overgeneral-exceptions=BaseException,
 
 # White Space Error
 disable=C0303
-# Borrar para poder Calificar el Codigo
-# No tener en cuenta la puntuacion de Codigo
-# por este fallo (Unused imports)
-disable=W0614
