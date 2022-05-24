@@ -4,6 +4,7 @@ from controllers.film_controller import *
 from controllers.series_controller import *
 from controllers.suscription_controller import *
 from controllers.account_controller import *
+from controllers.profile_controller import *
 
 @get('/')
 def index():
