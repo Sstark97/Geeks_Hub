@@ -92,7 +92,6 @@ class Model(ABC):
             cursor = conn.cursor()
             cursor.execute(query, (value,))
             row = cursor.fetchone()
-            print(row)
             conn.close()
         
         except sqlite3.Error as error:
@@ -103,3 +102,43 @@ class Model(ABC):
                 conn.close()
 
         return row
+    
+    def select(self, fields, where = 0):
+        """Obtiene una lista de filas de la tabla."""
+        if where == 0:
+            query = f"SELECT {', '.join(fields)} FROM {self._table_name}"
+        elif len(list(where.values())) == 1: 
+            clave = list(where.keys())[0] 
+            value = where[clave]
+            where_clause = f"{clave} LIKE ?"
+            query = f"SELECT {', '.join(fields)} FROM {self._table_name} WHERE {where_clause}"
+        else:
+            where_values = list(where.values())
+            where_keys = list(where.keys())
+            query = f"SELECT {', '.join(fields)} FROM {self._table_name} WHERE {' AND '.join([f'{key} = ?' for key in where_keys])}"
+            print(query)
+            value = tuple(where_values)
+            print(value)
+
+        rows = None
+
+        try:
+            conn = self._connect()
+            cursor = conn.cursor()
+            if where == 0:
+                cursor.execute(query)
+            elif len(list(where.values())) == 1:
+                cursor.execute(query, (value,))
+            else:
+                cursor.execute(query, value)
+            rows = cursor.fetchall()
+            conn.close()
+        
+        except sqlite3.Error as error:
+            print("Error while executing sqlite script", error)
+        
+        finally:
+            if conn:
+                conn.close()
+
+        return rows
