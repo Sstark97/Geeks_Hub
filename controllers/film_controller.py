@@ -23,6 +23,11 @@ def index():
 
     # Eliminar
     # peliculas.delete({'Cod_Pelicula': 'P029'})
+    
+    # Select por generos
+    # row = peliculas.select(['*'],{"Genero": "Ciencia Ficcion"})
+
+    # Select de todas las peliculas
     row = peliculas.select(['*'])
 
     return str(row)
