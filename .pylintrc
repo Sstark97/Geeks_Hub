@@ -585,4 +585,9 @@ valid-metaclass-classmethod-first-arg=cls
 overgeneral-exceptions=BaseException,
                        Exception
 
+# White Space Error
 disable=C0303
+# Borrar para poder Calificar el Codigo
+# No tener en cuenta la puntuacion de Codigo
+# por este fallo (Unused imports)
+disable=W0614
