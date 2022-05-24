@@ -1,6 +1,6 @@
 """Archivo de Rutas de las Peliculas."""
 import sys
-from bottle import get, template
+from bottle import get
 from models.film import Film
 from config.config import DATA_BASE
 sys.path.append('models')
@@ -26,5 +26,3 @@ def index():
     row = peliculas.select(['*'])
 
     return str(row)
-    
-    return template('index.tpl')

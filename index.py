@@ -1,14 +1,14 @@
 """Archivo de inicio de la aplicación."""
 import sys
 from bottle import get, run, template, static_file
-from models.film import Film
-from config.config import DATA_BASE
+from controllers.film_controller import *
+from controllers.suscription_controller import *
 sys.path.append('models')
 
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    
+
     return template('index.tpl')
 
 @get("/static/<filepath:path>")
