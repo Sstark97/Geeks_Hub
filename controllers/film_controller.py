@@ -6,7 +6,7 @@ from config.config import DATA_BASE
 sys.path.append('models')
 
 @get('/films')
-def index():
+def films_index():
     """Página de inicio de las Peliculas."""
     peliculas = Film(DATA_BASE)
 

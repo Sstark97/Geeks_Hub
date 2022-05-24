@@ -6,7 +6,7 @@ from config.config import DATA_BASE
 sys.path.append('models')
 
 @get('/series')
-def index():
+def series_index():
     """Página de inicio de las Series."""
     series = Series(DATA_BASE)
 
@@ -31,3 +31,4 @@ def index():
     row = series.select(['*'])
 
     return str(row)
+    

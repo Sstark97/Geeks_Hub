@@ -8,7 +8,7 @@ from controllers.suscription_controller import *
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-
+    
     return template('index.tpl')
 
 @get("/static/<filepath:path>")

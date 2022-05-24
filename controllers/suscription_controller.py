@@ -6,10 +6,11 @@ from config.config import DATA_BASE
 sys.path.append('models')
 
 @get('/suscriptions')
-def index():
+def suscription_index():
     """Página de inicio de las Suscripciones."""
     suscripciones = Suscription(DATA_BASE)
 
     row = suscripciones.select(['*'], {'Tipo_Suscripcion': 'Basico', 'Precio': '8.99'})
     
     return str(row)
+    
