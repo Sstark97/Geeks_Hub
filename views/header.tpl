@@ -19,10 +19,31 @@
         <header>
             <ul class="head">
 
-                <li>
-                    <a>
+                <li class="logo">
+                    <a href="">
                         <img src="/static/img/logo.png" alt="logo">
                     </a>
+                </li>
+
+                <li class="menu_tablet">
+                    <a href="">Series</a>
+                    <a href="">Películas</a>
+                </li>
+
+                <li class="menu_desktop">
+                    <a href="">
+                        <i class='bx bx-search-alt-2'></i>
+                    </a>
+                    <i class='bx bxs-user-circle dropdown'>
+                        <ul>
+                            <li><a href="">Ir a Perfiles</a></li>
+                            <li><a href="">Cuenta</a></li>
+                            <li><a href="">Favoritos</a></li>
+                            <li><a href="">Historial</a></li>
+                            <li><a href="">Cerrar Sesión</a></li>
+                        </ul>
+                    </i>
+
                 </li>
 
             </ul>

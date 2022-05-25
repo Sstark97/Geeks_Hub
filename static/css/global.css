@@ -30,15 +30,13 @@ header{
     height: 100%;
 }
 
-.head li a{
-    width: 100%;
-
+.logo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.head li a img{
+.logo img{
     width: 7rem;
 }
 
@@ -97,8 +95,125 @@ footer p{
     font-size: 0.9em;
 }
 
-@media only screen and (min-width: 576px) and (max-width: 768px){
+.menu_tablet{
+    display: none;
+}
 
+.menu_desktop{
+    display: none;
+}
 
+@media only screen and (min-width: 768px) and (max-width: 992px){
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 15%;
+
+        justify-content: left;
+        padding-left: 3%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 7%;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.3rem;
+
+        padding-right: 4rem;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 8%;
+
+        justify-content: left;
+        padding-left: 2%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 2%;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.1rem;
+
+        padding-right: 1.5rem;
+    }
+
+    .menu_desktop{
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .menu_desktop a{
+        text-decoration: none;
+    }
+
+    .menu_desktop i{
+        position: relative;
+        color: black;
+        font-size: 2.5rem;
+
+        padding-right: 1.5rem;
+    }
+
+    /* Desplegable */
+    
+    .dropdown:hover{
+        color: aqua;
+    }
+
+    .dropdown > ul{
+        display: none;
+    }
+    
+    .dropdown:hover > ul{
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+    }
+    
+    .dropdown ul li{
+        width: 100%;
+        height: 40px;
+    }
+    
+    .dropdown a{
+        width: 100%;
+        height: 100%;
+
+        text-decoration: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+    } 
 
 }
