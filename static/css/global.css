@@ -74,7 +74,7 @@ nav li{
 
 nav a{
     color: var(--base_color);
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-decoration: none;
 }
 
@@ -179,6 +179,10 @@ footer p{
         font-size: 1rem;
     }
 
+    nav a{
+        font-size: 3rem;
+    }
+
     .serie, .movie{
         display: none;
     }
@@ -238,11 +242,19 @@ footer p{
         padding-right: 1.5rem;
     }
 
-    .menu_desktop i:hover{
+    .search:hover, .user:hover{
         color: var(--main_color);
     }
 
     /* DESPLEGABLE */
+
+    .dropdown{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+    }
 
     .dropdown > ul{
         display: none;
@@ -281,8 +293,8 @@ footer p{
         font-size: 2rem;
     }
 
-    .dropdown li:hover{
-        text-decoration: dashed;
+    .dropdown ul li:hover a{
+        color: var(--main_color);
     }
 
     /* NAVEGADOR */

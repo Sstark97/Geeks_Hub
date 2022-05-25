@@ -38,10 +38,10 @@
 
                 <li class="menu_desktop">
                     <a href="">
-                        <i class='bx bx-search-alt-2'></i>
+                        <i class='bx bx-search-alt-2 search'></i>
                     </a>
                     <div class="dropdown">
-                        <i class='bx bxs-user-circle dropdown'></i>
+                        <i class='bx bxs-user-circle user'></i>
                         <ul>
                             <li><a href=""><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
                             <hr>
