@@ -1,7 +1,6 @@
 """Formulario de Registro de Series"""
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, validators
-
-COUNTRIES = [('', 'Select country'), ('ES', 'Spain'), ('US', 'United States'), ('UK', 'United Kingdom')]
+from config.config import GENRE, AGE_RATING
 
 
 class SeriesForm(Form):
@@ -17,9 +16,9 @@ class SeriesForm(Form):
                                     validators.Length(min=6, max=50), 
                                 ])
     # calificacion_edad
-    age_rating = SelectField(label='Calificación', choices=COUNTRIES, validators = [validators.InputRequired()])
+    age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
-    genre = SelectField(label='Genero', choices=COUNTRIES, validators = [validators.InputRequired()])
+    genre = SelectField(label='Genero', choices=GENRE, validators = [validators.InputRequired()])
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
