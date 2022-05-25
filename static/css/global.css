@@ -1,3 +1,219 @@
-body {
-    background-color: red;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables */
+
+:root{
+    --background_color: black;
+    --shadow_color: grey;
+    --main_color: blue;
+    --base_color: white;
+}
+
+/* Header */
+
+header{
+    position: sticky;
+    z-index: 10000;
+    top: 0px;
+
+    width: 100%;
+    height: 5rem;
+    background-color: antiquewhite;
+}
+
+.head{
+    width: 100%;
+    height: 100%;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: 7rem;
+}
+
+/* Main */
+
+main{
+    width: 100%;
+}
+
+/* Footer */
+
+footer{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 20px 50px;
+
+    background-color: black;
+}
+
+.icons, .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px 0;
+}
+
+.icons li, .menu li{
+    list-style: none;
+}
+
+.icons li a{
+    font-size: 2em;
+    color: white;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.menu li a{
+    margin: 0 10px;
+
+    text-decoration: none;
+    font-size: 1.2em;
+    color: white;
+}
+
+footer p{
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.menu_tablet{
+    display: none;
+}
+
+.menu_desktop{
+    display: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 15%;
+
+        justify-content: left;
+        padding-left: 3%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 7%;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.3rem;
+
+        padding-right: 4rem;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 8%;
+
+        justify-content: left;
+        padding-left: 2%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 2%;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: black;
+        font-size: 1.1rem;
+
+        padding-right: 1.5rem;
+    }
+
+    .menu_desktop{
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    .menu_desktop a{
+        text-decoration: none;
+    }
+
+    .menu_desktop i{
+        position: relative;
+        color: black;
+        font-size: 2.5rem;
+
+        padding-right: 1.5rem;
+    }
+
+    /* Desplegable */
+    
+    .dropdown:hover{
+        color: aqua;
+    }
+
+    .dropdown > ul{
+        display: none;
+    }
+    
+    .dropdown:hover > ul{
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 0px;
+    }
+    
+    .dropdown ul li{
+        width: 100%;
+        height: 40px;
+    }
+    
+    .dropdown a{
+        width: 100%;
+        height: 100%;
+
+        text-decoration: none;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+    } 
+
 }
