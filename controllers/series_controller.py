@@ -1,9 +1,11 @@
 """Archivo de Rutas de las Series."""
 import sys
-from bottle import get
+from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE
+from forms.series_form import SeriesForm
 sys.path.append('models')
+sys.path.append('forms')
 
 @get('/series')
 def series_index():
@@ -31,4 +33,30 @@ def series_index():
     row = series.select(['*'])
 
     return str(row)
+
+@get('/series/new')
+def series_new():
+    form = SeriesForm(request.POST)
+    return template('series_form', form=form)
+
+@post('/series/new')
+def series_process():
+    form = SeriesForm(request.POST) 
+    if form.submit.data and form.validate():
+        form_data = {
+            'season' : form.season.data,
+            'title' : form.title.data,
+            'age_rating' : form.age_rating.data,
+            'genre' : form.genre.data,
+            'director' : form.director.data,
+            'average_score' : form.average_score.data,
+            'productor' : form.productor.data,
+            'synopsis' : form.synopsis.data,
+            'release_date' : form.release_date.data,
+            'cover_page' : form.cover_page.data,
+            'trailer' : form.trailer.data,
+            'chapters' : form.chapters.data
+        }
+        redirect('/')
+    return template('series_form', form=form)
     

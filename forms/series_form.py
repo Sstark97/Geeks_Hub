@@ -6,9 +6,9 @@ from config.config import GENRE, AGE_RATING
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
     season = IntegerField('N_Temporada', 
-                               [validators.DataRequired("El campo es obligatorio") , 
-                               validators.Length(min=1, max=10)], 
-                               default=1, 
+                               [validators.DataRequired("El campo es obligatorio"), 
+                                validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
+                                default=1, 
                             #    render_kw={'class':'myclass'}
                             )
     title  = StringField('Título', [
@@ -26,8 +26,9 @@ class SeriesForm(Form):
                                 ])
 
     average_score = IntegerField('Puntuación Media', 
-                               [validators.DataRequired("El campo es obligatorio") , validators.Length(min=1, max=5)], 
-                               default=1, 
+                               [validators.DataRequired("El campo es obligatorio"),
+                                validators.NumberRange(min=1.00, max=5.00, message="El campo debe ser un número entre 1.00 y 5.00")], 
+                                default=1.00,
                             #    render_kw={'class':'myclass'}
                             )
 
@@ -51,8 +52,9 @@ class SeriesForm(Form):
                                 ])
 
     chapters = IntegerField('Capítulos', 
-                               [validators.DataRequired("El campo es obligatorio") , validators.Length(min=1, max=5)], 
-                               default=1, 
+                               [validators.DataRequired("El campo es obligatorio"), 
+                                validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
+                                default=1, 
                             #    render_kw={'class':'myclass'}
                             )
     submit = SubmitField('Guardar')
