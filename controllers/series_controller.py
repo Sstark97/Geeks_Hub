@@ -32,6 +32,7 @@ def series_index():
 
     # Select de todas las series
     row = series.select(['*'])
+    print(series.code_generator())
 
     return str(row)
 

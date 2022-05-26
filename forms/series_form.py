@@ -1,6 +1,6 @@
 """Formulario de Registro de Series"""
-from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
 import decimal
+from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
 from config.config import GENRE, AGE_RATING
 
 class SeriesForm(Form):
