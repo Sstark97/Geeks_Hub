@@ -1,6 +1,5 @@
 """Archivo de Rutas de las Series."""
 import sys
-import os
 from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE
@@ -38,18 +37,20 @@ def series_index():
 
 @get('/series/new')
 def series_new():
+    """Página de registro de series."""
     form = SeriesForm(request.POST)
     return template('series_form', form=form)
 
 @post('/series/new')
 def series_process():
+    """Procesa el formulario de registro de series."""
     form = SeriesForm(request.POST) 
     if form.submit.data and form.cover_page and form.validate():
         image_data = request.files.get('cover_page')
         file_path = f"static/img/{image_data.filename}"
 
-        with open(file_path, 'wb') as f:
-            f.write(image_data.file.read())
+        with open(file_path, 'wb') as file:
+            file.write(image_data.file.read())
 
         form_data = {
             'N_Temporada' : form.season.data,
