@@ -1,5 +1,6 @@
 """Formulario de Registro de Series"""
-from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, validators
+from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
+import decimal
 from config.config import GENRE, AGE_RATING
 
 
@@ -25,10 +26,11 @@ class SeriesForm(Form):
                                     validators.Length(min=6, max=30),
                                 ])
 
-    average_score = IntegerField('Puntuación Media', 
-                               [validators.DataRequired("El campo es obligatorio"),
-                                validators.NumberRange(min=1.00, max=5.00, message="El campo debe ser un número entre 1.00 y 5.00")], 
-                                default=1.00,
+    average_score = DecimalField('Puntuación Media', 
+                                rounding=decimal.ROUND_UP,
+                                places=2,
+                                validators = [validators.DataRequired("El campo es obligatorio")], 
+                                default=1.01,
                             #    render_kw={'class':'myclass'}
                             )
 
@@ -41,10 +43,7 @@ class SeriesForm(Form):
 
     release_date = DateField('Fecha de Publicación', [validators.DataRequired("El campo es obligatorio")])
 
-    cover_page = StringField('Portada', [ 
-                                    validators.InputRequired(),
-                                    validators.Length(min=6, max=45),
-                                ])
+    cover_page = FileField('Portada')
 
     trailer = StringField('Tráiler', [ 
                                     validators.InputRequired(),

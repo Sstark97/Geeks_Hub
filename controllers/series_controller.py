@@ -1,5 +1,6 @@
 """Archivo de Rutas de las Series."""
 import sys
+import os
 from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE
@@ -42,21 +43,28 @@ def series_new():
 @post('/series/new')
 def series_process():
     form = SeriesForm(request.POST) 
-    if form.submit.data and form.validate():
+    if form.submit.data and form.cover_page and form.validate():
+        image_data = request.files.get('cover_page')
+        file_path = f"static/img/{image_data.filename}"
+
+        with open(file_path, 'wb') as f:
+            f.write(image_data.file.read())
+
         form_data = {
-            'season' : form.season.data,
-            'title' : form.title.data,
-            'age_rating' : form.age_rating.data,
-            'genre' : form.genre.data,
-            'director' : form.director.data,
-            'average_score' : form.average_score.data,
-            'productor' : form.productor.data,
-            'synopsis' : form.synopsis.data,
-            'release_date' : form.release_date.data,
-            'cover_page' : form.cover_page.data,
-            'trailer' : form.trailer.data,
-            'chapters' : form.chapters.data
+            'N_Temporada' : form.season.data,
+            'Titulo' : form.title.data,
+            'Calificacion_Edad' : form.age_rating.data,
+            'Genero' : form.genre.data,
+            'Director' : form.director.data,
+            'Puntuacion_Media' : float(form.average_score.data),
+            'Productor' : form.productor.data,
+            'Sinopsis' : form.synopsis.data,
+            'Fecha_Publicacion' : str(form.release_date.data),
+            'Portada': file_path,
+            'Trailer' : form.trailer.data,
+            'Capitulos' : form.chapters.data
         }
+        
         redirect('/')
     return template('series_form', form=form)
     
