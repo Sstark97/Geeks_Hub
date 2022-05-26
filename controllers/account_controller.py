@@ -1,9 +1,11 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-from bottle import get
+from bottle import get, request, template
 from models.account import Account
 from config.config import DATA_BASE
+from forms.login_form import LoginForm
 sys.path.append('models')
+sys.path.append('forms')
 
 @get('/accounts')
 def account_index():
@@ -27,3 +29,9 @@ def account_index():
     row = cuentas.select(['*'])
 
     return str(row)
+
+@get('/login')
+def login():
+    """Página para mostrar el formulario"""
+    form = LoginForm(request.POST)
+    return template('login', form=form)
