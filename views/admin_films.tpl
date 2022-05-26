@@ -18,7 +18,9 @@
         </tr>
         %for row in rows:
         <tr>
-            <td>{{row[0]}}</td>
+            %for col in row:
+            <td>{{col}}</td>
+            %end
             <td>
                 <form action="/edit/{{row[0]}}" method="GET">
                     <input type="submit" name="save" value="Editar">
@@ -30,6 +32,7 @@
                 </form>
             </td>
         </tr>
+        %end
     </table>
     
 </body>

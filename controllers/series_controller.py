@@ -30,10 +30,9 @@ def series_index():
     # row = series.select(['*'],{"Genero": "Ciencia Ficcion"})
 
     # Select de todas las series
-    row = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
-    print(series.code_generator())
+    rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
 
-    return template('',row=row)
+    return template('admin_films',title="Series", cod="Cod_Serie", content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
 @get('/series/new')
 def series_new():
