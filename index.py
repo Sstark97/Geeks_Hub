@@ -13,10 +13,10 @@ def index():
     
     return template('index.tpl')
 
-@get('/prueba')
+@get('/404')
 def about():
     """Página de prueba"""
-    return static_file('/html/header.html', root='static')
+    return static_file('/html/404.html', root='static')
 
 @get("/static/<filepath:path>")
 def html(filepath):
