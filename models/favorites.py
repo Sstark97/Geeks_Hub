@@ -14,7 +14,7 @@ class Favorites(Model):
         rows = None
         query = ""
 
-        if fields_series != [] and fields_film != []:
+        if len(fields_series) != 0 and len(fields_film) != 0:
             query = f"""
                         SELECT {', '.join(fields_series)}
                         FROM {self._table_name} INNER JOIN {FAVORITES_CONTENT} 
@@ -30,7 +30,26 @@ class Favorites(Model):
                                                 ON {FAVORITES_CONTENT}.Cod_Contenido = {FILM}.Cod_Pelicula
                         WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
                     """
-            print(query)
+
+        elif len(fields_series) != 0 and len(fields_film) == 0:
+            query = f"""
+                        SELECT {', '.join(fields_series)}
+                        FROM {self._table_name} INNER JOIN {FAVORITES_CONTENT} 
+                                                ON {self._table_name}.Cod_Favoritos = {FAVORITES_CONTENT}.Cod_Favoritos
+                                                INNER JOIN {SERIES}
+                                                ON {FAVORITES_CONTENT}.Cod_Contenido = {SERIES}.Cod_Serie
+                        WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
+                    """
+
+        elif len(fields_series) == 0 and len(fields_film) != 0:
+            query = f"""
+                        SELECT {', '.join(fields_film)}, 0 AS "Temporada"
+                        FROM {self._table_name} INNER JOIN {FAVORITES_CONTENT} 
+                                                ON {self._table_name}.Cod_Favoritos = {FAVORITES_CONTENT}.Cod_Favoritos
+                                                INNER JOIN {FILM}
+                                                ON {FAVORITES_CONTENT}.Cod_Contenido = {FILM}.Cod_Pelicula
+                        WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
+                    """
 
         try:
             conn = self._connect()

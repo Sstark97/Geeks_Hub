@@ -1,4 +1,4 @@
-"""Archivo de Rutas de las Series."""
+"""Archivo de Rutas de la lista de Favoritos."""
 import sys
 from bottle import get
 from models.favorites import Favorites
@@ -7,30 +7,28 @@ sys.path.append('models')
 
 @get('/favorites')
 def favorites_index():
-    """Página de inicio de las Series."""
+    """Página de inicio de la lista de Favoritos."""
     favorites = Favorites(DATA_BASE)
 
-    # Añadir 
-    # series.insert({'Cod_Serie':'S028' ,'N_Temporada': 1 , 'Titulo': 'WandaVision', 'Calificacion_Edad': '16', 
-    # 'Genero': 'Ciencia Ficcion', 'Director': 'Kevin Feige', 'Puntuacion_Media':4.99, 'productor': 'Marvel Studios',
-    # 'Sinopsis':'Wanda y Vision','Fecha_Publicacion': '2021-03-11', 'Portada': 'https://www.impawards.com/2021/posters/wandavision.jpg',
-    # 'Trailer': 'https://www.youtube.com/watch?v=vCfjy6S6Nu0','Capitulos': 9})
-    # row = series.select(['*'], {"Titulo": "WandaVision"})
+    # # Añadir 
+    # favorites.insert({"Cod_Favoritos": "FV13", "Fecha_Creacion": "2022-05-01"})
+    # row = favorites.select(['*'], {"Cod_Favoritos": "FV13"})
 
-    # Actualizar
-    # series.update({'Puntuacion_Media': 5.00, 'Capitulos': 12 }, {'Cod_Serie': 'S028'})
-    # row = series.select(['*'], {"Titulo": "WandaVision"})
+    # # Actualizar
+    # favorites.update({"Fecha_Creacion": "2022-04-01"}, {"Cod_Favoritos": "FV13"})
+    # row = favorites.select(['*'], {"Cod_Favoritos": "FV13"})
 
     # Eliminar
-    # series.delete({'Cod_Serie': 'S028'})
+    # favorites.delete({"Cod_Favoritos": "FV13"})
     
-    # Select por generos
-    # row = series.select(['*'],{"Genero": "Ciencia Ficcion"})
-
-    # Select de todas las series
-    # row = series.select(['*'])
-
+    # # Select de todo el contenido
     row = favorites.content("FV05", ["Cod_Contenido", "Titulo", "Genero", "N_Temporada"], ["Cod_Contenido", "Titulo", "Genero"])
+
+    # # Select de series
+    # row = favorites.content("FV05", ["Cod_Contenido", "Titulo", "Genero", "N_Temporada"], [])
+
+    # # Select de películas
+    # row = favorites.content("FV05", [], ["Cod_Contenido", "Titulo", "Genero"])
 
     return str(row)
     
