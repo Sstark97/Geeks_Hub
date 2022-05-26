@@ -3,7 +3,6 @@ from wtforms import Form, StringField, IntegerField, DateField, SubmitField , Te
 import decimal
 from config.config import GENRE, AGE_RATING
 
-
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
     season = IntegerField('N_Temporada', 
@@ -43,7 +42,7 @@ class SeriesForm(Form):
 
     release_date = DateField('Fecha de Publicación', [validators.DataRequired("El campo es obligatorio")])
 
-    cover_page = FileField('Portada')
+    cover_page = FileField('Portada', render_kw={'accept':'image/png, image/jpeg'})
 
     trailer = StringField('Tráiler', [ 
                                     validators.InputRequired(),
