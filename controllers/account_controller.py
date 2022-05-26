@@ -54,7 +54,9 @@ def login_process():
                 'email' : form.email.data,
                 'password' : form.password.data,
             }
-            print(form_data)
+            with open("./static/file/login.txt", "w", encoding="UTF8") as fichero:
+                fichero.write(form.email.data)
+
             redirect('/')
 
     if error:
