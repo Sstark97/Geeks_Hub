@@ -7,7 +7,7 @@ from forms.series_form import SeriesForm
 sys.path.append('models')
 sys.path.append('forms')
 
-@get('/series')
+@get('/admin/series')
 def series_index():
     """Página de inicio de las Series."""
     series = Series(DATA_BASE)
@@ -30,10 +30,10 @@ def series_index():
     # row = series.select(['*'],{"Genero": "Ciencia Ficcion"})
 
     # Select de todas las series
-    row = series.select(['*'])
+    row = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
     print(series.code_generator())
 
-    return str(row)
+    return template('',row=row)
 
 @get('/series/new')
 def series_new():
@@ -48,7 +48,7 @@ def series_process():
     series = Series(DATA_BASE)
     if form.submit.data and form.cover_page and form.validate():
         image_data = request.files.get('cover_page')
-        file_path = f"static/img/{image_data.filename}"
+        file_path = f"static/img/series/{image_data.filename}"
 
         with open(file_path, 'wb') as file:
             file.write(image_data.file.read())
