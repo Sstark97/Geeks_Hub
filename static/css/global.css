@@ -72,7 +72,7 @@ nav li{
     padding: 3%;
 }
 
-nav a{
+nav a, nav label{
     color: var(--base_color);
     font-size: 2.5rem;
     text-decoration: none;
@@ -83,6 +83,54 @@ nav p{
     justify-content: center;
     opacity: 0.7;
 }
+
+/* MENU HAMBURGUESA */
+
+.hamburguer_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--shadow_color);
+
+    opacity: 0;
+    z-index: -500;
+    transition: 0.5s;
+}
+
+.hamburguer_nav li{
+    width: 100%;
+    padding: 8%;
+}
+
+.hamburguer_nav hr{
+    width: 100%;
+}
+
+.hamburguer_nav a{
+    color: var(--base_color);
+    font-size: 2rem;
+}
+
+.hamburguer_nav i{
+    padding-right: 5%;
+}
+
+#check{
+    display: none;
+}
+
+#check:checked ~ .hamburguer_nav{
+    opacity: 1;
+    transition: 0.5s;
+}
+
 
 /* FOOTER */
 
@@ -185,6 +233,12 @@ footer p{
 
     .serie, .movie{
         display: none;
+    }
+
+    /* MENU HAMBURGUESA */
+
+    .hamburguer_nav li{
+        padding: 6%;
     }
 
 }
