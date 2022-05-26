@@ -4,7 +4,7 @@ from os import remove
 from datetime import datetime
 from bottle import get, post, request, template, redirect
 from models.series import Series
-from config.config import DATA_BASE
+from config.config import DATA_BASE, SERIES_FIELDS
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
 
@@ -76,6 +76,14 @@ def series_process():
         series.insert(form_data)
         redirect('/admin/series')
     return template('series_form', form=form)
+
+@get('/admin/series/<cod>')
+def series_view(cod):
+    """Página de visualización de series."""
+    series = Series(DATA_BASE)
+    row = series.select(['*'],{'Cod_Serie': cod})
+    print(row)
+    return template('admin_view_content', content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
 
 @get('/admin/series/edit/<cod>')
 def series_edit(cod):

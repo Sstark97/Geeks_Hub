@@ -32,6 +32,11 @@
                     <input type="submit" name="delete" value="Borrar">
                 </form>
             </td>
+            <td>
+                <form action="/admin/{{content}}/{{row[0]}}" method="GET">
+                    <input type="submit" name="view" value="Ver">
+                </form>
+            </td>
         </tr>
         %end
     </table>
