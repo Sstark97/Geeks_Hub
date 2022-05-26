@@ -9,7 +9,7 @@
 <body>
 
     <p><b>Las {{title}} actuales son las siguientes:</b></p>
-    <button><a href="/admin/series/new">Añadir una Serie</a></button>
+    <button><a href="/admin/{{content}}/new">Añadir una {{str.capitalize(title)}}</a></button>
     <table border="1">
         <tr>
             <th>{{cod}}</th>

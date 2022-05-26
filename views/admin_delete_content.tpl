@@ -8,7 +8,7 @@
 </head>
 <body>
     <p>Borrar {{content}} con Codigo = {{cod}}</p>
-    <form action="/admin/series/delete/{{cod}}" method="POST">
+    <form action="/admin/{{str.lower(content)}}s/delete/{{cod}}" method="POST">
       <p>Hac click para confirmar que deseas eliminar la {{content}}: </p>
       <p><b>{{content_title[0]}}</b></p>
       <div>{{form.delete}}{{form.cancel}}</div>
