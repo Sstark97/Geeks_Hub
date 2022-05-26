@@ -34,6 +34,14 @@ def series_index():
 
     return template('admin_films',title="Series", cod="Cod_Serie", content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
+@get('/admin/series/delete/<cod:str>')
+def series_delete(cod):
+    """Eliminar una serie."""
+    series = Series(DATA_BASE)
+    serie = series.get(['Cod_Serie'], {'Cod_Serie': cod})
+
+    return template('admin_delete', title="Eliminar Serie",content="Serie", cod_content=serie, cod=cod)
+
 @get('/series/new')
 def series_new():
     """Página de registro de series."""
