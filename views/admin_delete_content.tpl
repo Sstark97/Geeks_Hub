@@ -7,13 +7,11 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <p>Borrar {{content}} con Codigo = {{no}}</p>
-    <form action="/delete/{{no}}" method="POST">
+    <p>Borrar {{content}} con Codigo = {{cod}}</p>
+    <form action="/admin/series/delete/{{cod}}" method="POST">
       <p>Hac click para confirmar que deseas eliminar la {{content}}: </p>
-      <p><b>{{cod_content}}</b></p>
-      
-      <input type="submit" name="delete" value="Borrar">
-      <input type="submit" name="cancel" value="Cancelar">
+      <p><b>{{content_title[0]}}</b></p>
+      <div>{{form.delete}}{{form.cancel}}</div>
     </form>   
 </body>
 </html>

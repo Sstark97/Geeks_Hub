@@ -1,9 +1,12 @@
 """Archivo de Rutas de las Series."""
 import sys
+from os import remove
 from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE
 from forms.series_form import SeriesForm
+from forms.delete_content_form import DeleteContentForm
+
 sys.path.append('models')
 sys.path.append('forms')
 
@@ -32,23 +35,15 @@ def series_index():
     # Select de todas las series
     rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
 
-    return template('admin_films',title="Series", cod="Cod_Serie", content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
+    return template('admin_content',title="Series", cod="Cod_Serie", content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
-@get('/admin/series/delete/<cod:str>')
-def series_delete(cod):
-    """Eliminar una serie."""
-    series = Series(DATA_BASE)
-    serie = series.get(['Cod_Serie'], {'Cod_Serie': cod})
-
-    return template('admin_delete', title="Eliminar Serie",content="Serie", cod_content=serie, cod=cod)
-
-@get('/series/new')
+@get('/admin/series/new')
 def series_new():
     """Página de registro de series."""
     form = SeriesForm(request.POST)
     return template('series_form', form=form)
 
-@post('/series/new')
+@post('/admin/series/new')
 def series_process():
     """Procesa el formulario de registro de series."""
     form = SeriesForm(request.POST) 
@@ -77,6 +72,29 @@ def series_process():
         }
         
         series.insert(form_data)
-        redirect('/series')
+        redirect('/admin/series')
     return template('series_form', form=form)
+
+@get('/admin/series/delete/<cod>')
+def series_delete_index(cod):
+    """Eliminar una serie."""
+    form = DeleteContentForm(request.POST)
+    series = Series(DATA_BASE)
+    serie_title = series.get(['Titulo'], {'Cod_Serie': cod})
+
+    return template('admin_delete_content', title="Eliminar Serie",content="Serie", content_title=serie_title, cod=cod, form=form)
+
+@post('/admin/series/delete/<cod>')
+def series_delete(cod):
+    """Procesa la eliminación de una serie."""
+    form = DeleteContentForm(request.POST)
+    if form.delete:
+        series = Series(DATA_BASE)
+        img_path = series.get(['Portada'], {'Cod_Serie': cod})[0]
+        remove(img_path)
+
+        series.delete({'Cod_Serie': cod})
+        redirect('/admin/series')
+
+    return redirect('/admin/series')
     

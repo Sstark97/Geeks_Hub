@@ -20,7 +20,7 @@
             </ul>
         </blockquote>
     % end
-    <form method="POST" action="/series/new" enctype="multipart/form-data">
+    <form method="POST" action="/admin/series/new" enctype="multipart/form-data">
         <fieldset>
             <div>
                 {{ form.season.label }}:

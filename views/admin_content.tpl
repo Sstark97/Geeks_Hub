@@ -9,6 +9,7 @@
 <body>
 
     <p><b>Las {{title}} actuales son las siguientes:</b></p>
+    <button><a href="/admin/series/new">Añadir una Serie</a></button>
     <table border="1">
         <tr>
             <th>{{cod}}</th>
@@ -27,7 +28,7 @@
                 </form>
             </td>
             <td>
-                <form action="/delete/{{row[0]}}" method="GET">
+                <form action="/admin/series/delete/{{row[0]}}" method="GET">
                     <input type="submit" name="delete" value="Borrar">
                 </form>
             </td>
