@@ -63,7 +63,7 @@ def series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})
-    print(row)
+
     return template('admin_view_content', content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
 
 @get('/admin/series/edit/<cod>')
@@ -72,8 +72,6 @@ def series_edit(cod):
     series = Series(DATA_BASE)
     row = series.select(['*'], {'Cod_Serie': cod})[0]
     formatted_date= datetime.strptime(row[9], '%Y-%M-%d')
-
-    print(row[10])
 
     form = SeriesForm(request.POST)
     form.title.data = row[2]
@@ -142,7 +140,6 @@ def series_delete(cod):
     form = DeleteContentForm(request.POST)
     if form.delete.data:
         series = Series(DATA_BASE)
-        print(cod)
         img_path = series.get(['Portada'], {'Cod_Serie': cod})[0]
         remove(img_path)
 
