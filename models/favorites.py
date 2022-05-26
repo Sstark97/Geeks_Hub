@@ -1,0 +1,49 @@
+"""Fichero para el modelo Favourites"""
+import sqlite3
+from models.model import Model
+from config.config import FAVORITES, SERIES, FILM, FAVORITES_CONTENT
+
+class Favorites(Model):
+    """Clase que maneja la tabla Favoritos"""
+    def __init__(self, db_name):
+        super().__init__(db_name)
+        self._table_name = FAVORITES
+
+    def content(self, cod_content, fields_series=[], fields_film=[]):
+        """Muestra el contenido enlazado a la lista de favoritos"""
+        rows = None
+        query = ""
+
+        if fields_series != [] and fields_film != []:
+            query = f"""
+                        SELECT {', '.join(fields_series)}
+                        FROM {self._table_name} INNER JOIN {FAVORITES_CONTENT} 
+                                                ON {self._table_name}.Cod_Favoritos = {FAVORITES_CONTENT}.Cod_Favoritos
+                                                INNER JOIN {SERIES}
+                                                ON {FAVORITES_CONTENT}.Cod_Contenido = {SERIES}.Cod_Serie
+                        WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
+                        UNION
+                        SELECT {', '.join(fields_film)}, 0 AS "Temporada"
+                        FROM {self._table_name} INNER JOIN {FAVORITES_CONTENT} 
+                                                ON {self._table_name}.Cod_Favoritos = {FAVORITES_CONTENT}.Cod_Favoritos
+                                                INNER JOIN {FILM}
+                                                ON {FAVORITES_CONTENT}.Cod_Contenido = {FILM}.Cod_Pelicula
+                        WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
+                    """
+            print(query)
+
+        try:
+            conn = self._connect()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            
+        except sqlite3.Error as error:
+            print("Error while executing sqlite script", error)
+
+        finally:
+            if conn:
+                conn.close()
+
+        return rows
