@@ -1,9 +1,11 @@
 """Archivo de Rutas de los Perfiles."""
 import sys
-from bottle import get
+from bottle import get, request, template, redirect, post
 from models.profile import Profile
 from config.config import DATA_BASE
+from forms.profile_form import ProfileForm
 sys.path.append('models')
+sys.path.append('forms')
 
 @get('/profiles')
 def profiles_index():
@@ -27,3 +29,27 @@ def profiles_index():
     row = perfiles.select(['*'])
 
     return str(row)
+
+@get('/profiles')
+def profile():
+    """Página para mostrar el formulario"""
+    form = ProfileForm(request.POST)
+    return template('profiles', form=form)
+
+@post('/profiles')
+def profile_process():
+    """Página para procesar el formulario"""
+    form = ProfileForm(request.POST) 
+    profile = Profile(DATA_BASE)
+
+    if form.save.data and form.validate():
+        form_data = {
+            'nickname' : form.nickname.data,
+            'imagen' : form.imagen.data
+        }
+
+        print(form_data)
+        redirect("/")
+
+    print(form.errors)
+    return template('profiles', form=form)
