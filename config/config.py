@@ -9,7 +9,7 @@ PROFILE = "Perfil"
 HISTORY = "Historial"
 
 #Formularios
-AGE_RATING = [('', 'Selecciona una Calificación'), ('Tp', 'tp'), ('8', '8'), ('12', '12'), ('16', '16'), ('18', '18')]
+AGE_RATING = [('', 'Selecciona una Calificación'), ('tp', 'Tp'), ('8', '8'), ('12', '12'), ('16', '16'), ('18', '18')]
 GENRE = [('', 'Selecciona un Genéro'), ('Suspense', 'Suspense'), ('Terror', 'Terror'), ('Comedia', 'Comedia'), 
-        ('Acción', 'Accion'), ('Drama', 'Drama'), ('Fantasía','Fantasia'), ('Romance','Romance'), ('Aventura', 'Aventura'),
-        ('Ciencia Ficción', 'Ciencia Ficción'), ('Bélico', 'Belico'), ('Musical', 'Musical'), ('Documental', 'Documental'),]
+        ('Accion', 'Accion'), ('Drama', 'Drama'), ('Fantasia','Fantasia'), ('Romance','Romance'), ('Aventura', 'Aventura'),
+        ('Ciencia Ficcion', 'Ciencia Ficcion'), ('Belico', 'Belico'), ('Musical', 'Musical'), ('Documental', 'Documental'),]

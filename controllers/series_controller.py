@@ -45,6 +45,7 @@ def series_new():
 def series_process():
     """Procesa el formulario de registro de series."""
     form = SeriesForm(request.POST) 
+    series = Series(DATA_BASE)
     if form.submit.data and form.cover_page and form.validate():
         image_data = request.files.get('cover_page')
         file_path = f"static/img/{image_data.filename}"
@@ -53,6 +54,7 @@ def series_process():
             file.write(image_data.file.read())
 
         form_data = {
+            'Cod_Serie': series.code_generator(),
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
@@ -67,6 +69,7 @@ def series_process():
             'Capitulos' : form.chapters.data
         }
         
-        redirect('/')
+        series.insert(form_data)
+        redirect('/series')
     return template('series_form', form=form)
     
