@@ -23,12 +23,12 @@
             <td>{{col}}</td>
             %end
             <td>
-                <form action="/edit/{{row[0]}}" method="GET">
+                <form action="/admin/{{content}}/edit/{{row[0]}}" method="GET">
                     <input type="submit" name="save" value="Editar">
                 </form>
             </td>
             <td>
-                <form action="/admin/series/delete/{{row[0]}}" method="GET">
+                <form action="/admin/{{content}}/delete/{{row[0]}}" method="GET">
                     <input type="submit" name="delete" value="Borrar">
                 </form>
             </td>

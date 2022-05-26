@@ -40,7 +40,7 @@ class SeriesForm(Form):
 
     synopsis = TextAreaField('Sinopsis', [validators.Length(min=10, max=1000)])
 
-    release_date = DateField('Fecha de Publicación', [validators.DataRequired("El campo es obligatorio")])
+    release_date = DateField('Fecha de Publicación',[validators.DataRequired("El campo es obligatorio")],format='%Y-%m-%d')
 
     cover_page = FileField('Portada', render_kw={'accept':'image/png, image/jpeg'})
 
