@@ -34,7 +34,7 @@ def profiles_index():
 def profile():
     """Página para mostrar el formulario"""
     form = ProfileForm(request.POST)
-    return template('profiles', form=form)
+    return template('profile', form=form)
 
 @post('/profiles')
 def profile_process():
@@ -52,4 +52,4 @@ def profile_process():
         redirect("/")
 
     print(form.errors)
-    return template('profiles', form=form)
+    return template('profile', form=form)
