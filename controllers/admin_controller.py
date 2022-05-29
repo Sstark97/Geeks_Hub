@@ -12,12 +12,7 @@ def admin():
     series = Series(DATA_BASE)
     films = Film(DATA_BASE)
 
-    top_films = films.top_films(["Portada","Titulo"], 5)
-    top_series = series.top_series(["Portada","Titulo"], 5)
-
-    return str(top_series)
-
-    # top_5_series = series.select(['Cod_Serie', 'Titulo', 'Genero'], {})
-    # top_5_films = films.select(['Cod_Pelicula', 'Titulo', 'Genero'], 'Cod_Pelicula', 'DESC', 5)
+    films = films.top_films(["Portada","Titulo"], 5)
+    series = series.top_series(["Portada","Titulo"], 5)
     
-    return template('admin_index.tpl')
+    return template('admin_index', films=films, series=series)
