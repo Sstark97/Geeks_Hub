@@ -29,6 +29,9 @@
                 <li>
                     <a href="/admin/series">Series</a>
                 </li>
+                <li>
+                    <a href="/admin/accounts">Cuentas</a>
+                </li>
             </ul>
         </nav>
     </header>

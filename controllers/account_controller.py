@@ -6,26 +6,27 @@ from forms.register_form import RegistrationForm
 from config.config import DATA_BASE
 sys.path.append('models')
 
+@get('/admin/accounts')
+def admin_accounts():
+    """Página de inicio de las Cuentas para Administradores."""
+    cuenta = Account(DATA_BASE)
+    rows = cuenta.select(["*"])
+
+    return template('admin_accounts', rows=rows)
+
+@get('/admin/accounts/<email>')
+def admin_accounts_view(email):
+    """Página de visualización de una Cuenta para Administradores."""
+    cuenta = Account(DATA_BASE)
+    rows = cuenta.select(['*'], {'Correo': email})
+    print(rows)
+
+    return template('admin_view_account', rows=rows)
+
 @get('/accounts')
 def account_index():
     """Página de inicio de las Cuentas."""
     cuentas = Account(DATA_BASE)
-
-    # Añadir
-    # cuenta.insert({"Correo" : "miriamdaw@gmail.com", "Nombre" : "Miriam", "Apellidos" : "Garcia Rodriguez", "Direccion" : 
-    # "C/ Lomo Apolinario", "Contrasena" : "miri135am", "Telefono" : "647893746", "Tipo_Suscripcion" : "Estandar"})
-    # row = cuenta.select(["*"], {"Nombre" : "Miriam"})
-
-    # Actualizar
-    # cuentas.update({"Correo" : "miriamcorreo@gmail.com"}, {"Nombre" : "Miriam"})
-
-    # Eliminar
-    # cuentas.delete({"Nombre" : "Miriam"})
-    
-    # Select Direccion Avenida (A/)
-    # row = cuentas.select(['*'],  {"Direccion": "A/%"})
-
-    # Select de todas las Cuentas
     row = cuentas.select(['*'])
     return str(row)
 
