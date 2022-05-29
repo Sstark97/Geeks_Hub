@@ -5,28 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="POST" action="/login">
+    <img src="/static/img/logo.png" alt="logo">
+    <h1>Inicie Sesión</h1>
+    <form method="POST" action="/login" autocomplete="off">
         <fieldset>
-            <div>
-                {{ form.email.label }}:
+            <div class="input">
+                {{ form.email.label }}
                 {{ form.email }}
             </div>
-            <div>
-                {{ form.password.label }}:
+            <div class="input">
+                {{ form.password.label }}
                 {{ form.password }}
             </div>
-            <div>
+            <div class="button">
                 {{ form.btn_continue }}
-            </div>   
-            <div>
-                {{ form.cancel}}
-            </div>    
+            </div>
         </fieldset>
-        <a href="/">
-            <input type="button" value="Registrate aquí"/>
+        <a class="register" href="/">
+            <p>Si aún no estás registrado,&nbsp</p>
+            <input type="button" value="regístrate aquí"/>
         </a>
     </form>
 </body>

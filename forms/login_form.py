@@ -9,4 +9,3 @@ class LoginForm(Form):
     password = PasswordField('New Password', [
         validators.DataRequired()])
     btn_continue = SubmitField('Continuar')
-    cancel = SubmitField('Cancelar')
