@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <p><b>Las {{title}} actuales son las siguientes:</b></p>
+    <p><b>Las {{title}}s actuales son las siguientes:</b></p>
     <button><a href="/admin/{{content}}/new">Añadir una {{str.capitalize(title)}}</a></button>
     <table border="1">
         <tr>
