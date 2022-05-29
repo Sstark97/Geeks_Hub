@@ -73,7 +73,8 @@
             </div>
             <div>
                 {{ form.submit }}
-            </div>       
+                <button><a href="/admin/series">Cancelar</a></button>      
+            </div>
         </fieldset>
     </form>
 </body>

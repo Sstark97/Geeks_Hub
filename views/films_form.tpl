@@ -68,7 +68,8 @@
             </div>
             <div>
                 {{ form.submit }}
-            </div>       
+                <button><a href="/admin/films">Cancelar</a></button>     
+            </div>     
         </fieldset>
     </form>
 </body>
