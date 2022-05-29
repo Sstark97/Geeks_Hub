@@ -45,7 +45,9 @@
                 {{ form.register }}
             </div>       
             <div>
-                {{ form.cancel }}
+                <button style="width:70px">
+                    <a href="/" style="text-decoration:none; color:black">Cancelar</a>
+                </button>
             </div>       
         </fieldset>
     </form>

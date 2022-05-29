@@ -20,4 +20,4 @@ class RegistrationForm(Form):
     suscription = SelectField("Tipo de Suscripcion", choices=[('Basico', 'Basico'), ('Estandar', 'Estandar'), ('Premium', 'Premium')])  
     
     register = SubmitField('Registrar')
-    cancel = SubmitField('Cancelar')
+    # cancel = SubmitField('Cancelar')
