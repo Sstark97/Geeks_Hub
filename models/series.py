@@ -26,3 +26,14 @@ class Series(Model):
         cursor.close()
         conn.close()
         return cod_serie
+    
+    def top_series(self, fields, limit):
+        """Devuelve las mejores series hasta el limite."""
+        conn = self._connect()
+        cursor = conn.cursor()
+        query = f"SELECT {', '.join(fields)} FROM {SERIES} ORDER BY Puntuacion_Media DESC LIMIT ?"
+        cursor.execute(query, (limit,))
+        rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return rows

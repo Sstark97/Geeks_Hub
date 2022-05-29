@@ -25,3 +25,14 @@ class Film(Model):
         cursor.close()
         conn.close()
         return cod_pelicula
+    
+    def top_films(self, fields, limit):
+        """Devuelve las mejores peliculas hasta el limite."""
+        conn = self._connect()
+        cursor = conn.cursor()
+        query = f"SELECT {', '.join(fields)} FROM {FILM} ORDER BY Puntuacion_Media DESC LIMIT ?"
+        cursor.execute(query, (limit,))
+        rows = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return rows

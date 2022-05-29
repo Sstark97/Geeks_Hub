@@ -1,3 +1,403 @@
-body {
-    background-color: red;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES */
+
+:root{
+    --background_color: #1c232d;
+    --shadow_color: #353c44;
+    --main_color: #00aeb5;
+    --base_color: #efefef;
+    --main_font: 'Noto Sans Display', sans-serif;
+}
+
+/* MAIN */
+
+main{
+    font-family: var(--main_font);
+    width: 100%;
+}
+
+/* HEADER */
+
+header{
+    position: sticky;
+    z-index: 10000;
+    top: 0px;
+
+    width: 100%;
+    height: 5rem;
+    background-color: var(--background_color);
+}
+
+.head{
+    width: 100%;
+    height: 100%;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: 7rem;
+}
+
+/* NAVEGADOR */
+
+nav{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    text-align: center;
+
+    background-color: var(--background_color);
+    z-index: 1000;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none;
+    padding: 3%;
+}
+
+nav a, nav label{
+    color: var(--base_color);
+    font-size: 2.5rem;
+    text-decoration: none;
+}
+
+nav p{
+    display: none;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+/* MENU HAMBURGUESA */
+
+.hamburguer_nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--shadow_color);
+
+    opacity: 0;
+    z-index: -500;
+    transition: 0.5s;
+}
+
+.hamburguer_nav li{
+    width: 100%;
+    padding: 8%;
+}
+
+.hamburguer_nav hr{
+    width: 100%;
+}
+
+.hamburguer_nav a{
+    color: var(--base_color);
+    font-size: 2rem;
+}
+
+.hamburguer_nav i{
+    padding-right: 5%;
+}
+
+#check{
+    display: none;
+}
+
+#check:checked ~ .hamburguer_nav{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+
+/* FOOTER */
+
+footer{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 20px 50px;
+
+    background-color: var(--background_color);
+    color: var(--base_color);
+}
+
+.icons, .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px 0;
+}
+
+.icons li, .menu li{
+    list-style: none;
+}
+
+.icons li a{
+    font-size: 2em;
+    color: var(--base_color);
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.menu li a{
+    margin: 0 10px;
+
+    text-decoration: none;
+    font-size: 1.2em;
+    color: var(--base_color);
+}
+
+footer p{
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.menu_tablet{
+    display: none;
+}
+
+.menu_desktop{
+    display: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+
+    /* HEADER */
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 15%;
+
+        justify-content: left;
+        padding-left: 3%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 7%;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: var(--base_color);
+        font-size: 1.3rem;
+
+        padding-right: 4rem;
+    }
+
+    /* NAVEGADOR */
+
+    nav p{
+        display: flex;
+        font-size: 1rem;
+    }
+
+    nav a{
+        font-size: 3rem;
+    }
+
+    .serie, .movie{
+        display: none;
+    }
+
+    /* MENU HAMBURGUESA */
+
+    .hamburguer_nav li{
+        padding: 6%;
+    }
+
+}
+
+@media only screen and (min-width: 992px){
+
+    /* HEADER */
+
+    .head{
+        display: flex;
+    }
+
+    .logo{
+        width: 8%;
+
+        justify-content: left;
+        padding-left: 2%;
+    }
+
+    .menu_tablet{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        padding-left: 2rem;
+    }
+
+    .menu_tablet a{
+        text-decoration: none;
+        color: var(--base_color);
+        font-size: 1.3rem;
+
+        padding-right: 1.5rem;
+    }
+
+    .menu_tablet a:hover{
+        color: var(--main_color);
+    }
+
+    .menu_desktop{
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+    }
+
+    head a{
+        text-decoration: none;
+    }
+
+    .menu_desktop i{
+        position: relative;
+        color: var(--base_color);
+        font-size: 2.5rem;
+
+        padding-right: 1.5rem;
+    }
+
+    .search:hover, .user:hover{
+        color: var(--main_color);
+    }
+
+    /* DESPLEGABLE */
+
+    .dropdown{
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown > ul{
+        display: none;
+    }
+    
+    .dropdown:hover > ul{
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        top: 4rem;
+        right: 1rem;
+
+        width: 12%;
+    }
+    
+    .dropdown ul li{
+        width: 100%;
+    }
+    
+    .dropdown a, .dropdown li{
+        width: 100%;
+        height: 100%;
+        padding: 4%;
+
+        font-size: 1.2rem;
+        text-decoration: none;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: var(--base_color);
+        background-color: var(--background_color);
+    } 
+
+    .dropdown ul li i{
+        font-size: 2rem;
+    }
+
+    .dropdown ul li:hover a{
+        color: var(--main_color);
+    }
+
+    /* NAVEGADOR */
+
+    nav{
+        display: none;
+    }
+
+    /* FOOTER */
+    
+    .icons li a:hover{
+        transform: translateY(-10px);
+    }
+    
+    .icons li a:hover .bxl-twitter{
+        color: #00acee;
+    }
+    
+    .icons li a:hover .bxl-facebook-circle{
+        color: #3b5998;
+    }
+    
+    .icons li a:hover .bxl-instagram-alt{
+        color: #C13584;
+    }
+    
+    .menu li a{
+        margin: 0 10px;
+    
+        text-decoration: none;
+        font-size: 1.2em;
+        color: white;
+        
+        transition: 0.5s;
+        opacity: 0.5;
+    }
+    
+    .menu li a:hover{
+        opacity: 1;
+        color: var(--main_color);
+    }
+    
+    footer p{
+        margin-top: 15px;
+        margin-bottom: 10px;
+    
+        color: white;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
 }
