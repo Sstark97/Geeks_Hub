@@ -2,6 +2,7 @@
 import sys
 from os import remove
 from datetime import datetime
+from turtle import title
 from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE, SERIES_FIELDS
@@ -64,7 +65,7 @@ def series_view(cod):
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})
 
-    return template('admin_view_content', content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
+    return template('admin_view_content', title=row[0][2], content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
 
 @get('/admin/series/edit/<cod>')
 def series_edit(cod):

@@ -53,3 +53,12 @@ def series_process():
         films.insert(form_data)
         redirect('/admin/films')
     return template('films_form', form=form)
+
+@get('/admin/films/<cod>')
+def series_view(cod):
+    """Página de visualización de Peliculas."""
+    films = Film(DATA_BASE)
+    row = films.select(['*'],{'Cod_Pelicula': cod})
+    print(row)
+
+    return template('admin_view_content', title=row[0][1], content=row, content_type="series", fields=FILM_FIELDS, img_col=9,  cod=cod)
