@@ -31,6 +31,5 @@ def register_process():
         # print(form_data)
         account.insert(form_data)
         redirect('/accounts')
-    if form.cancel:
-        redirect('/')
+        
     return template('register', form=form)
