@@ -7,6 +7,21 @@
     <title>Register</title>
 </head>
 <body>
+
+    <h1>Formulario de registro</h1>
+    % if form.errors:
+    <blockquote>
+        <p>Hay errores en el formulario: </p>
+        <ul>
+        % for field, errors in form.errors.items():
+            % for error in errors:
+            <li>{{field}}: {{error}}</li>
+            % end
+        % end
+        </ul>
+    </blockquote>
+    % end
+
     <form method="POST" action="/register">
         <fieldset>
             <div>

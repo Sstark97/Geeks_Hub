@@ -7,7 +7,7 @@ class RegistrationForm(Form):
     
     name = StringField('Nombre', [validators.InputRequired(), validators.Length(min=1, max=20)])
     surname = StringField('Apellidos', [validators.InputRequired(), validators.Length(min=1, max=25)])
-    email = StringField('Correo electrónico', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email()])
+    email = StringField('Correo electrónico', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email(message="Debe introducir un email válido")])
     password = PasswordField('Contraseña', [
         validators.DataRequired(),
         validators.EqualTo('password_confirm', 
@@ -15,7 +15,7 @@ class RegistrationForm(Form):
         ])
     password_confirm = PasswordField('Repita la contraseña')
     direction = StringField('Dirección', [validators.InputRequired(), validators.Length(min=1, max=70)])
-    phone_number = StringField('Teléfono', [validators.InputRequired(), validators.Length(min=1, max=9)])  # 9 dígitos España
+    phone_number = StringField('Teléfono', [validators.InputRequired(), validators.Length(min=9, max=9, message="Debe introducir un número de 9 dígitos")])  # 9 dígitos España
     # birth_date = DateField('Fecha de Nacimiento', [validators.DataRequired()])  
     suscription = SelectField("Tipo de Suscripcion", choices=[('Basico', 'Basico'), ('Estandar', 'Estandar'), ('Premium', 'Premium')])  
     
