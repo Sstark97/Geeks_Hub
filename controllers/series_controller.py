@@ -132,7 +132,7 @@ def series_delete_index(cod):
     series = Series(DATA_BASE)
     serie_title = series.get(['Titulo'], {'Cod_Serie': cod})
 
-    return template('admin_delete_content', title="Eliminar Serie",content="Serie", content_title=serie_title, cod=cod, form=form)
+    return template('admin_delete_content', title="Eliminar Serie",content="Serie", uri="series", content_title=serie_title, cod=cod, form=form)
 
 @post('/admin/series/delete/<cod>')
 def series_delete(cod):

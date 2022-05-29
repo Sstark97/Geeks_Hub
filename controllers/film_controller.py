@@ -121,3 +121,27 @@ def films_process_edit(cod):
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
     return template('films_form', form=form)
+
+@get('/admin/films/delete/<cod>')
+def films_delete_index(cod):
+    """Eliminar una Pelicula."""
+    form = DeleteContentForm(request.POST)
+    films = Film(DATA_BASE)
+    film_title = films.get(['Titulo'], {'Cod_Pelicula': cod})
+
+    return template('admin_delete_content', title="Eliminar Pelicula",content="Pelicula", uri="films", content_title=film_title, cod=cod, form=form)
+
+@post('/admin/films/delete/<cod>')
+def films_delete(cod):
+    """Procesa la eliminación de una Pelicula."""
+    form = DeleteContentForm(request.POST)
+    if form.delete.data:
+        films = Film(DATA_BASE)
+        img_path = films.get(['Portada'], {'Cod_Pelicula': cod})[0]
+        remove(img_path)
+
+        films.delete({'Cod_Pelicula': cod})
+        redirect('/admin/films')
+
+    if form.cancel.data:
+        redirect('/admin/films')
