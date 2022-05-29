@@ -18,4 +18,4 @@ GENRE = (('', 'Selecciona un Genéro'), ('Suspense', 'Suspense'), ('Terror', 'Te
 SERIES_FIELDS = ('Cod_Serie', 'N_Temporada', 'Titulo', 'Calificacion_Edad', 'Genero', 'Director', 
 'Puntuacion_Media', 'Productor', 'Sinopsis', 'Fecha_Publicacion', 'Portada' ,'Trailer', 'Capitulos')
 FILM_FIELDS = ('Cod_Pelicula', 'Titulo', 'Calificacion_Edad', 'Genero', 'Director',
-'Puntuacion_Media', 'Productor', 'Sinopsis', 'Fecha_Publicacion', 'Portada', 'Trailer')
+'Puntuacion_Media', 'Productor', 'Sinopsis', 'Fecha_Publicacion', 'Portada', 'Trailer', 'Duracion')

@@ -17,7 +17,7 @@ def series_index():
     series = Series(DATA_BASE)
     rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
 
-    return template('admin_content',title="Series", content="series", cod="Cod_Serie", 
+    return template('admin_content',title="Serie", content="series", cod="Cod_Serie", 
         content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
 @get('/admin/series/new')
@@ -64,14 +64,14 @@ def series_view(cod):
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})
 
-    return template('admin_view_content', content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
+    return template('admin_view_content', title=row[0][2], content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
 
 @get('/admin/series/edit/<cod>')
 def series_edit(cod):
     """Página de edición de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'], {'Cod_Serie': cod})[0]
-    formatted_date= datetime.strptime(row[9], '%Y-%M-%d')
+    formatted_date= datetime.strptime(row[9], '%Y-%m-%d')
 
     form = SeriesForm(request.POST)
     form.title.data = row[2]
@@ -132,7 +132,7 @@ def series_delete_index(cod):
     series = Series(DATA_BASE)
     serie_title = series.get(['Titulo'], {'Cod_Serie': cod})
 
-    return template('admin_delete_content', title="Eliminar Serie",content="Serie", content_title=serie_title, cod=cod, form=form)
+    return template('admin_delete_content', title="Eliminar Serie",content="Serie", uri="series", content_title=serie_title, cod=cod, form=form)
 
 @post('/admin/series/delete/<cod>')
 def series_delete(cod):
