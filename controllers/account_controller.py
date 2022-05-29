@@ -14,6 +14,15 @@ def admin_accounts():
 
     return template('admin_accounts', rows=rows)
 
+@get('/admin/accounts/<email>')
+def admin_accounts_view(email):
+    """Página de visualización de una Cuenta para Administradores."""
+    cuenta = Account(DATA_BASE)
+    rows = cuenta.select(['*'], {'Correo': email})
+    print(rows)
+
+    return template('admin_view_account', rows=rows)
+
 @get('/accounts')
 def account_index():
     """Página de inicio de las Cuentas."""
