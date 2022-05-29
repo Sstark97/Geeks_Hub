@@ -12,6 +12,11 @@ def index():
     
     return template('index.tpl')
 
+@get('/prueba')
+def about():
+    """Página de prueba"""
+    return static_file('/html/header.html', root='static')
+
 @get("/static/<filepath:path>")
 def html(filepath):
     """Servicio de archivos estáticos."""
