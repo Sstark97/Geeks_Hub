@@ -19,6 +19,37 @@ def series_index():
 
 @get('/admin/films/new')
 def series_new():
-    """Página de registro de series."""
+    """Página de registro de peliculas."""
     form = FilmsForm(request.POST)
     return template('films_form', form=form, path='/admin/films/new')
+
+@post('/admin/films/new')
+def series_process():
+    """Procesa el formulario de registro de peliculas."""
+    form = FilmsForm(request.POST) 
+    films = Film(DATA_BASE)
+    if form.submit.data and form.cover_page and form.validate():
+        image_data = request.files.get('cover_page')
+        file_path = f"static/img/films/{image_data.filename}"
+
+        with open(file_path, 'wb') as file:
+            file.write(image_data.file.read())
+
+        form_data = {
+            'Cod_Pelicula': films.code_generator(),
+            'Titulo' : form.title.data,
+            'Calificacion_Edad' : form.age_rating.data,
+            'Genero' : form.genre.data,
+            'Director' : form.director.data,
+            'Puntuacion_Media' : float(form.average_score.data),
+            'Productor' : form.productor.data,
+            'Sinopsis' : form.synopsis.data,
+            'Fecha_Publicacion' : str(form.release_date.data),
+            'Portada': file_path,
+            'Trailer' : form.trailer.data,
+            'Duracion' : form.duration.data
+        }
+        
+        films.insert(form_data)
+        redirect('/admin/films')
+    return template('films_form', form=form)
