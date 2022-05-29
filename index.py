@@ -13,6 +13,12 @@ def index():
     
     return template('index.tpl')
 
+@get('/admin')
+def admin():
+    """Página de inicio del administrador de la aplicación."""
+    
+    return template('admin_index.tpl')
+
 @get("/static/<filepath:path>")
 def html(filepath):
     """Servicio de archivos estáticos."""
