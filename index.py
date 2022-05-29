@@ -16,7 +16,7 @@ def index():
 @get('/prueba')
 def about():
     """Página de prueba"""
-    return static_file('/html/header.html', root='static')
+    return static_file('home.tpl', root='views')
 
 @get("/static/<filepath:path>")
 def html(filepath):
