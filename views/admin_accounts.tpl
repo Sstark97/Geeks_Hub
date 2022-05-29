@@ -1,4 +1,4 @@
-%include('admin_header.tpl',title='Administración de Cuentas')
+%include('admin_header.tpl',title='Cuentas')
     <p><b>Las cuentas actuales son las siguientes:</b></p>
     <table border="1">
         <tr>
@@ -17,7 +17,7 @@
             <td>{{ col }}</td>
             %end
             <td>
-                <form action="" method="GET">
+                <form action="/admin/accounts/{{row[0]}}" method="GET">
                     <input type="submit" name="view" value="Mostrar">
                 </form>
             </td>
