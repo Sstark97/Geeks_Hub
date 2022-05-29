@@ -6,7 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="/static/css/home.css">
+
+    <!-- Estilos -->
+
+    <link rel="stylesheet" href="/static/css/global.css">
+
+    <!-- Iconos -->
+
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -72,11 +80,7 @@
                 <p>Xbox Series X</p>
                 <p>Xbox Series S</p>
             </div>
-            
-            
         </div>
     </div>
 
-</body>
-
-</html>
+% include('footer')

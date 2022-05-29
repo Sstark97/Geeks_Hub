@@ -11,7 +11,7 @@ from controllers.history_controller import *
 def index():
     """Página de inicio de la aplicación."""
     
-    return template('index.tpl')
+    return template('home.tpl')
 
 @get('/prueba')
 def about():

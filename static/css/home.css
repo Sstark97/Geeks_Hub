@@ -19,6 +19,7 @@ html, body{
     height: 100vh;
 
     font-family: var(--main_font);
+    background-color: var(--background_color);
 }
 
 .main{
@@ -164,4 +165,124 @@ html, body{
     color: var(--base_color);
 
     padding: 2%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+    .button_login{
+        height: 10%;
+    }
+
+    .logo img{
+        width: 70%;
+    }
+
+    .logo p{
+        font-size: 2.2vw;
+    }
+
+    .content p{
+        font-size: 2.2vw;
+    }
+
+    .television, .computer, .phone, .console{
+        height: 48vw;
+    }
+
+    .television img, .computer img, .phone img, .console img{
+        width: 40%;
+    }
+    
+    .television h2, .computer h2, .phone h2, .console h2{
+        font-size: 3vw;
+    }
+
+    .television p, .computer p, .phone p, .console p{
+        font-size: 2vw;
+    }
+}
+
+@media only screen and (min-width: 992px){
+
+    .button_login{
+        height: 10%;
+    }
+
+    .login{
+        width: 11vw;
+        font-size: 1.3vw;
+
+        opacity: 0.6;
+        transition: .5s;
+    }
+
+    .login:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .logo{
+        flex-direction: column;
+        justify-content: left;
+        align-content: flex-start;
+    }
+
+    .logo img{
+        width: 30%;
+    }
+
+    .logo p{
+        width: 40%;
+        margin-left: 5%;
+
+        text-align: left;
+        font-size: 1.2vw;
+    }
+
+    .content{
+        justify-content: space-evenly;
+        height: 50%;
+    }
+
+    .cuadro{
+        width: 40%;
+        height: 80%;
+    }
+
+    .content p{
+        width: 40%;
+        
+        text-align: left;
+        font-size: 1.2vw;
+    }
+
+    .submit{
+        width: 20%;
+        font-size: 2vw;
+
+        opacity: 0.6;
+        transition: .5s;
+    }
+
+    .submit:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .television, .computer, .phone, .console{
+        width: 25%;
+        height: auto;
+        margin-bottom: 5%;
+    }
+
+    .television img, .computer img, .phone img, .console img{
+        width: 50%;
+    }
+    
+    .television h2, .computer h2, .phone h2, .console h2{
+        font-size: 2vw;
+    }
+
+    .television p, .computer p, .phone p, .console p{
+        font-size: 1.2vw;
+    }
 }

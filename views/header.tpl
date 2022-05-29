@@ -25,7 +25,7 @@
         <header>
             <ul class="head">
 
-                <li class="logo">
+                <li class="header_logo">
                     <a href="">
                         <img src="/static/img/logo.png" alt="logo">
                     </a>
