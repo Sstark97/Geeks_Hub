@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin/{{title}}</title>
-</head>
-<body>
-
-    <p><b>Las {{title}}s actuales son las siguientes:</b></p>
+%include('admin_header.tpl',title=title)
+    <p><b>Las {{title}} actuales son las siguientes:</b></p>
     <button><a href="/admin/{{content}}/new">Añadir una {{str.capitalize(title)}}</a></button>
     <table border="1">
         <tr>
