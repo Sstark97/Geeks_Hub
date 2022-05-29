@@ -30,7 +30,7 @@ def films_process():
     films = Film(DATA_BASE)
     if form.submit.data and form.cover_page and form.validate():
         image_data = request.files.get('cover_page')
-        file_path = f"static/img/films/{image_data.filename}"
+        file_path = f"static/img/movies/{image_data.filename}"
 
         with open(file_path, 'wb') as file:
             file.write(image_data.file.read())
@@ -95,7 +95,7 @@ def films_process_edit(cod):
     if form.submit.data and form.cover_page and form.validate():
         if form.cover_page and request.files.get('cover_page'):
             image_data = request.files.get('cover_page')
-            file_path = f"static/img/films/{image_data.filename}"
+            file_path = f"static/img/movies/{image_data.filename}"
 
             with open(file_path, 'wb') as file:
                 file.write(image_data.file.read())
