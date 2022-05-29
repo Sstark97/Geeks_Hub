@@ -18,6 +18,11 @@
         <i class='bx bx-x'></i>
         <nav>
             <ul>
+                <li class="logo_nav">
+                    <a href="/admin">
+                        <img src="/static/img/logo.png" alt="logo">
+                    </a>
+                </li>
                 <li>
                     <a href="/admin/films">Películas</a>
                 </li>

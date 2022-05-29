@@ -13,7 +13,7 @@
             %for col in row:
                 %if row.index(col) == img_col:
                     <td>
-                        <img src="/{{col}}" width="300px" height="100%"/>
+                        <img src="{{col}}" width="300px" height="100%"/>
                     </td>
                 %else:
                     <td>{{col}}</td>

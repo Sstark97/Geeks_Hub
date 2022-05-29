@@ -5,11 +5,13 @@
             %for film in films:
                 <div class="film_container">
                     %for col in film:
-                        %if film.index(col) == 0:
+                        %if film.index(col) == 1:
                             <div class="image">
-                                <img src="{{col}}" alt="{{film[1]}}">
+                                <a href="admin/films/{{film[0]}}">
+                                    <img src="{{col}}" alt="{{film[1]}}">
+                                </a>
                             </div>
-                        %else:
+                        %elif film.index(col) == 2:
                             <div class="info">
                                 <p>{{col}}</p>
                             </div>
@@ -24,11 +26,13 @@
             %for serie in series:
                 <div class="serie_container">
                 %for col in serie:
-                    %if serie.index(col) == 0:
+                    %if serie.index(col) == 1:
                         <div class="image">
-                            <img src="{{col}}" alt="{{serie[1]}}">
+                            <a href="admin/series/{{serie[0]}}">
+                                <img src="{{col}}" alt="{{serie[0]}}">
+                            </a>
                         </div>
-                    %else:
+                    %elif serie.index(col) == 2:
                         <div class="info">
                             <p>{{col}}</p>
                         </div>

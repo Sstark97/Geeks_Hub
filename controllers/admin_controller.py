@@ -12,7 +12,7 @@ def admin():
     series = Series(DATA_BASE)
     films = Film(DATA_BASE)
 
-    films = films.top_films(["Portada","Titulo"], 5)
-    series = series.top_series(["Portada","Titulo"], 5)
+    films = films.top_films(["Cod_Pelicula","Portada","Titulo"], 5)
+    series = series.top_series(["Cod_Serie","Portada","Titulo"], 5)
     
     return template('admin_index', films=films, series=series)
