@@ -12,7 +12,8 @@ def account_index():
     cuentas = Account(DATA_BASE)
 
     # Añadir
-    # cuenta.insert({"Correo" : "miriamdaw@gmail.com", "Nombre" : "Miriam", "Apellidos" : "Garcia Rodriguez", "Direccion" : "C/ Lomo Apolinario", "Contrasena" : "miri135am", "Telefono" : "647893746", "Tipo_Suscripcion" : "Estandar"})
+    # cuenta.insert({"Correo" : "miriamdaw@gmail.com", "Nombre" : "Miriam", "Apellidos" : "Garcia Rodriguez", "Direccion" : 
+    # "C/ Lomo Apolinario", "Contrasena" : "miri135am", "Telefono" : "647893746", "Tipo_Suscripcion" : "Estandar"})
     # row = cuenta.select(["*"], {"Nombre" : "Miriam"})
 
     # Actualizar
