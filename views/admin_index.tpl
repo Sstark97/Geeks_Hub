@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/admin.css">
     <title>Administración</title>
 </head>
 <body>
@@ -20,8 +21,8 @@
     <h2>Zona de Administración</h2>
 
     <div class="admin_container">
+        <h3>Películas mejor valoradas</h3>
         <div class="films_container">
-            <h3>Películas mejor valoradas</h3>
             %for film in films:
                 <div class="film_container">
                 %for col in film:
@@ -39,8 +40,8 @@
             %end
         </div>
 
+        <h3>Series mejor valoradas</h3>
         <div class="series_container">
-            <h3>Series mejor valoradas</h3>
             %for serie in series:
                 <div class="serie_container">
                 %for col in serie:

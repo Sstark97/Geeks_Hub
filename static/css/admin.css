@@ -1,0 +1,37 @@
+.admin_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.series_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.films_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.film_image {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.film_image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.film_info {
+    text-align: center;
+}
