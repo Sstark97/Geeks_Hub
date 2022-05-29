@@ -2,7 +2,6 @@
 import sys
 from os import remove
 from datetime import datetime
-from turtle import title
 from bottle import get, post, request, template, redirect
 from models.series import Series
 from config.config import DATA_BASE, SERIES_FIELDS
@@ -72,7 +71,7 @@ def series_edit(cod):
     """Página de edición de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'], {'Cod_Serie': cod})[0]
-    formatted_date= datetime.strptime(row[9], '%Y-%M-%d')
+    formatted_date= datetime.strptime(row[9], '%Y-%m-%d')
 
     form = SeriesForm(request.POST)
     form.title.data = row[2]
