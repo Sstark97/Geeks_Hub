@@ -622,7 +622,11 @@ footer p{
     }
 
     .devices{
-        height: 50vh;
+        height: 55vh;
+        padding-top: 1%;
+
+        align-content: flex-start;
+        align-items: stretch;
     }
 
     .television, .computer, .phone, .console{
