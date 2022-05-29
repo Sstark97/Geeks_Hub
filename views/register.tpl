@@ -38,11 +38,14 @@
                 {{ form.phone_number }}
             </div>
             <div>
-                {{ form.birth_date.label }}:
-                {{ form.birth_date }}
+                {{ form.suscription.label }}:
+                {{ form.suscription }}
             </div>
             <div>
                 {{ form.register }}
+            </div>       
+            <div>
+                {{ form.cancel }}
             </div>       
         </fieldset>
     </form>

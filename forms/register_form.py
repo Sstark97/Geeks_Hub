@@ -1,6 +1,6 @@
 """Fichero para el Formulario de Registro"""
 from email_validator import EmailNotValidError
-from wtforms import Form, BooleanField, StringField, PasswordField, SubmitField , validators, DateField
+from wtforms import Form, BooleanField, StringField, PasswordField, SubmitField , validators, DateField, SelectField
 
 class RegistrationForm(Form):
     """Clase que maneja el formulario de Registro"""
@@ -16,7 +16,8 @@ class RegistrationForm(Form):
     password_confirm = PasswordField('Repita la contraseña')
     direction = StringField('Dirección', [validators.InputRequired(), validators.Length(min=1, max=70)])
     phone_number = StringField('Teléfono', [validators.InputRequired(), validators.Length(min=1, max=9)])  # 9 dígitos España
-    birth_date = DateField('Fecha de Nacimiento', [validators.DataRequired()])  
+    # birth_date = DateField('Fecha de Nacimiento', [validators.DataRequired()])  
+    suscription = SelectField("Tipo de Suscripcion", choices=[('Basico', 'Basico'), ('Estandar', 'Estandar'), ('Premium', 'Premium')])  
     
     register = SubmitField('Registrar')
     cancel = SubmitField('Cancelar')
