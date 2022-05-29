@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <title>Administración</title>
+    <title>{{title}}</title>
 </head>
 <body>
     <header>
@@ -29,5 +29,7 @@
     </header>
 
     <div class="logo">
-        <img src="/static/img/logo.png" alt="logo">
+        <a href="/admin">
+            <img src="/static/img/logo.png" alt="logo">
+        </a>
     </div>

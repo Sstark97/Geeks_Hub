@@ -1,4 +1,4 @@
-%include('admin_header.tpl')
+%include('admin_header.tpl',title='Administración')
     <div class="admin_container">
         <h3>Películas mejor valoradas</h3>
         <div class="films_container">

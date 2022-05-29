@@ -17,14 +17,14 @@ def series_index():
     series = Series(DATA_BASE)
     rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
 
-    return template('admin_content',title="Serie", content="series", cod="Cod_Serie", 
+    return template('admin_content',title="Series", content="series", cod="Cod_Serie", 
         content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
 @get('/admin/series/new')
 def series_new():
     """Página de registro de series."""
     form = SeriesForm(request.POST)
-    return template('series_form', form=form, path='/admin/series/new')
+    return template('series_form', title="Nueva Serie", form=form, path='/admin/series/new')
 
 @post('/admin/series/new')
 def series_process():
@@ -86,7 +86,7 @@ def series_edit(cod):
     form.trailer.data = row[11]
     form.chapters.data = row[12]
 
-    return template('series_form', form=form, path=f'/admin/series/edit/{cod}')
+    return template('series_form', title="Editar Serie", form=form, path=f'/admin/series/edit/{cod}')
 
 @post('/admin/series/edit/<cod>')
 def series_process_edit(cod):

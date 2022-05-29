@@ -14,14 +14,14 @@ def films_index():
     peliculas = Film(DATA_BASE)
     rows = peliculas.select(['Cod_Pelicula','Titulo', 'Genero'])
 
-    return template('admin_content',title="Pelicula", content="films", cod="Cod_Pelicula", 
+    return template('admin_content',title="Peliculas", content="films", cod="Cod_Pelicula", 
         content_title="Titulo", content_third_row="Genero" ,rows=rows)
 
 @get('/admin/films/new')
 def films_new():
     """Página de registro de peliculas."""
     form = FilmsForm(request.POST)
-    return template('films_form', form=form, path='/admin/films/new')
+    return template('films_form',title="Nueva Película", form=form, path='/admin/films/new')
 
 @post('/admin/films/new')
 def films_process():
@@ -84,7 +84,7 @@ def films_edit(cod):
     form.trailer.data = row[10]
     form.duration.data = row[11]
 
-    return template('films_form', form=form, path=f'/admin/films/edit/{cod}')
+    return template('films_form', title="Editar Película", form=form, path=f'/admin/films/edit/{cod}')
 
 @post('/admin/films/edit/<cod>')
 def films_process_edit(cod):
