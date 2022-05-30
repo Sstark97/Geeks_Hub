@@ -38,6 +38,10 @@ img{
     width: 30%;
 }
 
+.profile_logo{
+    padding-top: 3%;
+}
+
 h1{
     font-size: 5.5vw;
     margin: 4%;
@@ -144,21 +148,12 @@ div{
     width: 70%;
     border-radius: 50%;
 
-    opacity: 0.6;
+    opacity: 1;
     transition: 0.5s;
 }
 
 .avatar input[type="radio"]{
 	opacity: 0;
-}
-
-.avatar img:hover{
-    border-width: 20%;
-    border-style: solid;
-    border-color: var(--main_color);
-
-    opacity: 1;
-    transition: 0.5s;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px){   
@@ -228,7 +223,29 @@ div{
         transition: .5s;
     }
 
+    .avatar div img{
+        opacity: 0.5;
+    }
+
     .avatar{
         width: 50%;
+    }
+
+    .avatar img:hover{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--base_color);
+    
+        opacity: 0.7;
+        transition: 0.5s;
+    }
+
+    .avatar input[type=radio]:checked + label img{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--main_color);
+    
+        opacity: 1;
+        transition: 0.5s;
     }
 }

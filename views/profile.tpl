@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Creación de Perfil</title>
     <link rel="stylesheet" href="/static/css/form.css">
 </head>
 <body>
-    <h1>Profile</h1>
+    <img class="profile_logo" src="/static/img/logo.png" alt="logo">
+    <h1>Creación de Perfil</h1>
     <form method="POST" action="/profiles" autocomplete="off">
         <fieldset>
             <div class="input">
