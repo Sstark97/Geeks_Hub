@@ -19,13 +19,18 @@ def profile_process():
     form = ProfileForm(request.POST) 
     profile = Profile(DATA_BASE)
 
+    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
+        correo = fichero.readline()
+
     if form.btn_continue.data and request.POST.get("avatar") and form.validate():
         form_data = {
+            'cod_perfil' : profile.code_generator(),
+            'correo' : correo,
             'nickname' : form.nickname.data,
             'imagen' : request.POST.get("avatar")
         }
 
-        print(form_data)
+        profile.insert(form_data)
         redirect("/")
 
     print(form.errors)
