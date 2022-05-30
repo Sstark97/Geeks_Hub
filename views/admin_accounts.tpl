@@ -1,7 +1,4 @@
 %include('admin_header.tpl',title='Cuentas')
-<div class="create">
-    <a href="/admin/register">Registrar Cuenta</a>
-</div>
     <table class="account">
     <thead>
         <tr>
