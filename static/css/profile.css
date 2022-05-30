@@ -17,6 +17,10 @@
 body{
     width: 100%;
     height: 100vh;
+
+    background-color: var(--background_color);
+    color: var(--base_color);
+    font-family: var(--main_font);
 }
 
 form{
@@ -45,13 +49,13 @@ fieldset{
     display: flex;
     padding: 2%;
     width: 30%;
-    background-color: antiquewhite;
 }
 
 .avatar div label{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 img{
