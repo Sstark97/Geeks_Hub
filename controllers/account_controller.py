@@ -10,7 +10,7 @@ sys.path.append('models')
 def admin_accounts():
     """Página de inicio de las Cuentas para Administradores."""
     cuenta = Account(DATA_BASE)
-    rows = cuenta.select(["*"])
+    rows = cuenta.select(["Correo","Nombre","Apellidos","Direccion","Telefono","Tipo_Suscripcion"])
 
     return template('admin_accounts', rows=rows)
 

@@ -1,33 +1,33 @@
 %include('admin_header.tpl',title='Cuentas')
-    <p><b>Las cuentas actuales son las siguientes:</b></p>
-    <table border="1">
+<div class="create">
+    <a href="/admin/register">Registrar Cuenta</a>
+</div>
+    <table class="account">
+    <thead>
         <tr>
             <th>Correo</th>
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Dirección</th>
-            <th>Contraseña</th>
             <th>Teléfono</th>
             <th>Tipo Suscripción</th>
             <th>Acción</th>
         </tr>
+    </thead>
         %for row in rows:
         <tr>
             %for col in row:
             <td>{{ col }}</td>
             %end
-            <td>
+            <td id="only_view">
                 <form action="/admin/accounts/{{row[0]}}" method="GET">
-                    <input type="submit" name="view" value="Mostrar">
+                    <button class="btn_view" type="submit" name="view">
+                        <i class='bx bxs-low-vision icons' ></i>
+                    </button>
                 </form>
             </td>
         </tr>
         %end
     </table>
-
-    <br>
-
-    <button><a href="../register">Registrar una cuenta nueva</a></button>
-
 </body>
 </html>
