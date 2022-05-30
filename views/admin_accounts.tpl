@@ -2,12 +2,9 @@
     <table class="account">
     <thead>
         <tr>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
-            <th>Tipo Suscripción</th>
+            %for field in fields:
+                <th>{{field}}</th>
+            %end
             <th>Acción</th>
         </tr>
     </thead>

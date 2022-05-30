@@ -3,16 +3,16 @@ import sys
 from bottle import route, run, template, request, get, post, redirect, static_file, error
 from models.account import Account
 from forms.register_form import RegistrationForm
-from config.config import DATA_BASE
+from config.config import DATA_BASE, ACCOUNT_FIELDS
 sys.path.append('models')
 
 @get('/admin/accounts')
 def admin_accounts():
     """Página de inicio de las Cuentas para Administradores."""
     cuenta = Account(DATA_BASE)
-    rows = cuenta.select(["Correo","Nombre","Apellidos","Direccion","Telefono","Tipo_Suscripcion"])
+    rows = cuenta.select(list(ACCOUNT_FIELDS))
 
-    return template('admin_accounts', rows=rows)
+    return template('admin_accounts', rows=rows, fields=ACCOUNT_FIELDS)
 
 @get('/admin/accounts/<email>')
 def admin_accounts_view(email):
@@ -22,13 +22,6 @@ def admin_accounts_view(email):
     print(rows)
 
     return template('admin_view_account', rows=rows)
-
-@get('/accounts')
-def account_index():
-    """Página de inicio de las Cuentas."""
-    cuentas = Account(DATA_BASE)
-    row = cuentas.select(['*'])
-    return str(row)
 
 @get('/register')
 def register():
