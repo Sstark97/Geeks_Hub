@@ -1,6 +1,8 @@
 html,
 body {
-  width: 100vw;
+  background-color: var(--base_color);
+  color: var(--background_color);
+  font-family: var(--main_font);
 }
 
 .logo,
@@ -70,6 +72,10 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.info {
+  padding: 1rem;
 }
 
 .info,
