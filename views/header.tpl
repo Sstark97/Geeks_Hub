@@ -22,7 +22,7 @@
 </head>
 <body>
     <main>
-        <header>
+        <header class="header_user">
             <ul class="head">
 
                 <li class="logo">
