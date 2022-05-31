@@ -1,33 +1,147 @@
 """Archivo de Rutas de las Peliculas."""
 import sys
-from bottle import get
+from os import remove
+from datetime import datetime
+from bottle import get, post, request, template, redirect
 from models.film import Film
-from config.config import DATA_BASE
-sys.path.append('models')
+from config.config import DATA_BASE, FILM_FIELDS
+from forms.films_form import FilmsForm
+from forms.delete_content_form import DeleteContentForm
 
-@get('/films')
+@get('/admin/films')
 def films_index():
     """Página de inicio de las Peliculas."""
     peliculas = Film(DATA_BASE)
+    rows = peliculas.select(['Cod_Pelicula','Titulo', 'Genero'])
 
-    # Añadir 
-    # peliculas.insert({'Cod_Pelicula':'P029' ,'Titulo': 'El Padrino', 'Calificacion_Edad': '18', 
-    # 'Genero': 'Drama', 'Director': 'Francis Ford Coppola', 'Puntuacion_Media':4.94, 'productor': 'Paramount Pictures',
-    # 'Sinopsis':'El Padrino','Fecha_Publicacion': '1972-12-11', 'Portada': 'https://www.impawards.com/1972/posters/padrino.jpg',
-    # 'Trailer': 'https://www.youtube.com/watch?v=z_p5XD-bZbE', 'Duracion': 154})
-    # row = peliculas.select(['*'], {"Titulo": "El Padrino"})
+    return template('admin_content',title="Peliculas", content="films", cod="Cod_Pelicula", 
+        content_title="Titulo", content_third_row="Genero" ,rows=rows)
 
-    # Actualizar
-    # peliculas.update({'Titulo': 'El Padrino 2', 'Puntuacion_Media': 4.99}, {'Cod_Pelicula': 'P029'})
-    # row = peliculas.select(['*'], {"Titulo": "El Padrino 2"})
+@get('/admin/films/new')
+def films_new():
+    """Página de registro de peliculas."""
+    form = FilmsForm(request.POST)
+    return template('films_form',title="Nueva Película", form=form, path='/admin/films/new')
 
-    # Eliminar
-    # peliculas.delete({'Cod_Pelicula': 'P029'})
-    
-    # Select por generos
-    # row = peliculas.select(['*'],{"Genero": "Ciencia Ficcion"})
+@post('/admin/films/new')
+def films_process():
+    """Procesa el formulario de registro de peliculas."""
+    form = FilmsForm(request.POST) 
+    films = Film(DATA_BASE)
+    if form.submit.data and form.cover_page and form.validate():
+        image_data = request.files.get('cover_page')
+        file_path = f"static/img/movies/{image_data.filename}"
 
-    # Select de todas las peliculas
-    row = peliculas.select(['*'])
+        with open(file_path, 'wb') as file:
+            file.write(image_data.file.read())
 
-    return str(row)
+        form_data = {
+            'Cod_Pelicula': films.code_generator(),
+            'Titulo' : form.title.data,
+            'Calificacion_Edad' : form.age_rating.data,
+            'Genero' : form.genre.data,
+            'Director' : form.director.data,
+            'Puntuacion_Media' : float(form.average_score.data),
+            'Productor' : form.productor.data,
+            'Sinopsis' : form.synopsis.data,
+            'Fecha_Publicacion' : str(form.release_date.data),
+            'Portada': file_path,
+            'Trailer' : form.trailer.data,
+            'Duracion' : form.duration.data
+        }
+        
+        films.insert(form_data)
+        redirect('/admin/films')
+    return template('films_form', form=form)
+
+@get('/admin/films/<cod>')
+def films_view(cod):
+    """Página de visualización de Peliculas."""
+    films = Film(DATA_BASE)
+    row = films.select(['*'],{'Cod_Pelicula': cod})
+    print(row)
+
+    return template('admin_view_content', title=row[0][1], content=row, content_type="films", fields=FILM_FIELDS, img_col=9,  cod=cod)
+
+@get('/admin/films/edit/<cod>')
+def films_edit(cod):
+    """Página de edición de Peliculas."""
+    films = Film(DATA_BASE)
+    row = films.select(['*'], {'Cod_Pelicula': cod})[0]
+    print(row[8])
+    formatted_date= datetime.strptime(row[8], '%Y-%m-%d')
+    print(formatted_date)
+
+    form = FilmsForm(request.POST)
+    form.title.data = row[1]
+    form.age_rating.data = row[2]
+    form.genre.data = row[3]
+    form.director.data = row[4]
+    form.average_score.data = row[5]
+    form.productor.data = row[6]
+    form.synopsis.data = row[7]
+    form.release_date.data = formatted_date
+    form.trailer.data = row[10]
+    form.duration.data = row[11]
+
+    return template('films_form', title="Editar Película", form=form, path=f'/admin/films/edit/{cod}')
+
+@post('/admin/films/edit/<cod>')
+def films_process_edit(cod):
+    """Procesa el formulario de edición de Peliculas."""
+    form = FilmsForm(request.POST)
+    films = Film(DATA_BASE)
+    file_path = ""
+    if form.submit.data and form.cover_page and form.validate():
+        if form.cover_page and request.files.get('cover_page'):
+            image_data = request.files.get('cover_page')
+            file_path = f"static/img/movies/{image_data.filename}"
+
+            with open(file_path, 'wb') as file:
+                file.write(image_data.file.read())
+
+        form_data = {
+            'Titulo' : form.title.data,
+            'Calificacion_Edad' : form.age_rating.data,
+            'Genero' : form.genre.data,
+            'Director' : form.director.data,
+            'Puntuacion_Media' : float(form.average_score.data),
+            'Productor' : form.productor.data,
+            'Sinopsis' : form.synopsis.data,
+            'Fecha_Publicacion' : str(form.release_date.data),
+            'Trailer' : form.trailer.data,
+            'Duracion' : form.duration.data
+        }
+
+        if file_path != "":
+            img_path = films.get(['Portada'], {'Cod_Pelicula': cod})[0]
+            remove(img_path)
+            form_data['Portada'] = file_path
+
+        films.update(form_data, {'Cod_Pelicula': cod})
+        redirect('/admin/films')
+    return template('films_form', form=form)
+
+@get('/admin/films/delete/<cod>')
+def films_delete_index(cod):
+    """Eliminar una Pelicula."""
+    form = DeleteContentForm(request.POST)
+    films = Film(DATA_BASE)
+    film_title = films.get(['Titulo'], {'Cod_Pelicula': cod})
+
+    return template('admin_delete_content', title="Eliminar Pelicula",content="Pelicula", uri="films", content_title=film_title, cod=cod, form=form)
+
+@post('/admin/films/delete/<cod>')
+def films_delete(cod):
+    """Procesa la eliminación de una Pelicula."""
+    form = DeleteContentForm(request.POST)
+    if form.delete.data:
+        films = Film(DATA_BASE)
+        img_path = films.get(['Portada'], {'Cod_Pelicula': cod})[0]
+        remove(img_path)
+
+        films.delete({'Cod_Pelicula': cod})
+        redirect('/admin/films')
+
+    if form.cancel.data:
+        redirect('/admin/films')
