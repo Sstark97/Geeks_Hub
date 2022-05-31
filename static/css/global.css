@@ -197,7 +197,7 @@ footer p{
         display: flex;
     }
 
-    .logo{
+    .logo_user{
         width: 15%;
 
         justify-content: left;
@@ -251,7 +251,7 @@ footer p{
         display: flex;
     }
 
-    .logo{
+    .logo_user{
         width: 8%;
 
         justify-content: left;

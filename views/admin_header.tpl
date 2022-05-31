@@ -10,6 +10,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/admin.css">
+    <link rel="stylesheet" href="/static/css/admin_forms.css">
     <title>{{title}}</title>
 </head>
 <body>
