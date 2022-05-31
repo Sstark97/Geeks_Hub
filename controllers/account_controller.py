@@ -1,10 +1,13 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-from bottle import route, run, template, request, get, post, redirect, static_file, error
+
+from bottle import get, request, template, redirect, post
 from models.account import Account
 from forms.register_form import RegistrationForm
 from config.config import DATA_BASE
+from forms.login_form import LoginForm
 sys.path.append('models')
+sys.path.append('forms')
 
 @get('/admin/accounts')
 def admin_accounts():
@@ -29,7 +32,7 @@ def account_index():
     cuentas = Account(DATA_BASE)
     row = cuentas.select(['*'])
     return str(row)
-
+  
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
@@ -41,9 +44,9 @@ def register_process():
     """Procesa el formulario de Registro de Cuentas"""
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
+    
     if form.register.data and form.validate():
-
-        form_data = {
+      form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
             "Apellidos" : form.surname.data,
@@ -51,10 +54,44 @@ def register_process():
             "Contrasena" : form.password.data,
             "Telefono" : form.phone_number.data,
             "Tipo_Suscripcion" : form.suscription.data
-        }
-        # print(form_data)
-        account.insert(form_data)
-        redirect('/accounts')
+      }
+      
+      account.insert(form_data)
+      redirect('/accounts')
         
     return template('register', form=form)
-    
+
+@get('/login')
+def login():
+    """Página para mostrar el formulario"""
+    form = LoginForm(request.POST)
+    return template('login', form=form)
+
+@post('/login')
+def login_process():
+    """Página para procesar el formulario"""
+    form = LoginForm(request.POST) 
+    account = Account(DATA_BASE)
+    error = True
+
+    if form.btn_continue.data and form.validate():
+        password = account.select(["Contrasena"], {"Correo": form.email.data})
+
+        if password[0][0] == form.password.data:
+            error = False
+
+            form_data = {
+                'email' : form.email.data,
+                'password' : form.password.data,
+            }
+            with open("./static/file/login.txt", "w", encoding="UTF8") as fichero:
+                fichero.write(form.email.data)
+
+            redirect('/')
+
+    if error:
+
+        print(form.errors)
+        return template('login', form=form)
+
+    return None
