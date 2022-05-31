@@ -1,7 +1,6 @@
 """Archivo de inicio de la aplicación."""
 from bottle import get, run, template, static_file
 from controllers.suscription_controller import *
-from controllers.account_controller import *
 from controllers.profile_controller import *
 from controllers.history_controller import *
 from controllers.admin_controller import *
@@ -9,7 +8,6 @@ from controllers.admin_controller import *
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    
     return template('index.tpl')
 
 @get('/prueba')

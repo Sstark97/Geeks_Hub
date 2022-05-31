@@ -17,6 +17,12 @@ GENRE = (('', 'Selecciona un Genéro'), ('Suspense', 'Suspense'), ('Terror', 'Te
 #Campos de las tablas
 SERIES_FIELDS = ('Cod_Serie', 'N_Temporada', 'Titulo', 'Calificacion_Edad', 'Genero', 'Director', 
 'Puntuacion_Media', 'Productor', 'Sinopsis', 'Fecha_Publicacion', 'Portada' ,'Trailer', 'Capitulos')
+
 FILM_FIELDS = ('Cod_Pelicula', 'Titulo', 'Calificacion_Edad', 'Genero', 'Director',
 'Puntuacion_Media', 'Productor', 'Sinopsis', 'Fecha_Publicacion', 'Portada', 'Trailer', 'Duracion')
+
 ACCOUNT_FIELDS = ('Correo','Nombre','Apellidos','Direccion','Telefono','Tipo_Suscripcion')
+
+AVATARS = ("/static/img/avatar/avatar1.png", "/static/img/avatar/avatar2.png", "/static/img/avatar/avatar3.png", 
+"/static/img/avatar/avatar4.png", "/static/img/avatar/avatar5.png", "/static/img/avatar/avatar6.png", 
+"/static/img/avatar/avatar7.png", "/static/img/avatar/avatar8.png", "/static/img/avatar/avatar9.png")
