@@ -14,7 +14,7 @@ def films_index():
     peliculas = Film(DATA_BASE)
     rows = peliculas.select(['Cod_Pelicula','Titulo', 'Genero'])
 
-    return template('admin_content',title="Peliculas", content="films", cod="Cod_Pelicula", 
+    return template('admin_content',title="Peliculas", class_content="films", content="films", cod="Cod_Pelicula", 
         content_title="Titulo", content_third_row="Genero" ,rows=rows)
 
 @get('/admin/films/new')

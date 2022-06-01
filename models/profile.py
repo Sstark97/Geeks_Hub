@@ -27,3 +27,4 @@ class Profile(Model):
         cursor.close()
         conn.close()
         return cod_perfil
+        

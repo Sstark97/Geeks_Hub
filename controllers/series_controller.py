@@ -17,7 +17,7 @@ def series_index():
     series = Series(DATA_BASE)
     rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
 
-    return template('admin_content',title="Series", content="series", cod="Cod_Serie", 
+    return template('admin_content',title="Series", class_content= "series", content="series", cod="Cod_Serie", 
         content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
 @get('/admin/series/new')
