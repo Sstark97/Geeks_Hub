@@ -84,7 +84,7 @@ def login_process():
             with open("./static/file/login.txt", "w", encoding="UTF8") as fichero:
                 fichero.write(form.email.data)
 
-            redirect('/')
+            redirect('/select_profile')
 
     if error:
 
