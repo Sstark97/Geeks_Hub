@@ -1,6 +1,5 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-
 from localStoragePy import localStoragePy
 from bottle import get, request, template, redirect, post
 from models.account import Account
