@@ -38,3 +38,21 @@ def profile_process():
 
     print(form.errors)
     return template('profile', rows=AVATARS, form=form)
+
+@get('/select_profile')
+def select_profile():
+    """Página para mostrar la selección de perfiles"""
+
+    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
+        correo = fichero.readline()
+
+    profile = Profile(DATA_BASE)
+    rows = profile.select(['*'], {'Correo': correo})
+
+    return template('select_profiles', rows=rows)
+
+@post('/select_profile')
+def select_profile_process():
+    """Página para procesar la selección de perfiles"""
+
+    redirect('/profiles')
