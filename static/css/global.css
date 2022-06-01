@@ -189,6 +189,10 @@ footer p{
     display: none;
 }
 
+.profile_image {
+    margin-bottom: 1vw;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px){
 
     /* HEADER */
