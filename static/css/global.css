@@ -26,7 +26,7 @@ html, body{
 
 /* HEADER */
 
-header{
+.header_user {
     position: sticky;
     z-index: 10000;
     top: 0px;
@@ -41,19 +41,21 @@ header{
     height: 100%;
 }
 
-.header_logo{
+
+.logo_user{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.header_logo img{
+
+.logo_user img{
     width: 7rem;
 }
 
 /* NAVEGADOR */
 
-nav{
+.nav_user {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -64,24 +66,24 @@ nav{
     z-index: 1000;
 }
 
-nav ul{
+.nav_user ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-nav li{
+.nav_user li{
     list-style: none;
     padding: 3%;
 }
 
-nav a, nav label{
+.nav_user a, .nav_user label{
     color: var(--base_color);
     font-size: 2.5rem;
     text-decoration: none;
 }
 
-nav p{
+.nav_user p{
     display: none;
     justify-content: center;
     opacity: 0.7;
@@ -348,7 +350,8 @@ footer p{
         display: flex;
     }
 
-    .header_logo{
+
+    .logo_user{
         width: 15%;
 
         justify-content: left;
@@ -444,7 +447,7 @@ footer p{
         display: flex;
     }
 
-    .header_logo{
+    .logo_user{
         width: 8%;
 
         justify-content: left;

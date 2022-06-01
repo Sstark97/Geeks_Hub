@@ -1,4 +1,4 @@
-<nav>
+<nav class="nav_user">
     <ul>
         <li>
             <a href="">
