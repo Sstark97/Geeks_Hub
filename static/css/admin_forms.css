@@ -185,4 +185,15 @@ textarea {
     .btn_cancel a {
         width: 100%;
     }
+
+    .btn {
+        width: 7%;
+        height: auto;
+        padding: 0.3rem;
+        font-size: 1vw;
+    }
+
+    .delete_form {
+        justify-content: initial;
+    }
 }
