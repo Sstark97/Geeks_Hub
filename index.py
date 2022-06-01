@@ -7,18 +7,12 @@ from controllers.suscription_controller import *
 from controllers.account_controller import *
 from controllers.profile_controller import *
 from controllers.history_controller import *
+from controllers.admin_controller import *
 
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    
     return template('index.tpl')
-
-@get('/admin')
-@auth_basic(is_authenticated_user)
-def admin_index():
-    """Página de inicio de las Series."""
-    return template('admin_index')
 
 @get('/prueba')
 def about():

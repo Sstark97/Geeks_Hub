@@ -586,4 +586,4 @@ overgeneral-exceptions=BaseException,
                        Exception
 
 # White Space Error
-disable=C0303
+disable=C0303, E1101, W0401
