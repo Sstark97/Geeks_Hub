@@ -1,5 +1,5 @@
 <nav class="nav_user">
-    <ul>
+    <ul class="ul_user">
         <li>
             <a href="">
                 <i class='bx bxs-home'></i>

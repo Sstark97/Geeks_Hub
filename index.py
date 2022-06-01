@@ -15,6 +15,11 @@ def index():
     """Página de inicio de la aplicación."""
     return template('index.tpl')
 
+@get('/home')
+def home():
+    """Página de inicio de la aplicación."""
+    return template('home.tpl')
+
 @get('/prueba')
 def about():
     """Página de prueba"""
