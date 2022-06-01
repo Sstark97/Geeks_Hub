@@ -1,6 +1,7 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
 
+from localStoragePy import localStoragePy
 from bottle import get, request, template, redirect, post
 from models.account import Account
 from forms.register_form import RegistrationForm
@@ -46,7 +47,7 @@ def register_process():
     account = Account(DATA_BASE)
     
     if form.register.data and form.validate():
-      form_data = {
+        form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
             "Apellidos" : form.surname.data,
@@ -54,10 +55,10 @@ def register_process():
             "Contrasena" : form.password.data,
             "Telefono" : form.phone_number.data,
             "Tipo_Suscripcion" : form.suscription.data
-      }
-      
-      account.insert(form_data)
-      redirect('/accounts')
+        }
+        
+        account.insert(form_data)
+        redirect('/accounts')
         
     return template('register', form=form)
 
