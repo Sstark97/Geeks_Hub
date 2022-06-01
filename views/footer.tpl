@@ -12,6 +12,5 @@
             </ul>
             <p>©2022 Geeks Hub | Todos los derechos reservados</p>
         </footer>
-    </main>
 </body>
 </html>

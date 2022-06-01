@@ -24,7 +24,6 @@
     <main>
         <header class="header_user">
             <ul class="head">
-
                 <li class="logo_user">
                     <a href="">
                         <img src="/static/img/logo.png" alt="logo">

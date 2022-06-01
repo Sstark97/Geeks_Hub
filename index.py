@@ -12,7 +12,13 @@ from controllers.admin_controller import *
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    return template('index.tpl')
+    
+    return template('home.tpl')
+
+@get('/prueba')
+def about():
+    """Página de prueba"""
+    return static_file('home.tpl', root='views')
 
 @get("/static/<filepath:path>")
 def html(filepath):

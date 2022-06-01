@@ -16,9 +16,12 @@
 
 /* MAIN */
 
-main{
-    font-family: var(--main_font);
+html, body{
     width: 100%;
+    min-height: auto;
+    position: relative;
+
+    font-family: var(--main_font);
 }
 
 /* HEADER */
@@ -38,11 +41,13 @@ main{
     height: 100%;
 }
 
+
 .logo_user{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 
 .logo_user img{
     width: 7rem;
@@ -131,6 +136,153 @@ main{
     transition: 0.5s;
 }
 
+/* HOME PAGE */
+
+.main{
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--background_color);
+}
+
+.background{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+
+    width: 100%;
+    height: 100vh;
+
+    background-image: url(/static/img/fondo.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    box-shadow: inset -0px -30px 20px var(--background_color);
+}
+
+.button_login{
+    width: 100%;
+    height: 15%;
+}
+
+.login{
+    width: 20vw;
+    padding: 1%;
+
+    margin-top: 2%;
+    margin-right: 2%;
+    float: right;
+
+    font-size: 3vw;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--main_color);
+}
+
+.logo{
+    width: 100%;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.logo img{
+    width: 80%;
+}
+
+.logo p{
+    padding-top: 4%;
+    width: 80%;
+    text-align: center;
+
+    font-size: 2.5vw;
+    color: var(--base_color);
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%; 
+    height: 85vh;
+
+    background-color: var(--background_color);
+}
+
+.cuadro{
+    width: 60%;
+    height: 50%;
+    background-color: antiquewhite;
+}
+
+.content p{
+    width: 80%;
+    text-align: center;
+
+    font-size: 2.5vw;
+    color: var(--base_color);
+}
+
+.button_submit{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 6vh;
+
+    background-color: var(--background_color);
+}
+
+.submit{
+    width: 30vw;
+    padding: 2%;
+    margin: auto;
+
+    font-size: 3vw;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--main_color);
+}
+
+.devices{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+
+    background-color: var(--background_color);
+}
+
+.television, .computer, .phone, .console{
+    width: 50%;
+    height: 58vw;
+}
+
+.television img, .computer img, .phone img, .console img{
+    width: 50%;
+}
+
+.television h2, .computer h2, .phone h2, .console h2{
+    padding-bottom: 2%;
+
+    font-size: 3.2vw;
+    color: var(--base_color);
+}
+
+.television p, .computer p, .phone p, .console p{
+    font-size: 2.3vw;
+    color: var(--base_color);
+
+    padding: 2%;
+}
 
 /* FOOTER */
 
@@ -151,6 +303,7 @@ footer{
     align-items: center;
 
     margin: 10px 0;
+    color: var(--base_color);
 }
 
 .icons li, .menu li{
@@ -197,6 +350,7 @@ footer p{
         display: flex;
     }
 
+
     .logo_user{
         width: 15%;
 
@@ -239,6 +393,48 @@ footer p{
 
     .hamburguer_nav li{
         padding: 6%;
+    }
+
+    /* HOME PAGE */
+
+    .button_login{
+        height: 10%;
+    }
+
+    .logo img{
+        width: 70%;
+    }
+
+    .logo p{
+        font-size: 2.2vw;
+    }
+
+    .content p{
+        font-size: 2.2vw;
+    }
+
+    .button_submit{
+        height: 10%;
+    }
+
+    .devices{
+        height: 50%;
+    }
+
+    .television, .computer, .phone, .console{
+        height: 48vw;
+    }
+
+    .television img, .computer img, .phone img, .console img{
+        width: 40%;
+    }
+    
+    .television h2, .computer h2, .phone h2, .console h2{
+        font-size: 3vw;
+    }
+
+    .television p, .computer p, .phone p, .console p{
+        font-size: 2vw;
     }
 
 }
@@ -355,6 +551,102 @@ footer p{
 
     nav{
         display: none;
+    }
+
+    /* HOME PAGE */
+
+    .button_login{
+        height: 10%;
+    }
+
+    .login{
+        width: 11vw;
+        font-size: 1.3vw;
+
+        opacity: 0.6;
+        transition: .5s;
+    }
+
+    .login:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .logo{
+        flex-direction: column;
+        justify-content: left;
+        align-content: flex-start;
+    }
+
+    .logo img{
+        width: 30%;
+    }
+
+    .logo p{
+        width: 40%;
+        margin-left: 5%;
+
+        text-align: left;
+        font-size: 1.2vw;
+    }
+
+    .content{
+        justify-content: space-evenly;
+        height: 50vh;
+    }
+
+    .cuadro{
+        width: 40%;
+        height: 80%;
+    }
+
+    .content p{
+        width: 40%;
+        
+        text-align: left;
+        font-size: 1.2vw;
+    }
+
+    .button_submit{
+        height: 10vh;
+    }
+
+    .submit{
+        width: 15%;
+        font-size: 1.5vw;
+
+        opacity: 0.6;
+        transition: .5s;
+    }
+
+    .submit:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .devices{
+        height: 55vh;
+        padding-top: 1%;
+
+        align-content: flex-start;
+        align-items: stretch;
+    }
+
+    .television, .computer, .phone, .console{
+        width: 25%;
+        height: auto;
+    }
+
+    .television img, .computer img, .phone img, .console img{
+        width: 50%;
+    }
+    
+    .television h2, .computer h2, .phone h2, .console h2{
+        font-size: 2vw;
+    }
+
+    .television p, .computer p, .phone p, .console p{
+        font-size: 1.2vw;
     }
 
     /* FOOTER */
