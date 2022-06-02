@@ -1,29 +1,40 @@
 """Archivo de Rutas de los Perfiles."""
 import sys
-from bottle import get
+from bottle import get, request, template, redirect, post
 from models.profile import Profile
-from config.config import DATA_BASE
+from config.config import DATA_BASE, AVATARS
+from forms.profile_form import ProfileForm
 sys.path.append('models')
+sys.path.append('forms')
 
 @get('/profiles')
-def profiles_index():
-    """Página de inicio de los Perfiles."""
-    perfiles = Profile(DATA_BASE)
+def profile():
+    """Página para mostrar el formulario"""
+    form = ProfileForm(request.POST)
+    return template('profile', rows=AVATARS, form=form)
 
-    # Añadir
-    # perfiles.insert({"Cod_Perfil" : "Perfil14", "Correo" : "javimartel@hotmail.com", "Nickname" : "Javi3", "Imagen" : "Imagen3", "Cod_Favoritos" : "FV14"})
-    # row = perfiles.select(["*"], {"Correo" : "javimartel@hotmail.com"})
+@post('/profiles')
+def profile_process():
+    """Página para procesar el formulario"""
+    form = ProfileForm(request.POST) 
+    profile = Profile(DATA_BASE)
 
-    # Actualizar
-    # perfiles.update({"Nickname" : "Miguel"}, {"Nickname" : "Javi3"})
+    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
+        correo = fichero.readline()
 
-    # Eliminar
-    # perfiles.delete({"Cod_Perfil" : "Perfil14"})
-    
-    # Select Correo Hotmail
-    # row = perfiles.select(['*'],  {"Correo": "%@hotmail%"})
+    print(request.POST.get("avatar"))
 
-    # Select de todos los perfiles
-    row = perfiles.select(['*'])
+    if form.btn_continue.data and request.POST.get("avatar") != None and form.validate():
+        form_data = {
+            'cod_perfil' : profile.code_generator(),
+            'correo' : correo,
+            'nickname' : form.nickname.data,
+            'imagen' : request.POST.get("avatar")
+        }
 
-    return str(row)
+        profile.insert(form_data)
+        redirect("/select_profiles")
+
+
+    print(form.errors)
+    return template('profile', rows=AVATARS, form=form)

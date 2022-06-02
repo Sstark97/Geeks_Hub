@@ -1,0 +1,198 @@
+fieldset{
+    width: 100%;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.title {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    min-height: 100vh;
+
+    text-align: center;
+    font-family: var(--main_font);
+}
+
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+
+    font-size: 3vw;
+}
+
+.input input, select, .file{
+    width: 60%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 2px solid var(--main_color);
+    color: var(--background_color);
+    background-color: var(--base_color);
+    opacity: 0.6;
+}
+
+.file {
+    text-align: center;
+}
+
+.file span {
+    margin-bottom: 1rem;
+}
+
+textarea {
+    resize: none;
+    width: 60%;
+    height: 20vh;
+}
+
+.input input:focus{
+    outline: none;
+    opacity: 1;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.button input{
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 2.5vw;
+}
+
+.input input[type="file"]{
+    display: none;
+}
+
+.input input[type="file"]::before{
+    content: "Upload";
+}
+
+.button a{
+    text-decoration: none;
+    width: 20%;
+}
+
+.button a input{
+    width: 100%;
+}
+
+.btn_cancel{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+    text-align: center;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 2.5vw;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
+}
+
+/* Delete Form*/
+.delete_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 50vh;
+    background-color: var(--base_color);
+    opacity: 0.8;
+}
+
+.delete_form div {
+    margin-top: 2rem;
+}
+
+.delete_form div h2 {
+    text-align: center;
+}
+
+.btn_group {
+    display: flex;
+    justify-content:center;
+    justify-self: flex-end;
+    width: 100%;
+    margin-bottom: 15rem;
+}
+
+.btn {
+    width: 20%;
+    height: 3.4vh;
+    border: none;
+    border-radius: 10px;
+    font-size: 2.5vw;
+    margin-right: 1rem;
+}
+
+@media only screen and (min-width: 992px) {
+    .input, select, input {
+        font-size: 1.5vw;
+    }
+
+    .button input, .btn_cancel{
+        width: 10%;
+        height: 4vh;
+    
+        font-size: 1.3vw;
+        opacity: 0.7;
+        transition: .5s;
+    }
+
+    .button input:hover, .btn_cancel:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+    
+    .button a{
+        width: 10%;
+    }
+
+    .btn_cancel a {
+        width: 100%;
+    }
+
+    .btn {
+        width: 7%;
+        height: auto;
+        padding: 0.3rem;
+        font-size: 1vw;
+    }
+
+    .delete_form {
+        justify-content: initial;
+    }
+}
