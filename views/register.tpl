@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+
+    <!-- Estilos -->
+
+    <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/form.css">
 </head>
 <body>
-
+    <img src="/static/img/logo.png" alt="logo">
     <h1>Formulario de registro</h1>
     % if form.errors:
     <blockquote>
@@ -22,48 +27,57 @@
     </blockquote>
     % end
 
-    <form method="POST" action="/register">
+    <form method="POST" action="/register" autocomplete="off">
         <fieldset>
-            <div>
-                {{ form.name.label }}:
-                {{ form.name }}
+            <div class="contain">
+                <div class="input">
+                    {{ form.name.label }}
+                    {{ form.name }}
+                </div>
+                <div class="input">
+                    {{ form.surname.label }}
+                    {{ form.surname }}
+                </div>
             </div>
-            <div>
-                {{ form.surname.label }}:
-                {{ form.surname }}
+
+            <div class="contain">
+                <div class="input">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+                <div class="input">
+                    {{ form.direction.label }}
+                    {{ form.direction }}
+                </div>
             </div>
-            <div>
-                {{ form.email.label }}:
-                {{ form.email }}
+
+            <div class="contain">
+                <div class="input">
+                    {{ form.password.label }}
+                    {{ form.password }}
+                </div>
+                <div class="input">
+                    {{ form.password_confirm.label }}
+                    {{ form.password_confirm }}
+                </div>
             </div>
-            <div>
-                {{ form.password.label }}:
-                {{ form.password }}
+
+            <div class="contain">
+                <div class="input">
+                    {{ form.phone_number.label }}
+                    {{ form.phone_number }}
+                </div>
+                <div class="input">
+                    {{ form.suscription.label }}
+                    {{ form.suscription }}
+                </div>
             </div>
-            <div>
-                {{ form.password_confirm.label }}:
-                {{ form.password_confirm }}
-            </div>
-            <div>
-                {{ form.direction.label }}:
-                {{ form.direction }}
-            </div>
-            <div>
-                {{ form.phone_number.label }}:
-                {{ form.phone_number }}
-            </div>
-            <div>
-                {{ form.suscription.label }}:
-                {{ form.suscription }}
-            </div>
-            <div>
-                {{ form.register }}
-            </div>       
-            <div>
-                <button style="width:70px">
-                    <a href="/" style="text-decoration:none; color:black">Cancelar</a>
-                </button>
-            </div>       
+
+            <div class="button">
+                <a href="/profiles">
+                    {{ form.register }}
+                </a>
+            </div>         
         </fieldset>
     </form>
 </body>

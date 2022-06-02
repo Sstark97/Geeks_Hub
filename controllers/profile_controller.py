@@ -36,6 +36,7 @@ def profile_process():
         redirect("/select_profile")
 
 
+
     print(form.errors)
     return template('profile', rows=AVATARS, form=form)
 

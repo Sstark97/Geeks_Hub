@@ -19,7 +19,7 @@ body{
 }
 
 img{
-    width: 30%;
+    width: 45%;
 }
 
 .profile_logo{
@@ -27,7 +27,7 @@ img{
 }
 
 h1{
-    font-size: 5.5vw;
+    font-size: 7vw;
     margin: 4%;
 }
 
@@ -51,19 +51,38 @@ div{
     align-items: center;
     padding: 2%;
 
-    font-size: 3vw;
+    font-size: 4vw;
 }
 
-.input input{
+.contain{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contain .input{
+    width: 50%;
+}
+
+.contain .input input{
+    width: 70%;
+}
+
+.input input, select{
     width: 30%;
-    height: 3.4vh;
     padding: 3%;
+    margin: 3%;
+    font-size: 4vw;
 
     background-color: var(--background_color);
     border: none;
     border-bottom: 2px solid var(--main_color);
     color: var(--base_color);
     opacity: 0.6;
+}
+
+select{
+    width: 70%;
 }
 
 .input input:focus{
@@ -78,16 +97,26 @@ div{
     width: 100%;
 }
 
-.button input{
+.button a{
+    width: 100%;
+    margin: 2%;
+}
+
+.button input, .btn_cancel{
     width: 20%;
     margin: 2%;
-    height: 3.4vh;
+    height: 3.6vh;
 
     background-color: var(--main_color);
     border: none;
     border-radius: 10px;
 
-    font-size: 2.5vw;
+    font-size: 3.2vw;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
 }
 
 .button a{
@@ -102,8 +131,9 @@ div{
 .register{
     display: flex;
     justify-content: center;
+    flex-direction: row;
 
-    font-size: 2vw;
+    font-size: 3vw;
     color: var(--base_color);
     text-decoration: none;
 }
@@ -112,8 +142,8 @@ div{
     background-color: var(--background_color);
     border: none;
 
-    color: var(--base_color);
-    font-size: 2vw;
+    color: var(--main_color);
+    font-size: 3vw;
     text-decoration: underline;
 }
 
@@ -158,31 +188,63 @@ div{
         width: 28%;
     }
 
-    .icon-select {
-        color:white;
-        font-size: 17vw;
+
+    h1{
+        font-size: 5vw;
+    }
+
+    div{
+        font-size: 3.3vw;
+    }
+
+    .input input, select{
+        font-size: 2.5vw;
     }
 }
 
 @media only screen and (min-width: 993px){
     img{
-        width: 10%;
+        width: 15%;
     }
 
     h1{
-        font-size: 2.5vw;
-        margin: 3%;
+        font-size: 2.2vw;
+        margin: 2%;
     }
     
     div{
-        padding: 1.5%;
-    
-        font-size: 1.5vw;
+        padding: 0;
+        font-size: 1.3vw;
+    }
+
+    fieldset{
+        margin: auto;
+        margin-top: 1%;
+        width: 80%;
+    }
+
+    .contain .input input, select{
+        width: 55%;
+    }
+
+    .contain{
+        margin-bottom: 1.5%;
+    }
+
+    .input input{
+        font-size: 2vw;
+    }
+
+    select{
+        margin: 1.7%;
+        padding: 1%;
+        font-size: 1.2vw;
     }
     
     .input input{
         width: 20%;
-        padding: 1.8%;
+        padding: 1%;
+        margin: 2%;
     
         font-size: 1.2vw;
     }
@@ -226,11 +288,13 @@ div{
     }
 
     .avatar div img{
+        width: 50%;
         opacity: 0.5;
     }
 
     .avatar{
         width: 50%;
+        margin-top: 1%;
     }
 
     .avatar img:hover{

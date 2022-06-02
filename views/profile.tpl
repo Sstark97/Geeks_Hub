@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creación de Perfil</title>
+
+    <!-- Estilos -->
+
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/form.css">
 </head>
@@ -32,7 +35,7 @@
             </div>
             <div class="button">
                 {{ form.btn_continue }}
-                <a href="/">
+                <a href="/select_profiles">
                     <input type="button" value="Cancelar"/>
                 </a>
             </div>    

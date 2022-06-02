@@ -1,14 +1,15 @@
 """Archivo de Rutas de las Peliculas."""
-import sys
 from os import remove
 from datetime import datetime
-from bottle import get, post, request, template, redirect
+from bottle import get, post, request, template, redirect, auth_basic
+from utils.admin_auth import is_authenticated_user
 from models.film import Film
 from config.config import DATA_BASE, FILM_FIELDS
 from forms.films_form import FilmsForm
 from forms.delete_content_form import DeleteContentForm
 
 @get('/admin/films')
+@auth_basic(is_authenticated_user)
 def films_index():
     """Página de inicio de las Peliculas."""
     peliculas = Film(DATA_BASE)
@@ -18,12 +19,14 @@ def films_index():
         content_title="Titulo", content_third_row="Genero" ,rows=rows)
 
 @get('/admin/films/new')
+@auth_basic(is_authenticated_user)
 def films_new():
     """Página de registro de peliculas."""
     form = FilmsForm(request.POST)
     return template('films_form',title="Nueva Película", form=form, path='/admin/films/new')
 
 @post('/admin/films/new')
+@auth_basic(is_authenticated_user)
 def films_process():
     """Procesa el formulario de registro de peliculas."""
     form = FilmsForm(request.POST) 
@@ -55,6 +58,7 @@ def films_process():
     return template('films_form', form=form)
 
 @get('/admin/films/<cod>')
+@auth_basic(is_authenticated_user)
 def films_view(cod):
     """Página de visualización de Peliculas."""
     films = Film(DATA_BASE)
@@ -64,6 +68,7 @@ def films_view(cod):
     return template('admin_view_content', title=row[0][1], content=row, content_type="films", fields=FILM_FIELDS, img_col=9,  cod=cod)
 
 @get('/admin/films/edit/<cod>')
+@auth_basic(is_authenticated_user)
 def films_edit(cod):
     """Página de edición de Peliculas."""
     films = Film(DATA_BASE)
@@ -87,6 +92,7 @@ def films_edit(cod):
     return template('films_form', title="Editar Película", form=form, path=f'/admin/films/edit/{cod}')
 
 @post('/admin/films/edit/<cod>')
+@auth_basic(is_authenticated_user)
 def films_process_edit(cod):
     """Procesa el formulario de edición de Peliculas."""
     form = FilmsForm(request.POST)
@@ -123,6 +129,7 @@ def films_process_edit(cod):
     return template('films_form', form=form)
 
 @get('/admin/films/delete/<cod>')
+@auth_basic(is_authenticated_user)
 def films_delete_index(cod):
     """Eliminar una Pelicula."""
     form = DeleteContentForm(request.POST)
@@ -132,6 +139,7 @@ def films_delete_index(cod):
     return template('admin_delete_content', title="Eliminar Pelicula",content="Pelicula", uri="films", content_title=film_title, cod=cod, form=form)
 
 @post('/admin/films/delete/<cod>')
+@auth_basic(is_authenticated_user)
 def films_delete(cod):
     """Procesa la eliminación de una Pelicula."""
     form = DeleteContentForm(request.POST)

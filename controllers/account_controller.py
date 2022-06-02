@@ -1,6 +1,5 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-
 from localStoragePy import localStoragePy
 from bottle import get, request, template, redirect, post
 from models.account import Account
@@ -27,13 +26,6 @@ def admin_accounts_view(email):
 
     return template('admin_view_account', rows=rows)
 
-@get('/accounts')
-def account_index():
-    """Página de inicio de las Cuentas."""
-    cuentas = Account(DATA_BASE)
-    row = cuentas.select(['*'])
-    return str(row)
-  
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
@@ -58,7 +50,7 @@ def register_process():
         }
         
         account.insert(form_data)
-        redirect('/accounts')
+        redirect('/profiles')
         
     return template('register', form=form)
 
@@ -85,6 +77,7 @@ def login_process():
                 fichero.write(form.email.data)
 
             redirect('/select_profile')
+
 
     if error:
 
