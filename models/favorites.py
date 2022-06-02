@@ -8,6 +8,28 @@ class Favorites(Model):
     def __init__(self, db_name):
         super().__init__(db_name)
         self._table_name = FAVORITES
+    
+    def insert_favorite_content(self, cod_favorite, cod_content):
+        """Inserta un contenido en la lista de favoritos"""
+        query = f"""
+                    INSERT INTO {FAVORITES_CONTENT} (Cod_Favoritos, Cod_Contenido)
+                    VALUES ("{cod_favorite}", "{cod_content}")
+                """
+        try:
+            conn = self._connect()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+            cursor.close()
+            
+        except sqlite3.Error as error:
+            print("Error while executing sqlite script", error)
+
+        finally:
+            if conn:
+                conn.close()
+                
+        return True
 
     def content(self, cod_content, fields_series=[], fields_film=[]):
         """Muestra el contenido enlazado a la lista de favoritos"""

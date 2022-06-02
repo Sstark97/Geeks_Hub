@@ -16,12 +16,12 @@ def index():
     return template('landing.tpl')
 
 @error(404)
-def about(error):
+def not_found_page(error1):
     """Página de prueba"""
     return static_file('/html/404.html', root='static')
 
 @error(500)
-def about(error):
+def server_error_page(error2):
     """Página de prueba"""
     return static_file('/html/500.html', root='static')
 
