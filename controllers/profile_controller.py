@@ -33,7 +33,7 @@ def profile_process():
         }
 
         profile.insert(form_data)
-        redirect("/")
+        redirect("/select_profile")
 
 
     print(form.errors)
@@ -48,11 +48,16 @@ def select_profile():
 
     profile = Profile(DATA_BASE)
     rows = profile.select(['*'], {'Correo': correo})
-
-    return template('select_profiles', rows=rows)
+    form = ProfileForm(request.POST) 
+    return template('select_profiles', rows=rows, form=form)
 
 @post('/select_profile')
 def select_profile_process():
     """Página para procesar la selección de perfiles"""
+    codigo = request.POST.get("profile_code")
+    print(codigo)
+    with open("./static/file/login.txt", "a", encoding="UTF8") as fichero:
+        fichero.write(f"\n{codigo}")
 
-    redirect('/profiles')
+    redirect('/')
+    # redirect('/home')

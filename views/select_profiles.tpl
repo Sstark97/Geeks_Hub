@@ -7,6 +7,8 @@
     <title>Selección de Perfil</title>
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/form.css">
+    <!-- Iconos -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
@@ -18,21 +20,27 @@
             <label for="profile">Selecciona un perfil</label>
 
             <div class="avatar">
-            %for row in rows:
-                <div>
-                    <img class="profile_image" src="{{ row[3] }}" alt="Avatar">
-                    <p>{{ row[2] }}</p>
-                </div>
+
+            %if rows != []:
+                %for row in rows:
+                    <div>
+                        <button id="avatar-btn" type="submit">
+                            <img class="profile_image" src="{{ row[3] }}" alt="Avatar">
+                        </button>
+                        <p>{{ row[2] }}</p>
+                        <input type="hidden" name="profile_code" value="{{ row[0] }}">
+                    </div>
+                %end
             %end
+
+            %if len(rows) != 5:
                 <div>
+                    <!-- <a href="/profiles" class="a-icon"><i class='bx bx-plus icon-select'></i></a> -->
                     <a href="/profiles"><img class="profile_image" src="/static/img/avatar/add.png" alt="Añadir"></a>
                     <p>Añadir</p>
                 </div>
-            </div>
-            <div class="button">
-                <a href="/">
-                    <input id="btn_select" name="btn_select" type="submit" value="Seleccionar">
-                </a>
+            %end
+            
             </div>
         </div>
     </form>
