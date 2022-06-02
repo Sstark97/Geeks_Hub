@@ -20,6 +20,11 @@ def about(error):
     """Página de prueba"""
     return static_file('/html/404.html', root='static')
 
+@error(500)
+def about(error):
+    """Página de prueba"""
+    return static_file('/html/500.html', root='static')
+
 @get("/static/<filepath:path>")
 def html(filepath):
     """Servicio de archivos estáticos."""
