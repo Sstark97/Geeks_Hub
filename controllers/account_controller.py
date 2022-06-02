@@ -1,11 +1,11 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-from localStoragePy import localStoragePy
 from bottle import get, request, template, redirect, post
 from models.account import Account
 from forms.register_form import RegistrationForm
 from forms.login_form import LoginForm
 from config.config import DATA_BASE, ACCOUNT_FIELDS
+from config.local_storage import local_storage
 sys.path.append('models')
 sys.path.append('forms')
 
@@ -49,6 +49,7 @@ def register_process():
         }
         
         account.insert(form_data)
+        local_storage.setItem("email",form.email.data)
         redirect('/profiles')
         
     return template('register', form=form)
@@ -72,9 +73,9 @@ def login_process():
         if password[0][0] == form.password.data:
             error = False
 
-            with open("./static/file/login.txt", "w", encoding="UTF8") as fichero:
-                fichero.write(form.email.data)
+            local_storage.setItem("email", form.email.data)
 
+            print(local_storage.getItem("email"))
             redirect('/select_profile')
 
 
