@@ -136,154 +136,6 @@ html, body{
     transition: 0.5s;
 }
 
-/* HOME PAGE */
-
-.main{
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--background_color);
-}
-
-.background{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-
-    width: 100%;
-    height: 100vh;
-
-    background-image: url(/static/img/fondo.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-
-    box-shadow: inset -0px -30px 20px var(--background_color);
-}
-
-.button_login{
-    width: 100%;
-    height: 15%;
-}
-
-.login{
-    width: 20vw;
-    padding: 1%;
-
-    margin-top: 2%;
-    margin-right: 2%;
-    float: right;
-
-    font-size: 3vw;
-    border-radius: 15px;
-    border: none;
-    background-color: var(--main_color);
-}
-
-.logo{
-    width: 100%;
-    
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.logo img{
-    width: 80%;
-}
-
-.logo p{
-    padding-top: 4%;
-    width: 80%;
-    text-align: center;
-
-    font-size: 2.5vw;
-    color: var(--base_color);
-}
-
-.content{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%; 
-    height: 85vh;
-
-    background-color: var(--background_color);
-}
-
-.cuadro{
-    width: 60%;
-    height: 50%;
-    background-color: antiquewhite;
-}
-
-.content p{
-    width: 80%;
-    text-align: center;
-
-    font-size: 2.5vw;
-    color: var(--base_color);
-}
-
-.button_submit{
-    display: flex;
-    justify-content: center;
-
-    width: 100%;
-    height: 6vh;
-
-    background-color: var(--background_color);
-}
-
-.submit{
-    width: 30vw;
-    padding: 2%;
-    margin: auto;
-
-    font-size: 3vw;
-    border-radius: 15px;
-    border: none;
-    background-color: var(--main_color);
-}
-
-.devices{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100vh;
-
-    background-color: var(--background_color);
-}
-
-.television, .computer, .phone, .console{
-    width: 50%;
-    height: 58vw;
-}
-
-.television img, .computer img, .phone img, .console img{
-    width: 50%;
-}
-
-.television h2, .computer h2, .phone h2, .console h2{
-    padding-bottom: 2%;
-
-    font-size: 3.2vw;
-    color: var(--base_color);
-}
-
-.television p, .computer p, .phone p, .console p{
-    font-size: 2.3vw;
-    color: var(--base_color);
-
-    padding: 2%;
-}
-
 /* FOOTER */
 
 footer{
@@ -291,9 +143,11 @@ footer{
     flex-direction: column;
 
     width: 100%;
+    margin-top: 5%;
     padding: 20px 50px;
 
     background-color: var(--background_color);
+    border-top: 1px solid var(--base_color);
     color: var(--base_color);
 }
 
@@ -322,7 +176,7 @@ footer{
     margin: 0 10px;
 
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1rem;
     color: var(--base_color);
 }
 
@@ -331,7 +185,7 @@ footer p{
     margin-bottom: 10px;
 
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.7rem;
 }
 
 .menu_tablet{
@@ -395,46 +249,18 @@ footer p{
         padding: 6%;
     }
 
-    /* HOME PAGE */
+    /* FOOTER */
 
-    .button_login{
-        height: 10%;
+    .icons li a{
+        font-size: 3em;
     }
 
-    .logo img{
-        width: 70%;
+    .menu li a{
+        font-size: 1.4em;
     }
 
-    .logo p{
-        font-size: 2.2vw;
-    }
-
-    .content p{
-        font-size: 2.2vw;
-    }
-
-    .button_submit{
-        height: 10%;
-    }
-
-    .devices{
-        height: 50%;
-    }
-
-    .television, .computer, .phone, .console{
-        height: 48vw;
-    }
-
-    .television img, .computer img, .phone img, .console img{
-        width: 40%;
-    }
-    
-    .television h2, .computer h2, .phone h2, .console h2{
-        font-size: 3vw;
-    }
-
-    .television p, .computer p, .phone p, .console p{
-        font-size: 2vw;
+    footer p{
+        font-size: 1em;
     }
 
 }
@@ -553,104 +379,12 @@ footer p{
         display: none;
     }
 
-    /* HOME PAGE */
-
-    .button_login{
-        height: 10%;
-    }
-
-    .login{
-        width: 11vw;
-        font-size: 1.3vw;
-
-        opacity: 0.6;
-        transition: .5s;
-    }
-
-    .login:hover{
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .logo{
-        flex-direction: column;
-        justify-content: left;
-        align-content: flex-start;
-    }
-
-    .logo img{
-        width: 30%;
-    }
-
-    .logo p{
-        width: 40%;
-        margin-left: 5%;
-
-        text-align: left;
-        font-size: 1.2vw;
-    }
-
-    .content{
-        justify-content: space-evenly;
-        height: 50vh;
-    }
-
-    .cuadro{
-        width: 40%;
-        height: 80%;
-    }
-
-    .content p{
-        width: 40%;
-        
-        text-align: left;
-        font-size: 1.2vw;
-    }
-
-    .button_submit{
-        height: 10vh;
-    }
-
-    .submit{
-        width: 15%;
-        font-size: 1.5vw;
-
-        opacity: 0.6;
-        transition: .5s;
-    }
-
-    .submit:hover{
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .devices{
-        height: 55vh;
-        padding-top: 1%;
-
-        align-content: flex-start;
-        align-items: stretch;
-    }
-
-    .television, .computer, .phone, .console{
-        width: 25%;
-        height: auto;
-    }
-
-    .television img, .computer img, .phone img, .console img{
-        width: 50%;
-    }
-    
-    .television h2, .computer h2, .phone h2, .console h2{
-        font-size: 2vw;
-    }
-
-    .television p, .computer p, .phone p, .console p{
-        font-size: 1.2vw;
-    }
-
     /* FOOTER */
     
+    .icons li a{
+        font-size: 2.5em;
+    }
+
     .icons li a:hover{
         transform: translateY(-10px);
     }
@@ -671,7 +405,7 @@ footer p{
         margin: 0 10px;
     
         text-decoration: none;
-        font-size: 1.2em;
+        font-size: 1.3em;
         color: white;
         
         transition: 0.5s;

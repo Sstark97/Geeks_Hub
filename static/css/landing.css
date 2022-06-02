@@ -1,24 +1,4 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* VARIABLES */
-
-:root{
-    --background_color: #1c232d;
-    --shadow_color: #353c44;
-    --main_color: #00aeb5;
-    --base_color: #efefef;
-    --main_font: 'Noto Sans Display', sans-serif;
-}
-
 html, body{
-    width: 100%;
-    height: 100vh;
-
-    font-family: var(--main_font);
     background-color: var(--background_color);
 }
 
@@ -35,7 +15,7 @@ html, body{
     align-content: flex-start;
 
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     background-image: url(/static/img/fondo.png);
     background-position: center center;
@@ -48,25 +28,27 @@ html, body{
 
 .button_login{
     width: 100%;
-    height: 15%;
+    margin-top: 5%;
+    margin-right: 5%;
+
+    display: flex;
+    justify-content: flex-end;
 }
 
-.login{
-    width: 20vw;
+.login, .submit{
+    width: 28vw;
+    height: 4.5vh;
     padding: 1%;
 
-    margin-top: 2%;
-    margin-right: 2%;
-    float: right;
-
-    font-size: 3vw;
-    border-radius: 15px;
+    font-size: 3.5vw;
+    border-radius: 0.7rem;
     border: none;
     background-color: var(--main_color);
 }
 
 .logo{
     width: 100%;
+    margin-top: 15%;
     
     display: flex;
     flex-wrap: wrap;
@@ -82,7 +64,7 @@ html, body{
     width: 80%;
     text-align: center;
 
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     color: var(--base_color);
 }
 
@@ -93,7 +75,7 @@ html, body{
     align-items: center;
 
     width: 100%; 
-    height: 85%;
+    height: 85vh;
 
     background-color: var(--background_color);
 }
@@ -108,7 +90,7 @@ html, body{
     width: 80%;
     text-align: center;
 
-    font-size: 2.5vw;
+    font-size: 3.2vw;
     color: var(--base_color);
 }
 
@@ -117,20 +99,14 @@ html, body{
     justify-content: center;
 
     width: 100%;
-    height: 15%;
+    height: 6vh;
 
     background-color: var(--background_color);
 }
 
 .submit{
-    width: 30vw;
-    padding: 2%;
-    margin: auto;
-
-    font-size: 3vw;
-    border-radius: 15px;
-    border: none;
-    background-color: var(--main_color);
+    width: 32vw;
+    margin-top: 5%;
 }
 
 .devices{
@@ -140,6 +116,7 @@ html, body{
     align-items: center;
     text-align: center;
     width: 100%;
+    margin-top: 10%;
 
     background-color: var(--background_color);
 }
@@ -156,12 +133,12 @@ html, body{
 .television h2, .computer h2, .phone h2, .console h2{
     padding-bottom: 2%;
 
-    font-size: 3.2vw;
+    font-size: 3.7vw;
     color: var(--base_color);
 }
 
 .television p, .computer p, .phone p, .console p{
-    font-size: 2.3vw;
+    font-size: 2.8vw;
     color: var(--base_color);
 
     padding: 2%;
@@ -172,16 +149,28 @@ html, body{
         height: 10%;
     }
 
+    .logo{
+        margin-top: 7%;
+    }
+
     .logo img{
         width: 70%;
     }
 
     .logo p{
-        font-size: 2.2vw;
+        font-size: 3vw;
     }
 
     .content p{
-        font-size: 2.2vw;
+        font-size: 2.8vw;
+    }
+
+    .button_submit{
+        height: 10%;
+    }
+
+    .devices{
+        height: 50%;
     }
 
     .television, .computer, .phone, .console{
@@ -197,92 +186,100 @@ html, body{
     }
 
     .television p, .computer p, .phone p, .console p{
-        font-size: 2vw;
+        font-size: 2.3vw;
     }
 }
 
 @media only screen and (min-width: 992px){
-
-    .button_login{
-        height: 10%;
-    }
-
-    .login{
-        width: 11vw;
-        font-size: 1.3vw;
-
-        opacity: 0.6;
-        transition: .5s;
-    }
-
-    .login:hover{
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .logo{
-        flex-direction: column;
-        justify-content: left;
-        align-content: flex-start;
-    }
-
-    .logo img{
-        width: 30%;
-    }
-
-    .logo p{
-        width: 40%;
-        margin-left: 5%;
-
-        text-align: left;
-        font-size: 1.2vw;
-    }
-
-    .content{
-        justify-content: space-evenly;
-        height: 50%;
-    }
-
-    .cuadro{
-        width: 40%;
-        height: 80%;
-    }
-
-    .content p{
-        width: 40%;
-        
-        text-align: left;
-        font-size: 1.2vw;
-    }
-
-    .submit{
-        width: 20%;
-        font-size: 2vw;
-
-        opacity: 0.6;
-        transition: .5s;
-    }
-
-    .submit:hover{
-        opacity: 1;
-        transition: .5s;
-    }
-
-    .television, .computer, .phone, .console{
-        width: 25%;
-        height: auto;
-        margin-bottom: 5%;
-    }
-
-    .television img, .computer img, .phone img, .console img{
-        width: 50%;
-    }
+        .button_login{
+            height: 10%;
+            margin-top: 2%;
+            margin-right: 2%;
+        }
     
-    .television h2, .computer h2, .phone h2, .console h2{
-        font-size: 2vw;
-    }
+        .login, .submit{
+            width: 11vw;
+            padding: 0;
+            font-size: 1.3vw;
+    
+            opacity: 0.6;
+            transition: .5s;
+        }
+    
+        .login:hover{
+            opacity: 1;
+            transition: .5s;
+        }
+    
+        .logo{
+            flex-direction: column;
+            justify-content: left;
+            align-content: flex-start;
 
-    .television p, .computer p, .phone p, .console p{
-        font-size: 1.2vw;
-    }
+            margin-top: 0;
+        }
+    
+        .logo img{
+            width: 32%;
+        }
+    
+        .logo p{
+            width: 50%;
+            margin-left: 5%;
+    
+            text-align: left;
+            font-size: 1.2vw;
+        }
+    
+        .content{
+            justify-content: space-evenly;
+            height: 50vh;
+        }
+    
+        .cuadro{
+            width: 40%;
+            height: 80%;
+        }
+    
+        .content p{
+            width: 40%;
+            
+            text-align: left;
+            font-size: 1.2vw;
+        }
+    
+        .button_submit{
+            height: 10vh;
+        }
+    
+        .submit{
+            width: 13%;
+        }
+    
+        .submit:hover{
+            opacity: 1;
+            transition: .5s;
+        }
+    
+        .devices{
+            align-content: flex-start;
+            align-items: stretch;
+        }
+    
+        .television, .computer, .phone, .console{
+            width: 25%;
+            height: auto;
+        }
+    
+        .television img, .computer img, .phone img, .console img{
+            width: 50%;
+        }
+        
+        .television h2, .computer h2, .phone h2, .console h2{
+            font-size: 1.6vw;
+        }
+    
+        .television p, .computer p, .phone p, .console p{
+            font-size: 1vw;
+        }
 }

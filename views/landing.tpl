@@ -10,6 +10,7 @@
     <!-- Estilos -->
 
     <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
 
     <!-- Iconos -->
 
@@ -21,7 +22,7 @@
     <div class="main">
         <div class="background">
             <div class="button_login">
-                <input class="login" type="button" value="Iniciar Sesión">
+                <button class="login">Iniciar Sesión</button>
             </div>
             <div class="logo">
                 <img src="/static/img/logo.png" alt="logo">
