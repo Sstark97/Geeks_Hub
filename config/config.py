@@ -7,6 +7,8 @@ SERIES = "Serie"
 ACCOUNT = "Cuenta"
 PROFILE = "Perfil"
 HISTORY = "Historial"
+FAVORITES = "Favoritos"
+FAVORITES_CONTENT = "Contenido_Favorito"
 
 #Formularios
 AGE_RATING = (('', 'Selecciona una Calificación'), ('tp', 'Tp'), ('8', '8'), ('12', '12'), ('16', '16'), ('18', '18'))
