@@ -62,10 +62,24 @@ def films_process():
 def films_view(cod):
     """Página de visualización de Peliculas."""
     films = Film(DATA_BASE)
-    row = films.select(['*'],{'Cod_Pelicula': cod})
-    print(row)
+    row = films.select(['*'],{'Cod_Pelicula': cod})[0]
 
-    return template('admin_view_content', title=row[0][1], content=row, content_type="films", fields=FILM_FIELDS, img_col=9,  cod=cod)
+    film = {
+        'Cod_Pelicula': row[0],
+        'Titulo' : row[1],
+        'Calificacion_Edad' : row[2],
+        'Genero' : row[3],
+        'Director' : row[4],
+        'Puntuacion_Media' : row[5],
+        'Productor' : row[6],
+        'Sinopsis' : row[7],
+        'Fecha_Publicacion' : row[8],
+        'Portada': row[9],
+        'Trailer' : row[10],
+        'Duracion' : row[11]
+    }
+
+    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
 
 @get('/admin/films/edit/<cod>')
 @auth_basic(is_authenticated_user)
@@ -73,9 +87,7 @@ def films_edit(cod):
     """Página de edición de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'], {'Cod_Pelicula': cod})[0]
-    print(row[8])
     formatted_date= datetime.strptime(row[8], '%Y-%m-%d')
-    print(formatted_date)
 
     form = FilmsForm(request.POST)
     form.title.data = row[1]

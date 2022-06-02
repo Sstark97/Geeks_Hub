@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/admin.css">
     <link rel="stylesheet" href="/static/css/admin_forms.css">
+    <link rel="stylesheet" href="/static/css/admin_content.css">
     <title>{{title}}</title>
 </head>
 <body>

@@ -67,10 +67,26 @@ def series_process():
 def series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
-    row = series.select(['*'],{'Cod_Serie': cod})
+    row = series.select(['*'],{'Cod_Serie': cod})[0]
 
-    return template('admin_view_content', title=row[0][2], content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
+    serie = {
+        'Cod_Serie': row[0],
+        'Titulo': row[2],
+        'N_Temporada': row[1],
+        'Calificacion_Edad': row[3],
+        'Genero': row[4],
+        'Director': row[5],
+        'Puntuacion_Media': row[6],
+        'Productor': row[7],
+        'Sinopsis': row[8],
+        'Fecha_Publicacion': row[9],
+        'Portada': row[10],
+        'Trailer': row[11],
+        'Capitulos': row[12]
+    }
 
+    return template('admin_view_content', title=row[2], content_type="series", content=serie, fields=SERIES_FIELDS, cod=cod)
+    
 @get('/admin/series/edit/<cod>')
 @auth_basic(is_authenticated_user)
 def series_edit(cod):

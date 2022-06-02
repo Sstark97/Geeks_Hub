@@ -5,7 +5,7 @@ from wtforms import Form, BooleanField, StringField, PasswordField, SubmitField 
 
 class LoginForm(Form):
     """Clase para la realización del formulario de inicio"""
-    email = StringField('Email Address', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email()])
-    password = PasswordField('New Password', [
+    email = StringField('Correo', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email()])
+    password = PasswordField('Contraseña', [
         validators.DataRequired()])
     btn_continue = SubmitField('Continuar')
