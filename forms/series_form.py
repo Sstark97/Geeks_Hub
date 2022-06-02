@@ -28,7 +28,11 @@ class SeriesForm(Form):
     average_score = DecimalField('Puntuación Media', 
                                 rounding=decimal.ROUND_UP,
                                 places=2,
-                                validators = [validators.DataRequired("El campo es obligatorio")], 
+                                validators = [
+                                    validators.DataRequired("El campo es obligatorio"),
+                                    validators.NumberRange(min=1.01, max=5.00, 
+                                    message="El campo debe ser un número entre 1.01 y 5.00")
+                                ], 
                                 default=1.01,
                             #    render_kw={'class':'myclass'}
                             )
