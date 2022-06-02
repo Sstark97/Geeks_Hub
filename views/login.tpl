@@ -25,10 +25,13 @@
                 {{ form.btn_continue }}
             </div>
         </fieldset>
-        <a class="register" href="/">
+        <div class="register">
             <p>Si aún no estás registrado,&nbsp</p>
-            <input type="button" value="regístrate aquí"/>
-        </a>
+            <a href="/">
+                <input type="button" value="regístrate aquí"/>
+            </a>
+        </div>
+
     </form>
 </body>
 </html>

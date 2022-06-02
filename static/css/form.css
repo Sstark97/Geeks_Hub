@@ -19,7 +19,7 @@ body{
 }
 
 img{
-    width: 30%;
+    width: 45%;
 }
 
 .profile_logo{
@@ -27,7 +27,7 @@ img{
 }
 
 h1{
-    font-size: 5.5vw;
+    font-size: 7vw;
     margin: 4%;
 }
 
@@ -51,13 +51,15 @@ div{
     align-items: center;
     padding: 2%;
 
-    font-size: 3vw;
+    font-size: 4vw;
 }
 
 .input input{
     width: 30%;
     height: 3.4vh;
     padding: 3%;
+    margin: 3%;
+    font-size: 4vw;
 
     background-color: var(--background_color);
     border: none;
@@ -81,13 +83,13 @@ div{
 .button input{
     width: 20%;
     margin: 2%;
-    height: 3.4vh;
+    height: 3.6vh;
 
     background-color: var(--main_color);
     border: none;
     border-radius: 10px;
 
-    font-size: 2.5vw;
+    font-size: 3.2vw;
 }
 
 .button a{
@@ -102,8 +104,9 @@ div{
 .register{
     display: flex;
     justify-content: center;
+    flex-direction: row;
 
-    font-size: 2vw;
+    font-size: 3vw;
     color: var(--base_color);
     text-decoration: none;
 }
@@ -112,8 +115,8 @@ div{
     background-color: var(--background_color);
     border: none;
 
-    color: var(--base_color);
-    font-size: 2vw;
+    color: var(--main_color);
+    font-size: 3vw;
     text-decoration: underline;
 }
 
@@ -148,23 +151,23 @@ div{
 
 @media only screen and (min-width: 993px){
     img{
-        width: 10%;
+        width: 15%;
     }
 
     h1{
         font-size: 2.5vw;
-        margin: 3%;
+        margin: 2%;
     }
     
     div{
-        padding: 1.5%;
-    
+        padding: 0;
         font-size: 1.5vw;
     }
     
     .input input{
         width: 20%;
-        padding: 1.8%;
+        padding: 1%;
+        margin: 2%;
     
         font-size: 1.2vw;
     }
