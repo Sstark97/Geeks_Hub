@@ -1,5 +1,5 @@
 """Archivo de inicio de la aplicación."""
-from bottle import get, run, template, static_file, auth_basic
+from bottle import get, run, template, static_file, error
 from controllers.film_controller import *
 from controllers.series_controller import *
 from controllers.suscription_controller import *
@@ -15,8 +15,8 @@ def index():
 
     return template('landing.tpl')
 
-@get('/404')
-def about():
+@error(404)
+def about(error):
     """Página de prueba"""
     return static_file('/html/404.html', root='static')
 
