@@ -7,8 +7,6 @@
     <title>Selección de Perfil</title>
     <link rel="stylesheet" href="/static/css/global.css">
     <link rel="stylesheet" href="/static/css/form.css">
-    <!-- Iconos -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
@@ -35,7 +33,6 @@
 
             %if len(rows) != 5:
                 <div>
-                    <!-- <a href="/profiles" class="a-icon"><i class='bx bx-plus icon-select'></i></a> -->
                     <a href="/profiles"><img class="profile_image" src="/static/img/avatar/add.png" alt="Añadir"></a>
                     <p>Añadir</p>
                 </div>
