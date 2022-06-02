@@ -1,5 +1,4 @@
 """Archivo de Rutas de las Peliculas."""
-import sys
 from os import remove
 from datetime import datetime
 from bottle import get, post, request, template, redirect, auth_basic
@@ -8,7 +7,6 @@ from models.film import Film
 from config.config import DATA_BASE, FILM_FIELDS
 from forms.films_form import FilmsForm
 from forms.delete_content_form import DeleteContentForm
-sys.path.append('static')
 
 @get('/admin/films')
 @auth_basic(is_authenticated_user)
@@ -57,7 +55,7 @@ def films_process():
         
         films.insert(form_data)
         redirect('/admin/films')
-    return template('films_form', form=form)
+    return template('films_form', form=form, title="Nueva Película", path='/admin/films/new')
 
 @get('/admin/films/<cod>')
 @auth_basic(is_authenticated_user)

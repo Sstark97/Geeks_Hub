@@ -1,5 +1,4 @@
 """Archivo de Rutas de las Series."""
-import sys
 from os import remove
 from datetime import datetime
 from bottle import get, post, request, template, redirect, auth_basic
@@ -8,9 +7,6 @@ from models.series import Series
 from config.config import DATA_BASE, SERIES_FIELDS
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
-
-sys.path.append('models')
-sys.path.append('forms')
 
 @get('/admin/series')
 @auth_basic(is_authenticated_user)
@@ -60,7 +56,7 @@ def series_process():
         
         series.insert(form_data)
         redirect('/admin/series')
-    return template('series_form', form=form)
+    return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
 
 @get('/admin/series/<cod>')
 @auth_basic(is_authenticated_user)
