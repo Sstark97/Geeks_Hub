@@ -10,7 +10,7 @@
         </div>
 
         <div class="image">
-            <img src="{{content.get('Portada')}}" alt="{{content.get('Titulo')}}">
+            <img src="/{{content.get('Portada')}}" alt="{{content.get('Titulo')}}">
             <iframe src="{{content.get('Trailer')}}" title="YouTube video player" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>

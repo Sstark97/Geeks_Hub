@@ -43,7 +43,7 @@ def series_process():
             file.write(image_data.file.read())
 
         form_data = {
-            'Cod_Serie': series.code_generator(),
+            'Cod_Serie': series.code_generator("S", "Cod_Serie"),
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
