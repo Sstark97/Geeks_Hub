@@ -175,6 +175,59 @@ select{
 	opacity: 0;
 }
 
+.suscription{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.suscription .box{
+    width: 70%;
+    margin-bottom: 5%;
+    padding: 0;
+
+    background-color: var(--shadow_color);
+    border-radius: 1rem;
+}
+
+.info{
+    padding: 0;
+}
+
+.info h1{
+    width: 100%;
+}
+
+.info p{
+    width: 100%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+
+    text-align: left;
+}
+
+.info div{
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    color: var(--background_color);
+}
+
+.Basico{
+    background-color: #0dcaf0;
+}
+
+.Estandar{
+    background-color: #20c997;
+}
+
+.Premium{
+    background-color: #0d6efd;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px){   
     .avatar div{
         width: 28%;

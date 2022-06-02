@@ -2,6 +2,7 @@
 import sys
 from bottle import get, request, template, redirect, post
 from models.account import Account
+from models.suscription import Suscription
 from forms.register_form import RegistrationForm
 from forms.login_form import LoginForm
 from config.config import DATA_BASE, ACCOUNT_FIELDS
@@ -29,7 +30,10 @@ def admin_accounts_view(email):
 def register():
     """Pagina de inicio de Registro"""
     form = RegistrationForm(request.POST)
-    return template('register', form=form)
+    suscriptions_data = Suscription(DATA_BASE)
+    suscriptions = suscriptions_data.select(["*"])
+
+    return template('register', form=form, suscriptions=suscriptions)
 
 @post('/register')
 def register_process():

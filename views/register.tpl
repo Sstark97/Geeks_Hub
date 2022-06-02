@@ -67,10 +67,21 @@
                     {{ form.phone_number.label }}
                     {{ form.phone_number }}
                 </div>
-                <div class="input">
-                    {{ form.suscription.label }}
-                    {{ form.suscription }}
-                </div>
+            </div>
+
+            <div class="suscription">
+                %for suscription in suscriptions:
+                    <div class="box">
+                        <div class="info">
+                            <div class="{{suscription[0]}}">
+                                <h1>{{suscription[0]}}</h1>
+                            </div>
+                            <p>Precio: {{suscription[1]}}</p>
+                            <p>Calidad: {{suscription[2]}}</p>
+                            <p>Número de dispositivos: {{suscription[3]}}</p>
+                        </div>
+                    </div>
+                %end
             </div>
 
             <div class="button">
