@@ -68,6 +68,7 @@ def series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})
+    print(row)
 
     return template('admin_view_content', title=row[0][2], content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
 

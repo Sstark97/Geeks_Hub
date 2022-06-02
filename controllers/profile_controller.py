@@ -41,7 +41,6 @@ def profile_process():
         }
 
         personal_profile.insert(form_data)
-        print(form_data)
         redirect("/select_profiles")
 
 
