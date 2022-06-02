@@ -38,7 +38,7 @@ def profile_process():
             "Cod_Favoritos" : cod_favorites
         }
 
-        profile.insert(form_data)
+        personal_profile.insert(form_data)
         redirect("/select_profile")
 
     return template('profile', rows=AVATARS, form=form)
