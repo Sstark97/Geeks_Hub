@@ -10,6 +10,7 @@
     <!-- Estilos -->
 
     <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/landing.css">
 
     <!-- Iconos -->
 
@@ -21,7 +22,9 @@
     <div class="main">
         <div class="background">
             <div class="button_login">
-                <input class="login" type="button" value="Iniciar Sesión">
+                <a href="/login">
+                    <button class="login">Iniciar Sesión</button>
+                </a>
             </div>
             <div class="logo">
                 <img src="/static/img/logo.png" alt="logo">
@@ -45,7 +48,9 @@
                 con software de autoedición como Aldus PageMaker, que incluía versiones de Lorem Ipsum.</p>
         </div>
         <div class="button_submit">
-            <input class="submit" type="button" value="Suscríbete ahora">
+            <a href="/register">
+                <input class="submit" type="button" value="Suscríbete ahora">
+            </a>
         </div>
         <div class="devices">
             <div class="television">

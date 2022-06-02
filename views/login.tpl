@@ -11,6 +11,7 @@
 <body>
     <img src="/static/img/logo.png" alt="logo">
     <h1>Inicie Sesión</h1>
+
     <form method="POST" action="/login" autocomplete="off">
         <fieldset>
             <div class="input">
@@ -22,13 +23,18 @@
                 {{ form.password }}
             </div>
             <div class="button">
-                {{ form.btn_continue }}
+                <a href="/select_profiles">
+                    {{ form.btn_continue }}
+                </a>
             </div>
         </fieldset>
-        <a class="register" href="/">
+        <div class="register">
             <p>Si aún no estás registrado,&nbsp</p>
-            <input type="button" value="regístrate aquí"/>
-        </a>
+            <a href="/register">
+                <input type="button" value="regístrate aquí"/>
+            </a>
+        </div>
+
     </form>
 </body>
 </html>
