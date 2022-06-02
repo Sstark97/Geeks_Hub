@@ -31,7 +31,7 @@ def profile_process():
         cod_favorites = favorites.select(["Cod_Favoritos"])[-1][0]
 
         form_data = {
-            'Cod_Perfil' : personal_profile.code_generator(),
+            'Cod_Perfil' : personal_profile.code_generator("PR", "Cod_Perfil"),
             'Correo' : correo,
             'Nickname' : form.nickname.data,
             'Imagen' : request.POST.get("avatar"),

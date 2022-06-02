@@ -39,7 +39,7 @@ def films_process():
             file.write(image_data.file.read())
 
         form_data = {
-            'Cod_Pelicula': films.code_generator(),
+            'Cod_Pelicula': films.code_generator("P", "Cod_Pelicula"),
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
             'Genero' : form.genre.data,
@@ -55,7 +55,7 @@ def films_process():
         
         films.insert(form_data)
         redirect('/admin/films')
-    return template('films_form', form=form)
+    return template('films_form', form=form, title="Nueva Película", path='/admin/films/new')
 
 @get('/admin/films/<cod>')
 @auth_basic(is_authenticated_user)
