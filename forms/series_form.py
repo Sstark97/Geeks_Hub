@@ -42,7 +42,7 @@ class SeriesForm(Form):
 
     release_date = DateField('Fecha de Publicación',[validators.DataRequired("El campo es obligatorio")],format='%Y-%m-%d')
 
-    cover_page = FileField('Portada', render_kw={'accept':'image/png, image/jpeg'})
+    cover_page = FileField('Portada', render_kw={'accept':'image/png, image/jpeg', 'class':'inputfile'})
 
     trailer = StringField('Tráiler', [ 
                                     validators.InputRequired(),
