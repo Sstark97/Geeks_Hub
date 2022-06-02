@@ -24,6 +24,10 @@ html, body{
     font-family: var(--main_font);
 }
 
+p{
+    max-width: 75ch;
+}
+
 /* HEADER */
 
 .header_user {

@@ -251,6 +251,10 @@ html, body{
         .button_submit{
             height: 10vh;
         }
+
+        .devices{
+            margin: 0;
+        }
     
         .submit:hover{
             opacity: 1;
