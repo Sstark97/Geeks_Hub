@@ -37,7 +37,7 @@
 
 .content_container .image iframe{
     margin-top: 2%;
-    height: 28vh;
+    height: 27vh;
     width: 100%;
 }
 
@@ -102,13 +102,17 @@
         font-size: 1.05rem;
     }
 
+    .back {
+        width: 80%;
+    }
+
 }
 
 @media only screen and (min-width: 993px){
     .content_container{
         width: 80%;
         margin: 0 auto;
-        margin-top: 5%;
+        margin-top: 2%;
         display: flex;
         flex-wrap: wrap;
     }
@@ -138,6 +142,7 @@
 
     .bg_content{
         margin: 0;
+        font-size: 2rem;
     }
 
     .content_container .image{
@@ -172,4 +177,26 @@
     .content_info_value{
         font-size: 1.15rem;
     }
+
+    .back{
+        width: 82.5%;
+    }
+    
+    .back p{
+        padding-top: 1rem;
+        font-size: 1.2rem;
+    }
+
+    .back .icons{
+        padding-top: 1rem;
+        transition: 0.3s;
+        opacity: 0;
+    }
+
+    .back:hover .icons{
+        margin-left: 2%;
+        transition: 0.3s;
+        opacity: 1;
+    }
+    
 }

@@ -379,6 +379,10 @@ i {
     height: 100%;
     object-fit: cover;
   }
+
+  nav a{
+    font-size: 1.8rem;
+  }
 }
 
 @media only screen and (min-width: 992px) {
