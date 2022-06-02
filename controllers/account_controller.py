@@ -75,6 +75,7 @@ def login_process():
 
             local_storage.setItem("email", form.email.data)
 
+            print(local_storage.getItem("email"))
             redirect('/select_profile')
 
 

@@ -5,6 +5,7 @@ from bottle import get, request, template, redirect, post
 from models.profile import Profile
 from models.favorites import Favorites
 from config.config import DATA_BASE, AVATARS
+from config.local_storage import local_storage
 from forms.profile_form import ProfileForm
 sys.path.append('models')
 sys.path.append('forms')
@@ -22,8 +23,7 @@ def profile_process():
     personal_profile = Profile(DATA_BASE)
     favorites = Favorites(DATA_BASE)
 
-    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
-        correo = fichero.readline()
+    correo = local_storage.getItem("email")
 
     if form.btn_continue.data and request.POST.get("avatar") != None and form.validate():
         today = date.today()
@@ -47,11 +47,10 @@ def profile_process():
 def select_profile():
     """Página para mostrar la selección de perfiles"""
 
-    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
-        correo = fichero.readline()
+    correo = local_storage.getItem("email")
 
-    profile = Profile(DATA_BASE)
-    rows = profile.select(['*'], {'Correo': correo})
+    personal_profile = Profile(DATA_BASE)
+    rows = personal_profile.select(['*'], {'Correo': correo})
     form = ProfileForm(request.POST) 
     return template('select_profiles', rows=rows, form=form)
 
@@ -59,9 +58,7 @@ def select_profile():
 def select_profile_process():
     """Página para procesar la selección de perfiles"""
     codigo = request.POST.get("profile_code")
-    print(codigo)
-    with open("./static/file/login.txt", "a", encoding="UTF8") as fichero:
-        fichero.write(f"\n{codigo}")
+    
+    local_storage.setItem("profile",codigo)
 
     redirect('/')
-    # redirect('/home')
