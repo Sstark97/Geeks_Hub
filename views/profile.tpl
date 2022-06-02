@@ -35,7 +35,7 @@
             </div>
             <div class="button">
                 {{ form.btn_continue }}
-                <a href="/">
+                <a href="/select_profiles">
                     <input type="button" value="Cancelar"/>
                 </a>
             </div>    

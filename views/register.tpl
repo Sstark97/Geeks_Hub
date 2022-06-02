@@ -74,7 +74,9 @@
             </div>
 
             <div class="button">
-                {{ form.register }}
+                <a href="/profiles">
+                    {{ form.register }}
+                </a>
             </div>         
         </fieldset>
     </form>

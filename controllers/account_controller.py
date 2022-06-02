@@ -26,13 +26,6 @@ def admin_accounts_view(email):
 
     return template('admin_view_account', rows=rows)
 
-@get('/accounts')
-def account_index():
-    """Página de inicio de las Cuentas."""
-    cuentas = Account(DATA_BASE)
-    row = cuentas.select(['*'])
-    return str(row)
-  
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
@@ -57,7 +50,7 @@ def register_process():
         }
         
         account.insert(form_data)
-        redirect('/accounts')
+        redirect('/profiles')
         
     return template('register', form=form)
 
@@ -83,7 +76,7 @@ def login_process():
             with open("./static/file/login.txt", "w", encoding="UTF8") as fichero:
                 fichero.write(form.email.data)
 
-            redirect('/')
+            redirect('/select_profiles')
 
     if error:
 

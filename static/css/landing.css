@@ -252,10 +252,6 @@ html, body{
             height: 10vh;
         }
     
-        .submit{
-            width: 13%;
-        }
-    
         .submit:hover{
             opacity: 1;
             transition: .5s;

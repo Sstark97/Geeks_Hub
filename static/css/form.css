@@ -97,6 +97,11 @@ select{
     width: 100%;
 }
 
+.button a{
+    width: 100%;
+    margin: 2%;
+}
+
 .button input, .btn_cancel{
     width: 20%;
     margin: 2%;

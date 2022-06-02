@@ -33,7 +33,7 @@ def profile_process():
         }
 
         profile.insert(form_data)
-        redirect("/")
+        redirect("/select_profiles")
 
 
     print(form.errors)
