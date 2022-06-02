@@ -16,14 +16,21 @@
 
 /* MAIN */
 
-main{
-    font-family: var(--main_font);
+html, body{
     width: 100%;
+    min-height: auto;
+    position: relative;
+
+    font-family: var(--main_font);
+}
+
+p{
+    max-width: 75ch;
 }
 
 /* HEADER */
 
-header{
+.header_user {
     position: sticky;
     z-index: 10000;
     top: 0px;
@@ -38,19 +45,21 @@ header{
     height: 100%;
 }
 
-.logo{
+
+.logo_user{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.logo img{
+
+.logo_user img{
     width: 7rem;
 }
 
 /* NAVEGADOR */
 
-nav{
+.nav_user {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -61,24 +70,24 @@ nav{
     z-index: 1000;
 }
 
-nav ul{
+.nav_user ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-nav li{
+.nav_user li{
     list-style: none;
     padding: 3%;
 }
 
-nav a, nav label{
+.nav_user a, .nav_user label{
     color: var(--base_color);
     font-size: 2.5rem;
     text-decoration: none;
 }
 
-nav p{
+.nav_user p{
     display: none;
     justify-content: center;
     opacity: 0.7;
@@ -131,7 +140,6 @@ nav p{
     transition: 0.5s;
 }
 
-
 /* FOOTER */
 
 footer{
@@ -139,9 +147,11 @@ footer{
     flex-direction: column;
 
     width: 100%;
+    margin-top: 5%;
     padding: 20px 50px;
 
     background-color: var(--background_color);
+    border-top: 1px solid var(--base_color);
     color: var(--base_color);
 }
 
@@ -151,6 +161,7 @@ footer{
     align-items: center;
 
     margin: 10px 0;
+    color: var(--base_color);
 }
 
 .icons li, .menu li{
@@ -169,7 +180,7 @@ footer{
     margin: 0 10px;
 
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1rem;
     color: var(--base_color);
 }
 
@@ -178,7 +189,7 @@ footer p{
     margin-bottom: 10px;
 
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.7rem;
 }
 
 .menu_tablet{
@@ -197,7 +208,8 @@ footer p{
         display: flex;
     }
 
-    .logo{
+
+    .logo_user{
         width: 15%;
 
         justify-content: left;
@@ -241,6 +253,20 @@ footer p{
         padding: 6%;
     }
 
+    /* FOOTER */
+
+    .icons li a{
+        font-size: 3em;
+    }
+
+    .menu li a{
+        font-size: 1.4em;
+    }
+
+    footer p{
+        font-size: 1em;
+    }
+
 }
 
 @media only screen and (min-width: 992px){
@@ -251,7 +277,7 @@ footer p{
         display: flex;
     }
 
-    .logo{
+    .logo_user{
         width: 8%;
 
         justify-content: left;
@@ -359,6 +385,10 @@ footer p{
 
     /* FOOTER */
     
+    .icons li a{
+        font-size: 2.5em;
+    }
+
     .icons li a:hover{
         transform: translateY(-10px);
     }
@@ -379,7 +409,7 @@ footer p{
         margin: 0 10px;
     
         text-decoration: none;
-        font-size: 1.2em;
+        font-size: 1.3em;
         color: white;
         
         transition: 0.5s;

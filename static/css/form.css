@@ -1,0 +1,303 @@
+html{
+    width: 100%;
+    min-height: 100vh;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: var(--background_color);
+    color: var(--base_color);
+    text-align: center;
+    font-family: var(--main_font);
+}
+
+img{
+    width: 45%;
+}
+
+.profile_logo{
+    padding-top: 3%;
+}
+
+h1{
+    font-size: 7vw;
+    margin: 4%;
+}
+
+form{
+    width: 100%;
+}
+
+fieldset{
+    width: 100%;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+
+    font-size: 4vw;
+}
+
+.contain{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contain .input{
+    width: 50%;
+}
+
+.contain .input input{
+    width: 70%;
+}
+
+.input input, select{
+    width: 30%;
+    padding: 3%;
+    margin: 3%;
+    font-size: 4vw;
+
+    background-color: var(--background_color);
+    border: none;
+    border-bottom: 2px solid var(--main_color);
+    color: var(--base_color);
+    opacity: 0.6;
+}
+
+select{
+    width: 70%;
+}
+
+.input input:focus{
+    outline: none;
+    opacity: 1;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.button a{
+    width: 100%;
+    margin: 2%;
+}
+
+.button input, .btn_cancel{
+    width: 20%;
+    margin: 2%;
+    height: 3.6vh;
+
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 10px;
+
+    font-size: 3.2vw;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
+}
+
+.button a{
+    text-decoration: none;
+    width: 20%;
+}
+
+.button a input{
+    width: 100%;
+}
+
+.register{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    font-size: 3vw;
+    color: var(--base_color);
+    text-decoration: none;
+}
+
+.register input{
+    background-color: var(--background_color);
+    border: none;
+
+    color: var(--main_color);
+    font-size: 3vw;
+    text-decoration: underline;
+}
+
+.avatar{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.avatar div{
+    width: 30%;
+}
+
+.avatar div img{
+    width: 70%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.avatar input[type="radio"]{
+	opacity: 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){   
+    .avatar div{
+        width: 28%;
+    }
+
+    h1{
+        font-size: 5vw;
+    }
+
+    div{
+        font-size: 3.3vw;
+    }
+
+    .input input, select{
+        font-size: 2.5vw;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    img{
+        width: 15%;
+    }
+
+    h1{
+        font-size: 2.2vw;
+        margin: 2%;
+    }
+    
+    div{
+        padding: 0;
+        font-size: 1.3vw;
+    }
+
+    fieldset{
+        margin: auto;
+        margin-top: 1%;
+        width: 80%;
+    }
+
+    .contain .input input, select{
+        width: 55%;
+    }
+
+    .contain{
+        margin-bottom: 1.5%;
+    }
+
+    .input input{
+        font-size: 2vw;
+    }
+
+    select{
+        margin: 1.7%;
+        padding: 1%;
+        font-size: 1.2vw;
+    }
+    
+    .input input{
+        width: 20%;
+        padding: 1%;
+        margin: 2%;
+    
+        font-size: 1.2vw;
+    }
+    
+    .input input:focus{
+        outline: none;
+        opacity: 1;
+    }
+    
+    .button input{
+        width: 10%;
+        height: 4vh;
+    
+        font-size: 1.3vw;
+        opacity: 0.7;
+        transition: .5s;
+    }
+
+    .button input:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+    
+    .button a{
+        width: 10%;
+    }
+
+    .register{
+        font-size: 1vw;
+    }
+    
+    .register input{
+        font-size: 1vw;
+        opacity: 0.7;
+        transition: .5s;
+    }
+
+    .register input:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .avatar div img{
+        width: 50%;
+        opacity: 0.5;
+    }
+
+    .avatar{
+        width: 50%;
+        margin-top: 1%;
+    }
+
+    .avatar img:hover{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--base_color);
+    
+        opacity: 0.7;
+        transition: 0.5s;
+    }
+
+    .avatar input[type=radio]:checked + label img{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--main_color);
+    
+        opacity: 1;
+        transition: 0.5s;
+    }
+}

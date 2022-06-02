@@ -116,10 +116,8 @@ class Model(ABC):
             where_values = list(where.values())
             where_keys = list(where.keys())
             query = f"SELECT {', '.join(fields)} FROM {self._table_name} WHERE {' AND '.join([f'{key} = ?' for key in where_keys])}"
-            print(query)
             value = tuple(where_values)
-            print(value)
-
+            
         rows = None
 
         try:
