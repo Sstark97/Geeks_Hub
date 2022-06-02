@@ -166,6 +166,19 @@ select{
     transition: 0.5s;
 }
 
+.icon-select {
+    color:white;
+    font-size: 15vw;
+    border: 1px solid rgb(255, 255, 255, .5);
+    border-radius: 50%;
+    margin-bottom: 2vh;
+}
+
+#avatar-btn {
+    border: none;
+    background: none;
+}
+
 .avatar input[type="radio"]{
 	opacity: 0;
 }
@@ -174,6 +187,7 @@ select{
     .avatar div{
         width: 28%;
     }
+
 
     h1{
         font-size: 5vw;
@@ -300,4 +314,19 @@ select{
         opacity: 1;
         transition: 0.5s;
     }
+
+    .icon-select {
+        color:white;
+        font-size: 9vw;
+        margin-bottom: 1vw;
+    }
+
+    .avatar .icon-select:hover{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--base_color);
+        opacity: 1;
+        transition: 0.5s;
+    }
+
 }

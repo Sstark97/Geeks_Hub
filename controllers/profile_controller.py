@@ -33,8 +33,32 @@ def profile_process():
         }
 
         profile.insert(form_data)
-        redirect("/select_profiles")
+        redirect("/select_profile")
+
 
 
     print(form.errors)
     return template('profile', rows=AVATARS, form=form)
+
+@get('/select_profile')
+def select_profile():
+    """Página para mostrar la selección de perfiles"""
+
+    with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
+        correo = fichero.readline()
+
+    profile = Profile(DATA_BASE)
+    rows = profile.select(['*'], {'Correo': correo})
+    form = ProfileForm(request.POST) 
+    return template('select_profiles', rows=rows, form=form)
+
+@post('/select_profile')
+def select_profile_process():
+    """Página para procesar la selección de perfiles"""
+    codigo = request.POST.get("profile_code")
+    print(codigo)
+    with open("./static/file/login.txt", "a", encoding="UTF8") as fichero:
+        fichero.write(f"\n{codigo}")
+
+    redirect('/')
+    # redirect('/home')
