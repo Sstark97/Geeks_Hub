@@ -37,6 +37,7 @@
 
 .content_container .image iframe{
     margin-top: 2%;
+    height: 28vh;
     width: 100%;
 }
 

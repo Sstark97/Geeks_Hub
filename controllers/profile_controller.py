@@ -25,8 +25,6 @@ def profile_process():
     with open("./static/file/login.txt", "r", encoding="UTF8") as fichero:
         correo = fichero.readline()
 
-    print(request.POST.get("avatar"))
-
     if form.btn_continue.data and request.POST.get("avatar") != None and form.validate():
         today = date.today()
         favorites.insert({"Fecha_Creacion": today.strftime("%Y-%m-%d")})
@@ -43,6 +41,4 @@ def profile_process():
         personal_profile.insert(form_data)
         redirect("/select_profiles")
 
-
-    print(form.errors)
     return template('profile', rows=AVATARS, form=form)

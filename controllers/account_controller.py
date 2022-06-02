@@ -22,7 +22,6 @@ def admin_accounts_view(email):
     """Página de visualización de una Cuenta para Administradores."""
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(['*'], {'Correo': email})
-    print(rows)
 
     return template('admin_view_account', rows=rows)
 
@@ -80,7 +79,6 @@ def login_process():
 
     if error:
 
-        print(form.errors)
         return template('login', form=form)
 
     return None

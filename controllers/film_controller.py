@@ -78,7 +78,6 @@ def films_view(cod):
         'Trailer' : row[10],
         'Duracion' : row[11]
     }
-    print(row)
 
     return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
 
@@ -88,9 +87,7 @@ def films_edit(cod):
     """Página de edición de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'], {'Cod_Pelicula': cod})[0]
-    print(row[8])
     formatted_date= datetime.strptime(row[8], '%Y-%m-%d')
-    print(formatted_date)
 
     form = FilmsForm(request.POST)
     form.title.data = row[1]
