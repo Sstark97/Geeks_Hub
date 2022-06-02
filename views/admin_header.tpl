@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/static/css/admin.css">
     <link rel="stylesheet" href="/static/css/admin_forms.css">
     <link rel="stylesheet" href="/static/css/admin_content.css">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <title>{{title}}</title>
 </head>
 <body>
