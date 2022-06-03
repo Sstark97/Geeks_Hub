@@ -36,7 +36,7 @@ p{
     top: 0px;
 
     width: 100%;
-    height: 5rem;
+    height: 11vh;
     background-color: var(--background_color);
 }
 
@@ -50,11 +50,17 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+}
+
+.logo_user a {
+    height: 100%;
 }
 
 
 .logo_user img{
-    width: 7rem;
+    width: auto;
+    height: 100%;
 }
 
 /* NAVEGADOR */
@@ -63,6 +69,7 @@ p{
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: 10vh;
 
     text-align: center;
 
@@ -74,11 +81,15 @@ p{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    height: 100%;
 }
 
 .nav_user li{
+    display: flex;
+    align-items: center;
     list-style: none;
     padding: 3%;
+    height: 100%;
 }
 
 .nav_user a, .nav_user label{
@@ -101,11 +112,10 @@ p{
     justify-content: center;
 
     position: fixed;
-    top: 0;
+    top: 11vh;
     left: 0;
 
     width: 100%;
-    height: 100%;
     background-color: var(--shadow_color);
 
     opacity: 0;
@@ -114,6 +124,7 @@ p{
 }
 
 .hamburguer_nav li{
+    display: none;
     width: 100%;
     padding: 8%;
 }
@@ -138,6 +149,11 @@ p{
 #check:checked ~ .hamburguer_nav{
     opacity: 1;
     transition: 0.5s;
+    height: 79vh;
+}
+
+#check:checked ~ .hamburguer_nav li {
+    display: inline;
 }
 
 /* FOOTER */
@@ -225,7 +241,7 @@ footer p{
         justify-content: left;
         align-items: center;
 
-        padding-left: 7%;
+        padding-left: 13%;
     }
 
     .menu_tablet a{
@@ -233,7 +249,7 @@ footer p{
         color: var(--base_color);
         font-size: 1.3rem;
 
-        padding-right: 4rem;
+        padding-right: 3rem;
     }
 
     /* NAVEGADOR */
@@ -282,8 +298,6 @@ footer p{
     }
 
     .logo_user{
-        width: 8%;
-
         justify-content: left;
         padding-left: 2%;
     }
@@ -293,7 +307,7 @@ footer p{
         justify-content: left;
         align-items: center;
 
-        padding-left: 2rem;
+        padding-left: 2vw;
     }
 
     .menu_tablet a{
@@ -322,8 +336,6 @@ footer p{
         position: relative;
         color: var(--base_color);
         font-size: 2.5rem;
-
-        padding-right: 1.5rem;
     }
 
     .search:hover, .user:hover{
@@ -348,7 +360,7 @@ footer p{
         z-index: 1000;
         display: block;
         position: absolute;
-        top: 4rem;
+        top: 10vh;
         right: 1rem;
 
         width: 12%;
@@ -367,7 +379,7 @@ footer p{
         text-decoration: none;
 
         display: flex;
-        justify-content: left;
+        justify-content: flex-start;
         align-items: center;
         color: var(--base_color);
         background-color: var(--background_color);
@@ -375,10 +387,15 @@ footer p{
 
     .dropdown ul li i{
         font-size: 2rem;
+        padding-right: 0.3rem;
     }
 
     .dropdown ul li:hover a{
         color: var(--main_color);
+    }
+
+    .dropdown .user{
+        padding: 0 1.5rem 0 1.5rem;
     }
 
     /* NAVEGADOR */
@@ -388,6 +405,10 @@ footer p{
     }
 
     /* FOOTER */
+
+    footer{
+        align-items: center;
+    }
     
     .icons li a{
         font-size: 2.5em;
@@ -430,7 +451,6 @@ footer p{
         margin-bottom: 10px;
     
         color: white;
-        text-align: center;
         font-size: 0.9em;
     }
 

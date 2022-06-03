@@ -1,4 +1,5 @@
 """Archivo de inicio de la aplicación."""
+import imp
 from bottle import get, run, template, static_file, error
 from controllers.film_controller import *
 from controllers.series_controller import *
@@ -8,11 +9,11 @@ from controllers.profile_controller import *
 from controllers.history_controller import *
 from controllers.favorites_controller import * 
 from controllers.admin_controller import *
+from controllers.home_controller import *
 
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-
     return template('landing.tpl')
 
 @error(404)
