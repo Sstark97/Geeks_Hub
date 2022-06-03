@@ -234,27 +234,15 @@ select{
 }
 
 .Basico{
-    /* background-color: #FFDD94; */
-    /* background-color: #F0EEEF; */
-    /* background-color: #FFE3B3; */
     background-color: #36AE7C;
-    /* background-color: #6BCB77; */
 }
 
 .Estandar{
-    /* background-color: #D0E6A5; */
-    /* background-color: #FFB15C; */
-    /* background-color: #FFC172; */
     background-color: #F9D923;
-    /* background-color: #FFD93D; */
 }
 
 .Premium{
-    /* background-color: #86E3CE; */
-    /* background-color: #469B72; */
-    /* background-color: #63CAA7; */
     background-color: #EB5353;
-    /* background-color: #FF6B6B; */
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px){   
