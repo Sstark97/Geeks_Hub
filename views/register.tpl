@@ -71,9 +71,9 @@
 
             <div class="suscription">
                 % cont = 1
-                %for suscription in suscriptions:
+                %for suscription in rows:
                     <div class="box">
-                        <input type="radio" name="suscription" id={{ f"radio{cont}" }} value="{{ suscription }}">
+                        <input type="radio" name="new_suscription" id={{ f"radio{cont}" }} value="{{ suscription[0] }}">
                         <label for={{ f"radio{cont}" }}>
                             <div class="{{suscription[0]}}">
                                 <h1>{{suscription[0]}}</h1>

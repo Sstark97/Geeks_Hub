@@ -188,7 +188,7 @@ select{
 
 .suscription .box{
     width: 70%;
-    margin-bottom: 1%;
+    margin-bottom: 6%;
     padding: 0;
 
     background-color: var(--shadow_color);
@@ -407,6 +407,7 @@ select{
 
     .suscription .box{
         width: 30%;
+        margin-bottom: 1%;
     }
 
     .box h1{
