@@ -1,44 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+% include('header.tpl')
 
-
-    <style>
-
-        .padre{
-            width: 100%;
-            height: 50vh;
-
-            overflow: auto;
-            white-space: nowrap;
-        }
-
-        .cuadro{
-            width: 20%;
-            height: 10vh;
-            background-color: aqua;
-
-            display: inline-block;
-            text-align: center;
-            
-        }
-
-    </style>
-</head>
-<body>
-    <div class="padre">
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
-        <div class="cuadro"></div>
+    <div class="slider">
+        <ul>
+            % for content in slider:
+                <li>
+                    <a href="/">
+                        % path = ""
+                        %if content[0].find("S") != -1:
+                            % path += content[4].replace("series","carrousel")
+                        %else:
+                            %path += content[4].replace("movies","carrousel")
+                        %end
+                        <h2>{{content[1]}}</h2>
+                        <img src="/{{path}}" alt="{{content[1]}}">
+                    </a>
+                </li>
+            % end
+        </ul>
     </div>
-</body>
-</html>
 
+    <h3>Favoritos</h3>
+
+    <div class="content_list">
+        %for favorite in favorites:
+                <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
+        %end
+    </div>
+
+    <h3>Top 10</h3>
+
+    <div class="content_list">
+        %for top in top_ten:
+            <img src="{{top[4]}}" alt="{{top[1]}}">
+        %end
+    </div>
+
+    % include('nav.tpl')
+% include('footer.tpl')

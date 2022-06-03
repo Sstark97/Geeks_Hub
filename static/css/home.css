@@ -1,9 +1,4 @@
 /* Encabezado imagenes */
-
-body{
-    -webkit-overflow-scrolling: touch;
-}
-
 html{
     background-color: var(--shadow_color);
 }
@@ -21,6 +16,7 @@ html{
 .slider ul{
     display: flex;
     width: 400%;
+    height: 100%;
 
     animation: cambio 20s infinite alternate;
 }
@@ -74,40 +70,16 @@ h3{
 }
 
 .content_list{
-    height: 20vh;
-
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch; 
-}
-
-.content_list ul{
-    height: 100%;
+    height: 15vh;
     display: flex;
 
-    scroll-snap-align: start;
-
+    overflow: auto;
+    white-space: nowrap;
 }
 
-.content_list ul li{
+.content_list a img{
     height: 100%;
-    padding: 2%;
-    list-style: none;
-
-}
-
-.content_list ul li a{
-    height: 100%;
-
-    text-decoration: none;
-    color: var(--base_color);
-}
-
-.content_list ul li a img{
-    max-height: 100%;
-
-    border-radius: 0.7rem;    
+    display: inline-block;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px){

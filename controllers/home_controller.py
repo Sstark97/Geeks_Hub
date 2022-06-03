@@ -23,17 +23,9 @@ def home_index():
         # Top Contenido para el Slider
         top_carrousel = films.union_content(4)
 
-        # Pegar en tpl cuando este carrousel
-        #         % path = ""
-        # %if content[0].find("S") != -1:
-        #     % path += content[4].replace("series","carrousel")
-        # %else:
-        #     %path += content[4].replace("movies","carrousel")
-
-        # <img src="/{{path}}" alt="{{content[1]}}">
-
         # Favoritos del Perfil
         cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        print(cod_perfil)
         profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada"], ["Portada", "Trailer", "Titulo", "Genero"])
 
         # Top 10 Contenido
