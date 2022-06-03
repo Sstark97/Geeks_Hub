@@ -1,7 +1,7 @@
 """Formulario de Registro de Series"""
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
-from config.config import GENRE, AGE_RATING
+from config.config import GENRES, AGE_RATING
 
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
@@ -18,7 +18,7 @@ class SeriesForm(Form):
     # calificacion_edad
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
-    genre = SelectField(label='Genero', choices=GENRE, validators = [validators.InputRequired()])
+    GENRES = SelectField(label='Genero', choices=GENRES, validators = [validators.InputRequired()])
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),

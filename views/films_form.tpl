@@ -23,8 +23,8 @@
                 {{ form.age_rating }}
             </div>
             <div class="input">
-                {{ form.genre.label }}
-                {{ form.genre }}
+                {{ form.GENRES.label }}
+                {{ form.GENRES }}
             </div>
             <div class="input">
                 {{ form.director.label }}

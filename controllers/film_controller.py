@@ -42,7 +42,7 @@ def films_process():
             'Cod_Pelicula': films.code_generator("P", "Cod_Pelicula"),
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,
@@ -92,7 +92,7 @@ def films_edit(cod):
     form = FilmsForm(request.POST)
     form.title.data = row[1]
     form.age_rating.data = row[2]
-    form.genre.data = row[3]
+    form.GENRES.data = row[3]
     form.director.data = row[4]
     form.average_score.data = row[5]
     form.productor.data = row[6]
@@ -121,7 +121,7 @@ def films_process_edit(cod):
         form_data = {
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,
