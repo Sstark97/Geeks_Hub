@@ -1,6 +1,7 @@
 /* Encabezado imagenes */
-html{
+html, body{
     background-color: var(--shadow_color);
+    overflow: hidden;
 }
 
 .slider{
@@ -74,11 +75,17 @@ h3{
     display: flex;
 
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     white-space: nowrap;
+}
+
+.content_list a {
+    margin-left: 2%;
 }
 
 .content_list a img{
     height: 100%;
+    border-radius: 0.5rem;
     display: inline-block;
 }
 

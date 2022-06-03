@@ -48,9 +48,6 @@ class Content(AutoGenerate):
                         FROM {FILM}
                         WHERE {where_clause}
                     """
-            
-            print(query)
-            
         rows = None
 
         try:
