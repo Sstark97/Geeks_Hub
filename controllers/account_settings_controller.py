@@ -44,7 +44,7 @@ def account_settings_process():
             form_data_account["Apellidos"] = form.surname.data
         if form.direction.data:
             form_data_account["Direccion"] = form.direction.data
-        if form.password.data:
+        if form.password.data and form.password.data == form.password_confirm.data:
             form_data_account["Contrasena"] = form.password.data
         if form.phone_number.data:
             form_data_account["Telefono"] = form.phone_number.data
