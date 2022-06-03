@@ -2,6 +2,7 @@
 import sys
 from bottle import get, request, template, redirect, post
 from models.account import Account
+from models.suscription import Suscription
 from forms.register_form import RegistrationForm
 from forms.login_form import LoginForm
 from config.config import DATA_BASE, ACCOUNT_FIELDS
@@ -29,7 +30,10 @@ def admin_accounts_view(email):
 def register():
     """Pagina de inicio de Registro"""
     form = RegistrationForm(request.POST)
-    return template('register', form=form)
+    suscriptions_data = Suscription(DATA_BASE)
+    suscriptions = suscriptions_data.select(["*"])
+
+    return template('register', form=form, rows=suscriptions)
 
 @post('/register')
 def register_process():
@@ -37,7 +41,7 @@ def register_process():
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
     
-    if form.register.data and form.validate():
+    if form.register.data and form.validate() and request.POST.get("new_suscription") != None:
         form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
@@ -45,14 +49,18 @@ def register_process():
             "Direccion" : form.direction.data,
             "Contrasena" : form.password.data,
             "Telefono" : form.phone_number.data,
-            "Tipo_Suscripcion" : form.suscription.data
+            "Tipo_Suscripcion" : request.POST.get("new_suscription")
         }
         
+        print(form_data)
         account.insert(form_data)
         local_storage.setItem("email",form.email.data)
         redirect('/profiles')
+
+    suscriptions_data = Suscription(DATA_BASE)
+    suscriptions = suscriptions_data.select(["*"])
         
-    return template('register', form=form)
+    return template('register', rows=suscriptions, form=form)
 
 @get('/login')
 def login():

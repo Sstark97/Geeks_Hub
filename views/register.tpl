@@ -62,15 +62,29 @@
                 </div>
             </div>
 
-            <div class="contain">
+            <div class="contain phone">
                 <div class="input">
                     {{ form.phone_number.label }}
                     {{ form.phone_number }}
                 </div>
-                <div class="input">
-                    {{ form.suscription.label }}
-                    {{ form.suscription }}
-                </div>
+            </div>
+
+            <div class="suscription">
+                % cont = 1
+                %for suscription in rows:
+                    <div class="box">
+                        <input type="radio" name="new_suscription" id={{ f"radio{cont}" }} value="{{ suscription[0] }}">
+                        <label for={{ f"radio{cont}" }}>
+                            <div class="{{suscription[0]}}">
+                                <h1>{{suscription[0]}}</h1>
+                            </div>
+                            <p>Precio: {{suscription[1]}}</p>
+                            <p>Calidad: {{suscription[2]}}</p>
+                            <p>Número de dispositivos: {{suscription[3]}}</p>
+                        </label>
+                    </div>
+                % cont += 1
+                %end
             </div>
 
             <div class="button">

@@ -54,20 +54,6 @@ div{
     font-size: 4vw;
 }
 
-.contain{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-}
-
-.contain .input{
-    width: 50%;
-}
-
-.contain .input input{
-    width: 70%;
-}
-
 .input input, select{
     width: 30%;
     padding: 3%;
@@ -175,11 +161,94 @@ select{
 	opacity: 0;
 }
 
+.contain{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.phone{
+    justify-content: center;
+}
+
+.contain .input{
+    width: 50%;
+}
+
+.contain .input input{
+    width: 70%;
+}
+
+.suscription{
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.suscription .box{
+    width: 70%;
+    margin-bottom: 6%;
+    padding: 0;
+
+    background-color: var(--shadow_color);
+    border-radius: 1rem;
+}
+
+.box h1{
+    width: 100%;
+}
+
+.box p{
+    width: 100%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-bottom: 3%;
+
+    text-align: left;
+}
+
+.box label{
+    width: 100%;
+}
+
+.box label div{
+    width: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    color: var(--background_color);
+}
+
+.suscription input[type="radio"]{
+    opacity: 0;
+    width: 100%;
+    height: 0;
+}
+
+.suscription input[type="radio"]:checked + label{
+    box-shadow: 0px 0px 14px 6px rgba(0,0,0,0.48);
+    transition: 0.5s;
+
+    border-radius: 1.2rem;
+}
+
+.Basico{
+    background-color: #36AE7C;
+}
+
+.Estandar{
+    background-color: #F9D923;
+}
+
+.Premium{
+    background-color: #EB5353;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px){   
     .avatar div{
         width: 28%;
     }
-
 
     h1{
         font-size: 5vw;
@@ -192,6 +261,17 @@ select{
     .input input, select{
         font-size: 2.5vw;
     }
+
+    .suscription{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .suscription .box{
+        width: 45%;
+        margin-bottom: 4%;
+    }
+
 }
 
 @media only screen and (min-width: 993px){
@@ -305,6 +385,25 @@ select{
     
         opacity: 1;
         transition: 0.5s;
+    }
+
+    .suscription{
+        margin-top: 2%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .suscription .box{
+        width: 30%;
+        margin-bottom: 1%;
+    }
+
+    .box h1{
+        font-size: 1.8vw;
+    }
+
+    .box p{
+        font-size: 1.3vw;
     }
 
 }
