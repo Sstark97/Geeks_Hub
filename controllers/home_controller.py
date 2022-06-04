@@ -25,6 +25,7 @@ def home_index():
 
         # Favoritos del Perfil
         cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
         profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada"], 
             ["Portada", "Trailer", "Titulo", "Genero"])
 
@@ -41,8 +42,4 @@ def home_index():
     else: 
         redirect('/')
     
-<<<<<<< HEAD
-    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre)
-=======
     return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
->>>>>>> 206d85c739471844844c845a6d04201065b688ba
