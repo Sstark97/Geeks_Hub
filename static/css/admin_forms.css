@@ -198,6 +198,21 @@ textarea {
     margin-right: 1rem;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 992px){
+
+    .form_container fieldset{
+        margin-top: 3%;
+    }
+
+    .edit_input label, .input label, .textarea_input label, .file_input p {
+        font-size: 2.6vw;
+    }
+
+    .edit_input input, select, .textarea_input textarea, .file{
+        font-size: 2vw;
+    }
+}
+
 @media only screen and (min-width: 992px) {
     .form_container fieldset{
         width: 100%;
