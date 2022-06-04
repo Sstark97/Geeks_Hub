@@ -39,6 +39,19 @@
         </a>
         %end
     </section>    
+
+    %for key, value in all_content.items():
+
+    <h3>{{key}}</h3>
+
+    <section class="content_list">
+        %for content_genre in value:
+        <a href="/">
+            <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
+        </a>
+        %end
+    </section>    
+    %end
 </div>
 
     % include('nav.tpl')

@@ -5,7 +5,7 @@ element.forEach(content => {
         event.preventDefault();
 
         content.scrollBy({
-            left: event.deltaY < 0 ? -30 : 30,
+            left: event.deltaY < 0 ? -40 : 40,
         });
     });
 });
