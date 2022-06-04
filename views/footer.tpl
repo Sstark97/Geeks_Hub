@@ -13,16 +13,6 @@
             <p>©2022 Geeks Hub | Todos los derechos reservados</p>
         </footer>
 
-        <script>
-            const element = document.querySelector(".content_list");
-
-            element.addEventListener('wheel', (event) => {
-            event.preventDefault();
-
-                element.scrollBy({
-                    left: event.deltaY < 0 ? -30 : 30,
-                });
-            });
-        </script>
+        <script src="/static/js/scroll.js"></script>
 </body>
 </html>
