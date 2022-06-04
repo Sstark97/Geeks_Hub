@@ -43,7 +43,7 @@
                         <i class='bx bx-search-alt-2 search'></i>
                     </a>
                     <div class="dropdown">
-                        <i class='bx bxs-user-circle user'></i>
+                        <img src="{{avatar}}" alt="avatar">
                         <ul>
                             <li><a href=""><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
                             <hr>

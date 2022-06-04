@@ -57,7 +57,6 @@ p{
     height: 100%;
 }
 
-
 .logo_user img{
     width: auto;
     height: 100%;
@@ -78,6 +77,9 @@ p{
 }
 
 .nav_user ul{
+    height: 100%;
+    width: 100%;
+    padding: 3%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -86,9 +88,10 @@ p{
 .nav_user li{
     display: flex;
     align-items: center;
+    justify-content: center;
     list-style: none;
-    padding: 3%;
     height: 100%;
+    width: 30%;
 }
 
 .nav_user a, .nav_user label{
@@ -104,6 +107,17 @@ p{
 }
 
 /* MENU HAMBURGUESA */
+
+.hamburguer_menu{
+    width: 100%;
+    height: 2.5rem;
+    font-size: 0 !important;
+}
+
+.hamburguer_menu img{
+    height: 100%;
+    border-radius: 50%;
+}
 
 .hamburguer_nav{
     display: flex;
@@ -227,7 +241,6 @@ footer p{
         display: flex;
     }
 
-
     .logo_user{
         width: 15%;
 
@@ -258,12 +271,16 @@ footer p{
         font-size: 1rem;
     }
 
-    nav a{
-        font-size: 3rem;
+    .nav_user a{
+        font-size: 4rem;
     }
 
     .serie, .movie{
         display: none;
+    }
+
+    .hamburguer_menu{
+        height: 4rem;
     }
 
     /* MENU HAMBURGUESA */
@@ -306,13 +323,13 @@ footer p{
         justify-content: left;
         align-items: center;
 
-        padding-left: 2vw;
+        padding-left: 1vw;
     }
 
     .menu_tablet a{
         text-decoration: none;
         color: var(--base_color);
-        font-size: 1.3rem;
+        font-size: 1.7rem;
 
         padding-right: 1.5rem;
     }
@@ -334,7 +351,7 @@ footer p{
     .menu_desktop i{
         position: relative;
         color: var(--base_color);
-        font-size: 2.5rem;
+        font-size: 3.2rem;
     }
 
     .search:hover, .user:hover{
@@ -343,8 +360,17 @@ footer p{
 
     /* DESPLEGABLE */
 
-    .dropdown{
+    .menu_desktop{
         width: 100%;
+        justify-content: flex-end;
+        margin-right: 3.5%;
+    }
+
+    .menu_desktop a{
+        margin: 3.5%;
+    }
+
+    .dropdown{
         height: 100%;
 
         display: flex;
@@ -363,18 +389,20 @@ footer p{
         right: 1rem;
 
         width: 12%;
+        background-color: var(--background_color);
     }
     
     .dropdown ul li{
         width: 100%;
+        list-style: none;
     }
     
-    .dropdown a, .dropdown li{
+    .dropdown a{
         width: 100%;
         height: 100%;
         padding: 4%;
 
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         text-decoration: none;
 
         display: flex;
@@ -384,9 +412,14 @@ footer p{
         background-color: var(--background_color);
     } 
 
+    .dropdown img{
+        height: 3.2rem;
+        border-radius: 50%;
+    }
+
     .dropdown ul li i{
         font-size: 2rem;
-        padding-right: 0.3rem;
+        padding-right: 1rem;
     }
 
     .dropdown ul li:hover a{
