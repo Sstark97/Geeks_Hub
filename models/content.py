@@ -56,7 +56,6 @@ class Content(AutoGenerate):
             if where == 0:
                 cursor.execute(query)
             elif len(list(where.values())) == 1:
-                print(value)
                 cursor.execute(query, (value,value,))
             rows = cursor.fetchall()
             conn.close()

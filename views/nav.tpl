@@ -25,7 +25,7 @@
         <li>
             <input type="checkbox" id="check">
             <label for="check" class="hamburguer_menu">
-                <i class='bx bxs-user' ></i>
+                <img src="{{avatar}}" alt="avatar">
                 <p>Cuenta</p>
             </label>
             <ul class="hamburguer_nav">

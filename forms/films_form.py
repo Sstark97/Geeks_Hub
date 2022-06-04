@@ -1,5 +1,6 @@
 """Formulario de Registro de Peliculas"""
 import decimal
+from tkinter import Label
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
 from config.config import GENRES, AGE_RATING
 
@@ -7,7 +8,7 @@ class FilmsForm(Form):
     """Clase para el formulario de registro de peliculas"""
     title  = StringField('Título', [
                                     validators.InputRequired(), 
-                                    validators.Length(min=6, max=50), 
+                                    validators.Length(min=6, max=50)
                                 ])
     # calificacion_edad
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
@@ -48,7 +49,7 @@ class FilmsForm(Form):
                                 ])
 
     duration = IntegerField('Duración', 
-                               [validators.DataRequired("El campo es obligatorio"), 
+                                [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=60, max=200, message="El campo debe ser un número entre 6 y 200")],
                                 default=1, 
                             #    render_kw={'class':'myclass'}

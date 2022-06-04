@@ -67,6 +67,54 @@ div{
     opacity: 0.6;
 }
 
+.edit_input{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 5%;
+}
+
+.contain .edit_input input{
+    width: 85%;
+}
+
+.edit_input input{
+    width: 70%;
+    border: solid 1.5px var(--main_color);
+    border-radius: 1rem;
+    background: none;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--base_color);
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
+    opacity: 0.6;
+
+    overflow: hidden;
+}
+
+.edit_input label{
+    position: absolute;
+    color: var(--base_color);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.edit_input input:focus, .edit_input input:valid{
+    outline: none;
+    border: 1.5px solid var(--main_color);
+}
+
+.edit_input input:focus ~ label, .edit_input input:valid ~ label{
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--background_color);
+    padding: 0 .2em;
+    color: var(--main_color);
+}
+
 select{
     width: 70%;
 }
@@ -171,14 +219,6 @@ select{
     justify-content: center;
 }
 
-.contain .input{
-    width: 50%;
-}
-
-.contain .input input{
-    width: 70%;
-}
-
 .suscription{
     width: 100%;
 
@@ -245,6 +285,15 @@ select{
     background-color: #EB5353;
 }
 
+.avatar input[type=radio]:checked + label img{
+    border-width: 20%;
+    border-style: solid;
+    border-color: var(--main_color);
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 992px){   
     .avatar div{
         width: 28%;
@@ -258,9 +307,19 @@ select{
         font-size: 3.3vw;
     }
 
-    .input input, select{
-        font-size: 2.5vw;
+    .edit_input input{
+        width: 50%;
+        height: 5vh;
     }
+
+    .edit_input label{
+        font-size: 2.6vw;
+    }
+
+    .edit_input input{
+        font-size: 2vw;
+    }
+
 
     .suscription{
         flex-direction: row;
@@ -270,6 +329,10 @@ select{
     .suscription .box{
         width: 45%;
         margin-bottom: 4%;
+    }
+
+    .phone{
+        width: 50%;
     }
 
 }
@@ -295,8 +358,9 @@ select{
         width: 80%;
     }
 
-    .contain .input input, select{
-        width: 55%;
+    .edit_input input{
+        width: 30%;
+        height: 6vh;
     }
 
     .contain{
@@ -377,16 +441,7 @@ select{
         opacity: 0.7;
         transition: 0.5s;
     }
-
-    .avatar input[type=radio]:checked + label img{
-        border-width: 20%;
-        border-style: solid;
-        border-color: var(--main_color);
     
-        opacity: 1;
-        transition: 0.5s;
-    }
-
     .suscription{
         margin-top: 2%;
         flex-direction: row;
@@ -404,6 +459,10 @@ select{
 
     .box p{
         font-size: 1.3vw;
+    }
+
+    .phone{
+        width: 50%;
     }
 
 }

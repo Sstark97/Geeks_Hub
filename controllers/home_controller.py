@@ -41,4 +41,8 @@ def home_index():
     else: 
         redirect('/')
     
+<<<<<<< HEAD
     return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre)
+=======
+    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
+>>>>>>> 206d85c739471844844c845a6d04201065b688ba

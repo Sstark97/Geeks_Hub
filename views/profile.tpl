@@ -16,9 +16,9 @@
     <h1>Creación de Perfil</h1>
     <form method="POST" action="/profiles" autocomplete="off">
         <fieldset>
-            <div class="input">
-                {{ form.nickname.label }}
+            <div class="edit_input">
                 {{ form.nickname }}
+                {{ form.nickname.label }}
             </div>    
             <div class="input"><label for="avatar">Avatar</label></div>
             <div class="avatar">

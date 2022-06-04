@@ -6,7 +6,7 @@ from config.config import GENRES, AGE_RATING
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
     season = IntegerField('N_Temporada', 
-                               [validators.DataRequired("El campo es obligatorio"), 
+                                [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
                             #    render_kw={'class':'myclass'}
@@ -54,7 +54,7 @@ class SeriesForm(Form):
                                 ])
 
     chapters = IntegerField('Capítulos', 
-                               [validators.DataRequired("El campo es obligatorio"), 
+                                [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
                             #    render_kw={'class':'myclass'}

@@ -14,13 +14,13 @@
 
     <form method="POST" action="/login" autocomplete="off">
         <fieldset>
-            <div class="input">
-                {{ form.email.label }}
+            <div class="edit_input">
                 {{ form.email }}
+                {{ form.email.label }}
             </div>
-            <div class="input">
-                {{ form.password.label }}
+            <div class="edit_input">
                 {{ form.password }}
+                {{ form.password.label }}
             </div>
             <div class="button">
                 <a href="/select_profiles">

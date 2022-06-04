@@ -42,12 +42,15 @@
 }
 
 .back{
-    display: flex;
-    align-items: center;
-
     width: 85%;
     margin: 0 auto;
+}
 
+.back a{
+    width: 4vw;
+    display: flex;
+    align-items: center;
+    
     text-decoration: none;
     color: var(--background-color);
 }
@@ -64,7 +67,7 @@
 
 @media only screen and (min-width: 768px) and (max-width: 992px){
     .content_container{
-        margin-top: 5%;
+        margin-top: 2%;
     }
 
     #content_title, .content_container .image, #content_info, #sinopsis{
@@ -112,7 +115,7 @@
     .content_container{
         width: 80%;
         margin: 0 auto;
-        margin-top: 2%;
+        margin-top: 1%;
         display: flex;
         flex-wrap: wrap;
     }
@@ -189,13 +192,13 @@
 
     .back .icons{
         padding-top: 1rem;
-        transition: 0.3s;
+        transition: 0.2s;
         opacity: 0;
     }
 
-    .back:hover .icons{
-        margin-left: 2%;
-        transition: 0.3s;
+    .back a:hover .icons{
+        margin-left: 5%;
+        transition: 0.2s;
         opacity: 1;
     }
     

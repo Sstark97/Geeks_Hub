@@ -30,42 +30,42 @@
     <form method="POST" action="/register" autocomplete="off">
         <fieldset>
             <div class="contain">
-                <div class="input">
-                    {{ form.name.label }}
+                <div class="edit_input">
                     {{ form.name }}
+                    {{ form.name.label }}
                 </div>
-                <div class="input">
-                    {{ form.surname.label }}
+                <div class="edit_input">
                     {{ form.surname }}
+                    {{ form.surname.label }}
                 </div>
             </div>
 
             <div class="contain">
-                <div class="input">
-                    {{ form.email.label }}
+                <div class="edit_input">
                     {{ form.email }}
+                    {{ form.email.label }}
                 </div>
-                <div class="input">
-                    {{ form.direction.label }}
+                <div class="edit_input">
                     {{ form.direction }}
+                    {{ form.direction.label }}
                 </div>
             </div>
 
             <div class="contain">
-                <div class="input">
-                    {{ form.password.label }}
+                <div class="edit_input">
                     {{ form.password }}
+                    {{ form.password.label }}
                 </div>
-                <div class="input">
-                    {{ form.password_confirm.label }}
+                <div class="edit_input">
                     {{ form.password_confirm }}
+                    {{ form.password_confirm.label }}
                 </div>
             </div>
 
             <div class="contain phone">
-                <div class="input">
-                    {{ form.phone_number.label }}
+                <div class="edit_input">
                     {{ form.phone_number }}
+                    {{ form.phone_number.label }}
                 </div>
             </div>
 
