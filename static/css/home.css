@@ -82,6 +82,8 @@ h3{
 .content_list a {
     margin-left: 2%;
     display: flex;
+
+    position: relative;
 }
 
 .content_list a img{
@@ -113,5 +115,19 @@ h3{
     .content_list::-webkit-scrollbar {
         width: 0;
     }
+
+    body::-webkit-scrollbar{
+        width: 13px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: var(--base_color);        /* color of the tracking area */
+    }
     
+    body::-webkit-scrollbar-thumb {
+        background-color: var(--main_color);    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid var(--base_color);  /* creates padding around scroll thumb */
+    }
+
 }
