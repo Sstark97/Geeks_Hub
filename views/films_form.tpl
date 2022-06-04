@@ -38,7 +38,7 @@
                 {{ form.productor }}
                 {{ form.productor.label }}
             </div>
-            <div class="edit_input">
+            <div class="date_input">
                 {{ form.release_date }}
                 {{ form.release_date.label }}
             </div>
@@ -54,7 +54,7 @@
                 {{ form.trailer }}
                 {{ form.trailer.label }}
             </div>
-            <div class="edit_input">
+            <div class="date_input">
                 {{ form.duration }}
                 {{ form.duration.label }}
             </div>

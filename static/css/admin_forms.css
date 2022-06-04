@@ -26,7 +26,7 @@ fieldset{
     font-family: var(--main_font);
 }
 
-.edit_input, .input, .textarea_input, .file_input{
+.edit_input, .input, .textarea_input, .file_input, .date_input{
     width: 100%;
     position: relative;
     display: flex;
@@ -36,7 +36,7 @@ fieldset{
     margin-bottom: 5%;
 }
 
-.edit_input input, select, .textarea_input textarea, .file{
+.edit_input input, select, .textarea_input textarea, .file, .date_input input{
     width: 70%;
     border: solid 1.5px var(--main_color);
     border-radius: 1rem;
@@ -50,7 +50,7 @@ fieldset{
     overflow: hidden;
 }
 
-.edit_input label, .input label, .textarea_input label, .file_input p{
+.edit_input label, .input label, .textarea_input label, .file_input p, .date_input label{
     position: absolute;
     color: var(--background_color);
     pointer-events: none;
@@ -70,6 +70,13 @@ fieldset{
 .input select:focus ~ label, .input select:valid ~ label,
 .file_input  p,
 .textarea_input textarea:focus ~ label, .textarea_input textarea:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--base_color);
+    padding: 0 .2em;
+    color: var(--main_color);
+}
+
+.input select ~ label, .date_input input ~ label{
     transform: translateY(-50%) scale(0.8);
     background-color: var(--base_color);
     padding: 0 .2em;
@@ -194,11 +201,11 @@ textarea {
         margin-top: 3%;
     }
 
-    .edit_input label, .input label, .textarea_input label, .file_input p {
+    .edit_input label, .input label, .textarea_input label, .file_input p, .date_input label {
         font-size: 2.6vw;
     }
 
-    .edit_input input, select, .textarea_input textarea, .file{
+    .edit_input input, select, .textarea_input textarea, .file, .date_input input{
         font-size: 2vw;
     }
 }
@@ -213,15 +220,15 @@ textarea {
         margin-top: 3%;
     }
 
-    .edit_input, .input, .textarea_input, .file_input{
+    .edit_input, .input, .textarea_input, .file_input, .date_input{
         width: 40%;
     }
 
-    .edit_input label, .input label, .textarea_input label, .file_input p {
+    .edit_input label, .input label, .textarea_input label, .file_input p, .date_input label{
         font-size: 1.4vw;
     }
 
-    .edit_input input, select, .textarea_input textarea, .file{
+    .edit_input input, select, .textarea_input textarea, .file, .date_input input{
         font-size: 1vw;
     }
 
