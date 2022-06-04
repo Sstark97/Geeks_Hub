@@ -26,7 +26,7 @@ fieldset{
     font-family: var(--main_font);
 }
 
-.input {
+/* .input {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -34,23 +34,63 @@ fieldset{
     padding: 2%;
 
     font-size: 3vw;
+} */
+
+.edit_input, .input, .textarea_input, .file_input{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 5%;
 }
 
-.input input, select, .file{
-    width: 60%;
+.edit_input input, select, .textarea_input textarea, .file{
+    width: 70%;
+    border: solid 1.5px var(--main_color);
+    border-radius: 1rem;
+    background: none;
     padding: 1rem;
-    border: none;
-    border-bottom: 2px solid var(--main_color);
+    font-size: 1rem;
     color: var(--background_color);
-    background-color: var(--base_color);
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
     opacity: 0.6;
+
+    overflow: hidden;
 }
 
-.file {
+.edit_input label, .input label, .textarea_input label, .file_input p{
+    position: absolute;
+    color: var(--background_color);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.edit_input input:focus, .edit_input input:valid,
+.input select:focus, .input select:valid,
+.file_input span:focus, .file_input span:valid,
+.textarea_input textarea:focus, .textarea_input textarea:valid {
+    outline: none;
+    border: 1.5px solid var(--main_color);
+}
+
+.edit_input input:focus ~ label, .edit_input input:valid ~ label,
+.input select:focus ~ label, .input select:valid ~ label,
+.file_input  p,
+.textarea_input textarea:focus ~ label, .textarea_input textarea:valid ~ label {
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--base_color);
+    padding: 0 .2em;
+    color: var(--main_color);
+}
+
+.file_input {
     text-align: center;
 }
 
-.file span {
+.file_input span {
     margin-bottom: 1rem;
 }
 
@@ -60,7 +100,7 @@ textarea {
     height: 20vh;
 }
 
-.input input:focus{
+.input input:focus, .edit_input input:focus{
     outline: none;
     opacity: 1;
 }
@@ -81,14 +121,14 @@ textarea {
     border: none;
     border-radius: 10px;
 
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 
-.input input[type="file"]{
+.file_input input[type="file"]{
     display: none;
 }
 
-.input input[type="file"]::before{
+.file_input input[type="file"]::before{
     content: "Upload";
 }
 
@@ -112,7 +152,7 @@ textarea {
     border: none;
     border-radius: 10px;
 
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 
 .btn_cancel a {
@@ -159,8 +199,25 @@ textarea {
 }
 
 @media only screen and (min-width: 992px) {
-    .input, select, input {
-        font-size: 1.5vw;
+    .form_container fieldset{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 3%;
+    }
+
+    .edit_input, .input, .textarea_input, .file_input{
+        width: 40%;
+    }
+
+    .edit_input label, .input label, .textarea_input label, .file_input p {
+        font-size: 1.4vw;
+    }
+
+    .edit_input input, select, .textarea_input textarea, .file{
+        font-size: 1vw;
     }
 
     .button input, .btn_cancel{
