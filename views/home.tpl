@@ -1,5 +1,6 @@
 % include('header.tpl')
 
+<div id="container">
     <div class="slider">
         <ul>
             % for content in slider:
@@ -21,23 +22,24 @@
 
     <h3>Favoritos</h3>
 
-    <div class="content_list">
+    <section class="content_list">
         %for favorite in favorites:
             <a href="/">
                 <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
             </a>
         %end
-    </div>
+    </section>
 
     <h3>Top 10</h3>
 
-    <div class="content_list">
+    <section class="content_list">
         %for top in top_ten:
         <a href="/">
             <img src="{{top[4]}}" alt="{{top[1]}}">
         </a>
         %end
-    </div>
+    </section>    
+</div>
 
     % include('nav.tpl')
 % include('footer.tpl')

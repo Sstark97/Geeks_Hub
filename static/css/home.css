@@ -1,7 +1,6 @@
 /* Encabezado imagenes */
 html, body{
     background-color: var(--shadow_color);
-    overflow: hidden;
 }
 
 .slider{
@@ -71,22 +70,23 @@ h3{
 }
 
 .content_list{
-    height: 15vh;
+    height: 19vh;
     display: flex;
 
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    /* -webkit-overflow-scrolling: touch;
+    white-space: nowrap; */
 }
 
 .content_list a {
     margin-left: 2%;
+    display: flex;
 }
 
 .content_list a img{
     height: 100%;
     border-radius: 0.5rem;
-    display: inline-block;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px){
@@ -105,4 +105,13 @@ h3{
     .slider h2{
         font-size: 4vw;
     }
+
+    .content_list{
+        height: 30vh;
+    }
+
+    .content_list::-webkit-scrollbar {
+        width: 0;
+    }
+    
 }
