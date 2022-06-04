@@ -25,8 +25,8 @@ def home_index():
 
         # Favoritos del Perfil
         cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
-        print(cod_perfil)
-        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada"], ["Portada", "Trailer", "Titulo", "Genero"])
+        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada"], 
+            ["Portada", "Trailer", "Titulo", "Genero"])
 
         # Top 10 Contenido
         top_ten = films.union_content(10)

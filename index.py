@@ -1,5 +1,4 @@
 """Archivo de inicio de la aplicación."""
-import imp
 from bottle import get, run, template, static_file, error
 from controllers.film_controller import *
 from controllers.series_controller import *

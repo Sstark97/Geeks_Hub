@@ -52,7 +52,6 @@ def register_process():
             "Tipo_Suscripcion" : request.POST.get("new_suscription")
         }
         
-        print(form_data)
         account.insert(form_data)
         local_storage.setItem("email",form.email.data)
         redirect('/profiles')
@@ -83,7 +82,6 @@ def login_process():
 
             local_storage.setItem("email", form.email.data)
 
-            print(local_storage.getItem("email"))
             redirect('/select_profile')
 
 
@@ -92,3 +90,4 @@ def login_process():
         return template('login', form=form)
 
     return None
+    

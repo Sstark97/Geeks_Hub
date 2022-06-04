@@ -72,21 +72,16 @@ h3{
 .content_list{
     height: 19vh;
     display: flex;
-
-    overflow-x: scroll;
-    overflow-y: hidden;
-    /* -webkit-overflow-scrolling: touch;
-    white-space: nowrap; */
 }
 
-.content_list a {
-    margin-left: 2%;
-    display: flex;
+.content_list a{
+    border-radius: 0.7rem;
+    margin-left: 1.5rem;
 }
 
-.content_list a img{
-    height: 100%;
-    border-radius: 0.5rem;
+.content_list a img {
+    height: 18vh;
+    border-radius: 0.7rem;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px){
@@ -110,8 +105,19 @@ h3{
         height: 30vh;
     }
 
-    .content_list::-webkit-scrollbar {
-        width: 0;
+    .content_list a img {
+        height: 30vh;
+        border-radius: 0.7rem;
     }
-    
+
+    .content_list a{
+        opacity: 0.6;
+        transition: all 0.3s;
+    }
+
+    .content_list a:hover{
+        opacity: 1;
+        transition: all 0.3s;
+    }
+
 }

@@ -16,6 +16,10 @@
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- Estilos Slick Menu-->
+    <link rel="stylesheet" href="/static/css/slick.css">
+    <link rel="stylesheet" href="/static/css/slick-theme.css">
+
     <!-- Estilos -->
 
     <link rel="stylesheet" href="/static/css/global.css">

@@ -13,6 +13,10 @@
             <p>©2022 Geeks Hub | Todos los derechos reservados</p>
         </footer>
 
-        <script src="/static/js/scroll.js"></script>
+        <!-- JQuery y Slick Menu-->
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/slick.min.js"></script>
+
+        <script src="/static/js/slick_menu.js"></script>
 </body>
 </html>
