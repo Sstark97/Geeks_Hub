@@ -26,6 +26,10 @@
         %for favorite in favorites:
             <a href="/">
                 <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
+                <div class="video">
+                    <div class="caja"></div>
+                    <!-- <iframe src="{{favorite[1]}}" frameborder="0"></iframe> -->
+                </div>
             </a>
         %end
     </section>
@@ -36,6 +40,10 @@
         %for top in top_ten:
         <a href="/">
             <img src="{{top[4]}}" alt="{{top[1]}}">
+            <div class="video">
+                <div class="caja"></div>
+                <!-- <iframe src="{{top[5]}}" frameborder="0"></iframe> -->
+            </div>
         </a>
         %end
     </section>    
@@ -46,11 +54,20 @@
 
     <section class="content_list">
         %for content_genre in value:
+<<<<<<< HEAD
             %if content_genre[3] == 0 or content_genre[3] == 1:
                 <a href="/">
                     <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
                 </a>
             %end
+=======
+        <a href="/">
+            <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
+            <div class="video">
+                <!-- <iframe src="{{content_genre[5]}}" frameborder="0"></iframe> -->
+            </div>
+        </a>
+>>>>>>> b29f9ae95fbc6fe0e10cd01319bf5c2ec7ee4157
         %end
     </section>    
     %end
