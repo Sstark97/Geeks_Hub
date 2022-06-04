@@ -11,8 +11,8 @@ FAVORITES = "Favoritos"
 FAVORITES_CONTENT = "Contenido_Favorito"
 
 #Formularios
-AGE_RATING = (('', 'Selecciona una Calificación'), ('tp', 'Tp'), ('8', '8'), ('12', '12'), ('16', '16'), ('18', '18'))
-GENRES = (('', 'Selecciona un Genéro'), ('Suspense', 'Suspense'), ('Terror', 'Terror'), ('Comedia', 'Comedia'), 
+AGE_RATING = (('', ''), ('tp', 'Tp'), ('8', '8'), ('12', '12'), ('16', '16'), ('18', '18'))
+GENRES = (('', ''), ('Suspense', 'Suspense'), ('Terror', 'Terror'), ('Comedia', 'Comedia'), 
         ('Accion', 'Accion'), ('Drama', 'Drama'), ('Fantasia','Fantasia'), ('Romance','Romance'), ('Aventura', 'Aventura'),
         ('Ciencia Ficcion', 'Ciencia Ficcion'), ('Belico', 'Belico'), ('Musical', 'Musical'), ('Documental', 'Documental'))
 
