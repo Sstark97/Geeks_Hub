@@ -1,0 +1,281 @@
+html,
+body {
+  background-color: var(--shadow_color);
+  color: var(--base_color);
+  font-family: var(--main_font);
+}
+
+.container-settings {
+    text-align: center;
+}
+
+fieldset{
+    width: 100%;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.form-label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+#form-submit {
+    font-size: 0.8rem;
+}
+
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+
+    font-size: 1.1rem;
+}
+
+.input input, select{
+    width: 60%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 2px solid var(--main_color);
+    color: var(--base_color);
+    background-color: var(--shadow_color);
+    opacity: 0.6;
+}
+
+
+.input input:focus{
+    outline: none;
+    opacity: 1;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+}
+
+.button input{
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 10px;
+
+}
+
+.button a{
+    text-decoration: none;
+    width: 20%;
+}
+
+.button a input{
+    width: 100%;
+}
+
+.btn_cancel{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+    text-align: center;
+
+    border: none;
+    border-radius: 10px;
+    background-color: var(--base_color);
+
+    font-size: 2.5vw;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.avatar{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.avatar div{
+    width: 30%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.avatar div img{
+    width: 60%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.avatar div p {
+    font-size: 1.1rem;
+}
+
+#avatar-btn {
+    border: none;
+    background: none;
+}
+
+.avatar input[type="radio"]{
+	opacity: 0;
+}
+
+.hr {
+    width: 70%;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px){
+    #form-submit {
+        font-size: 0.9rem;
+    }
+
+    .btn_cancel a {
+        color: #000;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    #btn_continue, .button a {
+        font-size: 1rem;
+    }
+
+    .button a input {
+        font-size: 1rem;
+    }
+
+    .avatar div img{
+        width: 40%;
+        border-radius: 50%;
+    
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+    .title {
+        font-size: 1.3rem;
+    }
+
+    #form-submit {
+        font-size: 1rem;
+    }
+
+    .btn_cancel a {
+        color: #000;
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .input, select, input {
+        font-size: 1.5vw;
+    }
+
+    .button input, .btn_cancel{
+        width: 10%;
+        height: 4vh;
+    
+        font-size: 1.3vw;
+        opacity: 0.7;
+        transition: .5s;
+    }
+
+    .button input:hover, .btn_cancel:hover{
+        opacity: 1;
+        transition: .5s;
+    }
+
+    .button a{
+        width: 10%;
+    }
+
+    .btn_cancel a {
+        width: 100%;
+    }
+
+    .btn {
+        width: 7%;
+        height: auto;
+        padding: 0.3rem;
+        font-size: 1vw;
+    }
+
+    .delete_form {
+        justify-content: initial;
+    }
+
+    fieldset{
+        margin: 0 auto;
+        width: 80%;
+    
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    fieldset div {
+        flex-basis: 50%;
+    }
+
+    .avatar div img{
+        width: 50%;
+        opacity: 0.5;
+    }
+
+    .avatar{
+        width: 50%;
+        margin-top: 1%;
+    }
+
+    .avatar img:hover{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--base_color);
+    
+        opacity: 0.7;
+        transition: 0.5s;
+    }
+
+    .avatar input[type=radio]:checked + label img{
+        border-width: 20%;
+        border-style: solid;
+        border-color: var(--main_color);
+    
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+    .avatar div p {
+        font-size: 1.2rem;
+    }
+    
+}
