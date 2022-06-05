@@ -20,15 +20,17 @@
         </ul>
     </div>
 
-    <h3>Favoritos</h3>
+    % if len(favorites) > 0:
+        <h3>Favoritos</h3>
 
-    <section class="content_list">
-        %for favorite in favorites:
-            <a href="/">
-                <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
-            </a>
-        %end
-    </section>
+        <section class="content_list">
+            %for favorite in favorites:
+                <a href="/">
+                    <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
+                </a>
+            %end
+        </section>
+    %end
 
     <h3>Top 10</h3>
 
