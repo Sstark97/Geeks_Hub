@@ -1,6 +1,5 @@
 """Formulario de Registro de Peliculas"""
 import decimal
-from tkinter import Label
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
 from config.config import GENRES, AGE_RATING
 
