@@ -3,6 +3,7 @@ from os import remove
 from datetime import datetime
 from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
+from utils.set_time import set_time
 from models.film import Film
 from models.profile import Profile
 from config.config import DATA_BASE, FILM_FIELDS
@@ -65,6 +66,9 @@ def admin_films_view(cod):
     """Página de visualización de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
+    print(row[11])
+    duration = set_time(row[11])
+    print(duration)
 
     film = {
         'Cod_Pelicula': row[0],
@@ -81,7 +85,7 @@ def admin_films_view(cod):
         'Duracion' : row[11]
     }
 
-    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
+    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod, duration=duration)
 
 @get('/films/<cod>')
 def view_films(cod):
