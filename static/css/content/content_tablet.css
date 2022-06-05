@@ -1,0 +1,49 @@
+.back{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.content_container{
+    margin-bottom: 11.5vh;
+}
+
+#content_title .title h3,
+.content_container #sinopsis .title h3{
+    font-size: 2rem;
+}
+
+#content_title .title p,
+.content_container #sinopsis .title p,
+.content_container #sinopsis p,
+.content_container #other_content div p,
+.content_container #seasons select{
+    font-size: 1.2rem;
+}
+
+.content_container #seasons{
+    height: 4em
+}
+
+.content_container #seasons::after{
+    top: 0.5em;
+}
+
+.content_container #other_content div h4{
+    font-size: 1.5rem
+}
+
+.content_container #sinopsis .title i{
+    font-size: 1.5rem;
+}
+
+#content_title img{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+}
+
+.content_container #trailer iframe{
+    width: 80%;
+    height: 30vh;
+}
+

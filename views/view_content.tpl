@@ -10,7 +10,11 @@
         <div id="content_title">
             <img src="/{{content.get('Portada')}}" alt="{{content.get('Titulo')}}">
             <div class="title">
-                <h3 class="bg_content">{{content.get("Titulo")}}</h3>
+                % if content_type == "series":
+                    <h3 class="bg_content">{{content.get("Titulo")}} T{{content.get("N_Temporada")}}</h3>
+                % else:
+                    <h3 class="bg_content">{{content.get("Titulo")}}</h3>
+                % end
                 <p>Dirigido por {{content.get("Director")}}</p>
             </div>
         </div>
@@ -21,6 +25,19 @@
                 allowfullscreen>
             </iframe>
         </div>
+
+        % if content_type == "series":
+            <div id="seasons">
+                <select name="seasons" id="select_seasons" required onchange="abrirPopUp(this)">
+                    <option value="{{cod}}">Seleccione temporada</option>
+                    % cont = 1
+                    % for season in seasons:
+                        <option value="{{season}}">Temporada {{cont}}</option>
+                        % cont += 1
+                    % end
+                </select>
+            </div>
+        % end
 
         <div id="sinopsis">
             <div class="title">
@@ -34,30 +51,31 @@
         </div>
 
         <div id="other_content">
+            % if content_type == "films":
+                <div>
+                    <h4>Duración</h4>
+                    <p>{{duration}}</p>
+                </div>
+            % else:
+                <div>
+                    <h4>Capítulos</h4>
+                    <p>{{content.get('Capitulos')}}</p>
+                </div>
+            % end
             <div>
-                <h4>Duración</h4>
-                <p>{{duration}}</p>
+                <h4>Estreno</h4>
+                <p>{{content.get('Fecha_Publicacion')}}</p>
+            </div>
+            <div>
+                <h4>Género</h4>
+                <p>{{content.get('Genero')}}</p>
+            </div>
+            <div>
+                <h4>Calificación</h4>
+                <p>{{content.get('Calificacion_Edad')}}</p>
             </div>
         </div>
-
-        <div id="content_info">
-            <ul>
-                %for key, value in content.items():
-                    %if key != "Titulo" and key != "Portada" and key != "Trailer" and key != "Sinopsis":
-                        <li>
-                            <span class="content_info_title">{{key}}:</span>
-                            <span class="content_info_value">{{value}}</span>
-                        </li>
-                    %end
-                %end
-            </ul>
-        </div>
-
-        <div id="sinopsis">
-            <span class="content_info_title">Sinopsis:</span>
-            <span class="content_info_value">{{content.get("Sinopsis")}}</span>
-        </div>
-
     </main>
-</body>
-</html>
+    % include('nav.tpl')
+    <footer style="display: none;">
+%include("footer.tpl")

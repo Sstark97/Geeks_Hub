@@ -29,6 +29,10 @@
 
 /* NAVEGADOR */
 
+.nav_user{
+  height: 11.5vh;
+}
+
 .nav_user a {
   font-size: 4rem;
 }

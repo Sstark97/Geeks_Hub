@@ -1,0 +1,78 @@
+p{
+    max-width: none;
+}
+
+.back{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.back .icons{
+    font-size: 2rem;
+}
+
+.back p{
+    font-size: 1.5rem;
+}
+
+.back .icons {
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.back a:hover .icons {
+    margin-left: 5%;
+    transition: 0.2s;
+    opacity: 1;
+}
+
+.content_container{
+    margin-bottom: 0;
+}
+
+#content_title img{
+    width: 15vh;
+    height: 15vh;
+}
+
+#content_title .title{
+    padding-left: 2%;
+}
+
+#content_title .title h3,
+.content_container #sinopsis .title h3{
+    font-size: 3rem;
+}
+
+#content_title .title p,
+.content_container #sinopsis .title p,
+.content_container #sinopsis p,
+.content_container #other_content div p,
+.content_container #seasons select{
+    font-size: 1.4rem;
+}
+
+.content_container #other_content div h4{
+    font-size: 1.7rem
+}
+
+.content_container #sinopsis .title i{
+    font-size: 1.5rem;
+}
+
+.content_container #trailer{
+    margin-top: 5%;
+}
+
+.content_container #trailer iframe{
+    width: 70%;
+    height: 75vh;
+}
+
+.content_container #seasons{
+    height: 4em
+}
+
+.content_container #seasons::after{
+    top: 0.5em;
+}

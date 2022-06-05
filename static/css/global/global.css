@@ -68,7 +68,7 @@ p{
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 13vh;
+    height: 9vh;
 
     text-align: center;
 
@@ -78,7 +78,6 @@ p{
 
 .nav_user ul{
     width: 100%;
-    height: 100%;
     padding: 3%;
     display: flex;
     justify-content: space-around;

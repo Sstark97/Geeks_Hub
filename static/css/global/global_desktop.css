@@ -150,6 +150,7 @@ nav {
 /* FOOTER */
 
 footer {
+  display: flex !important;
   align-items: center;
 }
 
