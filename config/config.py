@@ -25,7 +25,8 @@ FILM_FIELDS = ('Calificacion_Edad', 'Genero', 'Director',
 
 ACCOUNT_FIELDS = ('Correo','Nombre','Apellidos','Direccion','Telefono','Tipo_Suscripcion')
 
-GENRES_FIELDS = ('Suspense', 'Terror', 'Comedia', 'Accion', 'Drama', 'Fantasia', 'Romance', 'Aventura', 'Ciencia Ficcion', 'Belico', 'Musical', 'Documental')
+GENRES_FIELDS = ('Suspense', 'Terror', 'Comedia', 'Accion', 'Drama', 'Fantasia', 'Romance', 'Aventura', 'Ciencia Ficcion', 
+'Belico', 'Musical', 'Documental')
 
 AVATARS = ("/static/img/avatar/avatar1.png", "/static/img/avatar/avatar2.png", "/static/img/avatar/avatar3.png", 
 "/static/img/avatar/avatar4.png", "/static/img/avatar/avatar5.png", "/static/img/avatar/avatar6.png", 
