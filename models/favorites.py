@@ -31,7 +31,7 @@ class Favorites(Model):
                 
         return True
 
-    def content(self, cod_content, fields_series=[], fields_film=[]):
+    def content(self, cod_content, fields_series=None, fields_film=None):
         """Muestra el contenido enlazado a la lista de favoritos"""
         rows = None
         query = ""
