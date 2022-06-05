@@ -57,7 +57,7 @@
             </div>
         </form>
 
-        <hr>
+        <hr class="hr">
 
         %if rows_profile != []:
         <form action="/account_settings/profile" method="post">
@@ -75,16 +75,6 @@
             </div>
         </form>
         %end
-
-        <hr>
-
-        <h1 class="title">Cerrar Sesión</h3>
-        <form method="POST" action="/account_settings">
-            <div class="button">
-                {{ form.logout }}
-            </div>
-        </form>
-    </div>
 
     % include('nav.tpl')
 % include('footer.tpl')

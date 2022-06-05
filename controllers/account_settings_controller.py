@@ -60,6 +60,3 @@ def account_settings_process():
         # profile.update(form_data_profile, {'Correo': local_storage.getItem("email")})
         redirect('/account_settings')
     
-    if form.logout.data:
-        local_storage.clear()
-        redirect('/')

@@ -125,9 +125,9 @@ fieldset{
 	opacity: 0;
 }
 
-hr {
-    background-color: var(--base_color);
-    margin-top: 2rem;
+.hr {
+    width: 70%;
+    margin: 0 auto;
 }
 
 @media only screen and (min-width: 992px) {
