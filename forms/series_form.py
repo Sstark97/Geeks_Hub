@@ -13,7 +13,7 @@ class SeriesForm(Form):
                             )
     title  = StringField('Título', [
                                     validators.InputRequired(), 
-                                    validators.Length(min=6, max=50), 
+                                    validators.Length(min=1, max=50), 
                                 ])
     # calificacion_edad
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
