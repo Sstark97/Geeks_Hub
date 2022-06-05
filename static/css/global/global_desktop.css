@@ -20,7 +20,7 @@
 .menu_tablet a {
   text-decoration: none;
   color: var(--base_color);
-  font-size: 1.7rem;
+  font-size: 1.4rem;
 
   padding-right: 1.5rem;
 }
@@ -42,7 +42,7 @@ head a {
 .menu_desktop i {
   position: relative;
   color: var(--base_color);
-  font-size: 3.2rem;
+  font-size: 2.6rem;
 }
 
 .search:hover,
@@ -105,7 +105,7 @@ head a {
 }
 
 .dropdown img {
-  height: 3.2rem;
+  height: 2.6rem;
   border-radius: 50%;
 }
 
