@@ -5,9 +5,6 @@ from config.config import SERIES, FILM
 
 class Content(AutoGenerate):
     """Clase que maneja los distinos Contenidos."""
-    def __init__(self, db_name, table_name):
-        """Constructor de la clase Content."""
-        super().__init__(db_name, table_name)
     
     def top_content(self, fields, limit):
         """Devuelve los mejores contenidos hasta el limite."""
