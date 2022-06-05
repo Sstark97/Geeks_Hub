@@ -109,7 +109,8 @@ def view_films(cod):
             'Duracion' : row[11]
         }
 
-        return template('view_content', title=row[1], content_type="films", content=film, avatar=avatar_perfil, fields=FILM_FIELDS, cod=cod)
+        return template('view_content', title=row[1], content_type="films", content=film, avatar=avatar_perfil, 
+        fields=FILM_FIELDS, seasons="", cod=cod)
     
     redirect('/login')
     return None

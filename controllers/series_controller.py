@@ -65,6 +65,9 @@ def view_films(cod):
     """Página de visualización de Peliculas usuarios."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})[0]
+    seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))
+
+    print(seasons)
     user = local_storage.getItem("profile")
 
     if user:
@@ -87,7 +90,8 @@ def view_films(cod):
             'Capitulos': row[12]
         }
 
-        return template('view_content', title=row[2], content_type="series", avatar=avatar_perfil, content=serie, fields=SERIES_FIELDS, cod=cod)
+        return template('view_content', title=row[2], content_type="series", avatar=avatar_perfil, content=serie, 
+            fields=SERIES_FIELDS, seasons=seasons, cod=cod)
 
     redirect('/login')
     return None
