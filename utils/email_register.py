@@ -1,12 +1,31 @@
 """ Archivo para el manejo de correos electrónicos. """
 import smtplib
-import ssl
-from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import ssl
 from os import getenv
 from dotenv import load_dotenv
 
 load_dotenv()
+
+def generate_email(email):
+    """ Genera el HTML de un correo electrónico """
+    email_address = getenv('EMAIL')
+    # on crée un e-mail
+    message = MIMEMultipart("alternative")
+    # on ajoute un sujet
+    message["Subject"] = "Registro de la Cuenta"
+    # un émetteur
+    message["From"] = email_address
+    # un destinataire
+    message["To"] = email
+
+    texte = '''
+            Bonjour 
+            Ma super newsletter
+            Cdt
+            mon_lien_incroyable
+            '''
 
 def send_register_email(email):
     """ Envía un correo electrónico de registro. """

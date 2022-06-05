@@ -2,7 +2,7 @@
 import sys
 from bottle import get, request, template, redirect, post, auth_basic
 from utils.admin_auth import is_authenticated_user
-from utils.email import send_register_email
+from utils.email_register import send_register_email
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
