@@ -66,9 +66,6 @@ def admin_films_view(cod):
     """Página de visualización de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
-    print(row[11])
-    duration = set_time(row[11])
-    print(duration)
 
     film = {
         'Cod_Pelicula': row[0],
@@ -85,7 +82,7 @@ def admin_films_view(cod):
         'Duracion' : row[11]
     }
 
-    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod, duration=duration)
+    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
 
 @get('/films/<cod>')
 def view_films(cod):
@@ -93,6 +90,7 @@ def view_films(cod):
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
     user = local_storage.getItem("profile")
+    duration = set_time(row[11])
 
     if user:
         personal_profile = Profile(DATA_BASE)
@@ -113,7 +111,7 @@ def view_films(cod):
             'Duracion' : row[11]
         }
 
-        return template('view_content', title=row[1], content_type="films", content=film, avatar=avatar_perfil, 
+        return template('view_content', title=row[1], content_type="films", duration=duration, content=film, avatar=avatar_perfil, 
         fields=FILM_FIELDS, seasons="", cod=cod)
     
     redirect('/login')
