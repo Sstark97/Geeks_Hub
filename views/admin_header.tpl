@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,12 +18,26 @@
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
 
-    <link rel="stylesheet" href="/static/css/admin.css">
-    <link rel="stylesheet" href="/static/css/admin_forms.css">
+    <!-- Estilos Admin -->
+    <link rel="stylesheet" href="/static/css/admin/admin.css">
+    <link rel="stylesheet" href="/static/css/admin/admin_tables_mobile.css" media="only screen and (max-width: 536px)">
+    <link rel="stylesheet" href="/static/css/admin/admin_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px) ">
+    <link rel="stylesheet" href="/static/css/admin/admin_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de los Formularios-->
+    <link rel="stylesheet" href="/static/css/admin_forms/admin_forms.css">
+    <link rel="stylesheet" href="/static/css/admin_forms/admin_forms_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/admin_forms/admin_forms_desktop.css"
+        media="only screen and (min-width: 992px)">
+
+
     <link rel="stylesheet" href="/static/css/admin_content.css">
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <title>{{title}}</title>
 </head>
+
 <body>
     <header>
         <input type="checkbox">

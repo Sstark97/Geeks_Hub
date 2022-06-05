@@ -1,0 +1,19 @@
+.form_container fieldset {
+  margin-top: 3%;
+}
+
+.edit_input label,
+.input label,
+.textarea_input label,
+.file_input p,
+.date_input label {
+  font-size: 2.6vw;
+}
+
+.edit_input input,
+select,
+.textarea_input textarea,
+.file,
+.date_input input {
+  font-size: 2vw;
+}
