@@ -4,7 +4,8 @@ from bottle import get, request, template, redirect, post
 from models.account import Account
 from models.profile import Profile
 from forms.account_settings_form import AccountSettingsForm
-from config.config import DATA_BASE, ACCOUNT_FIELDS
+from forms.profile_form import ProfileForm
+from config.config import DATA_BASE, ACCOUNT_FIELDS, AVATARS
 from config.local_storage import local_storage
 sys.path.append('models')
 sys.path.append('forms')
@@ -33,7 +34,6 @@ def account_settings_process():
     """Procesa el formulario de Configuración de Cuentas"""
     form = AccountSettingsForm(request.POST)
     account = Account(DATA_BASE)
-    profile = Profile(DATA_BASE)
 
     if form.submit.data:
         form_data_account = {}
@@ -51,12 +51,35 @@ def account_settings_process():
         if form.suscription.data and form.suscription.data != '0':
             form_data_account["Tipo_Suscripcion"] = form.suscription.data
         
-        # form_data_profile = {
-        #     "Nickname" : request.forms.get('nickname'),
-        #     "Imagen" : request.forms.get('avatar')
-        # }
-        print(form_data_account)
         account.update(form_data_account, {'Correo': local_storage.getItem("email")})
-        # profile.update(form_data_profile, {'Correo': local_storage.getItem("email")})
         redirect('/account_settings')
     
+@get('/account_settings/profile')
+def account_settings_profile():
+    """Página de inicio de Configuración de Perfil"""
+    form = form = ProfileForm(request.GET) 
+    profile = Profile(DATA_BASE)
+
+    codigo_perfil = request.GET.get("profile_code")
+    rows_profile = profile.select(['*'], {'Cod_Perfil': codigo_perfil})
+    form.nickname.data = rows_profile[0][2]
+
+    return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil)
+
+@post('/account_settings/profile')
+def account_settings_profile_process():
+    """Procesa el formulario de Configuración de Perfil"""
+    form = ProfileForm(request.POST)
+    profile = Profile(DATA_BASE)
+
+    if form.btn_continue.data and form.validate():
+        form_data = {}
+        if form.nickname.data:
+            form_data["Nickname"] = form.nickname.data
+        if request.POST.get("avatar"):
+            form_data["Imagen"] = request.POST.get("avatar")
+
+        codigo_perfil = request.POST.get("profile_code")
+        
+        profile.update(form_data, {'Cod_Perfil': codigo_perfil})
+        redirect('/account_settings')

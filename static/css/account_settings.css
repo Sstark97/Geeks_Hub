@@ -5,6 +5,10 @@ body {
   font-family: var(--main_font);
 }
 
+.container-settings {
+    text-align: center;
+}
+
 fieldset{
     width: 100%;
     border: none;
@@ -12,12 +16,21 @@ fieldset{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: left;
 }
 
 .title {
+    font-size: 1.2rem;
     text-align: center;
     padding: 1rem 0 1rem 0;
+}
+
+.form-label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+#form-submit {
+    font-size: 0.8rem;
 }
 
 .input {
@@ -27,7 +40,7 @@ fieldset{
     align-items: center;
     padding: 2%;
 
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .input input, select{
@@ -50,7 +63,9 @@ fieldset{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    margin: 1rem 0 1rem 0;
 }
 
 .button input{
@@ -62,7 +77,6 @@ fieldset{
     border: none;
     border-radius: 10px;
 
-    font-size: 2.5vw;
 }
 
 .button a{
@@ -92,6 +106,7 @@ fieldset{
 .btn_cancel a {
     color: #000;
     width: 100%;
+    font-size: 0.8rem;
 }
 
 .avatar{
@@ -116,6 +131,10 @@ fieldset{
     transition: 0.5s;
 }
 
+.avatar div p {
+    font-size: 1.1rem;
+}
+
 #avatar-btn {
     border: none;
     background: none;
@@ -130,7 +149,50 @@ fieldset{
     margin: 0 auto;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 992px){
+    #form-submit {
+        font-size: 0.9rem;
+    }
+
+    .btn_cancel a {
+        color: #000;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    #btn_continue, .button a {
+        font-size: 1rem;
+    }
+
+    .button a input {
+        font-size: 1rem;
+    }
+
+    .avatar div img{
+        width: 40%;
+        border-radius: 50%;
+    
+        opacity: 1;
+        transition: 0.5s;
+    }
+
+}
+
 @media only screen and (min-width: 992px) {
+    .title {
+        font-size: 1.3rem;
+    }
+
+    #form-submit {
+        font-size: 1rem;
+    }
+
+    .btn_cancel a {
+        color: #000;
+        width: 100%;
+        font-size: 1rem;
+    }
+
     .input, select, input {
         font-size: 1.5vw;
     }
@@ -210,6 +272,10 @@ fieldset{
     
         opacity: 1;
         transition: 0.5s;
+    }
+
+    .avatar div p {
+        font-size: 1.2rem;
     }
     
 }

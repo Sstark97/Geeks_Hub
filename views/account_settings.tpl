@@ -60,7 +60,7 @@
         <hr class="hr">
 
         %if rows_profile != []:
-        <form action="/account_settings/profile" method="post">
+        <form action="/account_settings/profile" method="get">
             <h1 class="title">Configuración de Perfiles</h1>
             <div class="avatar">
                 %for row_profile in rows_profile:
