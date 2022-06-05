@@ -1,6 +1,7 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-from bottle import get, request, template, redirect, post
+from bottle import get, request, template, redirect, post, auth_basic
+from utils.admin_auth import is_authenticated_user
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
@@ -11,6 +12,7 @@ sys.path.append('models')
 sys.path.append('forms')
 
 @get('/admin/accounts')
+@auth_basic(is_authenticated_user)
 def admin_accounts():
     """Página de inicio de las Cuentas para Administradores."""
     cuenta = Account(DATA_BASE)
@@ -19,6 +21,7 @@ def admin_accounts():
     return template('admin_accounts', rows=rows, fields=ACCOUNT_FIELDS)
 
 @get('/admin/accounts/<email>')
+@auth_basic(is_authenticated_user)
 def admin_accounts_view(email):
     """Página de visualización de una Cuenta para Administradores."""
     cuenta = Account(DATA_BASE)
