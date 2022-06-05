@@ -87,6 +87,8 @@ def films_edit(cod):
     """Página de edición de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'], {'Cod_Pelicula': cod})[0]
+    print(row)
+
     formatted_date= datetime.strptime(row[8], '%Y-%m-%d')
 
     form = FilmsForm(request.POST)
@@ -138,7 +140,7 @@ def films_process_edit(cod):
 
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
-    return template('films_form', form=form)
+    return template('films_form', title="Editar Película", path=f'/admin/films/edit/{cod}', form=form)
 
 @get('/admin/films/delete/<cod>')
 @auth_basic(is_authenticated_user)
