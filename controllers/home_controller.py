@@ -16,6 +16,7 @@ def home_index():
     user = local_storage.getItem("profile")
 
     if user:
+        print(user)
         personal_profile = Profile(DATA_BASE)
         films = Film(DATA_BASE)
         favorites = Favorites(DATA_BASE)

@@ -57,8 +57,18 @@ def select_profile():
 @post('/select_profile')
 def select_profile_process():
     """Página para procesar la selección de perfiles"""
-    codigo = request.POST.get("profile_code")
-    
-    local_storage.setItem("profile",codigo)
+    correo = local_storage.getItem("email")
+    personal_profile = Profile(DATA_BASE)
+    rows = personal_profile.select(['*'], {'Correo': correo})
+    form = ProfileForm(request.POST) 
 
-    redirect('/')
+    if request.POST.get("profile_code"):
+        codigo = request.POST.get("profile_code")
+        print("HOLA")
+        print(codigo)
+        
+        local_storage.setItem("profile",codigo)
+
+        redirect('/home')
+    
+    return template('select_profiles', rows=rows, form=form)

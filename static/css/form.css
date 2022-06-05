@@ -148,6 +148,18 @@ select{
     font-size: 3.2vw;
 }
 
+.btn {
+    display: flex;
+    align-items: center;
+    margin: 2%;
+    height: 3.6vh;
+    padding: 1rem;
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 10px;
+    font-size: 3vw;
+}
+
 .btn_cancel a {
     color: #000;
     width: 100%;
@@ -335,6 +347,10 @@ select{
         width: 50%;
     }
 
+    .btn {
+        padding: 2.5rem;
+    }
+
 }
 
 @media only screen and (min-width: 993px){
@@ -463,6 +479,11 @@ select{
 
     .phone{
         width: 50%;
+    }
+
+    .btn {
+        font-size: 1.6vw;
+        padding: 1.3rem;
     }
 
 }

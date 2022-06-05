@@ -46,17 +46,11 @@
 
     <section class="content_list">
         %for content_genre in value:
-<<<<<<< HEAD
             %if content_genre[3] == 0 or content_genre[3] == 1:
                 <a href="/">
                     <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
                 </a>
             %end
-=======
-        <a href="/">
-            <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
-        </a>
->>>>>>> b29f9ae95fbc6fe0e10cd01319bf5c2ec7ee4157
         %end
     </section>    
     %end

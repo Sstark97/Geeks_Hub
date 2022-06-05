@@ -20,14 +20,16 @@
             <div class="avatar">
 
             %if rows != []:
+                %cont = 0
                 %for row in rows:
                     <div>
-                        <button id="avatar-btn" type="submit">
+                        <input type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row[0] }}">
+                        <label for={{ f"profile_code{cont}" }} >
                             <img class="profile_image" src="{{ row[3] }}" alt="Avatar">
-                        </button>
+                        </label>
                         <p>{{ row[2] }}</p>
-                        <input type="hidden" name="profile_code" value="{{ row[0] }}">
                     </div>
+                    %cont += 1
                 %end
             %end
 
@@ -39,6 +41,7 @@
             %end
             
             </div>
+            <button type="submit" class="btn" name="btn_continue">Continuar</button>
         </div>
     </form>
 </body>
