@@ -8,24 +8,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def generate_email(email):
-    """ Genera el HTML de un correo electrónico """
-    email_address = getenv('EMAIL')
-    # on crée un e-mail
-    message = MIMEMultipart("alternative")
-    # on ajoute un sujet
-    message["Subject"] = "Registro de la Cuenta"
-    # un émetteur
-    message["From"] = email_address
-    # un destinataire
-    message["To"] = email
-
-    texte = '''
-            Bonjour 
-            Ma super newsletter
-            Cdt
-            mon_lien_incroyable
-            '''
 
 def send_register_email(email):
     """ Envía un correo electrónico de registro. """
@@ -35,13 +17,33 @@ def send_register_email(email):
     email_address = getenv('EMAIL')
     email_password = getenv('EMAIL_PASSWORD')
 
-    print(email_address)
-    print(email_password)
+    # on crée un e-mail
+    message = MIMEMultipart("alternative")
+    # on ajoute un sujet
+    message["Subject"] = "Registro de la Cuenta"
+    # un émetteur
+    message["From"] = "Geeks Hub"
+    # un destinataire
+    message["To"] = email
+
+    texte = '''
+                Bienvenido a Geeks Hub
+                Gracias por registrarte en nuestra plataforma.
+            '''
+
+    with open('./static/html/register_email.html', 'r', encoding="utf8") as file:
+        html = file.read()
+
+    texte_mime = MIMEText(texte, 'plain')
+    html_mime = MIMEText(html, 'html')
+
+    message.attach(texte_mime)
+    message.attach(html_mime)
 
     context = ssl.create_default_context()
 
     with smtplib.SMTP_SSL(smtp_address, smtp_port, context=context) as server:
-        # Conexión con el servidor de correos.
+        # connexion au compte
         server.login(email_address, email_password)
-        # Envío del correo.
-        server.sendmail(email_address, email, 'Registro de la Cuenta')
+        # envoi du mail
+        server.sendmail(email_address, email, message.as_string())
