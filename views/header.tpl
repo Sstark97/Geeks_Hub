@@ -50,7 +50,7 @@
                     <div class="dropdown">
                         <img src="{{avatar}}" alt="avatar">
                         <ul>
-                            <li><a href=""><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
+                            <li><a href="/select_profile"><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
                             <hr>
                             <li><a href=""><i class='bx bx-user' ></i>Cuenta</a></li>
                             <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
