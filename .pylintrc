@@ -30,7 +30,7 @@ ignore-paths=
 # Files or directories matching the regex patterns are skipped. The regex
 # matches against base names, not paths. The default value ignores emacs file
 # locks
-ignore-patterns=^\.#
+ignore-patterns=^\.#,index.py
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -586,4 +586,4 @@ overgeneral-exceptions=BaseException,
                        Exception
 
 # White Space Error
-disable=C0303, E1101, W0401
+disable=C0303, E1101, W0401s
