@@ -25,9 +25,15 @@
 
         <section class="content_list">
             %for favorite in favorites:
-                <a href="/">
-                    <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
-                </a>
+                %if favorite[5] == 0:
+                    <a href={{ f"/films/{favorite[4]}" }}>
+                        <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
+                    </a>
+                %else:
+                    <a href={{ f"/series/{favorite[5]}" }}>
+                        <img src="{{favorite[0]}}" alt="{{favorite[2]}}">
+                    </a>
+                %end
             %end
         </section>
     %end
@@ -36,9 +42,15 @@
 
     <section class="content_list">
         %for top in top_ten:
-        <a href="/">
-            <img src="{{top[4]}}" alt="{{top[1]}}">
-        </a>
+            %if top[3] == 0:
+                <a href={{ f"/films/{top[0]}" }}>
+                    <img src="{{top[4]}}" alt="{{top[1]}}">
+                </a>
+            %else:
+                <a href={{ f"/series/{top[0]}" }}>
+                    <img src="{{top[4]}}" alt="{{top[1]}}">
+                </a>
+            %end
         %end
     </section>    
 
@@ -49,9 +61,15 @@
     <section class="content_list">
         %for content_genre in value:
             %if content_genre[3] == 0 or content_genre[3] == 1:
-                <a href="/">
-                    <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
-                </a>
+                %if content_genre[3] == 0:
+                    <a href={{ f"/films/{content_genre[0]}" }}>
+                        <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
+                    </a>
+                %else:
+                    <a href={{ f"/series/{content_genre[0]}" }}>
+                        <img src="{{content_genre[4]}}" alt="{{content_genre[1]}}">
+                    </a>
+                %end
             %end
         %end
     </section>    

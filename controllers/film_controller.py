@@ -4,7 +4,9 @@ from datetime import datetime
 from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
 from models.film import Film
+from models.profile import Profile
 from config.config import DATA_BASE, FILM_FIELDS
+from config.local_storage import local_storage
 from forms.films_form import FilmsForm
 from forms.delete_content_form import DeleteContentForm
 
@@ -59,7 +61,7 @@ def films_process():
 
 @get('/admin/films/<cod>')
 @auth_basic(is_authenticated_user)
-def films_view(cod):
+def admin_films_view(cod):
     """Página de visualización de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
@@ -80,6 +82,37 @@ def films_view(cod):
     }
 
     return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
+
+@get('/films/<cod>')
+def view_films(cod):
+    """Página de visualización de Peliculas usuarios."""
+    films = Film(DATA_BASE)
+    row = films.select(['*'],{'Cod_Pelicula': cod})[0]
+    user = local_storage.getItem("profile")
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+
+        film = {
+            'Cod_Pelicula': row[0],
+            'Titulo' : row[1],
+            'Calificacion_Edad' : row[2],
+            'Genero' : row[3],
+            'Director' : row[4],
+            'Puntuacion_Media' : row[5],
+            'Productor' : row[6],
+            'Sinopsis' : row[7],
+            'Fecha_Publicacion' : row[8],
+            'Portada': row[9],
+            'Trailer' : row[10],
+            'Duracion' : row[11]
+        }
+
+        return template('view_content', title=row[1], content_type="films", content=film, avatar=avatar_perfil, fields=FILM_FIELDS, cod=cod)
+    
+    redirect('/login')
+    return None
 
 @get('/admin/films/edit/<cod>')
 @auth_basic(is_authenticated_user)
