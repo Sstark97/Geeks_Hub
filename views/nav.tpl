@@ -4,15 +4,14 @@
         <li>
             <a href="">
                 <i class='bx bxs-home'></i>
-                <p>Inicio</p>
             </a>
         </li>
-        <li class="serie">
+        <li id="serie">
             <a href="">
                 <i class='bx bxs-tv' ></i>
             </a>
         </li>
-        <li class="movie">
+        <li id="movie">
             <a href="">
                 <i class='bx bxs-film' ></i>
             </a>
@@ -20,14 +19,12 @@
         <li>
             <a href="">
                 <i class='bx bxs-search-alt-2' ></i>
-                <p>Buscador</p>
             </a>
         </li>
         <li>
             <input type="checkbox" id="check">
             <label for="check" class="hamburguer_menu">
                 <img src="{{avatar}}" alt="avatar">
-                <p>Cuenta</p>
             </label>
             <ul class="hamburguer_nav">
                 <li><a href="/select_profile"><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
