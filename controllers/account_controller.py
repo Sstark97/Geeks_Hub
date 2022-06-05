@@ -23,8 +23,9 @@ def admin_accounts_view(email):
     """Página de visualización de una Cuenta para Administradores."""
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(['*'], {'Correo': email})
+    profiles = cuenta.n_profiles(['Cod_Perfil'], {'Correo': email})[0][0]
 
-    return template('admin_view_account', rows=rows)
+    return template('admin_view_account', rows=rows, num_profiles=profiles, content_type="accounts", class_content="cuenta")
 
 @get('/register')
 def register():
