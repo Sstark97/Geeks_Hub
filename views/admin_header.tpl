@@ -32,8 +32,12 @@
     <link rel="stylesheet" href="/static/css/admin_forms/admin_forms_desktop.css"
         media="only screen and (min-width: 992px)">
 
+    <!-- Estilos de la Vista Detalle de Contenido-->
+    <link rel="stylesheet" href="/static/css/admin_content/admin_content.css">
+    <link rel="stylesheet" href="/static/css/admin_content/admin_content_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/admin_content/admin_content_desktop.css" media="only screen and (min-width: 992px)">
 
-    <link rel="stylesheet" href="/static/css/admin_content.css">
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <title>{{title}}</title>
 </head>
