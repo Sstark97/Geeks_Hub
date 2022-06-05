@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,8 +11,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;200;300&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;200;300&display=swap"
+        rel="stylesheet">
+
     <!-- Iconos -->
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -22,11 +24,18 @@
 
     <!-- Estilos -->
 
-    <link rel="stylesheet" href="/static/css/global.css">
+    <!-- Estilos Globales -->
+    
+    <link rel="stylesheet" href="/static/css/global/global.css">
+    <link rel="stylesheet" href="/static/css/global/global_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
+
     <link rel="stylesheet" href="/static/css/home.css">
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     %from config.local_storage import local_storage
     <main>
@@ -50,13 +59,13 @@
                     <div class="dropdown">
                         <img src="{{avatar}}" alt="avatar">
                         <ul>
-                            <li><a href="/select_profile"><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
+                            <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li><a href=""><i class='bx bx-user' ></i>Cuenta</a></li>
+                            <li><a href=""><i class='bx bx-user'></i>Cuenta</a></li>
                             <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
                             <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li><a onclick="logout()"><i class='bx bx-log-out' ></i>Cerrar Sesión</a></li>
+                            <li><a onclick="logout()"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 
