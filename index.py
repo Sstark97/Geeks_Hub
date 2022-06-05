@@ -8,6 +8,7 @@ from controllers.profile_controller import *
 from controllers.history_controller import *
 from controllers.favorites_controller import * 
 from controllers.admin_controller import *
+from controllers.account_settings_controller import *
 
 @get('/')
 def index():

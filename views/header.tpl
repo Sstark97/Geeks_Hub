@@ -19,6 +19,7 @@
     <!-- Estilos -->
 
     <link rel="stylesheet" href="/static/css/global.css">
+    <link rel="stylesheet" href="/static/css/account_settings.css">
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
