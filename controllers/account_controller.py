@@ -1,6 +1,8 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
-from bottle import get, request, template, redirect, post
+from bottle import get, request, template, redirect, post, auth_basic
+from utils.admin_auth import is_authenticated_user
+from utils.email_register import send_register_email
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
@@ -11,6 +13,7 @@ sys.path.append('models')
 sys.path.append('forms')
 
 @get('/admin/accounts')
+@auth_basic(is_authenticated_user)
 def admin_accounts():
     """Página de inicio de las Cuentas para Administradores."""
     cuenta = Account(DATA_BASE)
@@ -19,21 +22,27 @@ def admin_accounts():
     return template('admin_accounts', rows=rows, fields=ACCOUNT_FIELDS)
 
 @get('/admin/accounts/<email>')
+@auth_basic(is_authenticated_user)
 def admin_accounts_view(email):
     """Página de visualización de una Cuenta para Administradores."""
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(['*'], {'Correo': email})
+    profiles = cuenta.n_profiles(['Cod_Perfil'], {'Correo': email})[0][0]
 
-    return template('admin_view_account', rows=rows)
+    return template('admin_view_account', rows=rows, num_profiles=profiles, content_type="accounts", class_content="cuenta")
 
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
-    form = RegistrationForm(request.POST)
-    suscriptions_data = Suscription(DATA_BASE)
-    suscriptions = suscriptions_data.select(["*"])
+    user = local_storage.getItem("profile")
+    if not user:
+        form = RegistrationForm(request.POST)
+        suscriptions_data = Suscription(DATA_BASE)
+        suscriptions = suscriptions_data.select(["*"])
 
-    return template('register', form=form, rows=suscriptions)
+        return template('register', form=form, rows=suscriptions)
+    redirect("/home")
+    return None
 
 @post('/register')
 def register_process():
@@ -41,7 +50,7 @@ def register_process():
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
     
-    if form.register.data and form.validate() and request.POST.get("new_suscription") != None:
+    if form.register.data and form.validate() and request.POST.get("new_suscription"):
         form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
@@ -52,9 +61,9 @@ def register_process():
             "Tipo_Suscripcion" : request.POST.get("new_suscription")
         }
         
-        print(form_data)
         account.insert(form_data)
         local_storage.setItem("email",form.email.data)
+        send_register_email(form.email.data)
         redirect('/profiles')
 
     suscriptions_data = Suscription(DATA_BASE)
@@ -65,8 +74,13 @@ def register_process():
 @get('/login')
 def login():
     """Página para mostrar el formulario"""
-    form = LoginForm(request.POST)
-    return template('login', form=form)
+    user = local_storage.getItem("profile")
+    if not user:
+        form = LoginForm(request.POST)
+        return template('login', form=form)
+    
+    redirect("/home")
+    return None
 
 @post('/login')
 def login_process():
@@ -83,7 +97,6 @@ def login_process():
 
             local_storage.setItem("email", form.email.data)
 
-            print(local_storage.getItem("email"))
             redirect('/select_profile')
 
 
@@ -92,3 +105,8 @@ def login_process():
         return template('login', form=form)
 
     return None
+
+@post('/logout')
+def logout():
+    """Página para cerrar la sesión"""
+    local_storage.clear()

@@ -1,0 +1,67 @@
+/* HEADER */
+
+.head {
+  display: flex;
+}
+
+.logo_user {
+  width: 15%;
+
+  justify-content: left;
+  padding-left: 3%;
+}
+
+.menu_tablet {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  padding-left: 13%;
+}
+
+.menu_tablet a {
+  text-decoration: none;
+  color: var(--base_color);
+  font-size: 1.8rem;
+
+  padding-right: 3rem;
+}
+
+/* NAVEGADOR */
+
+.nav_user a {
+  font-size: 4rem;
+}
+
+#serie,
+#movie {
+  display: none;
+}
+
+.hamburguer_menu {
+  height: 5rem;
+}
+
+/* MENU HAMBURGUESA */
+
+.hamburguer_nav a{
+  font-size:2.5rem;
+}
+
+.hamburguer_nav li {
+  padding: 6%;
+}
+
+/* FOOTER */
+
+.icons li a {
+  font-size: 3em;
+}
+
+.menu li a {
+  font-size: 1.4em;
+}
+
+footer p {
+  font-size: 1em;
+}

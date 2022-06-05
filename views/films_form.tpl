@@ -14,57 +14,58 @@
     % end
     <form class="form_container" method="POST" action="{{path}}" enctype="multipart/form-data">
         <fieldset>
-            <div class="input">
-                {{ form.title.label }}
+            <div class="edit_input">
                 {{ form.title }}
-            </div>
+                {{ form.title.label }}
+            </div> 
             <div class="input">
-                {{ form.age_rating.label }}
                 {{ form.age_rating }}
+                {{ form.age_rating.label }}
             </div>
             <div class="input">
-                {{ form.genre.label }}
-                {{ form.genre }}
+                {{ form.GENRES }}
+                {{ form.GENRES.label }}
             </div>
-            <div class="input">
-                {{ form.director.label }}
+            <div class="edit_input">
                 {{ form.director }}
+                {{ form.director.label }}
             </div>
-            <div class="input">
-                {{ form.average_score.label }}
+            <div class="edit_input">
                 {{ form.average_score }}
+                {{ form.average_score.label }}
             </div>
-            <div class="input">
-                {{ form.productor.label }}
+            <div class="edit_input">
                 {{ form.productor }}
+                {{ form.productor.label }}
             </div>
-            <div class="input">
-                {{ form.synopsis.label }}
-                {{ form.synopsis }}
-            </div>
-            <div class="input">
-                {{ form.release_date.label }}
+            <div class="date_input">
                 {{ form.release_date }}
+                {{ form.release_date.label }}
             </div>
-            <div class="input">
-                {{form.cover_page.label}}
+            <div class="file_input">
                 <label class="file" for="cover_page">
                     <span>Selecciona una imagen</span>
                     {{ form.cover_page }}
                 </label>
+                <p>Portada</p>
             </div>
-            <div class="input">
-                {{ form.trailer.label }}
+            </div> 
+            <div class="edit_input">
                 {{ form.trailer }}
+                {{ form.trailer.label }}
             </div>
-            <div class="input">
-                {{ form.duration.label }}
+            <div class="date_input">
                 {{ form.duration }}
+                {{ form.duration.label }}
+            </div>
+            <div class="textarea_input">
+                {{ form.synopsis }}
+                {{ form.synopsis.label }}
             </div>
             <div class="button">
                 {{ form.submit }}
                 <button class="btn_cancel btn_delete"><a href="/admin/films">Cancelar</a></button>     
-            </div>     
+            </div>  
         </fieldset>
     </form>
 

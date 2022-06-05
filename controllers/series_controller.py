@@ -43,7 +43,7 @@ def series_process():
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,
@@ -95,7 +95,7 @@ def series_edit(cod):
     form.title.data = row[2]
     form.season.data = row[1]
     form.age_rating.data = row[3]
-    form.genre.data = row[4]
+    form.GENRES.data = row[4]
     form.director.data = row[5]
     form.average_score.data = row[6]
     form.productor.data = row[7]
@@ -125,7 +125,7 @@ def series_process_edit(cod):
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,

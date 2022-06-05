@@ -8,17 +8,28 @@
 
     <!-- Estilos -->
 
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/form.css">
+    <!-- Estilos Globales -->
+    
+    <link rel="stylesheet" href="/static/css/global/global.css">
+    <link rel="stylesheet" href="/static/css/global/global_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de Formularios -->
+    
+    <link rel="stylesheet" href="/static/css/form/form.css">
+    <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
+
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
     <h1>Creación de Perfil</h1>
     <form method="POST" action="/profiles" autocomplete="off">
         <fieldset>
-            <div class="input">
-                {{ form.nickname.label }}
+            <div class="edit_input">
                 {{ form.nickname }}
+                {{ form.nickname.label }}
             </div>    
             <div class="input"><label for="avatar">Avatar</label></div>
             <div class="avatar">
@@ -35,7 +46,7 @@
             </div>
             <div class="button">
                 {{ form.btn_continue }}
-                <a href="/select_profiles">
+                <a href="/select_profile">
                     <input type="button" value="Cancelar"/>
                 </a>
             </div>    

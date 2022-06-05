@@ -1,7 +1,5 @@
 """Fichero para la creación de un nuevo perfil"""
-from atexit import register
-from email_validator import EmailNotValidError
-from wtforms import Form, StringField, RadioField, SubmitField , validators
+from wtforms import Form, StringField, SubmitField , validators
 
 class ProfileForm(Form):
     """Clase para la realización del formulario de creación de perfil"""

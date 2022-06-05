@@ -25,7 +25,7 @@ def profile_process():
 
     correo = local_storage.getItem("email")
 
-    if form.btn_continue.data and request.POST.get("avatar") != None and form.validate():
+    if form.btn_continue.data and request.POST.get("avatar") and form.validate():
         today = date.today()
         favorites.insert({"Fecha_Creacion": today.strftime("%Y-%m-%d")})
         cod_favorites = favorites.select(["Cod_Favoritos"])[-1][0]
@@ -57,8 +57,18 @@ def select_profile():
 @post('/select_profile')
 def select_profile_process():
     """Página para procesar la selección de perfiles"""
-    codigo = request.POST.get("profile_code")
-    
-    local_storage.setItem("profile",codigo)
+    correo = local_storage.getItem("email")
+    personal_profile = Profile(DATA_BASE)
+    rows = personal_profile.select(['*'], {'Correo': correo})
+    form = ProfileForm(request.POST) 
 
-    redirect('/')
+    if request.POST.get("profile_code"):
+        codigo = request.POST.get("profile_code")
+        print("HOLA")
+        print(codigo)
+        
+        local_storage.setItem("profile",codigo)
+
+        redirect('/home')
+    
+    return template('select_profiles', rows=rows, form=form)

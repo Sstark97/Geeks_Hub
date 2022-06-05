@@ -9,8 +9,19 @@
 
     <!-- Estilos -->
 
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/landing.css">
+    <!-- Estilos Globales -->
+    
+    <link rel="stylesheet" href="/static/css/global/global.css">
+    <link rel="stylesheet" href="/static/css/global/global_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de la Landing Page -->
+
+    <link rel="stylesheet" href="/static/css/landing/landing.css">
+    <link rel="stylesheet" href="/static/css/landing/landing_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/landing/landing_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Iconos -->
 
