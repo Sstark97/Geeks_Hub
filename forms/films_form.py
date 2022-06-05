@@ -16,7 +16,7 @@ class FilmsForm(Form):
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=30),
+                                    validators.Length(min=6, max=50),
                                 ])
 
     average_score = DecimalField('Puntuación Media', 
