@@ -64,6 +64,7 @@
                     </a>
                     <div class="dropdown">
                         <img src="{{avatar}}" alt="avatar">
+                        <i class='bx bxs-chevron-down arrow'></i>
                         <ul>
                             <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>

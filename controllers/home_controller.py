@@ -44,3 +44,12 @@ def home_index():
         redirect('/')
     
     return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
+
+@get('/a')
+def a():
+    user = local_storage.getItem("profile")
+    personal_profile = Profile(DATA_BASE)
+    cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+    avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+
+    return template('index', avatar=avatar_perfil)

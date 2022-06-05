@@ -22,32 +22,31 @@
 .menu_tablet a {
   text-decoration: none;
   color: var(--base_color);
-  font-size: 1.3rem;
+  font-size: 1.8rem;
 
   padding-right: 3rem;
 }
 
 /* NAVEGADOR */
 
-nav p {
-  display: flex;
-  font-size: 1rem;
-}
-
 .nav_user a {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
-.serie,
-.movie {
+#serie,
+#movie {
   display: none;
 }
 
 .hamburguer_menu {
-  height: 4rem;
+  height: 5rem;
 }
 
 /* MENU HAMBURGUESA */
+
+.hamburguer_nav a{
+  font-size:2.5rem;
+}
 
 .hamburguer_nav li {
   padding: 6%;
