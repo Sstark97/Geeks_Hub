@@ -116,6 +116,7 @@ head a {
 
 .dropdown ul li:hover a {
   color: var(--main_color);
+  cursor: pointer;
 }
 
 .dropdown .user {

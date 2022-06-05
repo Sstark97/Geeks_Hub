@@ -13,12 +13,14 @@
     <!-- Estilos -->
 
     <!-- Estilos Globales -->
+
     <link rel="stylesheet" href="/static/css/global/global.css">
     <link rel="stylesheet" href="/static/css/global/global_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Estilos Admin -->
+
     <link rel="stylesheet" href="/static/css/admin/admin.css">
     <link rel="stylesheet" href="/static/css/admin/admin_tables_mobile.css" media="only screen and (max-width: 536px)">
     <link rel="stylesheet" href="/static/css/admin/admin_tablet.css"
@@ -26,6 +28,7 @@
     <link rel="stylesheet" href="/static/css/admin/admin_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Estilos de los Formularios-->
+
     <link rel="stylesheet" href="/static/css/admin_forms/admin_forms.css">
     <link rel="stylesheet" href="/static/css/admin_forms/admin_forms_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">
@@ -33,6 +36,7 @@
         media="only screen and (min-width: 992px)">
 
     <!-- Estilos de la Vista Detalle de Contenido-->
+    
     <link rel="stylesheet" href="/static/css/admin_content/admin_content.css">
     <link rel="stylesheet" href="/static/css/admin_content/admin_content_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">

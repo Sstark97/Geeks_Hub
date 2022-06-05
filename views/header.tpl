@@ -19,8 +19,9 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Estilos Slick Menu-->
-    <link rel="stylesheet" href="/static/css/slick.css">
-    <link rel="stylesheet" href="/static/css/slick-theme.css">
+    
+    <link rel="stylesheet" href="/static/css/slick/slick.css">
+    <link rel="stylesheet" href="/static/css/slick/slick-theme.css">
 
     <!-- Estilos -->
 
@@ -32,6 +33,7 @@
     <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Estilos de la Página Principal -->
+
     <link rel="stylesheet" href="/static/css/home/home.css">
     <link rel="stylesheet" href="/static/css/home/home_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">

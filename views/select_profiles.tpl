@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Estilos de Formularios -->
+    
     <link rel="stylesheet" href="/static/css/form/form.css">
     <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">

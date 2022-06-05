@@ -1,0 +1,104 @@
+.button_login {
+  height: 10%;
+  margin-top: 2%;
+  margin-right: 2%;
+}
+
+.login,
+.submit {
+  width: 11vw;
+  padding: 0;
+  font-size: 1.3vw;
+
+  opacity: 0.6;
+  transition: 0.5s;
+}
+
+.login:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.logo {
+  flex-direction: column;
+  justify-content: left;
+  align-content: flex-start;
+
+  margin-top: 0;
+}
+
+.logo img {
+  width: 32%;
+}
+
+.logo p {
+  width: 50%;
+  margin-left: 5%;
+
+  text-align: left;
+  font-size: 1.2vw;
+}
+
+.content {
+  justify-content: space-evenly;
+  height: 50vh;
+}
+
+.cuadro {
+  width: 40%;
+  height: 80%;
+}
+
+.content p {
+  width: 40%;
+
+  text-align: left;
+  font-size: 1.2vw;
+}
+
+.button_submit {
+  height: 10vh;
+}
+
+.devices {
+  margin: 0;
+}
+
+.submit:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.devices {
+  align-content: flex-start;
+  align-items: stretch;
+}
+
+.television,
+.computer,
+.phone,
+.console {
+  width: 25%;
+  height: auto;
+}
+
+.television img,
+.computer img,
+.phone img,
+.console img {
+  width: 50%;
+}
+
+.television h2,
+.computer h2,
+.phone h2,
+.console h2 {
+  font-size: 1.6vw;
+}
+
+.television p,
+.computer p,
+.phone p,
+.console p {
+  font-size: 1vw;
+}
