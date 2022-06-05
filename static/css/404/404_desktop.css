@@ -1,0 +1,38 @@
+.title {
+  padding-bottom: 2%;
+}
+
+img {
+  width: 18vw;
+  height: 100%;
+}
+
+h1 {
+  font-size: 16vw;
+}
+
+h3 {
+  padding-bottom: 2vw;
+  font-size: 3.5vw;
+}
+
+p {
+  width: 22%;
+  font-size: 1.5vw;
+}
+
+a {
+  width: 11%;
+  height: 5%;
+}
+
+a input {
+  font-size: 1.3vw;
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+a input:hover {
+  opacity: 1;
+  transition: 0.5s;
+}

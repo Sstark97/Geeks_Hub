@@ -1,0 +1,223 @@
+html,
+body {
+  background-color: var(--base_color);
+  color: var(--background_color);
+  font-family: var(--main_font);
+}
+
+.logo,
+.logo_nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 7rem;
+}
+
+.logo_nav img {
+  width: 7rem;
+}
+
+.logo_nav {
+  display: none;
+}
+
+.create {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+.create a {
+  text-decoration: none;
+  color: var(--background_color);
+  font-size: 1.3rem;
+}
+
+.create a:hover {
+  opacity: 0.8;
+}
+
+.admin_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.series_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.films_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  padding: 1rem;
+}
+
+.info,
+h3 {
+  text-align: center;
+}
+
+/* Tabla */
+.account {
+  margin-top: 2rem;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.td_flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.actions {
+  display: flex;
+}
+
+.icons {
+  color: #000;
+}
+
+button {
+  padding: 0.4rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#only_view {
+  text-align: center;
+}
+
+.btn_edit {
+  background: #ffc107;
+}
+
+.btn_delete {
+  background: #dc3545;
+}
+
+.btn_view {
+  background: #0d6efd;
+}
+
+.btn_create {
+  background: #198754;
+}
+
+/* Menu Hamburguesa */
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+header a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 2px solid #456789;
+  max-width: 200px;
+  background: var(--shadow_color);
+  text-shadow: 1px 1px black;
+}
+
+header input[type="checkbox"],
+header .bx-x,
+header .bx-menu {
+  position: absolute;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+}
+
+header .bx-x,
+header .bx-menu {
+  font-size: 48px;
+  color: white;
+  pointer-events: none;
+}
+
+header input[type="checkbox"] {
+  opacity: 0;
+}
+
+header {
+  color: white;
+  position: relative;
+  background: var(--background_color);
+  min-height: 48px;
+}
+
+header nav {
+  display: none;
+}
+
+header input:checked ~ nav {
+  display: block;
+}
+
+header input:checked ~ .bx-menu {
+  display: none;
+}
+
+header input:not(:checked) ~ .bx-x {
+  display: none;
+}
+
+i {
+  color: #fff;
+}

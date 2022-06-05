@@ -13,7 +13,12 @@ from controllers.home_controller import *
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    return template('landing.tpl')
+    user = local_storage.getItem("profile")
+    if not user:
+        return template('landing.tpl')
+        
+    redirect("/home")
+    return None
 
 @error(404)
 def not_found_page(error1):

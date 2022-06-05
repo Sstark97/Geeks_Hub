@@ -17,6 +17,10 @@
         <script src="/static/js/jquery.js"></script>
         <script src="/static/js/slick.min.js"></script>
 
+        <!-- Script de Configuración del Slick Menu -->
         <script src="/static/js/slick_menu.js"></script>
+
+        <!-- Script de Cerrar Sesión -->
+        <script src="/static/js/logout.js"></script>
 </body>
 </html>
