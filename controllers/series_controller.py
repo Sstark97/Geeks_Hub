@@ -4,7 +4,9 @@ from datetime import datetime
 from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
 from models.series import Series
+from models.profile import Profile
 from config.config import DATA_BASE, SERIES_FIELDS
+from config.local_storage import local_storage
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
 
@@ -58,9 +60,45 @@ def series_process():
         redirect('/admin/series')
     return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
 
+@get('/series/<cod>')
+def view_films(cod):
+    """Página de visualización de Peliculas usuarios."""
+    series = Series(DATA_BASE)
+    row = series.select(['*'],{'Cod_Serie': cod})[0]
+    seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))
+
+    print(seasons)
+    user = local_storage.getItem("profile")
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+
+        serie = {
+            'Cod_Serie': row[0],
+            'Titulo': row[2],
+            'N_Temporada': row[1],
+            'Calificacion_Edad': row[3],
+            'Genero': row[4],
+            'Director': row[5],
+            'Puntuacion_Media': row[6],
+            'Productor': row[7],
+            'Sinopsis': row[8],
+            'Fecha_Publicacion': row[9],
+            'Portada': row[10],
+            'Trailer': row[11],
+            'Capitulos': row[12]
+        }
+
+        return template('view_content', title=row[2], content_type="series", avatar=avatar_perfil, content=serie, 
+            fields=SERIES_FIELDS, seasons=seasons, cod=cod)
+
+    redirect('/login')
+    return None
+
 @get('/admin/series/<cod>')
 @auth_basic(is_authenticated_user)
-def series_view(cod):
+def admin_series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})[0]
