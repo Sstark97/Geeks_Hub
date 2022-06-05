@@ -26,7 +26,7 @@ class History(Model):
                         SELECT {', '.join(fields_film)}, 0 AS "Temporada"
                         FROM {self._table_name} INNER JOIN {FILM}
                                                 ON {self._table_name}.Cod_Contenido = {FILM}.Cod_Pelicula
-                        WHERE {self._table_name}.Cod_Favoritos = "{cod_profile}"
+                        WHERE {self._table_name}.Cod_Perfil = "{cod_profile}"
                     """
 
         elif len(fields_series) != 0 and len(fields_film) == 0:

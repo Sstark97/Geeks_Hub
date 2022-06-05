@@ -29,10 +29,14 @@
         <div id="buttons">
             %if favorite:
                 <i class="bi bi-heart-fill"></i>
+            %else:
+                <i class="bi bi-heart"></i>
+            %end
+
+            %if history:
                 <i class="bi bi-eye-fill"></i>
             %else:
                 <i class="bi bi-eye"></i>
-                <i class="bi bi-heart"></i>
             %end
  
         </div>

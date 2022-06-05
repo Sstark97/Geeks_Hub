@@ -7,6 +7,7 @@ from utils.set_time import set_time
 from models.film import Film
 from models.profile import Profile
 from models.favorites import Favorites
+from models.history import History
 from config.config import DATA_BASE, FILM_FIELDS
 from config.local_storage import local_storage
 from forms.films_form import FilmsForm
@@ -97,14 +98,24 @@ def view_films(cod):
     if user:
         personal_profile = Profile(DATA_BASE)
         favorites = Favorites(DATA_BASE)
+        history = History(DATA_BASE)
 
         avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
         
-        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
-        profile_favorites = favorites.content(cod_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+
         cod_favorites = [row[0] for row in profile_favorites]
+        cod_history = [row[0] for row in profile_history]
+
+        favorite = False
+        history = False
         if cod in cod_favorites:
             favorite = True
+        
+        if cod in cod_history:
+            history = True
 
         film = {
             'Cod_Pelicula': row[0],
@@ -122,7 +133,7 @@ def view_films(cod):
         }
 
         return template('view_content', title=row[1], content_type="films", duration=duration, content=film, avatar=avatar_perfil, 
-        fields=FILM_FIELDS, seasons="", favorite=favorite, cod=cod)
+        fields=FILM_FIELDS, seasons="", favorite=favorite, history=history, cod=cod)
     
     redirect('/login')
     return None
