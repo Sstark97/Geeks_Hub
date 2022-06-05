@@ -5,6 +5,7 @@ from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
 from models.series import Series
 from models.profile import Profile
+from models.favorites import Favorites
 from config.config import DATA_BASE, SERIES_FIELDS
 from config.local_storage import local_storage
 from forms.series_form import SeriesForm
@@ -67,12 +68,19 @@ def view_films(cod):
     row = series.select(['*'],{'Cod_Serie': cod})[0]
     seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))
 
-    print(seasons)
     user = local_storage.getItem("profile")
 
     if user:
         personal_profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+
         avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+
+        profile_favorites = favorites.content(cod_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        cod_favorites = [row[0] for row in profile_favorites]
+        if cod in cod_favorites:
+            favorite = True
 
         serie = {
             'Cod_Serie': row[0],
@@ -91,7 +99,7 @@ def view_films(cod):
         }
 
         return template('view_content', title=row[2], content_type="series", avatar=avatar_perfil, content=serie, 
-            fields=SERIES_FIELDS, seasons=seasons, cod=cod)
+            fields=SERIES_FIELDS, seasons=seasons, favorite=favorite, cod=cod)
 
     redirect('/login')
     return None

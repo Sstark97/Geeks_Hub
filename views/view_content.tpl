@@ -27,8 +27,14 @@
         </div>
 
         <div id="buttons">
-            <i class="bi bi-eye-fill"></i>
-            <i class="bi bi-heart-fill"></i>
+            %if favorite:
+                <i class="bi bi-heart-fill"></i>
+                <i class="bi bi-eye-fill"></i>
+            %else:
+                <i class="bi bi-eye"></i>
+                <i class="bi bi-heart"></i>
+            %end
+ 
         </div>
 
         % if content_type == "series":
