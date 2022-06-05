@@ -29,11 +29,15 @@ def admin_accounts_view(email):
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
-    form = RegistrationForm(request.POST)
-    suscriptions_data = Suscription(DATA_BASE)
-    suscriptions = suscriptions_data.select(["*"])
+    user = local_storage.getItem("profile")
+    if not user:
+        form = RegistrationForm(request.POST)
+        suscriptions_data = Suscription(DATA_BASE)
+        suscriptions = suscriptions_data.select(["*"])
 
-    return template('register', form=form, rows=suscriptions)
+        return template('register', form=form, rows=suscriptions)
+    redirect("/home")
+    return None
 
 @post('/register')
 def register_process():
@@ -41,7 +45,7 @@ def register_process():
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
     
-    if form.register.data and form.validate() and request.POST.get("new_suscription") != None:
+    if form.register.data and form.validate() and request.POST.get("new_suscription"):
         form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
@@ -64,8 +68,13 @@ def register_process():
 @get('/login')
 def login():
     """Página para mostrar el formulario"""
-    form = LoginForm(request.POST)
-    return template('login', form=form)
+    user = local_storage.getItem("profile")
+    if not user:
+        form = LoginForm(request.POST)
+        return template('login', form=form)
+    
+    redirect("/home")
+    return None
 
 @post('/login')
 def login_process():
@@ -90,4 +99,8 @@ def login_process():
         return template('login', form=form)
 
     return None
-    
+
+@post('/logout')
+def logout():
+    """Página para cerrar la sesión"""
+    local_storage.clear()

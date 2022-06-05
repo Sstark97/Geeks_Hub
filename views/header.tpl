@@ -28,6 +28,7 @@
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    %from config.local_storage import local_storage
     <main>
         <header class="header_user">
             <ul class="head">
@@ -55,7 +56,7 @@
                             <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
                             <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li><a href=""><i class='bx bx-log-out' ></i>Cerrar Sesión</a></li>
+                            <li><a onclick="logout()"><i class='bx bx-log-out' ></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 

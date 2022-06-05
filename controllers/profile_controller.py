@@ -25,7 +25,7 @@ def profile_process():
 
     correo = local_storage.getItem("email")
 
-    if form.btn_continue.data and request.POST.get("avatar") != None and form.validate():
+    if form.btn_continue.data and request.POST.get("avatar") and form.validate():
         today = date.today()
         favorites.insert({"Fecha_Creacion": today.strftime("%Y-%m-%d")})
         cod_favorites = favorites.select(["Cod_Favoritos"])[-1][0]

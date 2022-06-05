@@ -1,3 +1,4 @@
+%from config.local_storage import local_storage
 <nav class="nav_user">
     <ul>
         <li>
@@ -35,7 +36,7 @@
                 <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
                 <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
                 <hr>
-                <li><a href=""><i class='bx bx-log-out' ></i>Cerrar Sesión</a></li>
+                <li><a onclick="logout()"><i class='bx bx-log-out' ></i>Cerrar Sesión</a></li>
             </ul>
         </li>
     </ul>
