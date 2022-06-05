@@ -71,6 +71,10 @@
     justify-content: center;
 }
 
+.content_container #buttons{
+    width: 100%;
+}
+
 .content_container #sinopsis{
     margin-top: 3%;
 }

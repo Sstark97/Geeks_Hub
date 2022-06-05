@@ -26,6 +26,11 @@
             </iframe>
         </div>
 
+        <div id="buttons">
+            <i class="bi bi-eye-fill"></i>
+            <i class="bi bi-heart-fill"></i>
+        </div>
+
         % if content_type == "series":
             <div id="seasons">
                 <select name="seasons" id="select_seasons" required onchange="abrirPopUp(this)">
