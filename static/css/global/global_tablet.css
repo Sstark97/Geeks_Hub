@@ -56,6 +56,10 @@
   padding: 6%;
 }
 
+#check:checked ~ .hamburguer_nav{
+  height: 78vh;
+}
+
 /* FOOTER */
 
 .icons li a {

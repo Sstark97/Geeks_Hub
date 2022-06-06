@@ -63,8 +63,8 @@ def series_process():
     return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
 
 @get('/series/<cod>')
-def view_films(cod):
-    """Página de visualización de Peliculas usuarios."""
+def view_series(cod):
+    """Página de visualización de Series para los usuarios."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})[0]
     seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))

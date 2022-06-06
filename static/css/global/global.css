@@ -118,7 +118,7 @@ p{
     justify-content: center;
 
     position: fixed;
-    top: 11vh;
+    top: 8vh;
     left: 0;
 
     width: 100%;
@@ -155,7 +155,8 @@ p{
 #check:checked ~ .hamburguer_nav{
     opacity: 1;
     transition: 0.5s;
-    height: 76vh;
+    height: 79vh;
+    top: 11vh;
 }
 
 #check:checked ~ .hamburguer_nav li {
