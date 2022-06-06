@@ -7,7 +7,7 @@ from models.series import Series
 from models.profile import Profile
 from models.favorites import Favorites
 from models.history import History
-from config.config import DATA_BASE, SERIES_FIELDS
+from config.config import DATA_BASE, SERIES_FIELDS, GENRES_FIELDS
 from config.local_storage import local_storage
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
@@ -249,3 +249,40 @@ def series_delete(cod):
 
     if form.cancel.data:
         redirect('/admin/series')
+
+@get('/series')
+def home_series():
+    """Página de inicio de Series"""
+
+    user = local_storage.getItem("profile")
+    fields = ["Cod_Serie AS 'Cod_Contenido'", "Titulo", "Genero", "N_Temporada", "Portada", "Trailer", "Director", "Productor", "Sinopsis", "Capitulos", "Puntuacion_Media", "0 AS 'Duracion'"]
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        series = Series(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+
+        # Top Contenido para el Slider
+        top_carrousel = series.top_content(fields, 4)
+
+        # Favoritos del Perfil
+        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], [])
+
+        # Top 10 Contenido
+        top_ten = series.top_content(fields, 10)
+
+        print(top_ten)
+
+        # Contenido por Genero
+        content_by_genre = {}
+
+        for genre in GENRES_FIELDS:
+            content = series.select(fields,{"Genero":genre})
+            content_by_genre[genre] = content
+        
+    else: 
+        redirect('/')
+    
+    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)

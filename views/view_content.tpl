@@ -41,7 +41,7 @@
                     <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye-fill"></i></button>
                 %else:
                     <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye"></i></button>
-               %end
+                %end
             </form>
  
         </div>
