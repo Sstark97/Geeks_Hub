@@ -1,4 +1,4 @@
-        <footer>
+
             <ul class="icons">
                 <li>
                     <a href="/" target="blank"><i class='bx bxl-facebook-circle'></i></a>
@@ -22,5 +22,8 @@
 
         <!-- Script de Cerrar Sesión -->
         <script src="/static/js/logout.js"></script>
+
+        <!-- Script de Cambio de Temporada -->
+        <script src="/static/js/season.js"></script>
 </body>
 </html>

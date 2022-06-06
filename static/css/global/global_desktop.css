@@ -112,7 +112,7 @@ head a {
 }
 
 .dropdown img {
-  height: 4.5rem;
+  height: 4rem;
   border-radius: 50%;
 }
 
@@ -150,6 +150,7 @@ nav {
 /* FOOTER */
 
 footer {
+  display: flex !important;
   align-items: center;
 }
 

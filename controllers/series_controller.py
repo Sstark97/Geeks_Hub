@@ -1,10 +1,14 @@
 """Archivo de Rutas de las Series."""
 from os import remove
-from datetime import datetime
+from datetime import datetime, date
 from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
 from models.series import Series
-from config.config import DATA_BASE, SERIES_FIELDS
+from models.profile import Profile
+from models.favorites import Favorites
+from models.history import History
+from config.config import DATA_BASE, SERIES_FIELDS, GENRES_FIELDS
+from config.local_storage import local_storage
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
 
@@ -58,9 +62,104 @@ def series_process():
         redirect('/admin/series')
     return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
 
+@get('/series/<cod>')
+def view_series(cod):
+    """Página de visualización de Series para los usuarios."""
+    series = Series(DATA_BASE)
+    row = series.select(['*'],{'Cod_Serie': cod})[0]
+    seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))
+
+    user = local_storage.getItem("profile")
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+        history = History(DATA_BASE)
+
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+
+        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+
+        cod_favorites = [row[0] for row in profile_favorites]
+        cod_history = [row[0] for row in profile_history]
+
+        favorite = False
+        history = False
+
+        if cod in cod_favorites:
+            favorite = True
+        
+        if cod in cod_history:
+            history = True
+
+        serie = {
+            'Cod_Contenido': row[0],
+            'Titulo': row[2],
+            'N_Temporada': row[1],
+            'Calificacion_Edad': row[3],
+            'Genero': row[4],
+            'Director': row[5],
+            'Puntuacion_Media': row[6],
+            'Productor': row[7],
+            'Sinopsis': row[8],
+            'Fecha_Publicacion': row[9],
+            'Portada': row[10],
+            'Trailer': row[11],
+            'Capitulos': row[12]
+        }
+
+        path = local_storage.getItem("path")
+
+        return template('view_content', title=row[2], content_type="series", path=path, avatar=avatar_perfil, content=serie, 
+            fields=SERIES_FIELDS, seasons=seasons, favorite=favorite, history=history, cod=cod)
+
+    redirect('/login')
+    return None
+
+@post('/series/<cod>')
+def procces_series(cod):
+    """Agrega/ Elimina una serie de favoritos."""
+    user = local_storage.getItem("profile")
+    favorite = request.POST.get('favorite_btn')
+    history = request.POST.get('history_btn')
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+
+        if favorite == "favorite_action":
+            favorites = Favorites(DATA_BASE)
+            cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+
+            profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            cod_favorites = [row[0] for row in profile_favorites]
+
+            if cod not in cod_favorites:
+                favorites.insert_favorite_content(cod_profile_perfil,cod)
+            else :
+                favorites.delete_favorite_content(cod_profile_perfil,cod)
+        elif history == "history_action":
+            history = History(DATA_BASE)
+
+            profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            cod_history = [row[0] for row in profile_history]
+
+            if cod not in cod_history:
+                today = date.today()
+                history.insert({'Cod_Perfil': user, 'Cod_Contenido': cod, "Fecha_Visualizacion": today.strftime("%Y-%m-%d")})
+            else :
+                history.delete({'Cod_Perfil': user, 'Cod_Contenido': cod})
+
+        redirect(f'/series/{cod}')
+    redirect('/login')
+    return None
+
+
+
 @get('/admin/series/<cod>')
 @auth_basic(is_authenticated_user)
-def series_view(cod):
+def admin_series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
     row = series.select(['*'],{'Cod_Serie': cod})[0]
@@ -169,3 +268,45 @@ def series_delete(cod):
 
     if form.cancel.data:
         redirect('/admin/series')
+
+@get('/series')
+def home_series():
+    """Página de inicio de Series"""
+
+    user = local_storage.getItem("profile")
+    fields = ["Cod_Serie AS 'Cod_Contenido'", "Titulo", "Genero", "N_Temporada", "Portada", "Trailer", "Director", 
+    "Productor", "Sinopsis", "Capitulos", "Puntuacion_Media", "0 AS 'Duracion'"]
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        series = Series(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+
+        # Top Contenido para el Slider
+        top_carrousel = series.top_content(fields, 4)
+
+        # Favoritos del Perfil
+        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], [])
+
+        # Top 10 Contenido
+        top_ten = series.top_content(fields, 10)
+
+        print(top_ten)
+
+        # Contenido por Genero
+        content_by_genre = {}
+
+        for genre in GENRES_FIELDS:
+            content = series.select(fields,{"Genero":genre})
+            content_by_genre[genre] = content
+        
+        local_storage.setItem("path","series")
+
+        return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, 
+    all_content=content_by_genre, avatar=avatar_perfil)
+
+    redirect('/')
+    return None
+    

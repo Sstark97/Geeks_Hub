@@ -17,6 +17,7 @@
     <!-- Iconos -->
 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
     <!-- Estilos Slick Menu-->
     
@@ -39,6 +40,13 @@
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/home/home_desktop.css" media="only screen and (min-width: 992px)">
 
+    <!-- Estilos de los Contenidos -->
+
+    <link rel="stylesheet" href="/static/css/content/content.css">
+    <link rel="stylesheet" href="/static/css/content/content_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/content/content_desktop.css" media="only screen and (min-width: 992px)">
+    
     <!-- Estilos de los Ajustes del Usuario-->
     
     <link rel="stylesheet" href="/static/css/acc_settings/account_settings.css">
@@ -55,14 +63,14 @@
         <header class="header_user">
             <ul class="head">
                 <li class="logo_user">
-                    <a href="/">
+                    <a href="/home">
                         <img src="/static/img/logo.png" alt="logo">
                     </a>
                 </li>
 
                 <li class="menu_tablet">
-                    <a href="">Series</a>
-                    <a href="">Películas</a>
+                    <a href="/series">Series</a>
+                    <a href="/films">Películas</a>
                 </li>
 
                 <li class="menu_desktop">

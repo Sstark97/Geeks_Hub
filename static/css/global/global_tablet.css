@@ -29,6 +29,10 @@
 
 /* NAVEGADOR */
 
+.nav_user{
+  height: 12vh;
+}
+
 .nav_user a {
   font-size: 4rem;
 }
@@ -50,6 +54,10 @@
 
 .hamburguer_nav li {
   padding: 6%;
+}
+
+#check:checked ~ .hamburguer_nav{
+  height: 78vh;
 }
 
 /* FOOTER */
