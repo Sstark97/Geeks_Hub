@@ -23,7 +23,7 @@
     width: 100%;
     height: 100%;
 
-    margin-bottom: 8vh;
+    margin-bottom: 11vh;
 }
 
 #content_title{
@@ -162,6 +162,8 @@
     background-color: var(--background_color);
     padding-top: 5%;
     padding-bottom: 5%;
+
+    border-bottom: 1px solid var(--base_color);
 }
 
 .content_container #other_content div{

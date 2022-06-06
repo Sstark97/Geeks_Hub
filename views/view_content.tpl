@@ -27,13 +27,6 @@
         </div>
 
         <div id="buttons">
-<<<<<<< HEAD
-            <i class="bi bi-eye-fill eye"></i>
-            <i class="bi bi-eye-slash-fill eye"></i>
-
-            <i class="bi bi-heart-fill heart"></i>
-            <i class="bi bi-heart heart"></i>
-=======
             %if favorite:
                 <i class="bi bi-heart-fill"></i>
             %else:
@@ -46,7 +39,6 @@
                 <i class="bi bi-eye"></i>
             %end
  
->>>>>>> 7d325bbb2c41f2d6cd4c03061d6d4d7d3130bd03
         </div>
 
         % if content_type == "series":
