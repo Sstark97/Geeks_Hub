@@ -1,5 +1,4 @@
 """Archivo de Rutas de las Series."""
-from importlib.resources import path
 from os import remove
 from datetime import datetime, date
 from bottle import get, post, request, template, redirect, auth_basic
