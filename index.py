@@ -21,6 +21,11 @@ def index():
     redirect("/home")
     return None
 
+@get('/correo')
+def email_index():
+    """Página de inicio de la aplicación."""
+    return static_file('register_email.html', root='./static/html')
+
 @error(404)
 def not_found_page(error1):
     """Página de Error 404."""

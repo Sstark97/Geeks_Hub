@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Confirmación de Registro</title>
+    <meta name="description" content="New Account Email Template.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+        }
+
+        img {
+            width: 15rem;
+        }
+
+        h1 {
+            color: #1e1e2d;
+            font-weight: 500;
+            margin: 0;
+            font-size: 32px;
+            font-family: "Rubik", sans-serif;
+        }
+
+        p {
+            font-size: 15px;
+            color: #455056;
+            margin: 8px 0 0;
+            line-height: 24px;
+        }
+
+        #first_td,
+        #nine_td {
+            height: 80px;
+        }
+
+        #second_td,
+        #eight_td {
+            text-align: center;
+        }
+
+        #third_td,
+        #seven_td {
+            height: 20px;
+        }
+
+        #fourth_td,
+        #sixth_td {
+            height: 40px;
+        }
+
+        #five_td {
+            padding: 0 35px;
+        }
+
+        #login_btn {
+            background: #00aeb5;
+            text-decoration: none !important;
+            display: inline-block;
+            font-weight: 500;
+            margin-top: 24px;
+            color: #efefef;
+            text-transform: uppercase;
+            font-size: 14px;
+            padding: 10px 24px;
+            display: inline-block;
+            border-radius: 50px;
+        }
+
+        #web_url {
+            font-size: 14px;
+            color: rgba(69, 80, 86, 0.7411764705882353);
+            line-height: 18px;
+            margin: 0 0 0;
+        }
+
+        .email_table {
+            border-spacing: 0;
+            border: 0;
+            padding: 0;
+            width: 100%;
+            background-color: var(--base_color);
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .email_table_inside {
+            background-color: var(--base_color);
+            max-width: 670px;
+            margin: 0 auto;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            border-spacing: 0;
+        }
+
+        .email_table_text {
+            width: 95%;
+            border: 0;
+            padding: 0;
+            border-spacing: 0;
+            margin: 0 auto;
+            max-width: 670px;
+            background: #fff;
+            border-radius: 3px;
+            text-align: center;
+            -webkit-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+            -moz-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+            box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        a:hover {
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 100% body table -->
+    <table class="email_table">
+        <tr>
+            <td>
+                <table class="email_table_inside">
+                    <tr>
+                        <td id="first_td">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="second_td">
+                            <a href="https://localhost:8080" title="logo" target="_blank">
+                                <img src="https://i.ibb.co/RpwjLrP/logo.png" title="logo" alt="logo">
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="third_td">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table class="email_table_text">
+                                <tr>
+                                    <td id="fourth_td">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="five_td">
+                                        <h1>
+                                            Empezamos!
+                                        </h1>
+                                        <p>
+                                            Su cuenta ha sido creada con éxito.
+                                            <br><strong>
+                                                Por favor, cambia
+                                                la contraseña inmediatamente después de iniciar sesión</strong>.
+                                        </p>
+
+                                        <a id="login_btn" href="localhost:8080/login">Inicia
+                                            Sesión</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="six_td">&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="seven_td">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="eight_td">
+                            <p id="web_url">
+                                &copy; <strong>www.geeks_hub.com</strong> </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="nine_td">&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
