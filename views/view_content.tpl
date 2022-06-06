@@ -1,6 +1,6 @@
 % include('header.tpl')
     <div class="back">
-        <a href="/home">
+        <a href="/{{path}}">
             <i class='bx bx-left-arrow-alt icons'></i>
             <p>Volver</p>
         </a>

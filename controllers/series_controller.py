@@ -1,4 +1,5 @@
 """Archivo de Rutas de las Series."""
+from importlib.resources import path
 from os import remove
 from datetime import datetime, date
 from bottle import get, post, request, template, redirect, auth_basic
@@ -110,7 +111,9 @@ def view_series(cod):
             'Capitulos': row[12]
         }
 
-        return template('view_content', title=row[2], content_type="series", avatar=avatar_perfil, content=serie, 
+        path = local_storage.getItem("path")
+
+        return template('view_content', title=row[2], content_type="series", path=path, avatar=avatar_perfil, content=serie, 
             fields=SERIES_FIELDS, seasons=seasons, favorite=favorite, history=history, cod=cod)
 
     redirect('/login')
@@ -272,7 +275,8 @@ def home_series():
     """Página de inicio de Series"""
 
     user = local_storage.getItem("profile")
-    fields = ["Cod_Serie AS 'Cod_Contenido'", "Titulo", "Genero", "N_Temporada", "Portada", "Trailer", "Director", "Productor", "Sinopsis", "Capitulos", "Puntuacion_Media", "0 AS 'Duracion'"]
+    fields = ["Cod_Serie AS 'Cod_Contenido'", "Titulo", "Genero", "N_Temporada", "Portada", "Trailer", "Director", 
+    "Productor", "Sinopsis", "Capitulos", "Puntuacion_Media", "0 AS 'Duracion'"]
 
     if user:
         personal_profile = Profile(DATA_BASE)
@@ -299,7 +303,11 @@ def home_series():
             content = series.select(fields,{"Genero":genre})
             content_by_genre[genre] = content
         
-    else: 
-        redirect('/')
+        local_storage.setItem("path","series")
+
+        return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, 
+    all_content=content_by_genre, avatar=avatar_perfil)
+
+    redirect('/')
+    return None
     
-    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)

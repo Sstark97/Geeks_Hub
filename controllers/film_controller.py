@@ -132,7 +132,9 @@ def view_films(cod):
             'Duracion' : row[11],
         }
 
-        return template('view_content', title=row[1], content_type="films", duration=duration, content=film, avatar=avatar_perfil, 
+        path = local_storage.getItem("path")
+
+        return template('view_content', title=row[1], content_type="films", path=path, duration=duration, content=film, avatar=avatar_perfil, 
         fields=FILM_FIELDS, seasons="", favorite=favorite, history=history, cod=cod)
     
     redirect('/login')
@@ -267,7 +269,8 @@ def home_films():
     """Página de inicio de Films"""
 
     user = local_storage.getItem("profile")
-    fields = ["Cod_Pelicula AS 'Cod_Contenido'", "Titulo", "Genero", "0 AS 'Temporada'", "Portada", "Trailer", "Director", "Productor", "Sinopsis", "0 AS 'Capitulos'", "Puntuacion_Media", "Duracion"]
+    fields = ["Cod_Pelicula AS 'Cod_Contenido'", "Titulo", "Genero", "0 AS 'Temporada'", "Portada", "Trailer", "Director", 
+    "Productor", "Sinopsis", "0 AS 'Capitulos'", "Puntuacion_Media", "Duracion"]
 
     if user:
         personal_profile = Profile(DATA_BASE)
@@ -285,8 +288,6 @@ def home_films():
         # Top 10 Contenido
         top_ten = films.top_content(fields, 10)
 
-        print(top_ten)
-
         # Contenido por Genero
         content_by_genre = {}
 
@@ -294,8 +295,12 @@ def home_films():
             content = films.select(fields,{"Genero":genre})
             content_by_genre[genre] = content
         
-    else: 
-        redirect('/')
-    
-    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
 
+        local_storage.setItem("path","films")
+
+        return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, 
+                all_content=content_by_genre, avatar=avatar_perfil)
+         
+    redirect('/')
+    return None
+    

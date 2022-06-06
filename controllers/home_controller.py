@@ -20,6 +20,8 @@ def home_index():
         films = Film(DATA_BASE)
         favorites = Favorites(DATA_BASE)
 
+        local_storage.setItem("path", "home")
+
         # Top Contenido para el Slider
         top_carrousel = films.union_content(4)
 
