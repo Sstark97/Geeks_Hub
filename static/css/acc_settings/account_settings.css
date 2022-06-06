@@ -1,0 +1,158 @@
+html,
+body {
+  background-color: var(--shadow_color);
+  color: var(--base_color);
+  font-family: var(--main_font);
+}
+
+.container-settings {
+    text-align: center;
+}
+
+fieldset{
+    width: 100%;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.form-label {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+#form-submit, #profile_submit {
+    font-size: 0.8rem;
+}
+
+
+
+.input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+
+    font-size: 1.1rem;
+}
+
+.input input, select{
+    width: 60%;
+    padding: 1rem;
+    border: none;
+    border-bottom: 2px solid var(--main_color);
+    color: var(--base_color);
+    background-color: var(--shadow_color);
+    opacity: 0.6;
+}
+
+
+.input input:focus{
+    outline: none;
+    opacity: 1;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+}
+
+.button input{
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+
+    background-color: var(--main_color);
+    border: none;
+    border-radius: 10px;
+
+}
+
+.button a{
+    text-decoration: none;
+    width: 20%;
+}
+
+.button a input{
+    width: 100%;
+}
+
+.btn_cancel{
+    display: flex;
+    align-items: center;
+    width: 20%;
+    margin: 2%;
+    height: 3.4vh;
+    text-align: center;
+
+    border: none;
+    border-radius: 10px;
+    background-color: var(--base_color);
+
+    font-size: 2.5vw;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
+    font-size: 0.8rem;
+}
+
+.avatar{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.div-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar div{
+    width: 30%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.avatar div img{
+    width: 60%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.avatar div p {
+    font-size: 1.1rem;
+}
+
+#avatar-btn {
+    border: none;
+    background: none;
+}
+
+.avatar input[type="radio"]{
+	opacity: 0;
+}
+
+.hr {
+    width: 70%;
+    margin: 0 auto;
+}

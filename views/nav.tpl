@@ -1,6 +1,6 @@
 %from config.local_storage import local_storage
 <nav class="nav_user">
-    <ul>
+    <ul class="ul_user">
         <li>
             <a href="">
                 <i class='bx bxs-home'></i>
@@ -29,7 +29,7 @@
             <ul class="hamburguer_nav">
                 <li><a href="/select_profile"><i class='bx bxs-user-account' ></i>Ir a Perfiles</a></li>
                 <hr>
-                <li><a href=""><i class='bx bx-user' ></i>Cuenta</a></li>
+                <li><a href="/account_settings"><i class='bx bx-user' ></i>Cuenta</a></li>
                 <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
                 <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
                 <hr>

@@ -9,6 +9,7 @@ from controllers.profile_controller import *
 from controllers.history_controller import *
 from controllers.favorites_controller import * 
 from controllers.admin_controller import *
+from controllers.account_settings_controller import *
 from controllers.home_controller import *
 
 @get('/')
@@ -30,7 +31,6 @@ def email_index():
 def not_found_page(error1):
     """Página de Error 404."""
     return static_file('/html/404.html', root='static')
-
 @error(500)
 def server_error_page(error2):
     """Página de Error 500."""
