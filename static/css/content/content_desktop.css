@@ -44,6 +44,10 @@ p{
     font-size: 3rem;
 }
 
+.content_container #sinopsis{
+    margin-top: 1%;
+}
+
 #content_title .title p,
 .content_container #sinopsis .title p,
 .content_container #sinopsis p,
@@ -76,3 +80,23 @@ p{
 .content_container #seasons::after{
     top: 0.5em;
 }
+
+.content_container #buttons{
+    margin-top: 2vh;
+    height: 10vh;
+}
+
+.content_container #buttons form{
+    width: 8%;
+}
+
+.content_container #buttons button{
+    font-size: 2rem;
+}
+
+.content_container #buttons .heart,
+.content_container #buttons .eye{
+    opacity: 0.7;
+    transition: .5s;
+}
+

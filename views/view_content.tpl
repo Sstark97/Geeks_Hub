@@ -30,20 +30,20 @@
             %cod = content.get("Cod_Contenido")
             <form method="POST" action="{{ f'/{content_type}/{cod}' }}">
                 %if favorite:
-                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart-fill"></i></button>
+                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart-fill heart"></i></button>
                 %else:
-                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart"></i></button>
+                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart heart"></i></button>
                 %end
             </form>
 
             <form method="POST" action="{{ f'/{content_type}/{cod}' }}">
                 %if history:
-                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye-fill"></i></button>
+                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye-fill eye"></i></button>
                 %else:
-                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye"></i></button>
+                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye eye"></i></button>
                 %end
             </form>
- 
+
         </div>
 
         % if content_type == "series":
