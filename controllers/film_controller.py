@@ -140,7 +140,7 @@ def view_films(cod):
 
 @post('/films/<cod>')
 def procces_films(cod):
-    """Agrega una pelicula a favoritos."""
+    """Agrega/ Elimina una pelicula de favoritos."""
     user = local_storage.getItem("profile")
     favorite = request.POST.get('favorite_btn')
     history = request.POST.get('history_btn')
