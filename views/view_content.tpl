@@ -41,7 +41,7 @@
             %else:
                 <i class="bi bi-eye"></i>
             %end
- 
+
         </div>
 
         % if content_type == "series":

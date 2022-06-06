@@ -8,7 +8,7 @@ from models.film import Film
 from models.profile import Profile
 from models.favorites import Favorites
 from models.history import History
-from config.config import DATA_BASE, FILM_FIELDS
+from config.config import DATA_BASE, FILM_FIELDS, GENRES_FIELDS
 from config.local_storage import local_storage
 from forms.films_form import FilmsForm
 from forms.delete_content_form import DeleteContentForm
@@ -245,3 +245,41 @@ def films_delete(cod):
 
     if form.cancel.data:
         redirect('/admin/films')
+
+@get('/films')
+def home_films():
+    """Página de inicio de Films"""
+
+    user = local_storage.getItem("profile")
+    fields = ["Cod_Pelicula AS 'Cod_Contenido'", "Titulo", "Genero", "0 AS 'Temporada'", "Portada", "Trailer", "Director", "Productor", "Sinopsis", "0 AS 'Capitulos'", "Puntuacion_Media", "Duracion"]
+
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        films = Film(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+
+        # Top Contenido para el Slider
+        top_carrousel = films.top_content(fields, 4)
+
+        # Favoritos del Perfil
+        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        profile_favorites = favorites.content(cod_perfil, [], ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"])
+
+        # Top 10 Contenido
+        top_ten = films.top_content(fields, 10)
+
+        print(top_ten)
+
+        # Contenido por Genero
+        content_by_genre = {}
+
+        for genre in GENRES_FIELDS:
+            content = films.select(fields,{"Genero":genre})
+            content_by_genre[genre] = content
+        
+    else: 
+        redirect('/')
+    
+    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
+

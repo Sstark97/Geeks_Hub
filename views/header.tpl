@@ -56,14 +56,14 @@
         <header class="header_user">
             <ul class="head">
                 <li class="logo_user">
-                    <a href="/">
+                    <a href="/home">
                         <img src="/static/img/logo.png" alt="logo">
                     </a>
                 </li>
 
                 <li class="menu_tablet">
-                    <a href="">Series</a>
-                    <a href="">Películas</a>
+                    <a href="/series">Series</a>
+                    <a href="/films">Películas</a>
                 </li>
 
                 <li class="menu_desktop">
