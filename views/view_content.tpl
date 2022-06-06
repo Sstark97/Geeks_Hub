@@ -27,11 +27,15 @@
         </div>
 
         <div id="buttons">
-            %if favorite:
-                <i class="bi bi-heart-fill"></i>
-            %else:
-                <i class="bi bi-heart"></i>
-            %end
+            %path = content.get("Tipo")
+            %cod = content.get("Cod_Contenido")
+            <form method="POST" action="{{ f'/{path}/{cod}' }}">
+                %if favorite:
+                    <button type="submit"><i class="bi bi-heart-fill"></i></button>
+                %else:
+                    <button type="submit"><i class="bi bi-heart"></i></button>
+                %end
+            </form>
 
             %if history:
                 <i class="bi bi-eye-fill"></i>

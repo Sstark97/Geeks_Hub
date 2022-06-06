@@ -118,7 +118,7 @@ def view_films(cod):
             history = True
 
         film = {
-            'Cod_Pelicula': row[0],
+            'Cod_Contenido': row[0],
             'Titulo' : row[1],
             'Calificacion_Edad' : row[2],
             'Genero' : row[3],
@@ -129,12 +129,34 @@ def view_films(cod):
             'Fecha_Publicacion' : row[8],
             'Portada': row[9],
             'Trailer' : row[10],
-            'Duracion' : row[11]
+            'Duracion' : row[11],
+            'Tipo': "films",
         }
 
         return template('view_content', title=row[1], content_type="films", duration=duration, content=film, avatar=avatar_perfil, 
         fields=FILM_FIELDS, seasons="", favorite=favorite, history=history, cod=cod)
     
+    redirect('/login')
+    return None
+
+@post('/films/<cod>')
+def add_favorites(cod):
+    """Agrega una pelicula a favoritos."""
+    user = local_storage.getItem("profile")
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+
+        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        cod_favorites = [row[0] for row in profile_favorites]
+
+        if cod not in cod_favorites:
+            favorites.insert_favorite_content(cod_profile_perfil,cod)
+        else :
+            favorites.delete_favorite_content(cod_profile_perfil,cod)
+
+        redirect('/films/' + cod)
     redirect('/login')
     return None
 
