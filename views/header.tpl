@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -46,6 +46,12 @@
     <link rel="stylesheet" href="/static/css/content/content_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/content/content_desktop.css" media="only screen and (min-width: 992px)">
+    
+    <!-- Estilos de Formularios -->
+    
+    <link rel="stylesheet" href="/static/css/form/form.css">
+    <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
     
     <!-- Estilos de los Ajustes del Usuario-->
     

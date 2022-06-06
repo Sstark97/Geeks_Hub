@@ -3,33 +3,33 @@
         <h1 class="title">Configuración de Cuenta</h1>
         <form method="POST" action="/account_settings">
             <fieldset id="fieldset">
-                <div class="input">
-                    {{ form.name.label }}
+                <div class="edit_input">
                     {{ form.name }}
+                    {{ form.name.label }}
                 </div>
-                <div class="input">
-                    {{ form.surname.label }}
+                <div class="edit_input">
                     {{ form.surname }}
+                    {{ form.surname.label }}
                 </div>
-                <div class="input">
-                    {{ form.password.label }}
+                <div class="edit_input">
                     {{ form.password }}
+                    {{ form.password.label }}
                 </div>
-                <div class="input">
-                    {{ form.password_confirm.label }}
+                <div class="edit_input">
                     {{ form.password_confirm }}
+                    {{ form.password_confirm.label }}
                 </div>
-                <div class="input">
-                    {{ form.phone_number.label }}
+                <div class="edit_input">
                     {{ form.phone_number }}
+                    {{ form.phone_number.label }}
                 </div>
-                <div class="input">
-                    {{ form.direction.label }}
+                <div class="edit_input">
                     {{ form.direction }}
+                    {{ form.direction.label }}
                 </div>
-                <div class="input">
-                    {{ form.suscription.label }}
+                <div class="edit_input">
                     {{ form.suscription }}
+                    {{ form.suscription.label }}
                 </div>
             </fieldset>
             <div class="button">

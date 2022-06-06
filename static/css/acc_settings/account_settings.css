@@ -9,14 +9,14 @@ body {
     text-align: center;
 }
 
-fieldset{
+/* fieldset{
     width: 100%;
     border: none;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .title {
     font-size: 1.2rem;
@@ -24,18 +24,16 @@ fieldset{
     padding: 1rem 0 1rem 0;
 }
 
-.form-label {
+/* .form-label {
     font-size: 1rem;
     margin-top: 0.5rem;
 }
 
 #form-submit, #profile_submit {
     font-size: 0.8rem;
-}
+} */
 
-
-
-.input {
+/* .input {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -59,7 +57,7 @@ fieldset{
 .input input:focus{
     outline: none;
     opacity: 1;
-}
+} */
 
 .button{
     display: flex;
