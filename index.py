@@ -31,16 +31,6 @@ def email_index():
 def not_found_page(error1):
     """Página de Error 404."""
     return static_file('/html/404.html', root='static')
-
-@get('/home')
-def home():
-    """Página de inicio de la aplicación."""
-    return template('home.tpl')
-
-@get('/prueba')
-def about():
-    """Página de prueba"""
-    return static_file('/html/header.html', root='static')
 @error(500)
 def server_error_page(error2):
     """Página de Error 500."""
