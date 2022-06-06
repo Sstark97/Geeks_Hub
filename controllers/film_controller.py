@@ -1,6 +1,6 @@
 """Archivo de Rutas de las Peliculas."""
 from os import remove
-from datetime import datetime
+from datetime import datetime, date
 from bottle import get, post, request, template, redirect, auth_basic
 from utils.admin_auth import is_authenticated_user
 from utils.set_time import set_time
@@ -139,21 +139,37 @@ def view_films(cod):
     return None
 
 @post('/films/<cod>')
-def add_favorites(cod):
+def procces_films(cod):
     """Agrega una pelicula a favoritos."""
     user = local_storage.getItem("profile")
+    favorite = request.POST.get('favorite_btn')
+    history = request.POST.get('history_btn')
+
     if user:
         personal_profile = Profile(DATA_BASE)
-        favorites = Favorites(DATA_BASE)
-        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
 
-        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
-        cod_favorites = [row[0] for row in profile_favorites]
+        if favorite == "favorite_action":
+            favorites = Favorites(DATA_BASE)
+            cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
 
-        if cod not in cod_favorites:
-            favorites.insert_favorite_content(cod_profile_perfil,cod)
-        else :
-            favorites.delete_favorite_content(cod_profile_perfil,cod)
+            profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            cod_favorites = [row[0] for row in profile_favorites]
+
+            if cod not in cod_favorites:
+                favorites.insert_favorite_content(cod_profile_perfil,cod)
+            else :
+                favorites.delete_favorite_content(cod_profile_perfil,cod)
+        elif history == "history_action":
+            history = History(DATA_BASE)
+
+            profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            cod_history = [row[0] for row in profile_history]
+
+            if cod not in cod_history:
+                today = date.today()
+                history.insert({'Cod_Perfil': user, 'Cod_Contenido': cod, "Fecha_Visualizacion": today.strftime("%Y-%m-%d")})
+            else :
+                history.delete({'Cod_Perfil': user, 'Cod_Contenido': cod})
 
         redirect(f'/films/{cod}')
     redirect('/login')

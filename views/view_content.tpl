@@ -30,17 +30,19 @@
             %cod = content.get("Cod_Contenido")
             <form method="POST" action="{{ f'/{content_type}/{cod}' }}">
                 %if favorite:
-                    <button type="submit"><i class="bi bi-heart-fill"></i></button>
+                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart-fill"></i></button>
                 %else:
-                    <button type="submit"><i class="bi bi-heart"></i></button>
+                    <button type="submit" name="favorite_btn" value="favorite_action"><i class="bi bi-heart"></i></button>
                 %end
             </form>
 
-            %if history:
-                <i class="bi bi-eye-fill"></i>
-            %else:
-                <i class="bi bi-eye"></i>
-            %end
+            <form method="POST" action="{{ f'/{content_type}/{cod}' }}">
+                %if history:
+                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye-fill"></i></button>
+                %else:
+                    <button type="submit" name="history_btn" value="history_action"><i class="bi bi-eye"></i></button>
+               %end
+            </form>
  
         </div>
 
