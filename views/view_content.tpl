@@ -27,9 +27,8 @@
         </div>
 
         <div id="buttons">
-            %path = content.get("Tipo")
             %cod = content.get("Cod_Contenido")
-            <form method="POST" action="{{ f'/{path}/{cod}' }}">
+            <form method="POST" action="{{ f'/{content_type}/{cod}' }}">
                 %if favorite:
                     <button type="submit"><i class="bi bi-heart-fill"></i></button>
                 %else:

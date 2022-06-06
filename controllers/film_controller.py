@@ -130,7 +130,6 @@ def view_films(cod):
             'Portada': row[9],
             'Trailer' : row[10],
             'Duracion' : row[11],
-            'Tipo': "films",
         }
 
         return template('view_content', title=row[1], content_type="films", duration=duration, content=film, avatar=avatar_perfil, 
@@ -156,7 +155,7 @@ def add_favorites(cod):
         else :
             favorites.delete_favorite_content(cod_profile_perfil,cod)
 
-        redirect('/films/' + cod)
+        redirect(f'/films/{cod}')
     redirect('/login')
     return None
 

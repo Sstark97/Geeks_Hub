@@ -95,7 +95,7 @@ def view_films(cod):
             history = True
 
         serie = {
-            'Cod_Serie': row[0],
+            'Cod_Contenido': row[0],
             'Titulo': row[2],
             'N_Temporada': row[1],
             'Calificacion_Edad': row[3],
@@ -115,6 +115,28 @@ def view_films(cod):
 
     redirect('/login')
     return None
+
+@post('/series/<cod>')
+def add_favorites(cod):
+    """Agrega una serie a favoritos."""
+    user = local_storage.getItem("profile")
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+
+        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        cod_favorites = [row[0] for row in profile_favorites]
+
+        if cod not in cod_favorites:
+            favorites.insert_favorite_content(cod_profile_perfil,cod)
+        else :
+            favorites.delete_favorite_content(cod_profile_perfil,cod)
+            
+        redirect(f'/series/{cod}')
+    redirect('/login')
+    return None
+
 
 @get('/admin/series/<cod>')
 @auth_basic(is_authenticated_user)
