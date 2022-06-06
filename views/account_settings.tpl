@@ -1,25 +1,6 @@
 % include('header.tpl')
     <div id="container-settings">
         <h1 class="title">Configuración de Cuenta</h1>
-        <!-- <br>
-        <h3>Datos actuales de la Cuenta</h3>
-        <br>
-            %for index in range(len(rows)):
-                <div class="row">
-                    %for second_index in range(len(rows[index])-1):
-                        <div>
-                            {{ fields[second_index] }}
-                            %if second_index >= 4:
-                                {{ rows[index][second_index+1] }}
-                            %else:
-                                {{ rows[index][second_index] }}
-                        </div>
-                    %end
-                </div>
-            %end
-        <br>
-        <h3>Modificar datos de la Cuenta</h3>
-        <br> -->
         <form method="POST" action="/account_settings">
             <fieldset id="fieldset">
                 <div class="input">
