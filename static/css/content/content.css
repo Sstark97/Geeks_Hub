@@ -72,7 +72,26 @@
 }
 
 .content_container #buttons{
-    width: 100%;
+    width: 80%;
+    height: 8vh;
+    margin-top: 2vh;
+    margin-left: 10%;
+    margin-right: 10%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-size: 1.8rem;
+}
+
+.content_container #buttons .heart{
+    padding-left: 10%;
+    color: rgb(196, 13, 13);
+}
+
+.content_container #buttons .eye{
+    color: rgb(17, 107, 234);
 }
 
 .content_container #sinopsis{
@@ -157,7 +176,6 @@
 
 .content_container #seasons{
     width: 100%;
-    margin-top: 7%;
 }
 
 .content_container #seasons select,

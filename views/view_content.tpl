@@ -27,8 +27,11 @@
         </div>
 
         <div id="buttons">
-            <i class="bi bi-eye-fill"></i>
-            <i class="bi bi-heart-fill"></i>
+            <i class="bi bi-eye-fill eye"></i>
+            <i class="bi bi-eye-slash-fill eye"></i>
+
+            <i class="bi bi-heart-fill heart"></i>
+            <i class="bi bi-heart heart"></i>
         </div>
 
         % if content_type == "series":
