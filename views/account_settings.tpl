@@ -1,25 +1,6 @@
 % include('header.tpl')
     <div id="container-settings">
         <h1 class="title">Configuración de Cuenta</h1>
-        <!-- <br>
-        <h3>Datos actuales de la Cuenta</h3>
-        <br>
-            %for index in range(len(rows)):
-                <div class="row">
-                    %for second_index in range(len(rows[index])-1):
-                        <div>
-                            {{ fields[second_index] }}
-                            %if second_index >= 4:
-                                {{ rows[index][second_index+1] }}
-                            %else:
-                                {{ rows[index][second_index] }}
-                        </div>
-                    %end
-                </div>
-            %end
-        <br>
-        <h3>Modificar datos de la Cuenta</h3>
-        <br> -->
         <form method="POST" action="/account_settings">
             <fieldset id="fieldset">
                 <div class="input">
@@ -63,15 +44,20 @@
         <form action="/account_settings/profile" method="get">
             <h1 class="title">Configuración de Perfiles</h1>
             <div class="avatar">
+                %cont = 0
                 %for row_profile in rows_profile:
-                    <div>
-                        <button id="avatar-btn" type="submit">
+                    <div class="div-avatar">
+                        <input type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row_profile[0] }}">
+                        <label for={{ f"profile_code{cont}" }} class="lbl_img">
                             <img class="profile_image" src="{{ row_profile[3] }}" alt="Avatar">
-                        </button>
+                        </label>
                         <p>{{ row_profile[2] }}</p>
-                        <input type="hidden" name="profile_code" value="{{ row_profile[0] }}">
                     </div>
+                    %cont += 1
                 %end
+            </div>
+            <div class="button">
+                <input type="submit" class="profile_submit" name="btn_continue" value="Continuar">
             </div>
         </form>
         %end

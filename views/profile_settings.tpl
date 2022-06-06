@@ -10,11 +10,11 @@
                 <div class="input"><label for="avatar">Avatar</label></div>
                 <div class="avatar">
                     % cont = 1
-                    % for avatar in rows:
+                    % for avatar_profile in rows:
                     <div>
-                        <input type="radio" name="avatar" id={{ f"radio{cont}" }} value="{{ avatar }}">
+                        <input type="radio" name="avatar" id={{ f"radio{cont}" }} value="{{ avatar_profile }}">
                         <label for={{ f"radio{cont}" }}>
-                            <img src="{{ avatar }}" alt={{ f"avatar{cont}" }}>
+                            <img src="{{ avatar_profile }}" alt={{ f"avatar_profile{cont}" }}>
                         </label>
                     </div>
                     % cont += 1

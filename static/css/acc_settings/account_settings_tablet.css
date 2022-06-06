@@ -1,0 +1,25 @@
+#form-submit, #profile_submit {
+    font-size: 0.9rem;
+}
+
+.btn_cancel a {
+    color: #000;
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+#btn_continue, .button a {
+    font-size: 1rem;
+}
+
+.button a input {
+    font-size: 1rem;
+}
+
+.avatar div img{
+    width: 40%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}

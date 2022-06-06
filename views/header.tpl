@@ -40,7 +40,11 @@
     <link rel="stylesheet" href="/static/css/home/home_desktop.css" media="only screen and (min-width: 992px)">
 
     <!-- Estilos de los Ajustes del Usuario-->
-    <link rel="stylesheet" href="/static/css/account_settings.css">
+    
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings.css">
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_desktop.css" media="only screen and (min-width: 992px)">
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
@@ -71,7 +75,7 @@
                         <ul>
                             <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li><a href=""><i class='bx bx-user'></i>Cuenta</a></li>
+                            <li><a href="/account_settings"><i class='bx bx-user'></i>Cuenta</a></li>
                             <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
                             <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
