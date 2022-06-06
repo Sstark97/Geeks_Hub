@@ -60,17 +60,19 @@ def account_settings_process():
 @get('/account_settings/profile')
 def account_settings_profile():
     """Página de inicio de Configuración de Perfil"""
-    
-    form = form = ProfileForm(request.GET) 
-    profile = Profile(DATA_BASE)
-    
-    codigo_perfil = request.GET.get("profile_code")
-    rows_profile = profile.select(['*'], {'Cod_Perfil': codigo_perfil})
-    form.nickname.data = rows_profile[0][2]
+    if request.GET.get("btn_continue") and request.GET.get("profile_code"):
+        form = form = ProfileForm(request.GET) 
+        profile = Profile(DATA_BASE)
+        
+        codigo_perfil = request.GET.get("profile_code")
+        rows_profile = profile.select(['*'], {'Cod_Perfil': codigo_perfil})
+        form.nickname.data = rows_profile[0][2]
 
-    personal_profile = profile.select(['Imagen'], {'Cod_Perfil': codigo_perfil})
+        personal_profile = profile.select(['Imagen'], {'Cod_Perfil': local_storage.getItem("profile")})
+        print(personal_profile[0][0])
 
-    return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil, avatar=personal_profile[0][0])
+        return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil, avatar=personal_profile[0][0])
+    redirect('/account_settings')
 
 @post('/account_settings/profile')
 def account_settings_profile_process():
