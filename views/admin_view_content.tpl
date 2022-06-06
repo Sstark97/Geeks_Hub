@@ -1,27 +1,42 @@
 %include('admin_header.tpl',title=title)
-    <h2>{{title}}</h2>
-    <button><a href="/admin/{{content_type}}">Volver</a></button>
-    <table border="1">
-        <tr>
-            %for field in fields:
-                <th>{{field}}</th>
-            %end
-        </tr>
+    <div class="back">
+        <a href="/admin/{{content_type}}">
+            <i class='bx bx-left-arrow-alt icons'></i>
+            <p>Volver</p>
+        </a>
+    </div>
+    <main class="content_container">
 
-        %for row in content:
-        <tr>
-            %for col in row:
-                %if row.index(col) == img_col:
-                    <td>
-                        <img src="{{col}}" width="300px" height="100%"/>
-                    </td>
-                %else:
-                    <td>{{col}}</td>
+        <div id="content_title">
+            <h3 class="bg_content">{{content.get("Titulo")}}</h3>
+        </div>
+
+        <div class="image">
+            <img src="/{{content.get('Portada')}}" alt="{{content.get('Titulo')}}">
+            <iframe src="{{content.get('Trailer')}}" title="YouTube video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div id="content_info">
+            <ul>
+                %for key, value in content.items():
+                    %if key != "Titulo" and key != "Portada" and key != "Trailer" and key != "Sinopsis":
+                        <li>
+                            <span class="content_info_title">{{key}}:</span>
+                            <span class="content_info_value">{{value}}</span>
+                        </li>
+                    %end
                 %end
-            %end
-        </tr>
-        %end
-    </table>
-    
+            </ul>
+        </div>
+
+        <div id="sinopsis">
+            <span class="content_info_title">Sinopsis:</span>
+            <span class="content_info_value">{{content.get("Sinopsis")}}</span>
+        </div>
+
+    </main>
 </body>
 </html>

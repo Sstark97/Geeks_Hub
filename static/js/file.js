@@ -6,6 +6,7 @@ inputs.forEach( input => {
         var fileName = '';
         if ( input.files && input.files.length === 1 ) {
             label.innerText = input.files[0].name;
+            console.log(input.files[0].name);
         } else {
             label.innerText = 'Selecciona una imagen';
         }

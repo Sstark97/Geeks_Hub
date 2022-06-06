@@ -1,19 +1,36 @@
 """Archivo de inicio de la aplicación."""
-from bottle import get, run, template, static_file, auth_basic
-from utils.admin_auth import is_authenticated_user
+from operator import ge
+from bottle import get, run, template, static_file, error
 from controllers.film_controller import *
 from controllers.series_controller import *
 from controllers.suscription_controller import *
 from controllers.account_controller import *
 from controllers.profile_controller import *
 from controllers.history_controller import *
+from controllers.favorites_controller import * 
 from controllers.admin_controller import *
-
+from controllers.account_settings_controller import *
+from controllers.home_controller import *
 
 @get('/')
 def index():
     """Página de inicio de la aplicación."""
-    return template('index.tpl')
+    user = local_storage.getItem("profile")
+    if not user:
+        return template('landing.tpl')
+        
+    redirect("/home")
+    return None
+
+@get('/correo')
+def email_index():
+    """Página de inicio de la aplicación."""
+    return static_file('register_email.html', root='./static/html')
+
+@error(404)
+def not_found_page(error1):
+    """Página de Error 404."""
+    return static_file('/html/404.html', root='static')
 
 @get('/home')
 def home():
@@ -24,6 +41,10 @@ def home():
 def about():
     """Página de prueba"""
     return static_file('/html/header.html', root='static')
+@error(500)
+def server_error_page(error2):
+    """Página de Error 500."""
+    return static_file('/html/500.html', root='static')
 
 @get("/static/<filepath:path>")
 def html(filepath):

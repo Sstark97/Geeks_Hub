@@ -1,0 +1,47 @@
+.content_container {
+  margin-top: 2%;
+}
+
+#content_title,
+.content_container .image,
+#content_info,
+#sinopsis {
+  width: 80%;
+  padding: 1%;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.content_container .image {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#content_info,
+#sinopsis,
+.content_container .image {
+  margin-top: 2%;
+  justify-content: space-around;
+}
+
+.content_container .image img {
+  width: 35%;
+}
+
+.content_container .image iframe {
+  width: 55%;
+  height: 20vh;
+}
+
+.content_info_title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.content_info_value {
+  font-size: 1.05rem;
+}
+
+.back {
+  width: 80%;
+}

@@ -1,17 +1,15 @@
 """Archivo de Rutas de las Series."""
-import sys
 from os import remove
 from datetime import datetime
-from bottle import get, post, request, template, redirect
+from bottle import get, post, request, template, redirect, auth_basic
+from utils.admin_auth import is_authenticated_user
 from models.series import Series
 from config.config import DATA_BASE, SERIES_FIELDS
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
 
-sys.path.append('models')
-sys.path.append('forms')
-
 @get('/admin/series')
+@auth_basic(is_authenticated_user)
 def series_index():
     """Página de inicio de las Series."""
     series = Series(DATA_BASE)
@@ -21,12 +19,14 @@ def series_index():
         content_title="Titulo", content_third_row="N_Temporada" ,rows=rows)
 
 @get('/admin/series/new')
+@auth_basic(is_authenticated_user)
 def series_new():
     """Página de registro de series."""
     form = SeriesForm(request.POST)
     return template('series_form', title="Nueva Serie", form=form, path='/admin/series/new')
 
 @post('/admin/series/new')
+@auth_basic(is_authenticated_user)
 def series_process():
     """Procesa el formulario de registro de series."""
     form = SeriesForm(request.POST) 
@@ -39,11 +39,11 @@ def series_process():
             file.write(image_data.file.read())
 
         form_data = {
-            'Cod_Serie': series.code_generator(),
+            'Cod_Serie': series.code_generator("S", "Cod_Serie"),
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,
@@ -56,17 +56,35 @@ def series_process():
         
         series.insert(form_data)
         redirect('/admin/series')
-    return template('series_form', form=form)
+    return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
 
 @get('/admin/series/<cod>')
+@auth_basic(is_authenticated_user)
 def series_view(cod):
     """Página de visualización de series."""
     series = Series(DATA_BASE)
-    row = series.select(['*'],{'Cod_Serie': cod})
+    row = series.select(['*'],{'Cod_Serie': cod})[0]
 
-    return template('admin_view_content', title=row[0][2], content=row, content_type="series", fields=SERIES_FIELDS, img_col=10,  cod=cod)
+    serie = {
+        'Cod_Serie': row[0],
+        'Titulo': row[2],
+        'N_Temporada': row[1],
+        'Calificacion_Edad': row[3],
+        'Genero': row[4],
+        'Director': row[5],
+        'Puntuacion_Media': row[6],
+        'Productor': row[7],
+        'Sinopsis': row[8],
+        'Fecha_Publicacion': row[9],
+        'Portada': row[10],
+        'Trailer': row[11],
+        'Capitulos': row[12]
+    }
 
+    return template('admin_view_content', title=row[2], content_type="series", content=serie, fields=SERIES_FIELDS, cod=cod)
+    
 @get('/admin/series/edit/<cod>')
+@auth_basic(is_authenticated_user)
 def series_edit(cod):
     """Página de edición de series."""
     series = Series(DATA_BASE)
@@ -77,7 +95,7 @@ def series_edit(cod):
     form.title.data = row[2]
     form.season.data = row[1]
     form.age_rating.data = row[3]
-    form.genre.data = row[4]
+    form.GENRES.data = row[4]
     form.director.data = row[5]
     form.average_score.data = row[6]
     form.productor.data = row[7]
@@ -89,6 +107,7 @@ def series_edit(cod):
     return template('series_form', title="Editar Serie", form=form, path=f'/admin/series/edit/{cod}')
 
 @post('/admin/series/edit/<cod>')
+@auth_basic(is_authenticated_user)
 def series_process_edit(cod):
     """Procesa el formulario de edición de series."""
     form = SeriesForm(request.POST)
@@ -106,7 +125,7 @@ def series_process_edit(cod):
             'N_Temporada' : form.season.data,
             'Titulo' : form.title.data,
             'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.genre.data,
+            'Genero' : form.GENRES.data,
             'Director' : form.director.data,
             'Puntuacion_Media' : float(form.average_score.data),
             'Productor' : form.productor.data,
@@ -126,6 +145,7 @@ def series_process_edit(cod):
     return template('series_form', form=form)
 
 @get('/admin/series/delete/<cod>')
+@auth_basic(is_authenticated_user)
 def series_delete_index(cod):
     """Eliminar una serie."""
     form = DeleteContentForm(request.POST)
@@ -135,6 +155,7 @@ def series_delete_index(cod):
     return template('admin_delete_content', title="Eliminar Serie",content="Serie", uri="series", content_title=serie_title, cod=cod, form=form)
 
 @post('/admin/series/delete/<cod>')
+@auth_basic(is_authenticated_user)
 def series_delete(cod):
     """Procesa la eliminación de una serie."""
     form = DeleteContentForm(request.POST)

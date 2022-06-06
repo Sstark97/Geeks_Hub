@@ -1,5 +1,5 @@
 %include('admin_header.tpl',title=title)
-    <h1>Formulario de Creación de Series</h1>
+    <h1 class="title">{{title}}</h1>
     % if form.errors:
         <blockquote>
             <p>Hay errores en el formulario:</p>
@@ -12,62 +12,66 @@
             </ul>
         </blockquote>
     % end
-    <form method="POST" action="{{path}}" enctype="multipart/form-data">
+    <form class="form_container" method="POST" action="{{path}}" enctype="multipart/form-data">
         <fieldset>
-            <div>
-                {{ form.season.label }}:
+            <div class="edit_input">
                 {{ form.season }}
-
+                {{ form.season.label }}
             </div>
-            <div>
-                {{ form.title.label }}:
+            <div class="edit_input">
                 {{ form.title }}
+                {{ form.title.label }}
             </div>
-            <div>
-                {{ form.age_rating.label }}:
+            <div class="input">
                 {{ form.age_rating }}
+                {{ form.age_rating.label }}
             </div>
-            <div>
-                {{ form.genre.label }}:
-                {{ form.genre }}
+            <div class="input">
+                {{ form.GENRES }}
+                {{ form.GENRES.label }}
             </div>
-            <div>
-                {{ form.director.label }}:
+            <div class="edit_input">
                 {{ form.director }}
+                {{ form.director.label }}
             </div>
-            <div>
-                {{ form.average_score.label }}:
+            <div class="edit_input">
                 {{ form.average_score }}
+                {{ form.average_score.label }}
             </div>
-            <div>
-                {{ form.productor.label }}:
+            <div class="edit_input">
                 {{ form.productor }}
+                {{ form.productor.label }}
             </div>
-            <div>
-                {{ form.synopsis.label }}:
-                {{ form.synopsis }}
-            </div>
-            <div>
-                {{ form.release_date.label }}:
+            <div class="date_input">
                 {{ form.release_date }}
+                {{ form.release_date.label }}
             </div>
-            <div>
-                {{ form.cover_page.label }}:
-                {{ form.cover_page }}
+            <div class="file_input">
+                <label class="file" for="cover_page">
+                    <span>Selecciona una imagen</span>
+                    {{ form.cover_page }}
+                </label>
+                <p>Portada</p>
             </div>
-            <div>
-                {{ form.trailer.label }}:
+            <div class="edit_input">
                 {{ form.trailer }}
+                {{ form.trailer.label }}
             </div>
-            <div>
-                {{ form.chapters.label }}:
+            <div class="edit_input">
                 {{ form.chapters }}
+                {{ form.chapters.label }}
             </div>
-            <div>
+            <div class="textarea_input">
+                {{ form.synopsis }}
+                {{ form.synopsis.label }}
+            </div>
+            <div class="button">
                 {{ form.submit }}
-                <button><a href="/admin/series">Cancelar</a></button>      
-            </div>
+                <button class="btn_cancel btn_delete"><a href="/admin/series">Cancelar</a></button>     
+            </div>     
         </fieldset>
     </form>
+
+    <script src="/static/js/file.js"></script>
 </body>
-</html>
+</html
