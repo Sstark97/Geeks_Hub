@@ -87,7 +87,8 @@ p{
 }
 
 .content_container #buttons form{
-    width: 8%;
+    width: 4%;
+    padding-right: 4%;
 }
 
 .content_container #buttons button{

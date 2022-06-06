@@ -50,3 +50,7 @@
 .content_container #buttons button{
     font-size: 1.6rem;
 }
+
+.content_container #buttons form {
+    width: 6%;
+}
