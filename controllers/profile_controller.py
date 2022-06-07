@@ -13,16 +13,17 @@ sys.path.append('forms')
 @get('/profiles')
 def profile():
     """Página para mostrar el formulario"""
+
     form = ProfileForm(request.POST)
     return template('profile', rows=AVATARS, form=form, error="")
 
 @post('/profiles')
 def profile_process():
     """Página para procesar el formulario"""
+
     form = ProfileForm(request.POST) 
     personal_profile = Profile(DATA_BASE)
     favorites = Favorites(DATA_BASE)
-
     correo = local_storage.getItem("email")
 
     if form.btn_continue.data and request.POST.get("avatar") and form.validate():
@@ -49,15 +50,16 @@ def select_profile():
     """Página para mostrar la selección de perfiles"""
 
     correo = local_storage.getItem("email")
-
     personal_profile = Profile(DATA_BASE)
     rows = personal_profile.select(['*'], {'Correo': correo})
     form = ProfileForm(request.POST) 
+
     return template('select_profiles', rows=rows, form=form, error="")
 
 @post('/select_profile')
 def select_profile_process():
     """Página para procesar la selección de perfiles"""
+
     correo = local_storage.getItem("email")
     personal_profile = Profile(DATA_BASE)
     rows = personal_profile.select(['*'], {'Correo': correo})
@@ -65,7 +67,6 @@ def select_profile_process():
 
     if request.POST.get("profile_code"):
         codigo = request.POST.get("profile_code")
-        
         local_storage.setItem("profile",codigo)
 
         redirect('/home')

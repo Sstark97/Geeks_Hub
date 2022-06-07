@@ -1,7 +1,8 @@
 """Archivo de Rutas de las Peliculas."""
+from dataclasses import dataclass
 from os import remove
 from datetime import datetime, date
-from bottle import get, post, request, template, redirect, auth_basic
+from bottle import get, post, request, template, redirect, auth_basic, FileUpload
 from utils.admin_auth import is_authenticated_user
 from utils.set_time import set_time
 from models.film import Film
@@ -20,23 +21,39 @@ def films_index():
     peliculas = Film(DATA_BASE)
     rows = peliculas.select(['Cod_Pelicula','Titulo', 'Genero'])
 
-    return template('admin_content',title="Peliculas", class_content="films", content="films", cod="Cod_Pelicula", 
-        content_title="Titulo", content_third_row="Genero" ,rows=rows)
+    return template(
+                    'admin_content',
+                    title="Peliculas",
+                    class_content="films", 
+                    content="films", 
+                    cod="Cod_Pelicula", 
+                    content_title="Titulo", 
+                    content_third_row="Genero",
+                    rows=rows
+                    )
 
 @get('/admin/films/new')
 @auth_basic(is_authenticated_user)
 def films_new():
     """Página de registro de peliculas."""
+
     form = FilmsForm(request.POST)
-    return template('films_form',title="Nueva Película", error="", form=form, path='/admin/films/new')
+    return template('films_form',
+                    title="Nueva Película", 
+                    error="", 
+                    form=form, 
+                    path='/admin/films/new'
+                    )
 
 @post('/admin/films/new')
 @auth_basic(is_authenticated_user)
 def films_process():
     """Procesa el formulario de registro de peliculas."""
+
     form = FilmsForm(request.POST) 
     films = Film(DATA_BASE)
-    if form.submit.data and len(form.cover_page.data) != 0 and form.validate():
+
+    if form.submit.data and isinstance(form.cover_page.data, FileUpload) and form.validate():
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
 
@@ -62,12 +79,19 @@ def films_process():
         redirect('/admin/films')
     
     error = "Debe seleccionar una imagen"
-    return template('films_form', form=form, error=error, title="Nueva Película", path='/admin/films/new')
+    return template(
+                    'films_form', 
+                    form=form, 
+                    error=error, 
+                    title="Nueva Película", 
+                    path='/admin/films/new'
+                    )
 
 @get('/admin/films/<cod>')
 @auth_basic(is_authenticated_user)
 def admin_films_view(cod):
     """Página de visualización de Peliculas."""
+
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
 
@@ -86,11 +110,19 @@ def admin_films_view(cod):
         'Duracion' : row[11]
     }
 
-    return template('admin_view_content', title=row[1], content_type="films", content=film, fields=FILM_FIELDS, cod=cod)
+    return template(
+                    'admin_view_content', 
+                    title=row[1], 
+                    content_type="films", 
+                    content=film, 
+                    fields=FILM_FIELDS, 
+                    cod=cod
+                    )
 
 @get('/films/<cod>')
 def view_films(cod):
     """Página de visualización de Peliculas usuarios."""
+
     films = Film(DATA_BASE)
     row = films.select(['*'],{'Cod_Pelicula': cod})[0]
 
@@ -136,8 +168,20 @@ def view_films(cod):
 
         path = local_storage.getItem("path")
 
-        return template('view_content', title=row[1], content_type="films", path=path, duration=duration, content=film, avatar=avatar_perfil, 
-        fields=FILM_FIELDS, seasons="", favorite=favorite, history=history, cod=cod)
+        return template(
+                        'view_content', 
+                        title=row[1], 
+                        content_type="films", 
+                        path=path, 
+                        duration=duration, 
+                        content=film, 
+                        avatar=avatar_perfil, 
+                        fields=FILM_FIELDS, 
+                        seasons="", 
+                        favorite=favorite, 
+                        history=history, 
+                        cod=cod
+                        )
     
     redirect('/login')
     return None
@@ -163,6 +207,7 @@ def procces_films(cod):
                 favorites.insert_favorite_content(cod_profile_perfil,cod)
             else :
                 favorites.delete_favorite_content(cod_profile_perfil,cod)
+
         elif history == "history_action":
             history = History(DATA_BASE)
 
@@ -172,6 +217,7 @@ def procces_films(cod):
             if cod not in cod_history:
                 today = date.today()
                 history.insert({'Cod_Perfil': user, 'Cod_Contenido': cod, "Fecha_Visualizacion": today.strftime("%Y-%m-%d")})
+
             else :
                 history.delete({'Cod_Perfil': user, 'Cod_Contenido': cod})
 
@@ -201,12 +247,19 @@ def films_edit(cod):
     form.trailer.data = row[10]
     form.duration.data = row[11]
 
-    return template('films_form', title="Editar Película", form=form, error="", path=f'/admin/films/edit/{cod}')
+    return template(
+                    'films_form', 
+                    title="Editar Película", 
+                    form=form, 
+                    error="", 
+                    path=f'/admin/films/edit/{cod}'
+                    )
 
 @post('/admin/films/edit/<cod>')
 @auth_basic(is_authenticated_user)
 def films_process_edit(cod):
     """Procesa el formulario de edición de Peliculas."""
+
     form = FilmsForm(request.POST)
     films = Film(DATA_BASE)
     file_path = ""
@@ -238,22 +291,38 @@ def films_process_edit(cod):
 
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
-    return template('films_form', form=form, error="", title="Editar Película", path=f'/admin/films/edit/{cod}')
+    return template(
+                    'films_form', 
+                    form=form, 
+                    error="", 
+                    title="Editar Película", 
+                    path=f'/admin/films/edit/{cod}'
+                    )
 
 @get('/admin/films/delete/<cod>')
 @auth_basic(is_authenticated_user)
 def films_delete_index(cod):
     """Eliminar una Pelicula."""
+
     form = DeleteContentForm(request.POST)
     films = Film(DATA_BASE)
     film_title = films.get(['Titulo'], {'Cod_Pelicula': cod})
 
-    return template('admin_delete_content', title="Eliminar Pelicula",content="Pelicula", uri="films", content_title=film_title, cod=cod, form=form)
+    return template(
+                    'admin_delete_content', 
+                    title="Eliminar Pelicula",
+                    content="Pelicula", 
+                    uri="films", 
+                    content_title=film_title, 
+                    cod=cod, 
+                    form=form
+                    )
 
 @post('/admin/films/delete/<cod>')
 @auth_basic(is_authenticated_user)
 def films_delete(cod):
     """Procesa la eliminación de una Pelicula."""
+
     form = DeleteContentForm(request.POST)
     if form.delete.data:
         films = Film(DATA_BASE)
@@ -271,8 +340,20 @@ def home_films():
     """Página de inicio de Films"""
 
     user = local_storage.getItem("profile")
-    fields = ["Cod_Pelicula AS 'Cod_Contenido'", "Titulo", "Genero", "0 AS 'Temporada'", "Portada", "Trailer", "Director", 
-    "Productor", "Sinopsis", "0 AS 'Capitulos'", "Puntuacion_Media", "Duracion"]
+    fields = [
+        "Cod_Pelicula AS 'Cod_Contenido'", 
+        "Titulo", 
+        "Genero", 
+        "0 AS 'Temporada'", 
+        "Portada", 
+        "Trailer", 
+        "Director", 
+        "Productor", 
+        "Sinopsis", 
+        "0 AS 'Capitulos'", 
+        "Puntuacion_Media", 
+        "Duracion"
+        ]
 
     if user:
         personal_profile = Profile(DATA_BASE)
@@ -300,9 +381,15 @@ def home_films():
 
         local_storage.setItem("path","films")
 
-        return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, 
-                all_content=content_by_genre, avatar=avatar_perfil)
-         
+        return template(
+                        'home',
+                        slider=top_carrousel, 
+                        favorites=profile_favorites, 
+                        top_ten=top_ten, 
+                        all_content=content_by_genre, 
+                        avatar=avatar_perfil
+                        )
+    
     redirect('/')
     return None
     

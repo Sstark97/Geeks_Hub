@@ -17,6 +17,7 @@ sys.path.append('forms')
 @auth_basic(is_authenticated_user)
 def admin_accounts():
     """Página de inicio de las Cuentas para Administradores."""
+
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(list(ACCOUNT_FIELDS))
 
@@ -26,17 +27,26 @@ def admin_accounts():
 @auth_basic(is_authenticated_user)
 def admin_accounts_view(email):
     """Página de visualización de una Cuenta para Administradores."""
+
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(['*'], {'Correo': email})
     profiles = cuenta.n_profiles(['Cod_Perfil'], {'Correo': email})[0][0]
 
-    return template('admin_view_account', rows=rows, num_profiles=profiles, content_type="accounts", class_content="cuenta")
+    return template(
+                    'admin_view_account', 
+                    rows=rows, 
+                    num_profiles=profiles, 
+                    content_type="accounts", 
+                    class_content="cuenta"
+                    )
 
 @get('/register')
 def register():
     """Pagina de inicio de Registro"""
+
     user = local_storage.getItem("profile")
     if not user:
+
         form = RegistrationForm(request.POST)
         suscriptions_data = Suscription(DATA_BASE)
         suscriptions = suscriptions_data.select(["*"])
@@ -77,8 +87,10 @@ def register_process():
 @get('/login')
 def login():
     """Página para mostrar el formulario"""
+
     user = local_storage.getItem("profile")
     if not user:
+
         form = LoginForm(request.POST)
         return template('login', form=form)
     
@@ -88,6 +100,7 @@ def login():
 @post('/login')
 def login_process():
     """Página para procesar el formulario"""
+
     form = LoginForm(request.POST) 
     account = Account(DATA_BASE)
     error = True
@@ -96,17 +109,13 @@ def login_process():
 
     if form.btn_continue.data and form.validate():
         password = account.select(["Contrasena"], {"Correo": form.email.data})
-
         print(form.email.data)
 
         if check_password(form.password.data, password[0][0]):
             error = False
-
             redirect('/select_profile')
 
-
     if error:
-
         return template('login', form=form)
 
     return None
@@ -114,4 +123,5 @@ def login_process():
 @post('/logout')
 def logout():
     """Página para cerrar la sesión"""
+    
     local_storage.clear()

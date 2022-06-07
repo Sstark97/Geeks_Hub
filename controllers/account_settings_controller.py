@@ -14,8 +14,10 @@ sys.path.append('forms')
 @get('/account_settings')
 def account_settings():
     """Página de inicio de Configuración de Cuentas"""
+
     email = local_storage.getItem("email")
     profile_code = local_storage.getItem("profile")
+
     if profile_code:
         form = AccountSettingsForm(request.POST)
         account = Account(DATA_BASE)
@@ -31,11 +33,18 @@ def account_settings():
         form.phone_number.data = rows[0][5]
         form.suscription.data = rows[0][6]
 
-        return template('account_settings', rows=rows, rows_profile=rows_profile, form=form, fields=ACCOUNT_FIELDS, avatar=personal_profile[0][0])
+        return template('account_settings', 
+                        rows=rows, 
+                        rows_profile=rows_profile, 
+                        form=form, 
+                        fields=ACCOUNT_FIELDS, 
+                        avatar=personal_profile[0][0]
+                        )
 
 @post('/account_settings')
 def account_settings_process():
     """Procesa el formulario de Configuración de Cuentas"""
+
     form = AccountSettingsForm(request.POST)
     account = Account(DATA_BASE)
 
@@ -67,11 +76,18 @@ def account_settings_process():
     rows = account.select(['*'], {'Correo': email})
     rows_profile = profile.select(['*'], {'Correo': email})
     
-    return template('account_settings', rows=rows, rows_profile=rows_profile, form=form, fields=ACCOUNT_FIELDS, avatar=personal_profile[0][0])
+    return template('account_settings', 
+                    rows=rows, 
+                    rows_profile=rows_profile, 
+                    form=form, 
+                    fields=ACCOUNT_FIELDS, 
+                    avatar=personal_profile[0][0]
+                    )
     
 @get('/account_settings/profile')
 def account_settings_profile():
     """Página de inicio de Configuración de Perfil"""
+
     if request.GET.get("btn_continue") and request.GET.get("profile_code"):
         form = form = ProfileForm(request.GET) 
         profile = Profile(DATA_BASE)
@@ -79,21 +95,27 @@ def account_settings_profile():
         codigo_perfil = request.GET.get("profile_code")
         rows_profile = profile.select(['*'], {'Cod_Perfil': codigo_perfil})
         form.nickname.data = rows_profile[0][2]
-
         personal_profile = profile.select(['Imagen'], {'Cod_Perfil': local_storage.getItem("profile")})
-        print(personal_profile[0][0])
 
-        return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil,
-         avatar=personal_profile[0][0])
+        return template(
+                        'profile_settings', 
+                        rows=AVATARS, 
+                        rows_profile=rows_profile, 
+                        form=form, 
+                        profile_code=codigo_perfil,
+                        avatar=personal_profile[0][0]
+                        )
     redirect('/account_settings')
 
 @post('/account_settings/profile')
 def account_settings_profile_process():
     """Procesa el formulario de Configuración de Perfil"""
+
     form = ProfileForm(request.POST)
     profile = Profile(DATA_BASE)
 
     if form.btn_continue.data and form.validate():
+        
         form_data = {}
         if form.nickname.data:
             form_data["Nickname"] = form.nickname.data
