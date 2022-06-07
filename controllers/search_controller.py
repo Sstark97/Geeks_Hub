@@ -19,6 +19,4 @@ def search_content():
     films = Film(DATA_BASE)
     rows_content = films.union_content()
 
-    
-
     return template('search_content', rows_content=rows_content, avatar=avatar_perfil)
