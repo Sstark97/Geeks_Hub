@@ -1,8 +1,10 @@
 %include('admin_header.tpl',title=title)
-    <a class="back" href="/admin/{{content_type}}">
-        <i class='bx bx-left-arrow-alt icons'></i>
-        <p>Volver</p>
-    </a>
+    <div class="back">
+        <a href="/admin/{{content_type}}">
+            <i class='bx bx-left-arrow-alt icons'></i>
+            <p>Volver</p>
+        </a>
+    </div>
     <main class="content_container">
 
         <div id="content_title">

@@ -1,4 +1,4 @@
-        <footer>
+
             <ul class="icons">
                 <li>
                     <a href="/" target="blank"><i class='bx bxl-facebook-circle'></i></a>
@@ -12,5 +12,18 @@
             </ul>
             <p>©2022 Geeks Hub | Todos los derechos reservados</p>
         </footer>
+
+        <!-- JQuery y Slick Menu-->
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/slick.min.js"></script>
+
+        <!-- Script de Configuración del Slick Menu -->
+        <script src="/static/js/slick_menu.js"></script>
+
+        <!-- Script de Cerrar Sesión -->
+        <script src="/static/js/logout.js"></script>
+
+        <!-- Script de Cambio de Temporada -->
+        <script src="/static/js/season.js"></script>
 </body>
 </html>

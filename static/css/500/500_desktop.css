@@ -1,0 +1,25 @@
+img{
+    width: 40%;
+    margin-bottom: 0;
+}
+
+h1{
+    font-size: 3.5rem;
+}
+
+a{
+    width: 11%;
+    height: 5%;
+    
+}
+
+a input{
+    font-size: 1.3vw;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+a input:hover{
+    opacity: 1;
+    transition: 0.5s;
+}

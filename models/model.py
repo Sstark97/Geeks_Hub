@@ -60,15 +60,26 @@ class Model(ABC):
     
     def delete(self, where):
         """Elimina una fila de la tabla."""
-        clave = list(where.keys())[0] 
-        value = where[clave]
-        where_clause = f"{clave} LIKE ?"
-        query = f"DELETE FROM {self._table_name} WHERE {where_clause}"
+        if len(list(where.values())) == 1:
+            clave = list(where.keys())[0] 
+            value = where[clave]
+            where_clause = f"{clave} LIKE ?"
+            query = f"DELETE FROM {self._table_name} WHERE {where_clause}"
+        else:
+            where_values = list(where.values())
+            where_keys = list(where.keys())
+            query = f"DELETE FROM {self._table_name} WHERE {' AND '.join([f'{key} = ?' for key in where_keys])}"
+            value = tuple(where_values)
 
         try:
             conn = self._connect()
             cursor = conn.cursor()
-            cursor.execute(query, (value,))
+            
+            if len(list(where.values())) == 1:
+                cursor.execute(query, (value,))
+            else:
+                cursor.execute(query, value)
+
             conn.commit()
             cursor.close()
         

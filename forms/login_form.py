@@ -1,7 +1,5 @@
 """Fichero para la creación del formulario de inicio"""
-from atexit import register
-from email_validator import EmailNotValidError
-from wtforms import Form, BooleanField, StringField, PasswordField, SubmitField , validators
+from wtforms import Form, StringField, PasswordField, SubmitField , validators
 
 class LoginForm(Form):
     """Clase para la realización del formulario de inicio"""

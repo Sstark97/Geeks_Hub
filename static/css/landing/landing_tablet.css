@@ -1,0 +1,55 @@
+.button_login {
+  height: 10%;
+}
+
+.logo {
+  margin-top: 7%;
+}
+
+.logo img {
+  width: 70%;
+}
+
+.logo p {
+  font-size: 3vw;
+}
+
+.content p {
+  font-size: 2.8vw;
+}
+
+.button_submit {
+  height: 10%;
+}
+
+.devices {
+  height: 50%;
+}
+
+.television,
+.computer,
+.phone,
+.console {
+  height: 48vw;
+}
+
+.television img,
+.computer img,
+.phone img,
+.console img {
+  width: 40%;
+}
+
+.television h2,
+.computer h2,
+.phone h2,
+.console h2 {
+  font-size: 3vw;
+}
+
+.television p,
+.computer p,
+.phone p,
+.console p {
+  font-size: 2.3vw;
+}

@@ -1,22 +1,22 @@
 """Formulario de Registro de Peliculas"""
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
-from config.config import GENRE, AGE_RATING
+from config.config import GENRES, AGE_RATING
 
 class FilmsForm(Form):
     """Clase para el formulario de registro de peliculas"""
     title  = StringField('Título', [
                                     validators.InputRequired(), 
-                                    validators.Length(min=6, max=50), 
+                                    validators.Length(min=1, max=50)
                                 ])
     # calificacion_edad
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
-    genre = SelectField(label='Genero', choices=GENRE, validators = [validators.InputRequired()])
+    GENRES = SelectField(label='Genero', choices=GENRES, validators = [validators.InputRequired()])
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=30),
+                                    validators.Length(min=6, max=50),
                                 ])
 
     average_score = DecimalField('Puntuación Media', 
@@ -48,7 +48,7 @@ class FilmsForm(Form):
                                 ])
 
     duration = IntegerField('Duración', 
-                               [validators.DataRequired("El campo es obligatorio"), 
+                                [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=60, max=200, message="El campo debe ser un número entre 6 y 200")],
                                 default=1, 
                             #    render_kw={'class':'myclass'}

@@ -5,8 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selección de Perfil</title>
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/form.css">
+    <!-- Estilos -->
+
+    <!-- Estilos Globales -->
+    
+    <link rel="stylesheet" href="/static/css/global/global.css">
+    <link rel="stylesheet" href="/static/css/global/global_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de Formularios -->
+    
+    <link rel="stylesheet" href="/static/css/form/form.css">
+    <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
@@ -20,14 +32,16 @@
             <div class="avatar">
 
             %if rows != []:
+                %cont = 0
                 %for row in rows:
                     <div>
-                        <button id="avatar-btn" type="submit">
+                        <input type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row[0] }}">
+                        <label for={{ f"profile_code{cont}" }} >
                             <img class="profile_image" src="{{ row[3] }}" alt="Avatar">
-                        </button>
+                        </label>
                         <p>{{ row[2] }}</p>
-                        <input type="hidden" name="profile_code" value="{{ row[0] }}">
                     </div>
+                    %cont += 1
                 %end
             %end
 
@@ -39,6 +53,7 @@
             %end
             
             </div>
+            <button type="submit" class="btn" name="btn_continue">Continuar</button>
         </div>
     </form>
 </body>

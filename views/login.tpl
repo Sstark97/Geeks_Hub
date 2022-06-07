@@ -5,8 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="/static/css/global.css">
-    <link rel="stylesheet" href="/static/css/form.css">
+    <!-- Estilos -->
+
+    <!-- Estilos Globales -->
+    
+    <link rel="stylesheet" href="/static/css/global/global.css">
+    <link rel="stylesheet" href="/static/css/global/global_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de Formularios -->
+    <link rel="stylesheet" href="/static/css/form/form.css">
+    <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
+
 </head>
 <body>
     <img src="/static/img/logo.png" alt="logo">
@@ -14,13 +26,13 @@
 
     <form method="POST" action="/login" autocomplete="off">
         <fieldset>
-            <div class="input">
-                {{ form.email.label }}
+            <div class="edit_input">
                 {{ form.email }}
+                {{ form.email.label }}
             </div>
-            <div class="input">
-                {{ form.password.label }}
+            <div class="edit_input">
                 {{ form.password }}
+                {{ form.password.label }}
             </div>
             <div class="button">
                 <a href="/select_profiles">

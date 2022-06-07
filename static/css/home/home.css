@@ -1,0 +1,94 @@
+/* Encabezado imagenes */
+html, body{
+    background-color: var(--shadow_color);
+}
+
+#container{
+    margin-bottom: 13vh;
+}
+
+.slider{
+    position: relative;
+    height: 30vh;
+
+    overflow: hidden;
+    border-radius: 0.7rem;
+    margin: 0.3rem;
+    box-shadow: 0px 0px 13px 6px rgba(0,0,0,0.76);
+}
+
+.slider ul{
+    display: flex;
+    width: 400%;
+    height: 100%;
+
+    animation: cambio 20s infinite alternate;
+}
+
+@keyframes cambio{      /* Función que cambia el margin-left de lo que indiquemos cada X tiempo */
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+
+    25%{margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
+
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+
+.slider img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.slider h2{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    
+    margin-top: 1rem;
+
+    color: white;
+    font-size: 8vw;
+
+    text-shadow: 1px 1px white, -1px -1px black;
+}
+
+/* Content List */
+
+h3{
+    color: var(--base_color);
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 3%;
+}
+
+.content_list{
+    height: 19vh;
+    display: flex;
+}
+
+.content_list a{
+    border-radius: 0.7rem;
+    margin-left: 1.5rem;
+}
+
+.content_list a img {
+    height: 18vh;
+    border-radius: 0.7rem;
+}
+
+footer{
+    margin-top: 0;
+    border-top: 0;
+}

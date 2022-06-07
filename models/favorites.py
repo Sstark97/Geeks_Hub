@@ -30,8 +30,29 @@ class Favorites(Model):
                 conn.close()
                 
         return True
+    
+    def delete_favorite_content(self, cod_favorite, cod_content):
+        """Elimina un contenido de la lista de favoritos"""
+        query = f"""
+                    DELETE FROM {FAVORITES_CONTENT}
+                    WHERE Cod_Favoritos = "{cod_favorite}" AND Cod_Contenido = "{cod_content}"
+                """
+        try:
+            conn = self._connect()
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+            cursor.close()
+        except sqlite3.Error as error:
+            print("Error while executing sqlite script", error)
 
-    def content(self, cod_content, fields_series=[], fields_film=[]):
+        finally:
+            if conn:
+                conn.close()
+                
+        return True
+
+    def content(self, cod_content, fields_series=None, fields_film=None):
         """Muestra el contenido enlazado a la lista de favoritos"""
         rows = None
         query = ""

@@ -1,0 +1,89 @@
+.container_settings{
+    margin-bottom: 2vh;
+}
+
+.container_settings .account_settings{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container_settings .profile_settings{
+    flex-direction: column;
+}
+
+.container_settings .account_settings .input,
+.container_settings .account_settings .selector{
+    margin: 0 1% 0 1% ;
+    width: 40%;
+}
+
+.container_settings .title {
+    margin: 1% 0 2% 0;
+    font-size: 1.7rem;
+}
+
+.container_settings .account_settings .input,
+.container_settings .account_settings .selector{
+    font-size: 1.8vw;
+}
+
+.container_settings .account_settings .input input,
+.container_settings .account_settings .selector select{
+    width: 85%;
+    font-size: 1.3rem;
+}
+
+#form-submit, #profile_submit,
+.container_settings .btn_cancel a,
+.container_settings .button input {
+    
+    font-size: 1.2rem;
+}
+
+#form-submit, #profile_submit,
+.container_settings .btn_cancel,
+.container_settings .button input{
+    width: 8vw;
+}
+
+.container_settings .avatar div img{
+    width: 40%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.container_settings .avatar div img{
+    width: 50%;
+    opacity: 0.5;
+}
+
+.container_settings .avatar{
+    width: 50%;
+    margin-top: 1%;
+}
+
+.container_settings .avatar img:hover{
+    border-width: 20%;
+    border-style: solid;
+    border-color: var(--base_color);
+
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.container_settings .avatar input[type=radio]:checked + label img{
+    border-width: 20%;
+    border-style: solid;
+    border-color: var(--main_color);
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.container_settings .avatar div p {
+    font-size: 1.2rem;
+}

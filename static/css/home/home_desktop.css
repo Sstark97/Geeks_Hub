@@ -1,0 +1,45 @@
+#container{
+  margin-bottom: 3vh;
+}
+
+.slider {
+  margin: 1rem;
+  height: 40vh;
+}
+
+.slider h2 {
+  font-size: 4vw;
+}
+
+.content_list {
+  height: 30vh;
+}
+
+.content_list a img {
+  height: 30vh;
+  border-radius: 0.7rem;
+}
+
+.content_list a {
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+.content_list a:hover {
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+body::-webkit-scrollbar {
+  width: 13px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--base_color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--main_color);
+  border-radius: 20px;
+  border: 3px solid var(--base_color);
+}
