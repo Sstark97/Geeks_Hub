@@ -24,6 +24,7 @@
 }
 
 .container_settings .account_settings .input,
+.div_search .input,
 .container_settings .account_settings .selector{
     width: 100%;
     display: flex;
@@ -35,6 +36,7 @@
 }
 
 .container_settings .account_settings .input input,
+.div_search .input input,
 .container_settings .account_settings .selector select{
     width: 70%;
     border: solid 1.5px var(--main_color);
@@ -53,6 +55,7 @@
 }
 
 .container_settings .account_settings .input label,
+.div_search .input label,
 .container_settings .account_settings .selector label{
     position: absolute;
     color: var(--base_color);
@@ -62,13 +65,17 @@
 }
 
 .container_settings .account_settings .input input:focus, 
-.container_settings .account_settings .input input:valid{
+.container_settings .account_settings .input input:valid,
+.div_search .input input:focus,
+.div_search .input input:valid{
     outline: none;
     border: 1.5px solid var(--main_color);
 }
 
 .container_settings .account_settings .input input:focus ~ label,
 .container_settings .account_settings .input input:valid ~ label,
+.div_search .input input:focus ~ label,
+.div_search .input input:valid ~ label,
 .container_settings .account_settings .selector select:focus ~ label,
 .container_settings .account_settings .selector select:valid ~ label{
     transform: translateY(-50%) scale(0.8);

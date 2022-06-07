@@ -3,11 +3,13 @@
 }
 
 .container_settings .account_settings .input,
+.div_search .input,
 .container_settings .account_settings .selector{
     font-size: 3vw;
 }
 
 .container_settings .account_settings .input input,
+.div_search .input input,
 .container_settings .account_settings .selector select{
     width: 60%;
     font-size: 1.1rem;

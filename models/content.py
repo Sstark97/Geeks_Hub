@@ -30,6 +30,19 @@ class Content(AutoGenerate):
                         FROM {FILM}
                         ORDER BY Puntuacion_Media DESC LIMIT {limit}
                     """
+
+        elif where == 0 and limit == 0:
+            query = f"""
+                        SELECT Cod_Serie AS "Cod_Contenido", Titulo, Genero, N_Temporada, Portada, Trailer, Director, Productor, 
+                        Sinopsis, Capitulos, Puntuacion_Media, 0 AS "Duracion"
+                        FROM {SERIES}
+                        UNION 
+                        SELECT Cod_Pelicula AS "Cod_Contenido", Titulo, Genero, 0 AS "Temporada", Portada, Trailer, Director, 
+                        Productor, Sinopsis, 0 AS "Capitulos", Puntuacion_Media, Duracion
+                        FROM {FILM}
+                        ORDER BY Titulo
+                    """
+
         elif len(list(where.values())) == 1 and limit == 0: 
             clave = list(where.keys())[0] 
             value = where[clave]
@@ -45,6 +58,7 @@ class Content(AutoGenerate):
                         FROM {FILM}
                         WHERE {where_clause}
                     """
+
         rows = None
 
         try:
