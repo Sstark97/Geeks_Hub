@@ -16,7 +16,7 @@ class FilmsForm(Form):
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=50),
+                                    validators.Length(min=1, max=50),
                                 ])
 
     average_score = DecimalField('Puntuación Media', 
@@ -27,13 +27,12 @@ class FilmsForm(Form):
                                     validators.NumberRange(min=1.00, max=5.00, 
                                     message="El campo debe ser un número entre 1.01 y 5.00")
                                 ], 
-                                default=1.01,
-                            #    render_kw={'class':'myclass'}
+                                default=1.01
                             )
 
     productor = StringField('Productor', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=30),
+                                    validators.Length(min=1, max=30)
                                 ])
 
     synopsis = TextAreaField('Sinopsis', [validators.Length(min=10, max=1000)])
@@ -44,13 +43,12 @@ class FilmsForm(Form):
 
     trailer = StringField('Tráiler', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=80),
+                                    validators.Length(min=6, max=80)
                                 ])
 
     duration = IntegerField('Duración', 
                                 [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=60, max=200, message="El campo debe ser un número entre 6 y 200")],
-                                default=1, 
-                            #    render_kw={'class':'myclass'}
+                                default=60
                             )
     submit = SubmitField('Guardar')

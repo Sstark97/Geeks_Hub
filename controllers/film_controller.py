@@ -28,7 +28,7 @@ def films_index():
 def films_new():
     """Página de registro de peliculas."""
     form = FilmsForm(request.POST)
-    return template('films_form',title="Nueva Película", form=form, path='/admin/films/new')
+    return template('films_form',title="Nueva Película", error="", form=form, path='/admin/films/new')
 
 @post('/admin/films/new')
 @auth_basic(is_authenticated_user)
@@ -36,7 +36,7 @@ def films_process():
     """Procesa el formulario de registro de peliculas."""
     form = FilmsForm(request.POST) 
     films = Film(DATA_BASE)
-    if form.submit.data and form.cover_page and form.validate():
+    if form.submit.data and len(form.cover_page.data) != 0 and form.validate():
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
 
@@ -60,7 +60,9 @@ def films_process():
         
         films.insert(form_data)
         redirect('/admin/films')
-    return template('films_form', form=form, title="Nueva Película", path='/admin/films/new')
+    
+    error = "Debe seleccionar una imagen"
+    return template('films_form', form=form, error=error, title="Nueva Película", path='/admin/films/new')
 
 @get('/admin/films/<cod>')
 @auth_basic(is_authenticated_user)
@@ -199,7 +201,7 @@ def films_edit(cod):
     form.trailer.data = row[10]
     form.duration.data = row[11]
 
-    return template('films_form', title="Editar Película", form=form, path=f'/admin/films/edit/{cod}')
+    return template('films_form', title="Editar Película", form=form, error="", path=f'/admin/films/edit/{cod}')
 
 @post('/admin/films/edit/<cod>')
 @auth_basic(is_authenticated_user)
@@ -236,7 +238,7 @@ def films_process_edit(cod):
 
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
-    return template('films_form', title="Editar Película", path=f'/admin/films/edit/{cod}', form=form)
+    return template('films_form', form=form, error="", title="Editar Película", path=f'/admin/films/edit/{cod}')
 
 @get('/admin/films/delete/<cod>')
 @auth_basic(is_authenticated_user)
