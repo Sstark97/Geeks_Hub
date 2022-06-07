@@ -9,7 +9,6 @@ class SeriesForm(Form):
                                 [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
-                            #    render_kw={'class':'myclass'}
                             )
     title  = StringField('Título', [
                                     validators.InputRequired(), 
@@ -22,7 +21,7 @@ class SeriesForm(Form):
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=50),
+                                    validators.Length(min=1, max=50),
                                 ])
 
     average_score = DecimalField('Puntuación Media', 
@@ -34,12 +33,11 @@ class SeriesForm(Form):
                                     message="El campo debe ser un número entre 1.01 y 5.00")
                                 ], 
                                 default=1.01,
-                            #    render_kw={'class':'myclass'}
                             )
 
     productor = StringField('Productor', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=30),
+                                    validators.Length(min=1, max=30),
                                 ])
 
     synopsis = TextAreaField('Sinopsis', [validators.Length(min=10, max=1000)])
@@ -57,6 +55,5 @@ class SeriesForm(Form):
                                 [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
-                            #    render_kw={'class':'myclass'}
                             )
     submit = SubmitField('Guardar')

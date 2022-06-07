@@ -27,7 +27,7 @@ def series_index():
 def series_new():
     """Página de registro de series."""
     form = SeriesForm(request.POST)
-    return template('series_form', title="Nueva Serie", form=form, path='/admin/series/new')
+    return template('series_form', title="Nueva Serie", form=form, error="", path='/admin/series/new')
 
 @post('/admin/series/new')
 @auth_basic(is_authenticated_user)
@@ -35,7 +35,7 @@ def series_process():
     """Procesa el formulario de registro de series."""
     form = SeriesForm(request.POST) 
     series = Series(DATA_BASE)
-    if form.submit.data and form.cover_page and form.validate():
+    if form.submit.data and len(form.cover_page.data) != 0 and form.validate():
         image_data = request.files.get('cover_page')
         file_path = f"static/img/series/{image_data.filename}"
 
@@ -60,7 +60,9 @@ def series_process():
         
         series.insert(form_data)
         redirect('/admin/series')
-    return template('series_form', form=form, title="Nueva Serie", path='/admin/series/new')
+    
+    error = "Seleccione una imagen"
+    return template('series_form', form=form, error=error, title="Nueva Serie", path='/admin/series/new')
 
 @get('/series/<cod>')
 def view_series(cod):
@@ -203,7 +205,7 @@ def series_edit(cod):
     form.trailer.data = row[11]
     form.chapters.data = row[12]
 
-    return template('series_form', title="Editar Serie", form=form, path=f'/admin/series/edit/{cod}')
+    return template('series_form', title="Editar Serie", form=form, error="", path=f'/admin/series/edit/{cod}')
 
 @post('/admin/series/edit/<cod>')
 @auth_basic(is_authenticated_user)
@@ -241,7 +243,7 @@ def series_process_edit(cod):
 
         series.update(form_data, {'Cod_Serie': cod})
         redirect('/admin/series')
-    return template('series_form', form=form)
+    return template('series_form', form=form, error="")
 
 @get('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)
