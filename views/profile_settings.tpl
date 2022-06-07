@@ -3,7 +3,7 @@
 <div class="container_settings">
     <h1 class="title">Configuración de Perfil</h1>
     <form method="POST" action="/account_settings/profile" autocomplete="off">
-        <fieldset class="account_settings">
+        <fieldset class="account_settings profile_settings">
             <div class="input">
                 {{ form.nickname }}
                 {{ form.nickname.label }}
@@ -24,9 +24,7 @@
             <input type="hidden" name="profile_code" value="{{ profile_code }}">
             <div class="button">
                 {{ form.btn_continue }}
-                <a href="/account_settings">
-                    <input type="button" value="Cancelar" />
-                </a>
+                <button class="btn_cancel"><a href="/account_settings">Cancelar</a></button>  
             </div>
         </fieldset>
 
@@ -34,4 +32,3 @@
 </div>
 
 % include('nav.tpl')
-% include('footer.tpl')

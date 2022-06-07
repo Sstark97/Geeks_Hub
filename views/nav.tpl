@@ -2,17 +2,17 @@
 <nav class="nav_user">
     <ul class="ul_user">
         <li>
-            <a href="">
+            <a href="/home">
                 <i class='bx bxs-home'></i>
             </a>
         </li>
         <li id="serie">
-            <a href="">
+            <a href="/series">
                 <i class='bx bxs-tv' ></i>
             </a>
         </li>
         <li id="movie">
-            <a href="">
+            <a href="/films">
                 <i class='bx bxs-film' ></i>
             </a>
         </li>
