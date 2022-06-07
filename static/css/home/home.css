@@ -95,7 +95,7 @@ h3{
     width: 85%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     justify-self: center;
     margin: 1.5rem 0 13vh 0;
 }
