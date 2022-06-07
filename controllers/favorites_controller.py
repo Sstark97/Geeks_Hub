@@ -1,34 +1,32 @@
 """Archivo de Rutas de la lista de Favoritos."""
 import sys
-from bottle import get
+from bottle import get, request, template, redirect, post, auth_basic
 from models.favorites import Favorites
+from models.profile import Profile
 from config.config import DATA_BASE
+from config.local_storage import local_storage
 sys.path.append('models')
 
 @get('/favorites')
 def favorites_index():
     """Página de inicio de la lista de Favoritos."""
-    favorites = Favorites(DATA_BASE)
+    user = local_storage.getItem("profile")
 
-    # # Añadir 
-    # favorites.insert({"Cod_Favoritos": "FV13", "Fecha_Creacion": "2022-05-01"})
-    # row = favorites.select(['*'], {"Cod_Favoritos": "FV13"})
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
 
-    # # Actualizar
-    # favorites.update({"Fecha_Creacion": "2022-04-01"}, {"Cod_Favoritos": "FV13"})
-    # row = favorites.select(['*'], {"Cod_Favoritos": "FV13"})
+        local_storage.setItem("path", "favorites")
 
-    # Eliminar
-    # favorites.delete({"Cod_Favoritos": "FV13"})
-    
-    # # Select de todo el contenido
-    row = favorites.content("FV05", ["Cod_Contenido", "Titulo", "Genero", "N_Temporada"], ["Cod_Contenido", "Titulo", "Genero"])
+        # Favoritos del Perfil
+        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero","Cod_Serie", "N_Temporada"], 
+            ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"])
+        print(profile_favorites)
 
-    # # Select de series
-    # row = favorites.content("FV05", ["Cod_Contenido", "Titulo", "Genero", "N_Temporada"], [])
+    else: 
+        redirect('/')
 
-    # # Select de películas
-    # row = favorites.content("FV05", [], ["Cod_Contenido", "Titulo", "Genero"])
-
-    return str(row)
+    return template('list_content', rows_content=profile_favorites, search=False, title="Lista de Favoritos", avatar=avatar_perfil)
     
