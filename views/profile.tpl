@@ -25,6 +25,11 @@
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
     <h1>Creación de Perfil</h1>
+    % if error != "":
+    <blockquote>
+        <p>{{ error }}</p>
+    </blockquote>
+    % end
     <form method="POST" action="/profiles" autocomplete="off">
         <fieldset>
             <div class="edit_input">

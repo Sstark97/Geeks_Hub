@@ -14,7 +14,7 @@ sys.path.append('forms')
 def profile():
     """Página para mostrar el formulario"""
     form = ProfileForm(request.POST)
-    return template('profile', rows=AVATARS, form=form)
+    return template('profile', rows=AVATARS, form=form, error="")
 
 @post('/profiles')
 def profile_process():
@@ -41,7 +41,8 @@ def profile_process():
         personal_profile.insert(form_data)
         redirect("/select_profile")
 
-    return template('profile', rows=AVATARS, form=form)
+    error = "Seleccione un avatar"
+    return template('profile', rows=AVATARS, form=form, error=error)
 
 @get('/select_profile')
 def select_profile():
