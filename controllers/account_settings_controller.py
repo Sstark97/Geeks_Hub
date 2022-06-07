@@ -5,6 +5,7 @@ from models.account import Account
 from models.profile import Profile
 from forms.account_settings_form import AccountSettingsForm
 from forms.profile_form import ProfileForm
+from utils.hash_password import hash_password
 from config.config import DATA_BASE, ACCOUNT_FIELDS, AVATARS
 from config.local_storage import local_storage
 sys.path.append('models')
@@ -48,7 +49,7 @@ def account_settings_process():
         if form.direction.data:
             form_data_account["Direccion"] = form.direction.data
         if form.password.data and form.password.data == form.password_confirm.data:
-            form_data_account["Contrasena"] = form.password.data
+            form_data_account["Contrasena"] = hash_password(form.password.data)
         if form.phone_number.data:
             form_data_account["Telefono"] = form.phone_number.data
         if form.suscription.data and form.suscription.data != '0':
@@ -71,7 +72,8 @@ def account_settings_profile():
         personal_profile = profile.select(['Imagen'], {'Cod_Perfil': local_storage.getItem("profile")})
         print(personal_profile[0][0])
 
-        return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil, avatar=personal_profile[0][0])
+        return template('profile_settings', rows=AVATARS, rows_profile=rows_profile, form=form, profile_code=codigo_perfil,
+         avatar=personal_profile[0][0])
     redirect('/account_settings')
 
 @post('/account_settings/profile')
