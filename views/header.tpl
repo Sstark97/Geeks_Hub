@@ -33,6 +33,13 @@
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/global/global_desktop.css" media="only screen and (min-width: 992px)">
 
+    <!-- Estilos de los Ajustes del Usuario-->
+    
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings.css">
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_desktop.css" media="only screen and (min-width: 992px)">
+
     <!-- Estilos de la Página Principal -->
 
     <link rel="stylesheet" href="/static/css/home/home.css">
@@ -47,13 +54,6 @@
         media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/content/content_desktop.css" media="only screen and (min-width: 992px)">
     
-    <!-- Estilos de los Ajustes del Usuario-->
-    
-    <link rel="stylesheet" href="/static/css/acc_settings/account_settings.css">
-    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_tablet.css"
-        media="only screen and (min-width: 768px) and (max-width: 992px)">
-    <link rel="stylesheet" href="/static/css/acc_settings/account_settings_desktop.css" media="only screen and (min-width: 992px)">
-
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 

@@ -1,15 +1,8 @@
-html,
-body {
-  background-color: var(--shadow_color);
-  color: var(--base_color);
-  font-family: var(--main_font);
-}
-
-.container-settings {
+#container_settings {
     text-align: center;
 }
 
-fieldset{
+#container_settings #account_settings{
     width: 100%;
     border: none;
 
@@ -18,50 +11,72 @@ fieldset{
     align-items: center;
 }
 
-.title {
+#container_settings form{
+    width: 100%;
+}
+
+#container_settings .title {
     font-size: 1.2rem;
     text-align: center;
     padding: 1rem 0 1rem 0;
+    color: var(--base_color);
 }
 
-.form-label {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-}
-
-#form-submit, #profile_submit {
-    font-size: 0.8rem;
-}
-
-
-
-.input {
+#container_settings #account_settings .input,
+#container_settings #account_settings .selector{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2%;
 
-    font-size: 1.1rem;
+    font-size: 4vw;
 }
 
-.input input, select{
-    width: 60%;
+#container_settings #account_settings .input input,
+#container_settings #account_settings .selector select{
+    width: 70%;
+    border: solid 1.5px var(--main_color);
+    border-radius: 1rem;
+    background: none;
     padding: 1rem;
-    border: none;
-    border-bottom: 2px solid var(--main_color);
-    color: var(--base_color);
-    background-color: var(--shadow_color);
+    font-size: 1rem;
+    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
     opacity: 0.6;
+    color: var(--base_color);
+    overflow: hidden;
 }
 
+#container_settings #account_settings .selector select option{
+    background-color: var(--shadow_color);
+}
 
-.input input:focus{
+#container_settings #account_settings .input label,
+#container_settings #account_settings .selector label{
+    position: absolute;
+    color: var(--base_color);
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+}
+
+#container_settings #account_settings .input input:focus, 
+#container_settings #account_settings .input input:valid{
     outline: none;
-    opacity: 1;
+    border: 1.5px solid var(--main_color);
 }
 
-.button{
+#container_settings #account_settings .input input:focus ~ label,
+#container_settings #account_settings .input input:valid ~ label,
+#container_settings #account_settings .selector select:focus ~ label,
+#container_settings #account_settings .selector select:valid ~ label{
+    transform: translateY(-50%) scale(0.8);
+    background-color: var(--shadow_color);
+    padding: 0 .2em;
+    color: var(--main_color);
+}
+
+#container_settings .button{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -70,27 +85,26 @@ fieldset{
     margin: 1rem 0 1rem 0;
 }
 
-.button input{
+#container_settings .button input{
     width: 20%;
     margin: 2%;
     height: 3.4vh;
 
     background-color: var(--main_color);
     border: none;
-    border-radius: 10px;
-
+    border-radius: 0.7rem;
 }
 
-.button a{
+#container_settings .button a{
     text-decoration: none;
     width: 20%;
 }
 
-.button a input{
+#container_settings .button a input{
     width: 100%;
 }
 
-.btn_cancel{
+#container_settings .btn_cancel{
     display: flex;
     align-items: center;
     width: 20%;
@@ -99,19 +113,19 @@ fieldset{
     text-align: center;
 
     border: none;
-    border-radius: 10px;
+    border-radius: 0.7rem;
     background-color: var(--base_color);
 
     font-size: 2.5vw;
 }
 
-.btn_cancel a {
+#container_settings .btn_cancel a {
     color: #000;
     width: 100%;
     font-size: 0.8rem;
 }
 
-.avatar{
+#container_settings .avatar{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -119,19 +133,20 @@ fieldset{
     justify-content: center;
 }
 
-.div-avatar {
+#container_settings .div-avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--base_color);
 }
 
-.avatar div{
+#container_settings .avatar div{
     width: 30%;
     text-align: center;
     font-size: 1.5rem;
 }
 
-.avatar div img{
+#container_settings .avatar div img{
     width: 60%;
     border-radius: 50%;
 
@@ -139,7 +154,7 @@ fieldset{
     transition: 0.5s;
 }
 
-.avatar div p {
+#container_settings .avatar div p {
     font-size: 1.1rem;
 }
 
@@ -148,11 +163,11 @@ fieldset{
     background: none;
 }
 
-.avatar input[type="radio"]{
+#container_settings .avatar input[type="radio"]{
 	opacity: 0;
 }
 
-.hr {
+#container_settings .hr {
     width: 70%;
     margin: 0 auto;
 }

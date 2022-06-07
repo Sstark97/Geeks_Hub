@@ -1,35 +1,35 @@
 % include('header.tpl')
-    <div id="container-settings">
+    <div id="container_settings">
         <h1 class="title">Configuración de Cuenta</h1>
         <form method="POST" action="/account_settings">
-            <fieldset id="fieldset">
+            <fieldset id="account_settings">
                 <div class="input">
-                    {{ form.name.label }}
                     {{ form.name }}
+                    {{ form.name.label }}
                 </div>
                 <div class="input">
-                    {{ form.surname.label }}
                     {{ form.surname }}
+                    {{ form.surname.label }}
                 </div>
                 <div class="input">
-                    {{ form.password.label }}
                     {{ form.password }}
+                    {{ form.password.label }}
                 </div>
                 <div class="input">
-                    {{ form.password_confirm.label }}
                     {{ form.password_confirm }}
+                    {{ form.password_confirm.label }}
                 </div>
                 <div class="input">
-                    {{ form.phone_number.label }}
                     {{ form.phone_number }}
+                    {{ form.phone_number.label }}
                 </div>
                 <div class="input">
-                    {{ form.direction.label }}
                     {{ form.direction }}
+                    {{ form.direction.label }}
                 </div>
-                <div class="input">
-                    {{ form.suscription.label }}
+                <div class="selector">
                     {{ form.suscription }}
+                    {{ form.suscription.label }}
                 </div>
             </fieldset>
             <div class="button">

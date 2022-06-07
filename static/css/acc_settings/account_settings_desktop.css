@@ -1,69 +1,53 @@
-.title {
-    font-size: 1.5rem;
-}
-
-#form-submit, #profile_submit {
-    font-size: 1rem;
-}
-
-.btn_cancel a {
-    color: #000;
-    width: 100%;
-    font-size: 1rem;
-}
-
-.input, select, input {
-    font-size: 1.5vw;
-}
-
-.button input, .btn_cancel{
-    width: 10%;
-    height: 4vh;
-
-    font-size: 1rem;
-    opacity: 0.7;
-    transition: .5s;
-}
-
-.button input:hover, .btn_cancel:hover{
-    opacity: 1;
-    transition: .5s;
-}
-
-.button a{
-    width: 10%;
-}
-
-.btn_cancel a {
-    width: 100%;
-}
-
-.btn {
-    width: 7%;
-    height: auto;
-    padding: 0.3rem;
-    font-size: 1vw;
-}
-
-.delete_form {
-    justify-content: initial;
-}
-
-fieldset{
-    margin: 0 auto;
-    width: 80%;
-
+#container_settings #account_settings{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
+    justify-content: center;
 }
 
-fieldset div {
-    flex-basis: 50%;
+#container_settings #account_settings .input,
+#container_settings #account_settings .selector{
+    margin: 0 1% 0 1% ;
+    width: 40%;
 }
+
+#container_settings .title {
+    margin: 1% 0 2% 0;
+    font-size: 1.7rem;
+}
+
+#container_settings #account_settings .input,
+#container_settings #account_settings .selector{
+    font-size: 1.8vw;
+}
+
+#container_settings #account_settings .input input,
+#container_settings #account_settings .selector select{
+    width: 85%;
+    font-size: 1.3rem;
+}
+
+#form-submit, #profile_submit,
+#container_settings .btn_cancel a,
+#container_settings .button input {
+    
+    font-size: 1.2rem;
+}
+
+#form-submit, #profile_submit,
+#container_settings .btn_cancel,
+#container_settings .button input{
+    width: 8vw;
+}
+
+#container_settings .avatar div img{
+    width: 40%;
+    border-radius: 50%;
+
+    opacity: 1;
+    transition: 0.5s;
+}
+
 
 .avatar div img{
     width: 50%;
