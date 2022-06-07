@@ -93,7 +93,7 @@ class Favorites(Model):
                                                 ON {FAVORITES_CONTENT}.Cod_Contenido = {FILM}.Cod_Pelicula
                         WHERE {self._table_name}.Cod_Favoritos = "{cod_content}"
                     """
-
+                    
         try:
             conn = self._connect()
             cursor = conn.cursor()

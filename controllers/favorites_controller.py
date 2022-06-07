@@ -1,6 +1,6 @@
 """Archivo de Rutas de la lista de Favoritos."""
 import sys
-from bottle import get, request, template, redirect, post, auth_basic
+from bottle import get, template, redirect
 from models.favorites import Favorites
 from models.profile import Profile
 from config.config import DATA_BASE
@@ -23,7 +23,6 @@ def favorites_index():
         avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
         profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero","Cod_Serie", "N_Temporada"], 
             ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"])
-        print(profile_favorites)
 
     else: 
         redirect('/')

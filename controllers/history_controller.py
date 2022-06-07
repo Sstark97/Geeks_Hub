@@ -1,23 +1,31 @@
 """Archivo de Rutas de los Historiales."""
 import sys
-from bottle import get
+from bottle import get, template, redirect
 from models.history import History
+from models.profile import Profile
 from config.config import DATA_BASE
+from config.local_storage import local_storage
 sys.path.append('models')
+
 
 @get('/history')
 def history_index():
     """Página de inicio de los Historiales."""
-    historial = History(DATA_BASE)
+    user = local_storage.getItem("profile")
 
-    # Añadir
-    # historial.insert({"Cod_Perfil" : "Perfil13", "Cod_Contenido" : "P004", "Fecha_Visualizacion" : "2022-05-24"})
-    # row = historial.select(["*"], {"Cod_Perfil" : "Perfil13"})
-    
-    # Select perfiles que han visto peliculas
-    # row = historial.select(['*'],  {"Cod_Contenido": "P%"})
+    if user:
+        personal_profile = Profile(DATA_BASE)
+        history = History(DATA_BASE)
 
-    # Select de todos los historiales
-    row = historial.select(['*'])
+        local_storage.setItem("path", "history")
 
-    return str(row)
+        # Historial del Perfil
+        avatar_perfil = personal_profile.select(
+            ["Imagen"], {"Cod_Perfil": user})[0][0]
+        profile_history = history.content(user, ["Portada", "Trailer", "Titulo", "Genero", "Cod_Serie", "N_Temporada"],
+                                          ["Portada", "Trailer", "Titulo", "Genero", "Cod_Pelicula"])
+
+    else:
+        redirect('/')
+
+    return template('list_content', rows_content=profile_history, search=False, title="Historial", avatar=avatar_perfil)

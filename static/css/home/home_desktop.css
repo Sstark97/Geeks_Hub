@@ -35,6 +35,10 @@
   transition: all 0.3s;
 }
 
+.div_search {
+  min-height: 78vh;
+}
+
 body::-webkit-scrollbar {
   width: 13px;
 }
