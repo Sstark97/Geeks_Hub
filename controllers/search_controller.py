@@ -15,8 +15,10 @@ def search_content():
     if user:
         profile = Profile(DATA_BASE)
         avatar_perfil = profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
+        films = Film(DATA_BASE)
+        rows_content = films.union_content()
+    
+    else:
+        redirect('/')
 
-    films = Film(DATA_BASE)
-    rows_content = films.union_content()
-
-    return template('search_content', rows_content=rows_content, avatar=avatar_perfil)
+    return template('list_content', rows_content=rows_content, search=True, avatar=avatar_perfil)
