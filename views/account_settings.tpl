@@ -63,4 +63,3 @@
         %end
 
     % include('nav.tpl')
-% include('footer.tpl')

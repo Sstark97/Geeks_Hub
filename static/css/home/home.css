@@ -3,6 +3,10 @@ html, body{
     background-color: var(--shadow_color);
 }
 
+#container{
+    margin-bottom: 13vh;
+}
+
 .slider{
     position: relative;
     height: 30vh;
@@ -82,4 +86,9 @@ h3{
 .content_list a img {
     height: 18vh;
     border-radius: 0.7rem;
+}
+
+footer{
+    margin-top: 0;
+    border-top: 0;
 }
