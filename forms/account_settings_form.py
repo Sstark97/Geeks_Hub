@@ -1,6 +1,5 @@
 """Formulario para la Configuración de la Cuenta"""
-from email_validator import EmailNotValidError
-from wtforms import Form, BooleanField, StringField, PasswordField, SubmitField , validators, DateField, SelectField, IntegerField
+from wtforms import Form, StringField, PasswordField, SubmitField , validators, SelectField
 
 class AccountSettingsForm(Form):
     """Clase que maneja el formulario de Configuración de Cuentas"""
