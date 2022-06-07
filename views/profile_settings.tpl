@@ -1,5 +1,4 @@
 % include('header.tpl')
-
         <div class="container_settings">
             <h1 class="title">Configuración de Perfil</h1>
             <form method="POST" action="/account_settings/profile" autocomplete="off">
