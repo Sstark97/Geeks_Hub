@@ -13,6 +13,7 @@ class RegistrationForm(Form):
                                                validators.Email(message="Debe introducir un email válido")])
 
     password = PasswordField('Contraseña', [
+        validators.Length(min=1, max=20),
         validators.DataRequired(),
         validators.EqualTo('password_confirm',
                            message='Las contraseñas no coinciden')

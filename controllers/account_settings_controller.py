@@ -39,7 +39,7 @@ def account_settings_process():
     form = AccountSettingsForm(request.POST)
     account = Account(DATA_BASE)
 
-    if form.submit.data:
+    if form.submit.data and form.validate():
         form_data_account = {}
 
         if form.name.data:
@@ -57,6 +57,17 @@ def account_settings_process():
         
         account.update(form_data_account, {'Correo': local_storage.getItem("email")})
         redirect('/account_settings')
+
+    account = Account(DATA_BASE)
+    profile = Profile(DATA_BASE)
+    email = local_storage.getItem("email")
+    profile_code = local_storage.getItem("profile")
+    personal_profile = profile.select(['Imagen'], {'Cod_Perfil': profile_code})
+
+    rows = account.select(['*'], {'Correo': email})
+    rows_profile = profile.select(['*'], {'Correo': email})
+    
+    return template('account_settings', rows=rows, rows_profile=rows_profile, form=form, fields=ACCOUNT_FIELDS, avatar=personal_profile[0][0])
     
 @get('/account_settings/profile')
 def account_settings_profile():

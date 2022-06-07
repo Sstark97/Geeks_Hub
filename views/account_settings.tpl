@@ -1,6 +1,20 @@
 % include('header.tpl')
         <div class="container_settings">
             <h1 class="title">Configuración de Cuenta</h1>
+
+            % if form.errors:
+            <blockquote>
+                <p>Hay errores en el formulario:</p>
+                <ul>
+                    % for field, errors in form.errors.items():
+                    % for error in errors:
+                    <li>{{field}}: {{error}}</li>
+                    % end
+                    % end
+                </ul>
+            </blockquote>
+            % end
+
             <form method="POST" action="/account_settings">
                 <fieldset class="account_settings">
                     <div class="input">
