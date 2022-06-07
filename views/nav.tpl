@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="/search">
                 <i class='bx bxs-search-alt-2' ></i>
             </a>
         </li>

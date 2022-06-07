@@ -74,7 +74,7 @@
                 </li>
 
                 <li class="menu_desktop">
-                    <a href="">
+                    <a href="/search">
                         <i class='bx bx-search-alt-2 search'></i>
                     </a>
                     <div class="dropdown">
