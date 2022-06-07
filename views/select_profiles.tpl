@@ -28,7 +28,11 @@
         <div class="form_container">
 
             <label for="profile">Selecciona un perfil</label>
-
+                % if error != "":
+                <blockquote>
+                    <p>{{ error }}</p>
+                </blockquote>
+                % end
             <div class="avatar">
 
             %if rows != []:

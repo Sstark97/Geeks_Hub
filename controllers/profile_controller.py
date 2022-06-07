@@ -53,7 +53,7 @@ def select_profile():
     personal_profile = Profile(DATA_BASE)
     rows = personal_profile.select(['*'], {'Correo': correo})
     form = ProfileForm(request.POST) 
-    return template('select_profiles', rows=rows, form=form)
+    return template('select_profiles', rows=rows, form=form, error="")
 
 @post('/select_profile')
 def select_profile_process():
@@ -65,11 +65,10 @@ def select_profile_process():
 
     if request.POST.get("profile_code"):
         codigo = request.POST.get("profile_code")
-        print("HOLA")
-        print(codigo)
         
         local_storage.setItem("profile",codigo)
 
         redirect('/home')
-    
-    return template('select_profiles', rows=rows, form=form)
+
+    error = "Seleccione un avatar"
+    return template('select_profiles', rows=rows, form=form, error=error)
