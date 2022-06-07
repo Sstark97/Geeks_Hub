@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,7 @@
     <!-- Estilos -->
 
     <!-- Estilos Globales -->
-    
+
     <link rel="stylesheet" href="/static/css/global/global.css">
     <link rel="stylesheet" href="/static/css/global/global_tablet.css"
         media="only screen and (min-width: 768px) and (max-width: 992px)">
@@ -16,13 +17,28 @@
 
     <!-- Estilos de Formularios -->
     <link rel="stylesheet" href="/static/css/form/form.css">
-    <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/form/form_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
 
 </head>
+
 <body>
     <img src="/static/img/logo.png" alt="logo">
     <h1>Inicie Sesión</h1>
+
+    % if form.errors:
+    <blockquote>
+        <p>Hay errores en el formulario:</p>
+        <ul>
+            % for field, errors in form.errors.items():
+            % for error in errors:
+            <li>{{field}}: {{error}}</li>
+            % end
+            % end
+        </ul>
+    </blockquote>
+    % end
 
     <form method="POST" action="/login" autocomplete="off">
         <fieldset>
@@ -43,10 +59,11 @@
         <div class="register">
             <p>Si aún no estás registrado,&nbsp</p>
             <a href="/register">
-                <input type="button" value="regístrate aquí"/>
+                <input type="button" value="regístrate aquí" />
             </a>
         </div>
 
     </form>
 </body>
+
 </html>

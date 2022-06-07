@@ -92,6 +92,8 @@ def login_process():
     account = Account(DATA_BASE)
     error = True
 
+    local_storage.setItem("email", form.email.data)
+
     if form.btn_continue.data and form.validate():
         password = account.select(["Contrasena"], {"Correo": form.email.data})
 
@@ -99,8 +101,6 @@ def login_process():
 
         if check_password(form.password.data, password[0][0]):
             error = False
-
-            local_storage.setItem("email", form.email.data)
 
             redirect('/select_profile')
 
