@@ -1,40 +1,40 @@
 % include('header.tpl')
-    <div id="container-settings">
+    <div class="container_settings">
         <h1 class="title">Configuración de Cuenta</h1>
         <form method="POST" action="/account_settings">
-            <fieldset id="fieldset">
-                <div class="edit_input">
+            <fieldset class="account_settings">
+                <div class="input">
                     {{ form.name }}
                     {{ form.name.label }}
                 </div>
-                <div class="edit_input">
+                <div class="input">
                     {{ form.surname }}
                     {{ form.surname.label }}
                 </div>
-                <div class="edit_input">
+                <div class="input">
                     {{ form.password }}
                     {{ form.password.label }}
                 </div>
-                <div class="edit_input">
+                <div class="input">
                     {{ form.password_confirm }}
                     {{ form.password_confirm.label }}
                 </div>
-                <div class="edit_input">
+                <div class="input">
                     {{ form.phone_number }}
                     {{ form.phone_number.label }}
                 </div>
-                <div class="edit_input">
+                <div class="input">
                     {{ form.direction }}
                     {{ form.direction.label }}
                 </div>
-                <div class="edit_input">
+                <div class="selector">
                     {{ form.suscription }}
                     {{ form.suscription.label }}
                 </div>
             </fieldset>
             <div class="button">
                 {{ form.submit }}
-                <button class="btn_cancel"><a href="/">Volver</a></button>     
+                <button class="btn_cancel"><a href="/">Cancelar</a></button>     
             </div>
         </form>
 
@@ -63,4 +63,3 @@
         %end
 
     % include('nav.tpl')
-% include('footer.tpl')

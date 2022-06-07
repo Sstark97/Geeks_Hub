@@ -1,22 +1,25 @@
-#form-submit, #profile_submit {
-    font-size: 0.9rem;
+.container_settings .title {
+    font-size: 1.6rem;
 }
 
-.btn_cancel a {
-    color: #000;
-    width: 100%;
-    font-size: 0.9rem;
+.container_settings .account_settings .input,
+.container_settings .account_settings .selector{
+    font-size: 3vw;
 }
 
-#btn_continue, .button a {
-    font-size: 1rem;
+.container_settings .account_settings .input input,
+.container_settings .account_settings .selector select{
+    width: 60%;
+    font-size: 1.1rem;
 }
 
-.button a input {
-    font-size: 1rem;
+#form-submit, #profile_submit,
+.container_settings .btn_cancel a,
+.container_settings .button input {
+    font-size: 1.2rem;
 }
 
-.avatar div img{
+.container_settings .avatar div img{
     width: 40%;
     border-radius: 50%;
 

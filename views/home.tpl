@@ -77,4 +77,6 @@
 </div>
 
     % include('nav.tpl')
+    
+    <footer style="display: none;">
 % include('footer.tpl')
