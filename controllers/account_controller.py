@@ -3,6 +3,7 @@ import sys
 from bottle import get, request, template, redirect, post, auth_basic
 from utils.admin_auth import is_authenticated_user
 from utils.email_register import send_register_email
+from utils.hash_password import hash_password, check_password
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
@@ -51,12 +52,14 @@ def register_process():
     account = Account(DATA_BASE)
     
     if form.register.data and form.validate() and request.POST.get("new_suscription"):
+        password = hash_password(form.password.data)
+
         form_data = {
             "Correo" : form.email.data,
             "Nombre" : form.name.data,
             "Apellidos" : form.surname.data,
             "Direccion" : form.direction.data,
-            "Contrasena" : form.password.data,
+            "Contrasena" : password,
             "Telefono" : form.phone_number.data,
             "Tipo_Suscripcion" : request.POST.get("new_suscription")
         }
@@ -92,7 +95,7 @@ def login_process():
     if form.btn_continue.data and form.validate():
         password = account.select(["Contrasena"], {"Correo": form.email.data})
 
-        if password[0][0] == form.password.data:
+        if check_password(form.password.data, password[0][0]):
             error = False
 
             local_storage.setItem("email", form.email.data)
