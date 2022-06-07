@@ -1,8 +1,9 @@
-#container_settings {
+.container_settings {
     text-align: center;
+    margin-bottom: 12vh;
 }
 
-#container_settings #account_settings{
+.container_settings .account_settings{
     width: 100%;
     border: none;
 
@@ -11,19 +12,19 @@
     align-items: center;
 }
 
-#container_settings form{
+.container_settings form{
     width: 100%;
 }
 
-#container_settings .title {
+.container_settings .title {
     font-size: 1.2rem;
     text-align: center;
     padding: 1rem 0 1rem 0;
     color: var(--base_color);
 }
 
-#container_settings #account_settings .input,
-#container_settings #account_settings .selector{
+.container_settings .account_settings .input,
+.container_settings .account_settings .selector{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -33,8 +34,8 @@
     font-size: 4vw;
 }
 
-#container_settings #account_settings .input input,
-#container_settings #account_settings .selector select{
+.container_settings .account_settings .input input,
+.container_settings .account_settings .selector select{
     width: 70%;
     border: solid 1.5px var(--main_color);
     border-radius: 1rem;
@@ -47,12 +48,12 @@
     overflow: hidden;
 }
 
-#container_settings #account_settings .selector select option{
+.container_settings .account_settings .selector select option{
     background-color: var(--shadow_color);
 }
 
-#container_settings #account_settings .input label,
-#container_settings #account_settings .selector label{
+.container_settings .account_settings .input label,
+.container_settings .account_settings .selector label{
     position: absolute;
     color: var(--base_color);
     pointer-events: none;
@@ -60,23 +61,23 @@
     transition: 150ms cubic-bezier(0.4,0,0.2,1);
 }
 
-#container_settings #account_settings .input input:focus, 
-#container_settings #account_settings .input input:valid{
+.container_settings .account_settings .input input:focus, 
+.container_settings .account_settings .input input:valid{
     outline: none;
     border: 1.5px solid var(--main_color);
 }
 
-#container_settings #account_settings .input input:focus ~ label,
-#container_settings #account_settings .input input:valid ~ label,
-#container_settings #account_settings .selector select:focus ~ label,
-#container_settings #account_settings .selector select:valid ~ label{
+.container_settings .account_settings .input input:focus ~ label,
+.container_settings .account_settings .input input:valid ~ label,
+.container_settings .account_settings .selector select:focus ~ label,
+.container_settings .account_settings .selector select:valid ~ label{
     transform: translateY(-50%) scale(0.8);
     background-color: var(--shadow_color);
     padding: 0 .2em;
     color: var(--main_color);
 }
 
-#container_settings .button{
+.container_settings .button{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -85,7 +86,7 @@
     margin: 1rem 0 1rem 0;
 }
 
-#container_settings .button input{
+.container_settings .button input{
     width: 20%;
     margin: 2%;
     height: 3.4vh;
@@ -95,16 +96,16 @@
     border-radius: 0.7rem;
 }
 
-#container_settings .button a{
+.container_settings .button a{
     text-decoration: none;
     width: 20%;
 }
 
-#container_settings .button a input{
+.container_settings .button a input{
     width: 100%;
 }
 
-#container_settings .btn_cancel{
+.container_settings .btn_cancel{
     display: flex;
     align-items: center;
     width: 20%;
@@ -119,13 +120,13 @@
     font-size: 2.5vw;
 }
 
-#container_settings .btn_cancel a {
+.container_settings .btn_cancel a {
     color: #000;
     width: 100%;
     font-size: 0.8rem;
 }
 
-#container_settings .avatar{
+.container_settings .avatar{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -133,20 +134,20 @@
     justify-content: center;
 }
 
-#container_settings .div-avatar {
+.container_settings .div-avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--base_color);
 }
 
-#container_settings .avatar div{
+.container_settings .avatar div{
     width: 30%;
     text-align: center;
     font-size: 1.5rem;
 }
 
-#container_settings .avatar div img{
+.container_settings .avatar div img{
     width: 60%;
     border-radius: 50%;
 
@@ -154,7 +155,7 @@
     transition: 0.5s;
 }
 
-#container_settings .avatar div p {
+.container_settings .avatar div p {
     font-size: 1.1rem;
 }
 
@@ -163,11 +164,11 @@
     background: none;
 }
 
-#container_settings .avatar input[type="radio"]{
+.container_settings .avatar input[type="radio"]{
 	opacity: 0;
 }
 
-#container_settings .hr {
+.container_settings .hr {
     width: 70%;
     margin: 0 auto;
 }

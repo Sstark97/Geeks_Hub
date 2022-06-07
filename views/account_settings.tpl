@@ -1,8 +1,8 @@
 % include('header.tpl')
-    <div id="container_settings">
+    <div class="container_settings">
         <h1 class="title">Configuración de Cuenta</h1>
         <form method="POST" action="/account_settings">
-            <fieldset id="account_settings">
+            <fieldset class="account_settings">
                 <div class="input">
                     {{ form.name }}
                     {{ form.name.label }}
