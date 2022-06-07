@@ -1,6 +1,7 @@
 astroid==2.11.5
-autopep8==1.6.0
+bcrypt==3.2.2
 bottle==0.12.19
+cffi==1.15.0
 colorama==0.4.4
 dill==0.3.4
 dnspython==2.2.1
@@ -12,11 +13,10 @@ localStoragePy==0.2.3
 MarkupSafe==2.1.1
 mccabe==0.7.0
 platformdirs==2.5.2
-pycodestyle==2.8.0
+pycparser==2.21
 pylint==2.13.9
 python-dotenv==0.20.0
-toml==0.10.2
 tomli==2.0.1
-typing_extensions==4.2.0
+typing-extensions==4.2.0
 wrapt==1.14.1
 WTForms==3.0.1
