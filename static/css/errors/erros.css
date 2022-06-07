@@ -5,6 +5,8 @@ blockquote{
 
     display: flex;
     justify-content: center;
+    
+    text-align: center;
 }
 
 blockquote ul{

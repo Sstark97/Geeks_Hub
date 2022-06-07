@@ -2,7 +2,9 @@
     <h1 class="title">{{title}}</h1>
     % if error:
         <blockquote>
-            <p>{{error}}</p>
+            <ul>
+                <li>{{error}}</li>
+            </ul>
         </blockquote>
     % end
     <form class="form_container" method="POST" action="{{path}}" enctype="multipart/form-data">
