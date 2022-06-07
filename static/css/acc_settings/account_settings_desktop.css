@@ -56,7 +56,7 @@
     transition: 0.5s;
 }
 
-.container_settings .avatar div img{
+.container_settings .avatar div label img{
     width: 50%;
     opacity: 0.5;
 }

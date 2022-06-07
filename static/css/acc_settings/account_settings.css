@@ -172,3 +172,16 @@
     width: 70%;
     margin: 0 auto;
 }
+
+.container_settings .avatar div label img{
+    opacity: 0.7;
+}
+
+.container_settings .avatar input[type=radio]:checked + label img{
+    border-width: 20%;
+    border-style: solid;
+    border-color: var(--main_color);
+
+    opacity: 1;
+    transition: 0.5s;
+}
