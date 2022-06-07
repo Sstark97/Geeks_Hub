@@ -17,6 +17,7 @@
 
 .content_search {
   height: 100%;
+  margin-bottom: 1.5rem;
 }
 
 .content_list a img, .content_search a img {
