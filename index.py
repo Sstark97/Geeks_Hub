@@ -11,6 +11,7 @@ from controllers.favorites_controller import *
 from controllers.admin_controller import *
 from controllers.account_settings_controller import *
 from controllers.home_controller import *
+from controllers.search_controller import *
 
 @get('/')
 def index():

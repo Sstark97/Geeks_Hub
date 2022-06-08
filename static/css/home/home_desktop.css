@@ -11,23 +11,32 @@
   font-size: 4vw;
 }
 
-.content_list {
+.content_list{
   height: 30vh;
 }
 
-.content_list a img {
+.content_search {
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.content_list a img, .content_search a img {
   height: 30vh;
   border-radius: 0.7rem;
 }
 
-.content_list a {
-  opacity: 0.6;
+.content_list a, .content_search a {
+  opacity: var(--opacity_color);
   transition: all 0.3s;
 }
 
-.content_list a:hover {
+.content_list a:hover, .content_search a:hover {
   opacity: 1;
   transition: all 0.3s;
+}
+
+.div_search {
+  min-height: 78vh;
 }
 
 body::-webkit-scrollbar {

@@ -81,7 +81,7 @@
                 </li>
 
                 <li class="menu_desktop">
-                    <a href="">
+                    <a href="/search">
                         <i class='bx bx-search-alt-2 search'></i>
                     </a>
                     <div class="dropdown">
@@ -91,8 +91,8 @@
                             <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
                             <li><a href="/account_settings"><i class='bx bx-user'></i>Cuenta</a></li>
-                            <li><a href=""><i class='bx bxs-heart'></i>Favoritos</a></li>
-                            <li><a href=""><i class='bx bx-history'></i>Historial</a></li>
+                            <li><a href="/favorites"><i class='bx bxs-heart'></i>Favoritos</a></li>
+                            <li><a href="/history"><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
                             <li><a onclick="logout()"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>

@@ -67,8 +67,10 @@
             %end
             
             </div>
-            <button type="submit" class="btn" name="btn_continue">Continuar</button>
+            <button type="submit" class="btn" name="btn_continue" onclick="resetDarkMode()">Continuar</button>
         </div>
     </form>
+
+    <script src="/static/js/dark_mode.js"></script>
 </body>
 </html>

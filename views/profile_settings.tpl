@@ -36,8 +36,13 @@
             
         <!-- JQuery -->
         <script src="/static/js/jquery.js"></script>
+        
         <!-- Script de Cerrar Sesión -->
         <script src="/static/js/logout.js"></script>
+
+        <!-- Script para leer el Dark Mode -->
+        <script src="/static/js/load_dark_mode.js"></script>
+
     </body>
 </html>
 

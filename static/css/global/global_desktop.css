@@ -19,7 +19,7 @@
 
 .menu_tablet a {
   text-decoration: none;
-  color: var(--base_color);
+  color: #efefef;
   font-size: 1.4rem;
 
   padding-right: 1.5rem;
@@ -41,7 +41,7 @@ head a {
 
 .menu_desktop i {
   position: relative;
-  color: var(--base_color);
+  color: #efefef;
   font-size: 2.6rem;
 }
 
@@ -107,7 +107,7 @@ head a {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: var(--base_color);
+  color: #efefef;
   background-color: var(--background_color);
 }
 

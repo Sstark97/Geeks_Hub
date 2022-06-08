@@ -21,7 +21,7 @@
 
 .menu_tablet a {
   text-decoration: none;
-  color: var(--base_color);
+  color: #efefef;
   font-size: 1.8rem;
 
   padding-right: 3rem;

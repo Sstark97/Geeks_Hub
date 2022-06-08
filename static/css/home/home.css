@@ -14,7 +14,7 @@ html, body{
     overflow: hidden;
     border-radius: 0.7rem;
     margin: 0.3rem;
-    box-shadow: 0px 0px 13px 6px rgba(0,0,0,0.76);
+    box-shadow: var(--box_shadow_color);
 }
 
 .slider ul{
@@ -78,12 +78,39 @@ h3{
     display: flex;
 }
 
+.div_search {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.div_search .title {
+    color: var(--base_color);
+}
+
+.content_search {
+    height: 100%;
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-self: center;
+    margin: 1.5rem 0 13vh 0;
+}
+
 .content_list a{
     border-radius: 0.7rem;
     margin-left: 1.5rem;
 }
 
-.content_list a img {
+.content_search a {
+    border-radius: 0.7rem;
+    margin: 1rem;
+}
+
+.content_list a img, .content_search a img{
     height: 18vh;
     border-radius: 0.7rem;
 }
