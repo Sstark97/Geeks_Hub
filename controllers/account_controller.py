@@ -1,13 +1,15 @@
 """Archivo de Rutas de las Cuentas."""
 import sys
+from random import randint
 from bottle import get, request, template, redirect, post, auth_basic
 from utils.admin_auth import is_authenticated_user
-from utils.email_register import send_register_email
+from utils.email_register import send_register_email, send_change_password
 from utils.hash_password import hash_password, check_password
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
 from forms.login_form import LoginForm
+from forms.rememberme_form import RemembermeForm
 from config.config import DATA_BASE, ACCOUNT_FIELDS
 from config.local_storage import local_storage
 sys.path.append('models')
@@ -97,7 +99,7 @@ def login():
     if not user:
 
         form = LoginForm(request.POST)
-        return template('login', form=form)
+        return template('login', form=form, title="Inicia Sesión", path="/login", action="/select_profile",message="")
     
     redirect("/home")
     return None
@@ -120,9 +122,41 @@ def login_process():
             redirect('/select_profile')
 
     if error:
-        return template('login', form=form)
+        return template('login', form=form, title="Inicia Sesión", path="/login", action="/select_profile",message="")
 
     return None
+
+@get('/change_password')
+def change_password():
+    """Página para cambiar la contraseña"""
+
+    user = local_storage.getItem("profile")
+    if not user:
+            
+        form = RemembermeForm(request.POST)
+        return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password",message="")
+
+    redirect("/home")
+    return None
+
+@post('/change_password')
+def change_password_process():
+    """Página para procesar el formulario"""
+
+    form = RemembermeForm(request.POST) 
+
+    if form.btn_continue.data and form.validate():
+        local_storage.setItem("email", form.email.data)
+        code = randint(1000, 9999)
+        
+        local_storage.setItem("code", code)
+
+        send_change_password(form.email.data, code)
+
+        return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password",
+        message="Revisa el Correo")
+    
+    return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password", message="")
 
 @post('/logout')
 def logout():
