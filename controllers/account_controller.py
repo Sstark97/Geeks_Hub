@@ -61,8 +61,10 @@ def register_process():
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
     error=""
+
+    print(request.POST.get('new_suscription'))
     
-    if request.POST.get('new_suscription') != "":
+    if request.POST.get('new_suscription') == None:
         error = "Seleccione una Suscripción"
     elif form.register.data and form.validate() and error == "":
         password = hash_password(form.password.data)
