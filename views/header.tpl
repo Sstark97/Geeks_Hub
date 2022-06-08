@@ -89,13 +89,13 @@
                         <img src="{{avatar}}" alt="avatar">
                         <i class='bx bxs-chevron-down arrow'></i>
                         <ul>
-                            <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
+                            <li><a href="/select_profile" aria-label="Perfiles"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li><a href="/account_settings"><i class='bx bx-user'></i>Cuenta</a></li>
-                            <li><a href="/favorites"><i class='bx bxs-heart'></i>Favoritos</a></li>
-                            <li><a href="/history"><i class='bx bx-history'></i>Historial</a></li>
+                            <li><a href="/account_settings" aria-label="Cuenta"><i class='bx bx-user'></i>Cuenta</a></li>
+                            <li><a href="/favorites" aria-label="Favoritos"><i class='bx bxs-heart'></i>Favoritos</a></li>
+                            <li><a href="/history" aria-label="Historial"><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li><a onclick="logout()"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
+                            <li><a onclick="logout()" aria-label="Cerrar Sesión"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 

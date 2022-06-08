@@ -149,6 +149,10 @@ p{
     width: 100%;
 }
 
+.hamburguer_nav .hr {
+    padding: 0;
+}
+
 .hamburguer_nav a{
     color: var(--base_color);
     font-size: 1.7rem;
