@@ -39,24 +39,22 @@
             </div>
             <div class="logo">
                 <img src="/static/img/logo.png" alt="logo">
-                <p>Lorem Ipsum es simplemente un texto ficticio de la industria de la impresión y la composición
-                    tipográfica. Lorem Ipsum ha sido el texto ficticio estándar de la industria desde el año 1500,
-                    cuando un impresor desconocido tomó una galera de tipos y la codificó para hacer un libro de
-                    muestras tipográficas. Ha sobrevivido no solo cinco siglos, sino también el salto a la composición
-                    tipográfica electrónica, permaneciendo esencialmente sin cambios. Se popularizó en la década de 1960
-                    con el lanzamiento de hojas de Letraset que contenían pasajes de Lorem Ipsum y, más recientemente,
-                    con software de autoedición como Aldus PageMaker, que incluía versiones de Lorem Ipsum.</p>
+                <p>Todas las películas y series que desees, y mucho más.
+                    Los mayores éxitos de taquilla, las historias más rompedoras y los clásicos inolvidables que nos han convertido en quienes somos.</p>
             </div>
         </div>
         <div class="content">
             <div class="cuadro"></div>
-            <p>Lorem Ipsum es simplemente un texto ficticio de la industria de la impresión y la composición
-                tipográfica. Lorem Ipsum ha sido el texto ficticio estándar de la industria desde el año 1500,
-                cuando un impresor desconocido tomó una galera de tipos y la codificó para hacer un libro de
-                muestras tipográficas. Ha sobrevivido no solo cinco siglos, sino también el salto a la composición
-                tipográfica electrónica, permaneciendo esencialmente sin cambios. Se popularizó en la década de 1960
-                con el lanzamiento de hojas de Letraset que contenían pasajes de Lorem Ipsum y, más recientemente,
-                con software de autoedición como Aldus PageMaker, que incluía versiones de Lorem Ipsum.</p>
+            <div class="info">
+                <h2>Disfruta de Geeks Hub en compañía</h2>
+                <ul>
+                    <li>Noches de series y películas con GroupWatch. Para invitar o que te inviten a GroupWatch, es necesario tener una suscripción.</li>
+                    <li>Disfruta de Geeks Hub en compañía, aunque estéis en diferentes lugares.</li>
+                    <li>Visualización simultánea con hasta 6 personas.</li>
+                    <li>Pausad, rebobinad y reaccionad juntos</li>
+                    <li>Fácil de configurar y compartir.</li>
+                </ul>
+            </div>
         </div>
         <div class="button_submit">
             <a href="/register">

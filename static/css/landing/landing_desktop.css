@@ -49,11 +49,20 @@
   height: 80%;
 }
 
-.content p {
-  width: 40%;
+.content .info{
+  width: 50%;
+}
 
-  text-align: left;
+.content .info h2{
+  font-size: 2.5vw;
+}
+
+.content .info ul{
   font-size: 1.2vw;
+}
+
+.content .info li{
+  margin-bottom: 2%;
 }
 
 .button_submit {
