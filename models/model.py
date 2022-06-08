@@ -25,7 +25,6 @@ class Model(ABC):
             cursor = conn.cursor()
             cursor.execute(query, data_values)
             conn.commit()
-            cursor.close()
             
         except sqlite3.Error as error:
             print("Error while executing sqlite script", error)

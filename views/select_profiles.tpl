@@ -19,6 +19,14 @@
     <link rel="stylesheet" href="/static/css/form/form.css">
     <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
+
+    <!-- Estilos de los Errores -->
+
+    <link rel="stylesheet" href="/static/css/errors/erros.css">
+    <link rel="stylesheet" href="/static/css/errors/errors_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/errors/errors_desktop.css" media="only screen and (min-width: 992px)">
+
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
@@ -28,7 +36,13 @@
         <div class="form_container">
 
             <label for="profile">Selecciona un perfil</label>
-
+                % if error != "":
+                    <blockquote>
+                        <ul>
+                            <li>{{ error }}</li>
+                        </ul>
+                    </blockquote>
+                % end
             <div class="avatar">
 
             %if rows != []:

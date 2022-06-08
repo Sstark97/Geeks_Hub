@@ -1,17 +1,25 @@
 %include('admin_header.tpl',title=title)
     <h1 class="title">{{title}}</h1>
-    % if form.errors:
+    % if len(error) > 0:
         <blockquote>
-            <p>Hay errores en el formulario:</p>
             <ul>
+                <li>{{error}}</li>
+            </ul>
+        </blockquote>
+    % end
+
+    % if form.errors:
+    <blockquote>
+        <ul>
             % for field, errors in form.errors.items():
                 % for error in errors:
                 <li>{{field}}: {{error}}</li>
                 % end
             % end
-            </ul>
-        </blockquote>
+        </ul>
+    </blockquote>
     % end
+
     <form class="form_container" method="POST" action="{{path}}" enctype="multipart/form-data">
         <fieldset>
             <div class="edit_input">
@@ -43,9 +51,9 @@
                 {{ form.release_date.label }}
             </div>
             <div class="file_input">
+                {{ form.cover_page }}
                 <label class="file" for="cover_page">
                     <span>Selecciona una imagen</span>
-                    {{ form.cover_page }}
                 </label>
                 <p>Portada</p>
             </div>

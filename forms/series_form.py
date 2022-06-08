@@ -1,7 +1,10 @@
 """Formulario de Registro de Series"""
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
-from config.config import GENRES, AGE_RATING
+from config.local_storage import local_storage
+from config.config import GENRES, AGE_RATING, DATA_BASE
+from models.series import Series
+
 
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
@@ -9,20 +12,35 @@ class SeriesForm(Form):
                                 [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
-                            #    render_kw={'class':'myclass'}
                             )
     title  = StringField('Título', [
                                     validators.InputRequired(), 
                                     validators.Length(min=1, max=50), 
                                 ])
-    # calificacion_edad
+
+    def validate_title(self, title):
+        """Función para validar el título"""
+        serie = Series(DATA_BASE)
+        titles = serie.select(["Titulo"], {"Titulo": title.data})
+
+        if len(titles) != 0:
+            local_storage.setItem("Titulo", title.data)
+
+    def validate_season(self, season):
+        """Función para validar la temporada"""
+        serie = Series(DATA_BASE)
+        titles = serie.select(["Titulo"], {"Titulo": local_storage.getItem("Titulo"), "N_Temporada": season.data})
+
+        if len(titles) != 0:
+            raise validators.ValidationError('Ya existe esa temporada')
+    
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
     GENRES = SelectField(label='Genero', choices=GENRES, validators = [validators.InputRequired()])
 
     director = StringField('Director', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=50),
+                                    validators.Length(min=1, max=50),
                                 ])
 
     average_score = DecimalField('Puntuación Media', 
@@ -34,12 +52,11 @@ class SeriesForm(Form):
                                     message="El campo debe ser un número entre 1.01 y 5.00")
                                 ], 
                                 default=1.01,
-                            #    render_kw={'class':'myclass'}
                             )
 
     productor = StringField('Productor', [ 
                                     validators.InputRequired(),
-                                    validators.Length(min=6, max=30),
+                                    validators.Length(min=1, max=30),
                                 ])
 
     synopsis = TextAreaField('Sinopsis', [validators.Length(min=10, max=1000)])
@@ -57,6 +74,5 @@ class SeriesForm(Form):
                                 [validators.DataRequired("El campo es obligatorio"), 
                                 validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
                                 default=1, 
-                            #    render_kw={'class':'myclass'}
                             )
     submit = SubmitField('Guardar')

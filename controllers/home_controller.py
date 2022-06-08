@@ -34,8 +34,6 @@ def home_index():
         # Top 10 Contenido
         top_ten = films.union_content(10)
 
-        print(top_ten)
-
         # Contenido por Genero
         content_by_genre = {}
 
@@ -46,4 +44,11 @@ def home_index():
     else: 
         redirect('/')
     
-    return template('home',slider=top_carrousel, favorites=profile_favorites, top_ten=top_ten, all_content=content_by_genre, avatar=avatar_perfil)
+    return template(
+                    'home',
+                    slider=top_carrousel, 
+                    favorites=profile_favorites, 
+                    top_ten=top_ten, 
+                    all_content=content_by_genre, 
+                    avatar=avatar_perfil
+                    )

@@ -21,19 +21,33 @@
     <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
     
+    <!-- Estilos de los Errores -->
+
+    <link rel="stylesheet" href="/static/css/errors/erros.css">
+    <link rel="stylesheet" href="/static/css/errors/errors_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/errors/errors_desktop.css" media="only screen and (min-width: 992px)">
+
 </head>
 <body>
     <img src="/static/img/logo.png" alt="logo">
     <h1>Formulario de registro</h1>
+    % if len(error) > 0:
+    <blockquote>
+        <ul>
+            <li>{{error}}</li>
+        </ul>
+    </blockquote>   
+    % end
+    
     % if form.errors:
     <blockquote>
-        <p>Hay errores en el formulario: </p>
         <ul>
-        % for field, errors in form.errors.items():
-            % for error in errors:
-            <li>{{field}}: {{error}}</li>
+            % for field, errors in form.errors.items():
+                % for error in errors:
+                <li>{{field}}: {{error}}</li>
+                % end
             % end
-        % end
         </ul>
     </blockquote>
     % end

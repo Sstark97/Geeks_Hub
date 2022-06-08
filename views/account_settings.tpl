@@ -1,49 +1,62 @@
 % include('header.tpl')
-<div class="container_settings">
-    <h1 class="title">Configuración de Cuenta</h1>
-    <div id="switch_container">
-        <label class="switch">
-            <span id="dark_mode_lbl">Dark Mode</span>
-            <input type="checkbox">
-            <span class="slider"></span>
-        </label>
-    </div>
-    <form method="POST" action="/account_settings">
-        <fieldset class="account_settings">
-            <div class="input">
-                {{ form.name }}
-                {{ form.name.label }}
+        <div class="container_settings">
+            <h1 class="title">Configuración de Cuenta</h1>
+            <div id="switch_container">
+                <label class="switch">
+                    <span id="dark_mode_lbl">Dark Mode</span>
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
             </div>
-            <div class="input">
-                {{ form.surname }}
-                {{ form.surname.label }}
-            </div>
-            <div class="input">
-                {{ form.password }}
-                {{ form.password.label }}
-            </div>
-            <div class="input">
-                {{ form.password_confirm }}
-                {{ form.password_confirm.label }}
-            </div>
-            <div class="input">
-                {{ form.phone_number }}
-                {{ form.phone_number.label }}
-            </div>
-            <div class="input">
-                {{ form.direction }}
-                {{ form.direction.label }}
-            </div>
-            <div class="selector">
-                {{ form.suscription }}
-                {{ form.suscription.label }}
-            </div>
-        </fieldset>
-        <div class="button">
-            {{ form.submit }}
-            <button class="btn_cancel"><a href="/">Cancelar</a></button>
-        </div>
-    </form>
+
+            % if form.errors:
+            <blockquote>
+                <ul>
+                    % for field, errors in form.errors.items():
+                        % for error in errors:
+                            <li>{{field}}: {{error}}</li>
+                        % end
+                    % end
+                </ul>
+            </blockquote>
+            % end
+
+            <form method="POST" action="/account_settings">
+                <fieldset class="account_settings">
+                    <div class="input">
+                        {{ form.name }}
+                        {{ form.name.label }}
+                    </div>
+                    <div class="input">
+                        {{ form.surname }}
+                        {{ form.surname.label }}
+                    </div>
+                    <div class="input">
+                        {{ form.password }}
+                        {{ form.password.label }}
+                    </div>
+                    <div class="input">
+                        {{ form.password_confirm }}
+                        {{ form.password_confirm.label }}
+                    </div>
+                    <div class="input">
+                        {{ form.phone_number }}
+                        {{ form.phone_number.label }}
+                    </div>
+                    <div class="input">
+                        {{ form.direction }}
+                        {{ form.direction.label }}
+                    </div>
+                    <div class="selector">
+                        {{ form.suscription }}
+                        {{ form.suscription.label }}
+                    </div>
+                </fieldset>
+                <div class="button">
+                    {{ form.submit }}
+                    <button class="btn_cancel"><a href="/">Cancelar</a></button>     
+                </div>
+            </form>
 
     <hr class="hr">
 

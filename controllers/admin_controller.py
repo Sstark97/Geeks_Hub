@@ -11,6 +11,7 @@ from models.series import Series
 @auth_basic(is_authenticated_user)
 def admin():
     """Página de inicio del administrador de la aplicación."""
+    
     series = Series(DATA_BASE)
     films = Film(DATA_BASE)
 

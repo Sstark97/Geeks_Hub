@@ -1,0 +1,22 @@
+blockquote{
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: center;
+    
+    text-align: center;
+}
+
+blockquote ul{
+    width: 80%;
+    border-bottom: 1px solid rgb(255, 66, 66);
+    list-style: none;
+}
+
+blockquote li{
+    color: rgb(255, 66, 66);
+    font-size: 0.9rem;
+    font-style: italic;
+}
