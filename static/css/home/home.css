@@ -14,7 +14,7 @@ html, body{
     overflow: hidden;
     border-radius: 0.7rem;
     margin: 0.3rem;
-    box-shadow: 0px 0px 13px 6px rgba(0,0,0,0.76);
+    box-shadow: var(--box_shadow_color);
 }
 
 .slider ul{

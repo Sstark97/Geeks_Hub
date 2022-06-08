@@ -1,75 +1,74 @@
 .container_settings {
-    text-align: center;
-    margin-bottom: 12vh;
+  text-align: center;
+  margin-bottom: 12vh;
 }
 
-.container_settings .account_settings{
-    width: 100%;
-    border: none;
+.container_settings .account_settings {
+  width: 100%;
+  border: none;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
-
-.container_settings form{
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+*/ .container_settings form {
+  width: 100%;
 }
 
 .container_settings .title {
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 1rem 0 1rem 0;
-    color: var(--base_color);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  color: var(--base_color);
 }
 
 .container_settings .account_settings .input,
 .div_search .input,
-.container_settings .account_settings .selector{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2%;
+.container_settings .account_settings .selector {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
 
-    font-size: 5vw;
+  font-size: 5vw;
 }
 
 .container_settings .account_settings .input input,
 .div_search .input input,
-.container_settings .account_settings .selector select{
-    width: 70%;
-    border: solid 1.5px var(--main_color);
-    border-radius: 1rem;
-    background: none;
-    padding: 1rem;
-    font-size: 1rem;
-    transition: border 150ms cubic-bezier(0.4,0,0.2,1);
-    opacity: 0.6;
-    color: var(--base_color);
-    overflow: hidden;
+.container_settings .account_settings .selector select {
+  width: 70%;
+  border: solid 1.5px var(--main_color);
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.6;
+  color: var(--base_color);
+  overflow: hidden;
 }
 
-.container_settings .account_settings .selector select option{
-    background-color: var(--shadow_color);
+.container_settings .account_settings .selector select option {
+  background-color: var(--shadow_color);
 }
 
 .container_settings .account_settings .input label,
 .div_search .input label,
-.container_settings .account_settings .selector label{
-    position: absolute;
-    color: var(--base_color);
-    pointer-events: none;
-    transform: translateY(1rem);
-    transition: 150ms cubic-bezier(0.4,0,0.2,1);
+.container_settings .account_settings .selector label {
+  position: absolute;
+  color: var(--base_color);
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.container_settings .account_settings .input input:focus, 
+.container_settings .account_settings .input input:focus,
 .container_settings .account_settings .input input:valid,
 .div_search .input input:focus,
-.div_search .input input:valid{
-    outline: none;
-    border: 1.5px solid var(--main_color);
+.div_search .input input:valid {
+  outline: none;
+  border: 1.5px solid var(--main_color);
 }
 
 .container_settings .account_settings .input input:focus ~ label,
@@ -77,118 +76,181 @@
 .div_search .input input:focus ~ label,
 .div_search .input input:valid ~ label,
 .container_settings .account_settings .selector select:focus ~ label,
-.container_settings .account_settings .selector select:valid ~ label{
-    transform: translateY(-50%) scale(0.8);
-    background-color: var(--shadow_color);
-    padding: 0 .2em;
-    color: var(--main_color);
+.container_settings .account_settings .selector select:valid ~ label {
+  transform: translateY(-50%) scale(0.8);
+  background-color: var(--shadow_color);
+  padding: 0 0.2em;
+  color: var(--main_color);
 }
 
-.container_settings .button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 1rem 0 1rem 0;
+.container_settings .button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem 0 1rem 0;
 }
 
-.container_settings .button input{
-    width: 20%;
-    margin: 2%;
-    height: 3.4vh;
+.container_settings .button input {
+  width: 20%;
+  margin: 2%;
+  height: 3.4vh;
 
-    background-color: var(--main_color);
-    border: none;
-    border-radius: 0.7rem;
+  background-color: var(--main_color);
+  border: none;
+  border-radius: 0.7rem;
 }
 
-.container_settings .button a{
-    text-decoration: none;
-    width: 20%;
+.container_settings .button a {
+  text-decoration: none;
+  width: 20%;
 }
 
-.container_settings .button a input{
-    width: 100%;
+.container_settings .button a input {
+  width: 100%;
 }
 
-.container_settings .btn_cancel{
-    display: flex;
-    align-items: center;
-    width: 20%;
-    margin: 2%;
-    height: 3.4vh;
-    text-align: center;
+.container_settings .btn_cancel {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  margin: 2%;
+  height: 3.4vh;
+  text-align: center;
 
-    border: none;
-    border-radius: 0.7rem;
-    background-color: var(--base_color);
+  border: none;
+  border-radius: 0.7rem;
+  background-color: var(--main_color);
 
-    font-size: 2.5vw;
+  font-size: 2.5vw;
 }
 
 .container_settings .btn_cancel a {
-    color: #000;
-    width: 100%;
-    font-size: 0.8rem;
+  color: #000;
+  width: 100%;
+  font-size: 0.8rem;
 }
 
-.container_settings .avatar{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 0 auto;
-    justify-content: center;
+.container_settings .avatar {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .container_settings .div-avatar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--base_color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--base_color);
 }
 
-.container_settings .avatar div{
-    width: 30%;
-    text-align: center;
-    font-size: 1.5rem;
+.container_settings .avatar div {
+  width: 30%;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
-.container_settings .avatar div img{
-    width: 60%;
-    border-radius: 50%;
+.container_settings .avatar div img {
+  width: 60%;
+  border-radius: 50%;
 
-    opacity: 1;
-    transition: 0.5s;
+  opacity: 1;
+  transition: 0.5s;
 }
 
 .container_settings .avatar div p {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 #avatar-btn {
-    border: none;
-    background: none;
+  border: none;
+  background: none;
 }
 
-.container_settings .avatar input[type="radio"]{
-	opacity: 0;
+.container_settings .avatar input[type="radio"] {
+  opacity: 0;
 }
 
 .container_settings .hr {
-    width: 70%;
-    margin: 0 auto;
+  width: 70%;
+  margin: 0 auto;
 }
 
-.container_settings .avatar div label img{
-    opacity: 0.7;
+.container_settings .avatar div label img {
+  opacity: 0.7;
 }
 
-.container_settings .avatar input[type=radio]:checked + label img{
-    border-width: 20%;
-    border-style: solid;
-    border-color: var(--main_color);
+.container_settings .avatar input[type="radio"]:checked + label img {
+  border-width: 20%;
+  border-style: solid;
+  border-color: var(--main_color);
 
-    opacity: 1;
-    transition: 0.5s;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+/* Dark Mode Styles*/
+#switch_container {
+width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+}
+
+#dark_mode_lbl {
+  color: var(--base_color);
+}
+
+.switch .slider {
+  background-color: #ffffff2b;
+  border-radius: 100px;
+  padding: 1px;
+  margin: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  align-items: center;
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 29px;
+  box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset,
+    rgba(0, 0, 0, 0.21) 0px 0px 0px 24px inset, var(--main_color) 0px 0px 0px 0px inset,
+    rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+}
+
+.switch .slider::after {
+  content: "";
+  display: flex;
+  top: 2.3px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  background-color: #e3e3e3;
+  border-radius: 200px;
+  position: absolute;
+  box-shadow: transparent 0px 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 6px 6px;
+  transition: left 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  will-change: left, background-color;
+}
+
+.switch input[type="checkbox"]:checked + .slider {
+  box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset,
+    var(--main_color) 0px 0px 0px 2px inset, var(--main_color) 0px 0px 0px 24px inset,
+    rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+}
+
+.switch input[type="checkbox"]:checked + .slider::after {
+  left: 24px;
+}
+
+.switch input[type="checkbox"] {
+  display: none;
 }

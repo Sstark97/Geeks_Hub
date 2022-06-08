@@ -6,4 +6,8 @@ const logout = () => {
             window.location.href = '/';
         }
     });
+
+    if(localStorage.getItem('theme') == 'light') {
+        localStorage.setItem('theme', 'dark');
+    }
 };

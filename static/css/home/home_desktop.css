@@ -26,7 +26,7 @@
 }
 
 .content_list a, .content_search a {
-  opacity: 0.6;
+  opacity: var(--opacity_color);
   transition: all 0.3s;
 }
 
