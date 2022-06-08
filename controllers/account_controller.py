@@ -171,6 +171,23 @@ def change_password_confirm():
     redirect("/home")
     return None
 
+@post('/change_password_process')
+def change_password_confirm_process():
+    """ Página para procesar el cambio de contraseña """
+
+    form = ConfirmForm(request.POST)
+    account = Account(DATA_BASE)
+
+    print(local_storage.getItem("code"))
+
+    if form.btn_continue.data and form.validate():
+        if local_storage.getItem("code") == form.code.data:
+            account.update({"Contrasena": hash_password(form.password.data)}, {"Correo": local_storage.getItem("email")})
+            local_storage.removeItem("code")
+            redirect('/login')
+            
+    return template('confirm_change_password', form=form)
+
 
 @post('/logout')
 def logout():

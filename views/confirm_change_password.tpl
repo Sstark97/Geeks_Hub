@@ -48,11 +48,9 @@
     <form method="POST" action="/change_password_process" autocomplete="off">
         <fieldset>
 
-            <div class="contain">
-                <div class="edit_input">
-                    {{form.code}}
-                    {{form.code.label}}
-                </div>
+            <div class="edit_input">
+                {{form.code}}
+                {{form.code.label}}
             </div>
             
             <div class="contain">
@@ -67,9 +65,7 @@
             </div>
 
             <div class="button">
-                <a href="/login">
-                    {{ form.btn_continue }}
-                </a>
+                {{ form.btn_continue }}
             </div>         
         </fieldset>
     </form>
