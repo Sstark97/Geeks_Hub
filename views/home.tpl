@@ -5,7 +5,13 @@
         <ul>
             % for content in slider:
                 <li>
-                    <a href="/">
+                    %uri = ""
+                    %if content[3] == 0:
+                        %uri = f"/films/{content[0]}"
+                    %else:
+                        %uri = f"/series/{content[0]}"
+                    %end
+                    <a href="{{uri}}">
                         % path = ""
                         %if content[0].find("S") != -1:
                             % path += content[4].replace("series","carrousel")
