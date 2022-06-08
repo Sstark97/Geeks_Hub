@@ -15,7 +15,7 @@ class SeriesForm(Form):
                             )
     title  = StringField('Título', [
                                     validators.InputRequired(), 
-                                    validators.Length(min=1, max=50), 
+                                    validators.Length(min=1, max=100), 
                                 ])
 
     def validate_title(self, title):

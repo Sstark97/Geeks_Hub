@@ -21,13 +21,22 @@
     <link rel="stylesheet" href="/static/css/form/form_tablet.css" media="only screen and (min-width: 768px) and (max-width: 992px)">
     <link rel="stylesheet" href="/static/css/form/form_desktop.css" media="only screen and (min-width: 992px)">
 
+    <!-- Estilos de los Errores -->
+
+    <link rel="stylesheet" href="/static/css/errors/erros.css">
+    <link rel="stylesheet" href="/static/css/errors/errors_tablet.css"
+        media="only screen and (min-width: 768px) and (max-width: 992px)">
+    <link rel="stylesheet" href="/static/css/errors/errors_desktop.css" media="only screen and (min-width: 992px)">
+
 </head>
 <body>
     <img class="profile_logo" src="/static/img/logo.png" alt="logo">
     <h1>Creación de Perfil</h1>
     % if error != "":
     <blockquote>
-        <p>{{ error }}</p>
+        <ul>
+            <li>{{error}}</li>
+        </ul>
     </blockquote>
     % end
     <form method="POST" action="/profiles" autocomplete="off">

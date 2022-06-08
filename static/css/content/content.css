@@ -185,7 +185,7 @@
 
 .content_container #other_content div{
     width: 20%;
-    color: var(--base_color);
+    color: #efefef;
 }
 
 .content_container #other_content div p{
@@ -211,7 +211,7 @@
     background: var(--background_color);
     background-image: none;
     flex: 1;
-    color: var(--base_color);
+    color: #efefef;
     cursor: pointer;
     font-size: 1em;
     font-family: 'Open Sans', sans-serif;
@@ -238,6 +238,7 @@
     cursor:pointer;
     pointer-events:none;
     transition:.25s all ease;
+    color: #efefef;
 }
 
 footer{
