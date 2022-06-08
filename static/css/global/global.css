@@ -16,7 +16,7 @@
     --main_font: 'Noto Sans Display', sans-serif;
 }
 
-[theme = "ligth"] {
+[theme = "light"] {
     --background_color: #353c44;
     --shadow_color: #efefef;
     --main_color: #00aeb5;

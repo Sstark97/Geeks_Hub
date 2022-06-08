@@ -6,15 +6,22 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 // Save Dark Mode
-function saveDarkMode(mode) {
+const saveDarkMode = (mode) => {
   localStorage.setItem("theme", mode);
+}
+
+// Reset Dark Mode
+const resetDarkMode = () => {
+
+  console.log("Reset Dark Mode");
+  localStorage.setItem("theme","dark");
 }
 
 checkbox.addEventListener("change", function () {
   if (this.checked) {
     saveDarkMode("dark");
   } else {
-    saveDarkMode("ligth");
+    saveDarkMode("light");
   }
 
   loadDarkMode();
