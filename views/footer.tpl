@@ -1,8 +1,8 @@
         <ul class="icons">
             <li>
-                <a href="/" target="blank"><i class='bx bxl-facebook-circle'></i></a>
-                <a href="/" target="blank"><i class='bx bxl-twitter'></i></a>
-                <a href="/" target="blank"><i class='bx bxl-instagram-alt'></i></a>
+                <a href="https://es-es.facebook.com/" target="blank" aria-label="Facebook"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="https://twitter.com/" target="blank" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.instagram.com/" target="blank" aria-label="Instagram"><i class='bx bxl-instagram-alt'></i></a>
             </li>
         </ul>
         <ul class="menu">
