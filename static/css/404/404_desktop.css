@@ -11,7 +11,7 @@ h1 {
   font-size: 16vw;
 }
 
-h3 {
+h2 {
   padding-bottom: 2vw;
   font-size: 3.5vw;
 }
@@ -28,11 +28,12 @@ a {
 
 a input {
   font-size: 1.3vw;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: 0.5s;
 }
 
 a input:hover {
+  cursor: pointer;
   opacity: 1;
   transition: 0.5s;
 }
