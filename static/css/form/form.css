@@ -289,10 +289,18 @@ select{
 }
 
 .suscription input[type="radio"]:checked + label{
-    box-shadow: 0px 0px 14px 6px rgba(0,0,0,0.48);
+    box-shadow: 0px 0px 14px 6px rgba(54, 174, 124, 0.589);
     transition: 0.5s;
-
+    
     border-radius: 1.2rem;
+} 
+
+.suscription input[value="Estandar"]:checked + label{
+    box-shadow: 0px 0px 14px 6px rgba(249, 217, 35,0.589);
+}
+
+.suscription input[value="Premium"]:checked + label{
+    box-shadow: 0px 0px 14px 6px rgba(235, 83, 83,0.589);
 }
 
 .Basico{
