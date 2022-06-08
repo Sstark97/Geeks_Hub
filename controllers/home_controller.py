@@ -46,6 +46,7 @@ def home_index():
     
     return template(
                     'home',
+                    title="Geeks Hub",
                     slider=top_carrousel, 
                     favorites=profile_favorites, 
                     top_ten=top_ten, 

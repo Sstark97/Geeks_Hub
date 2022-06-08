@@ -28,4 +28,5 @@ def history_index():
     else:
         redirect('/')
 
-    return template('list_content', rows_content=profile_history, search=False, title="Historial", avatar=avatar_perfil)
+    return template('list_content', rows_content=profile_history, search=False, title="Geeks Hub - Historial",
+    head="Historial", avatar=avatar_perfil)

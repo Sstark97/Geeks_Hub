@@ -383,6 +383,7 @@ def home_series():
 
         return template(
                         'home',
+                        title="Geeks Hub - Series",
                         slider=top_carrousel, 
                         favorites=profile_favorites, 
                         top_ten=top_ten, 

@@ -24,7 +24,7 @@ def admin_accounts():
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(list(ACCOUNT_FIELDS))
 
-    return template('admin_accounts', rows=rows, fields=ACCOUNT_FIELDS)
+    return template('admin_accounts' ,rows=rows, fields=ACCOUNT_FIELDS)
 
 @get('/admin/accounts/<email>')
 @auth_basic(is_authenticated_user)
@@ -65,9 +65,7 @@ def register_process():
     account = Account(DATA_BASE)
     error=""
 
-    print(request.POST.get('new_suscription'))
-    
-    if request.POST.get('new_suscription') == None:
+    if not request.POST.get('new_suscription'):
         error = "Seleccione una Suscripción"
     elif form.register.data and form.validate() and error == "":
         password = hash_password(form.password.data)
