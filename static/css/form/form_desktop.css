@@ -129,4 +129,10 @@ select {
 .btn {
   font-size: 1.6vw;
   padding: 1.3rem;
+  opacity: 0.8;
+}
+
+.btn:hover, #btn_continue:hover {
+  cursor: pointer;
+  opacity: 1;
 }
