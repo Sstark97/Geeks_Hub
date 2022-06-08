@@ -1,11 +1,13 @@
 % include('header.tpl')
 <div class="container_settings">
     <h1 class="title">Configuración de Cuenta</h1>
-    <label class="switch">
-        <span id="dark_mode_lbl">Dark Mode</span>
-        <input type="checkbox">
-        <span class="slider"></span>
-    </label>
+    <div id="switch_container">
+        <label class="switch">
+            <span id="dark_mode_lbl">Dark Mode</span>
+            <input type="checkbox">
+            <span class="slider"></span>
+        </label>
+    </div>
     <form method="POST" action="/account_settings">
         <fieldset class="account_settings">
             <div class="input">

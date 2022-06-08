@@ -193,10 +193,15 @@
 }
 
 /* Dark Mode Styles*/
-.switch {
+#switch_container {
+width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
 }
 
 #dark_mode_lbl {
