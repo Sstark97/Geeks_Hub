@@ -12,8 +12,6 @@ const saveDarkMode = (mode) => {
 
 // Reset Dark Mode
 const resetDarkMode = () => {
-
-  console.log("Reset Dark Mode");
   localStorage.setItem("theme","dark");
 }
 

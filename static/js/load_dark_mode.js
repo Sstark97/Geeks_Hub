@@ -6,8 +6,6 @@ function loadDarkMode() {
   } else {
     localStorage.setItem("theme", "dark");
   }
-
-  console.log(mode);
 }
 
 loadDarkMode();
