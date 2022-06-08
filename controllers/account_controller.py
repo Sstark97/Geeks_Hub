@@ -109,7 +109,6 @@ def login_process():
 
     if form.btn_continue.data and form.validate():
         password = account.select(["Contrasena"], {"Correo": form.email.data})
-        print(form.email.data)
 
         if check_password(form.password.data, password[0][0]):
             error = False

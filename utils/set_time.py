@@ -4,8 +4,6 @@ def set_time(duracion):
     """Función que pasa la duración de minutos a horas"""
     horas = 0
 
-    print(duracion)
-
     while duracion >= 60:
 
         duracion = duracion - 60

@@ -34,8 +34,6 @@ def home_index():
         # Top 10 Contenido
         top_ten = films.union_content(10)
 
-        print(top_ten)
-
         # Contenido por Genero
         content_by_genre = {}
 

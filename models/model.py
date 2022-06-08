@@ -130,8 +130,6 @@ class Model(ABC):
             
         rows = None
 
-        print(query)
-
         try:
             conn = self._connect()
             cursor = conn.cursor()

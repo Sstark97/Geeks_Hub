@@ -51,8 +51,11 @@ def series_process():
 
     form = SeriesForm(request.POST) 
     series = Series(DATA_BASE)
+    error = ""
 
-    if form.submit.data and isinstance(form.cover_page.data, FileUpload) and form.validate():
+    if not isinstance(form.cover_page.data, FileUpload): 
+        error = "Debe seleccionar una imagen"
+    elif form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/series/{image_data.filename}"
 
@@ -77,8 +80,7 @@ def series_process():
         
         series.insert(form_data)
         redirect('/admin/series')
-    
-    error = "Seleccione una imagen"
+
     return template(
                     'series_form', 
                     form=form, 
@@ -369,8 +371,6 @@ def home_series():
 
         # Top 10 Contenido
         top_ten = series.top_content(fields, 10)
-
-        print(top_ten)
 
         # Contenido por Genero
         content_by_genre = {}

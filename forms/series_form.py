@@ -1,7 +1,10 @@
 """Formulario de Registro de Series"""
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
-from config.config import GENRES, AGE_RATING
+from config.local_storage import local_storage
+from config.config import GENRES, AGE_RATING, DATA_BASE
+from models.series import Series
+
 
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
@@ -14,7 +17,23 @@ class SeriesForm(Form):
                                     validators.InputRequired(), 
                                     validators.Length(min=1, max=50), 
                                 ])
-    # calificacion_edad
+
+    def validate_title(self, title):
+        """Función para validar el título"""
+        serie = Series(DATA_BASE)
+        titles = serie.select(["Titulo"], {"Titulo": title.data})
+
+        if len(titles) != 0:
+            local_storage.setItem("Titulo", title.data)
+
+    def validate_season(self, season):
+        """Función para validar la temporada"""
+        serie = Series(DATA_BASE)
+        titles = serie.select(["Titulo"], {"Titulo": local_storage.getItem("Titulo"), "N_Temporada": season.data})
+
+        if len(titles) != 0:
+            raise validators.ValidationError('Ya existe esa temporada')
+    
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
     GENRES = SelectField(label='Genero', choices=GENRES, validators = [validators.InputRequired()])

@@ -1,5 +1,4 @@
 """Archivo de Rutas de las Peliculas."""
-from dataclasses import dataclass
 from os import remove
 from datetime import datetime, date
 from bottle import get, post, request, template, redirect, auth_basic, FileUpload
@@ -56,7 +55,7 @@ def films_process():
 
     if not isinstance(form.cover_page.data, FileUpload): 
         error = "Debe seleccionar una imagen"
-    if form.submit.data and form.validate() and error == "":
+    elif form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
 
@@ -233,7 +232,6 @@ def films_edit(cod):
     """Página de edición de Peliculas."""
     films = Film(DATA_BASE)
     row = films.select(['*'], {'Cod_Pelicula': cod})[0]
-    print(row)
 
     formatted_date= datetime.strptime(row[8], '%Y-%m-%d')
 

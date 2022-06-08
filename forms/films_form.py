@@ -10,14 +10,11 @@ class FilmsForm(Form):
                                     validators.InputRequired(), 
                                     validators.Length(min=1, max=50)
                                 ])
-    print("adios")
 
     def validate_title(self, title):
         """Función para validar el título"""
-        print("hola")
         film = Film(DATA_BASE)
         titles = film.select(["Titulo"], {"Titulo": title.data})
-        print(titles)
 
         if len(titles) != 0:
             raise validators.ValidationError('Ya existe esa película')
