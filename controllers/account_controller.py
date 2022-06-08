@@ -51,7 +51,7 @@ def register():
         suscriptions_data = Suscription(DATA_BASE)
         suscriptions = suscriptions_data.select(["*"])
 
-        return template('register', form=form, rows=suscriptions)
+        return template('register', form=form, error="", rows=suscriptions)
     redirect("/home")
     return None
 
@@ -60,8 +60,11 @@ def register_process():
     """Procesa el formulario de Registro de Cuentas"""
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
+    error=""
     
-    if form.register.data and form.validate() and request.POST.get("new_suscription"):
+    if request.POST.get('new_suscription') != "":
+        error = "Seleccione una Suscripción"
+    elif form.register.data and form.validate() and error == "":
         password = hash_password(form.password.data)
 
         form_data = {
@@ -82,7 +85,7 @@ def register_process():
     suscriptions_data = Suscription(DATA_BASE)
     suscriptions = suscriptions_data.select(["*"])
         
-    return template('register', rows=suscriptions, form=form)
+    return template('register', rows=suscriptions, error=error, form=form)
 
 @get('/login')
 def login():

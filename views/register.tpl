@@ -32,6 +32,14 @@
 <body>
     <img src="/static/img/logo.png" alt="logo">
     <h1>Formulario de registro</h1>
+    % if len(error) > 0:
+    <blockquote>
+        <ul>
+            <li>{{error}}</li>
+        </ul>
+    </blockquote>   
+    % end
+    
     % if form.errors:
     <blockquote>
         <ul>
