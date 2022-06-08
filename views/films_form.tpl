@@ -1,12 +1,25 @@
 %include('admin_header.tpl',title=title)
     <h1 class="title">{{title}}</h1>
-    % if error:
+    % if len(error) > 0:
         <blockquote>
             <ul>
                 <li>{{error}}</li>
             </ul>
         </blockquote>
     % end
+
+    % if form.errors:
+    <blockquote>
+        <ul>
+            % for field, errors in form.errors.items():
+                % for error in errors:
+                <li>{{field}}: {{error}}</li>
+                % end
+            % end
+        </ul>
+    </blockquote>
+    % end
+
     <form class="form_container" method="POST" action="{{path}}" enctype="multipart/form-data">
         <fieldset>
             <div class="edit_input">

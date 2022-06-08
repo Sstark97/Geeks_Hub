@@ -52,8 +52,11 @@ def films_process():
 
     form = FilmsForm(request.POST) 
     films = Film(DATA_BASE)
+    error = ""
 
-    if form.submit.data and isinstance(form.cover_page.data, FileUpload) and form.validate():
+    if not isinstance(form.cover_page.data, FileUpload): 
+        error = "Debe seleccionar una imagen"
+    if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
 
@@ -77,8 +80,7 @@ def films_process():
         
         films.insert(form_data)
         redirect('/admin/films')
-    
-    error = "Debe seleccionar una imagen"
+
     return template(
                     'films_form', 
                     form=form, 

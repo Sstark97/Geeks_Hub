@@ -12,7 +12,7 @@ class FilmsForm(Form):
                                 ])
     print("adios")
 
-    def validate_film(self, title):
+    def validate_title(self, title):
         """Función para validar el título"""
         print("hola")
         film = Film(DATA_BASE)
