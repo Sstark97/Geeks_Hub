@@ -28,5 +28,8 @@
         <!-- Script de Buscar Contenido -->
         <script src="/static/js/searcher.js"></script>
 
+        <!-- Script de Dark Mode -->
+        <script src="/static/js/load_dark_mode.js"></script>    
+
     </body>
 </html>
