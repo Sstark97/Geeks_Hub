@@ -1,5 +1,5 @@
 """Archivo de rutas de las Búsquedas"""
-from bottle import get, request, template, redirect, post, auth_basic
+from bottle import get, template, redirect
 from models.film import Film
 from models.profile import Profile
 from config.config import DATA_BASE
