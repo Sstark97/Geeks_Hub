@@ -15,9 +15,9 @@
 }
 
 [theme = "ligth"] {
-    --background_color: #ffff;
-    --shadow_color: #92B4EC;
-    --main_color: #FFD24C;
+    --background_color: #353c44;
+    --shadow_color: #efefef;
+    --main_color: #00aeb5;
     --base_color: #1c232d;
     --main_font: 'Noto Sans Display', sans-serif;
 }
@@ -102,7 +102,7 @@ p{
 }
 
 .nav_user a, .nav_user label{
-    color: var(--base_color);
+    color: #efefef;
     font-size: 2.5rem;
     text-decoration: none;
 }
