@@ -8,6 +8,7 @@ from utils.hash_password import hash_password, check_password
 from models.account import Account
 from models.suscription import Suscription
 from forms.register_form import RegistrationForm
+from forms.confirm_password_form import ConfirmForm
 from forms.login_form import LoginForm
 from forms.rememberme_form import RemembermeForm
 from config.config import DATA_BASE, ACCOUNT_FIELDS
@@ -157,6 +158,19 @@ def change_password_process():
         message="Revisa el Correo")
     
     return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password", message="")
+
+@get('/change_password_process')
+def change_password_confirm():
+    """ Página para procesar el cambio de contraseña """
+    
+    user = local_storage.getItem("profile")
+    if not user:
+        form = ConfirmForm(request.POST)
+        return template('confirm_change_password', form=form)
+
+    redirect("/home")
+    return None
+
 
 @post('/logout')
 def logout():
