@@ -33,10 +33,7 @@
 
 <body>
     <img src="/static/img/logo.png" alt="logo">
-    <h1>{{title}}</h1>
-    %if message != '':
-        <p>{{message}}</p>
-    %end
+    <h1>Inicie Sesión</h1>
 
     % if form.errors:
     <blockquote>
@@ -50,40 +47,22 @@
     </blockquote>
     % end
 
-    <form method="POST" action="{{path}}" autocomplete="off">
+    <form method="POST" action="/login" autocomplete="off">
         <fieldset>
             <div class="edit_input">
                 {{ form.email }}
                 {{ form.email.label }}
             </div>
-            %if path == '/login':
-                <div class="edit_input">
-                    {{ form.password }}
-                    {{ form.password.label }}
-                </div>
-            %end
+            <div class="edit_input">
+                {{ form.password }}
+                {{ form.password.label }}
+            </div>
             <div class="button">
-                <a href="{{action}}">
+                <a href="/select_profiles">
                     {{ form.btn_continue }}
                 </a>
             </div>
         </fieldset>
-
-        %if path == '/login':
-            <div class="links">
-                <p>Si aún no estás registrado,&nbsp</p>
-                <a href="/register">
-                    <input type="button" value="regístrate aquí" />
-                </a>
-            </div>
-
-            <div class="links">
-                <p>¿Has olvidado tu contraseña?&nbsp</p>
-                <a href="/change_password">
-                    <input type="button" value="Haz click aquí" />
-                </a>
-            </div>
-        %end
 
     </form>
 </body>

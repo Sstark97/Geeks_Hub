@@ -68,17 +68,17 @@ select {
   width: 10%;
 }
 
-.register {
+.links {
   font-size: 1vw;
 }
 
-.register input {
+.links input {
   font-size: 1vw;
   opacity: 0.7;
   transition: 0.5s;
 }
 
-.register input:hover {
+.links input:hover {
   opacity: 1;
   transition: 0.5s;
 }
