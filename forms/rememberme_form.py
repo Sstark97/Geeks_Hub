@@ -5,7 +5,11 @@ from models.account import Account
 
 class RemembermeForm(Form):
     """Clase para la realización de Recuperar Contraseña"""
-    email = StringField('Correo', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email()])
+    email = StringField('Correo', [
+                                    validators.InputRequired(), 
+                                    validators.Length(min=6, max=60), 
+                                    validators.Email()
+                                    ])
 
     def validate_email(self, email):
         """Función para validar el email"""

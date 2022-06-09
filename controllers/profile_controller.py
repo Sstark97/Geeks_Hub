@@ -15,7 +15,12 @@ def profile():
     """Página para mostrar el formulario"""
 
     form = ProfileForm(request.POST)
-    return template('profile', rows=AVATARS, form=form, error="")
+    return template(
+                    'profile', 
+                    rows=AVATARS, 
+                    form=form, 
+                    error=""
+                    )
 
 @post('/profiles')
 def profile_process():
@@ -43,7 +48,12 @@ def profile_process():
         redirect("/select_profile")
 
     error = "Seleccione un avatar"
-    return template('profile', rows=AVATARS, form=form, error=error)
+    return template(
+                    'profile', 
+                    rows=AVATARS,
+                    form=form, 
+                    error=error
+                    )
 
 @get('/select_profile')
 def select_profile():
@@ -54,7 +64,12 @@ def select_profile():
     rows = personal_profile.select(['*'], {'Correo': correo})
     form = ProfileForm(request.POST) 
 
-    return template('select_profiles', rows=rows, form=form, error="")
+    return template(
+                    'select_profiles', 
+                    rows=rows, 
+                    form=form, 
+                    error=""
+                    )
 
 @post('/select_profile')
 def select_profile_process():
@@ -72,4 +87,9 @@ def select_profile_process():
         redirect('/home')
 
     error = "Seleccione un avatar"
-    return template('select_profiles', rows=rows, form=form, error=error)
+    return template(
+                    'select_profiles', 
+                    rows=rows, 
+                    form=form, 
+                    error=error
+                    )

@@ -14,11 +14,11 @@ class ConfirmForm(Form):
             raise validators.ValidationError('El código es incorrecto')
 
     password = PasswordField('Contraseña', [
-        validators.Length(min=1, max=20),
-        validators.DataRequired(),
-        validators.EqualTo('password_confirm',
-                           message='Las contraseñas no coinciden')
-    ])
+                                            validators.Length(min=1, max=20),
+                                            validators.DataRequired(),
+                                            validators.EqualTo('password_confirm',
+                                            message='Las contraseñas no coinciden')
+                                            ])
     password_confirm = PasswordField('Repita la contraseña')
 
     btn_continue = SubmitField('Continuar')

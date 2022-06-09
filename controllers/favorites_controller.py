@@ -27,6 +27,12 @@ def favorites_index():
     else: 
         redirect('/')
 
-    return template('list_content', rows_content=profile_favorites, search=False, title="Geeks Hub - Favoritos",
-    head="Lista de Favoritos", avatar=avatar_perfil)
+    return template(
+                    'list_content', 
+                    rows_content=profile_favorites, 
+                    search=False, 
+                    title="Geeks Hub - Favoritos",
+                    head="Lista de Favoritos", 
+                    avatar=avatar_perfil
+                    )
     
