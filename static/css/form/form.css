@@ -183,10 +183,6 @@ select{
     text-decoration: none;
 }
 
-.admin input{
-    font-style: italic;
-}
-
 .links input{
     background-color: var(--background_color);
     border: none;
