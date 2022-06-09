@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aplicación del Usuario">
+    <meta name="keywords" content="geeks hub, streaming, películas, series">
+    <meta name="author" content="Sara Cabrera, Aitor Santana, Javier Martel"/>
+    <meta name="copyright" content="Geeks Hub"/>
+    <meta http-equiv="expires" content="43200"/>
+
     <title>{{title}}</title>
 
     <!-- Fuentes -->
