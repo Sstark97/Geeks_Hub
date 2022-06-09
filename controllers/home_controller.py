@@ -44,11 +44,10 @@ def home_index():
         top_ten = films.union_content(10)
 
         # Contenido por Genero
-        content_by_genre = {}
-
-        for genre in GENRES_FIELDS:
-            content = films.union_content(0,{"Genero":genre})
-            content_by_genre[genre] = content
+        content_by_genre = {
+            genre: films.union_content(0,{"Genero":genre})
+            for genre in GENRES_FIELDS
+        }
         
     else: 
         redirect('/')

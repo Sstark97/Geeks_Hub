@@ -17,6 +17,7 @@ from controllers.search_controller import *
 def index():
     """Página de inicio de la aplicación."""
     user = local_storage.getItem("profile")
+
     if not user:
         return template('landing.tpl')
         
