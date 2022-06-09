@@ -23,7 +23,7 @@
                 </fieldset>
                 <div class="button">
                     {{ form.delete }}
-                    <button class="btn_cancel"><a href="/">Cancelar</a></button>     
+                    <button class="btn_cancel"><a href="/account_settings">Cancelar</a></button>     
                 </div>
             </form>
 
