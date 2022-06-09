@@ -31,12 +31,19 @@ class Favorites(Model):
                 
         return True
     
-    def delete_favorite_content(self, cod_favorite, cod_content):
+    def delete_favorite_content(self, cod_favorite, cod_content=0):
         """Elimina un contenido de la lista de favoritos"""
-        query = f"""
-                    DELETE FROM {FAVORITES_CONTENT}
-                    WHERE Cod_Favoritos = "{cod_favorite}" AND Cod_Contenido = "{cod_content}"
-                """
+
+        if cod_content == 0:
+            query = f"""
+                        DELETE FROM {FAVORITES_CONTENT}
+                        WHERE {FAVORITES_CONTENT}.Cod_Favoritos = "{cod_favorite}"
+                    """
+        else :
+            query = f"""
+                        DELETE FROM {FAVORITES_CONTENT}
+                        WHERE Cod_Favoritos = "{cod_favorite}" AND Cod_Contenido = "{cod_content}"
+                    """
         try:
             conn = self._connect()
             cursor = conn.cursor()

@@ -57,7 +57,7 @@
 }
 
 #check:checked ~ .hamburguer_nav{
-  height: 78vh;
+  height: 77vh;
 }
 
 /* FOOTER */
