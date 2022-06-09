@@ -110,11 +110,10 @@ def account_settings_profile():
         profile = Profile(DATA_BASE)
         codigo_actual = local_storage.getItem("profile")
         codigo_perfil = request.GET.get("profile_code")
-        total_perfiles = profile.select(['*'], {'Cod_Perfil': codigo_perfil})
 
         profile.delete({'Cod_Perfil': codigo_perfil})
 
-        if codigo_actual == codigo_perfil or len(total_perfiles) == 0:
+        if codigo_actual == codigo_perfil:
             redirect('/select_profile')
 
     redirect('/account_settings')
