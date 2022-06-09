@@ -12,23 +12,25 @@ from config.local_storage import local_storage
 from forms.series_form import SeriesForm
 from forms.delete_content_form import DeleteContentForm
 
+
 @get('/admin/series')
 @auth_basic(is_authenticated_user)
 def series_index():
     """Página de inicio de las Series."""
     series = Series(DATA_BASE)
-    rows = series.select(['Cod_Serie','Titulo', 'N_Temporada'])
+    rows = series.select(['Cod_Serie', 'Titulo', 'N_Temporada'])
 
     return template(
-                    'admin_content',
-                    title="Series", 
-                    class_content= "series", 
-                    content="series", 
-                    cod="Cod_Serie", 
-                    content_title="Titulo", 
-                    content_third_row="N_Temporada",
-                    rows=rows
-                    )
+        'admin_content',
+        title="Series",
+        class_content="series",
+        content="series",
+        cod="Cod_Serie",
+        content_title="Titulo",
+        content_third_row="N_Temporada",
+        rows=rows
+    )
+
 
 @get('/admin/series/new')
 @auth_basic(is_authenticated_user)
@@ -37,24 +39,24 @@ def series_new():
 
     form = SeriesForm(request.POST)
     return template(
-                    'series_form', 
-                    title="Nueva Serie", 
-                    form=form, 
-                    error="", 
-                    path='/admin/series/new'
-                    )
+        'series_form',
+        title="Nueva Serie",
+        form=form,
+        error="",
+        path='/admin/series/new'
+    )
+
 
 @post('/admin/series/new')
 @auth_basic(is_authenticated_user)
 def series_process():
     """Procesa el formulario de registro de series."""
 
-    form = SeriesForm(request.POST) 
+    form = SeriesForm(request.POST)
     series = Series(DATA_BASE)
     error = ""
-    local_storage.setItem("Titulo", form.title.data)
 
-    if not isinstance(form.cover_page.data, FileUpload): 
+    if not isinstance(form.cover_page.data, FileUpload):
         error = "Debe seleccionar una imagen"
     if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
@@ -65,39 +67,40 @@ def series_process():
 
         form_data = {
             'Cod_Serie': series.code_generator("S", "Cod_Serie"),
-            'N_Temporada' : form.season.data,
-            'Titulo' : form.title.data,
-            'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.GENRES.data,
-            'Director' : form.director.data,
-            'Puntuacion_Media' : float(form.average_score.data),
-            'Productor' : form.productor.data,
-            'Sinopsis' : form.synopsis.data,
-            'Fecha_Publicacion' : str(form.release_date.data),
+            'N_Temporada': form.season.data,
+            'Titulo': form.title.data,
+            'Calificacion_Edad': form.age_rating.data,
+            'Genero': form.GENRES.data,
+            'Director': form.director.data,
+            'Puntuacion_Media': float(form.average_score.data),
+            'Productor': form.productor.data,
+            'Sinopsis': form.synopsis.data,
+            'Fecha_Publicacion': str(form.release_date.data),
             'Portada': file_path,
-            'Trailer' : form.trailer.data,
-            'Capitulos' : form.chapters.data
+            'Trailer': form.trailer.data,
+            'Capitulos': form.chapters.data
         }
-        
 
         series.insert(form_data)
         redirect('/admin/series')
 
     return template(
-                    'series_form', 
-                    form=form, 
-                    error=error, 
-                    title="Nueva Serie", 
-                    path='/admin/series/new'
-                    )
+        'series_form',
+        form=form,
+        error=error,
+        title="Nueva Serie",
+        path='/admin/series/new'
+    )
+
 
 @get('/series/<cod>')
 def view_series(cod):
     """Página de visualización de Series para los usuarios."""
 
     series = Series(DATA_BASE)
-    row = series.select(['*'],{'Cod_Serie': cod})[0]
-    seasons = list(map(lambda x: x[0],series.select(['Cod_Serie'],{'Titulo': row[2]})))
+    row = series.select(['*'], {'Cod_Serie': cod})[0]
+    seasons = list(map(lambda x: x[0], series.select(
+        ['Cod_Serie'], {'Titulo': row[2]})))
     user = local_storage.getItem("profile")
 
     if user:
@@ -105,11 +108,15 @@ def view_series(cod):
         favorites = Favorites(DATA_BASE)
         history = History(DATA_BASE)
 
-        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
-        cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+        avatar_perfil = personal_profile.select(
+            ["Imagen"], {"Cod_Perfil": user})[0][0]
+        cod_profile_perfil = personal_profile.select(
+            ["Cod_Favoritos"], {"Cod_Perfil": user})[0][0]
 
-        profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
-        profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        profile_favorites = favorites.content(
+            cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+        profile_history = history.content(
+            user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
 
         cod_favorites = [row[0] for row in profile_favorites]
         cod_history = [row[0] for row in profile_history]
@@ -119,7 +126,7 @@ def view_series(cod):
 
         if cod in cod_favorites:
             favorite = True
-        
+
         if cod in cod_history:
             history = True
 
@@ -142,21 +149,22 @@ def view_series(cod):
         path = local_storage.getItem("path")
 
         return template(
-                        'view_content', 
-                        title=row[2], 
-                        content_type="series", 
-                        path=path, 
-                        avatar=avatar_perfil, 
-                        content=serie, 
-                        fields=SERIES_FIELDS, 
-                        seasons=seasons, 
-                        favorite=favorite, 
-                        history=history, 
-                        cod=cod
-                        )
+            'view_content',
+            title=row[2],
+            content_type="series",
+            path=path,
+            avatar=avatar_perfil,
+            content=serie,
+            fields=SERIES_FIELDS,
+            seasons=seasons,
+            favorite=favorite,
+            history=history,
+            cod=cod
+        )
 
     redirect('/login')
     return None
+
 
 @post('/series/<cod>')
 def procces_series(cod):
@@ -170,31 +178,36 @@ def procces_series(cod):
 
         if favorite == "favorite_action":
             favorites = Favorites(DATA_BASE)
-            cod_profile_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
+            cod_profile_perfil = personal_profile.select(
+                ["Cod_Favoritos"], {"Cod_Perfil": user})[0][0]
 
-            profile_favorites = favorites.content(cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            profile_favorites = favorites.content(
+                cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
             cod_favorites = [row[0] for row in profile_favorites]
 
             if cod not in cod_favorites:
-                favorites.insert_favorite_content(cod_profile_perfil,cod)
-            else :
-                favorites.delete_favorite_content(cod_profile_perfil,cod)
+                favorites.insert_favorite_content(cod_profile_perfil, cod)
+            else:
+                favorites.delete_favorite_content(cod_profile_perfil, cod)
 
         elif history == "history_action":
             history = History(DATA_BASE)
 
-            profile_history = history.content(user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+            profile_history = history.content(
+                user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
             cod_history = [row[0] for row in profile_history]
 
             if cod not in cod_history:
                 today = date.today()
-                history.insert({'Cod_Perfil': user, 'Cod_Contenido': cod, "Fecha_Visualizacion": today.strftime("%Y-%m-%d")})
-            else :
+                history.insert({'Cod_Perfil': user, 'Cod_Contenido': cod,
+                               "Fecha_Visualizacion": today.strftime("%Y-%m-%d")})
+            else:
                 history.delete({'Cod_Perfil': user, 'Cod_Contenido': cod})
 
         redirect(f'/series/{cod}')
     redirect('/login')
     return None
+
 
 @get('/admin/series/<cod>')
 @auth_basic(is_authenticated_user)
@@ -202,7 +215,7 @@ def admin_series_view(cod):
     """Página de visualización de series."""
 
     series = Series(DATA_BASE)
-    row = series.select(['*'],{'Cod_Serie': cod})[0]
+    row = series.select(['*'], {'Cod_Serie': cod})[0]
 
     serie = {
         'Cod_Serie': row[0],
@@ -221,14 +234,15 @@ def admin_series_view(cod):
     }
 
     return template(
-                    'admin_view_content', 
-                    title=row[2], 
-                    content_type="series", 
-                    content=serie, 
-                    fields=SERIES_FIELDS, 
-                    cod=cod
-                    )
-    
+        'admin_view_content',
+        title=row[2],
+        content_type="series",
+        content=serie,
+        fields=SERIES_FIELDS,
+        cod=cod
+    )
+
+
 @get('/admin/series/edit/<cod>')
 @auth_basic(is_authenticated_user)
 def series_edit(cod):
@@ -236,7 +250,7 @@ def series_edit(cod):
 
     series = Series(DATA_BASE)
     row = series.select(['*'], {'Cod_Serie': cod})[0]
-    formatted_date= datetime.strptime(row[9], '%Y-%m-%d')
+    formatted_date = datetime.strptime(row[9], '%Y-%m-%d')
 
     form = SeriesForm(request.POST)
     form.title.data = row[2]
@@ -252,12 +266,13 @@ def series_edit(cod):
     form.chapters.data = row[12]
 
     return template(
-                    'series_form', 
-                    title="Editar Serie", 
-                    form=form, 
-                    error="", 
-                    path=f'/admin/series/edit/{cod}'
-                    )
+        'series_form',
+        title="Editar Serie",
+        form=form,
+        error="",
+        path=f'/admin/series/edit/{cod}'
+    )
+
 
 @post('/admin/series/edit/<cod>')
 @auth_basic(is_authenticated_user)
@@ -267,8 +282,6 @@ def series_process_edit(cod):
     form = SeriesForm(request.POST)
     series = Series(DATA_BASE)
     file_path = ""
-    local_storage.setItem("Titulo", form.title.data)
-    local_storage.setItem("action", "edit")
 
     if form.submit.data and form.cover_page and form.validate():
 
@@ -278,21 +291,19 @@ def series_process_edit(cod):
 
             with open(file_path, 'wb') as file:
                 file.write(image_data.file.read())
-        
-        local_storage.setItem("Titulo", form.title.data)
 
         form_data = {
-            'N_Temporada' : form.season.data,
-            'Titulo' : form.title.data,
-            'Calificacion_Edad' : form.age_rating.data,
-            'Genero' : form.GENRES.data,
-            'Director' : form.director.data,
-            'Puntuacion_Media' : float(form.average_score.data),
-            'Productor' : form.productor.data,
-            'Sinopsis' : form.synopsis.data,
-            'Fecha_Publicacion' : str(form.release_date.data),
-            'Trailer' : form.trailer.data,
-            'Capitulos' : form.chapters.data
+            'N_Temporada': form.season.data,
+            'Titulo': form.title.data,
+            'Calificacion_Edad': form.age_rating.data,
+            'Genero': form.GENRES.data,
+            'Director': form.director.data,
+            'Puntuacion_Media': float(form.average_score.data),
+            'Productor': form.productor.data,
+            'Sinopsis': form.synopsis.data,
+            'Fecha_Publicacion': str(form.release_date.data),
+            'Trailer': form.trailer.data,
+            'Capitulos': form.chapters.data
         }
 
         if file_path != "":
@@ -300,11 +311,11 @@ def series_process_edit(cod):
             remove(img_path)
             form_data['Portada'] = file_path
 
-        local_storage.removeItem("action")
         series.update(form_data, {'Cod_Serie': cod})
         redirect('/admin/series')
 
-    return template('series_form', form=form, error="", title = "Editar Serie",path=f'/admin/series/edit/{cod}')
+    return template('series_form', form=form, error="", title="Editar Serie", path=f'/admin/series/edit/{cod}')
+
 
 @get('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)
@@ -316,14 +327,15 @@ def series_delete_index(cod):
     serie_title = series.get(['Titulo'], {'Cod_Serie': cod})
 
     return template(
-                    'admin_delete_content',
-                    title="Eliminar Serie",
-                    content="Serie", 
-                    uri="series", 
-                    content_title=serie_title, 
-                    cod=cod, 
-                    form=form
-                    )
+        'admin_delete_content',
+        title="Eliminar Serie",
+        content="Serie",
+        uri="series",
+        content_title=serie_title,
+        cod=cod,
+        form=form
+    )
+
 
 @post('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)
@@ -343,25 +355,26 @@ def series_delete(cod):
     if form.cancel.data:
         redirect('/admin/series')
 
+
 @get('/series')
 def home_series():
     """Página de inicio de Series"""
 
     user = local_storage.getItem("profile")
     fields = [
-        "Cod_Serie AS 'Cod_Contenido'", 
-        "Titulo", 
-        "Genero", 
-        "N_Temporada", 
-        "Portada", 
-        "Trailer", 
-        "Director", 
-        "Productor", 
-        "Sinopsis", 
-        "Capitulos", 
-        "Puntuacion_Media", 
+        "Cod_Serie AS 'Cod_Contenido'",
+        "Titulo",
+        "Genero",
+        "N_Temporada",
+        "Portada",
+        "Trailer",
+        "Director",
+        "Productor",
+        "Sinopsis",
+        "Capitulos",
+        "Puntuacion_Media",
         "0 AS 'Duracion'"
-        ]
+    ]
 
     if user:
         personal_profile = Profile(DATA_BASE)
@@ -372,9 +385,12 @@ def home_series():
         top_carrousel = series.top_content(fields, 4)
 
         # Favoritos del Perfil
-        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
-        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
-        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], [])
+        cod_perfil = personal_profile.select(
+            ["Cod_Favoritos"], {"Cod_Perfil": user})[0][0]
+        avatar_perfil = personal_profile.select(
+            ["Imagen"], {"Cod_Perfil": user})[0][0]
+        profile_favorites = favorites.content(cod_perfil, [
+                                              "Portada", "Trailer", "Titulo", "Genero", "N_Temporada", "Cod_Serie"], [])
 
         # Top 10 Contenido
         top_ten = series.top_content(fields, 10)
@@ -383,20 +399,19 @@ def home_series():
         content_by_genre = {}
 
         for genre in GENRES_FIELDS:
-            content = series.select(fields,{"Genero":genre})
+            content = series.select(fields, {"Genero": genre})
             content_by_genre[genre] = content
-        
-        local_storage.setItem("path","series")
+
+        local_storage.setItem("path", "series")
 
         return template(
-                        'home',
-                        slider=top_carrousel, 
-                        favorites=profile_favorites, 
-                        top_ten=top_ten, 
-                        all_content=content_by_genre, 
-                        avatar=avatar_perfil
-                        )
+            'home',
+            slider=top_carrousel,
+            favorites=profile_favorites,
+            top_ten=top_ten,
+            all_content=content_by_genre,
+            avatar=avatar_perfil
+        )
 
     redirect('/')
     return None
-    

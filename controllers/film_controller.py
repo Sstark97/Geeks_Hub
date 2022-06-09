@@ -76,7 +76,7 @@ def films_process():
             'Trailer' : form.trailer.data,
             'Duracion' : form.duration.data
         }
-        
+
         films.insert(form_data)
         redirect('/admin/films')
 
@@ -263,7 +263,7 @@ def films_process_edit(cod):
     form = FilmsForm(request.POST)
     films = Film(DATA_BASE)
     file_path = ""
-    local_storage.setItem("action", "edit")
+
     if form.submit.data and form.cover_page and form.validate():
         if form.cover_page and request.files.get('cover_page'):
             image_data = request.files.get('cover_page')
@@ -290,9 +290,9 @@ def films_process_edit(cod):
             remove(img_path)
             form_data['Portada'] = file_path
 
-        local_storage.removeItem("action")
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
+        
     return template(
                     'films_form', 
                     form=form, 
