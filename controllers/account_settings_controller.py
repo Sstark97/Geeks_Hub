@@ -153,9 +153,9 @@ def account_settings_profile():
         codigo_perfil = request.GET.get("profile_code")
 
         cod_favorite = profile.select(['Cod_Favoritos'], {'Cod_Perfil': codigo_perfil})
-        print(cod_favorite)
 
         favorites.delete_favorite_content(cod_favorite[0][0])
+        favorites.delete({'Cod_Favoritos': cod_favorite[0][0]})
         historial.delete({'Cod_Perfil': codigo_perfil})
         profile.delete({'Cod_Perfil': codigo_perfil})
 
