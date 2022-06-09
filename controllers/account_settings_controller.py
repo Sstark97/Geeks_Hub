@@ -138,6 +138,17 @@ def account_settings_profile():
                         profile_code=codigo_perfil,
                         avatar=personal_profile[0][0]
                         )
+
+    if request.GET.get("btn_delete") and request.GET.get("profile_code"):
+        profile = Profile(DATA_BASE)
+        codigo_actual = local_storage.getItem("profile")
+        codigo_perfil = request.GET.get("profile_code")
+
+        profile.delete({'Cod_Perfil': codigo_perfil})
+
+        if codigo_actual == codigo_perfil:
+            redirect('/select_profile')
+
     redirect('/account_settings')
 
 @post('/account_settings/profile')
