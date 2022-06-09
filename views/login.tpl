@@ -85,6 +85,12 @@
                     <input type="button" value="Haz click aquí" />
                 </a>
             </div>
+
+            <div class="links admin">
+                <a href="/admin">
+                    <input type="button" value="Iniciar sesión como administrador" />
+                </a>
+            </div>
         %end
 
     </form>
