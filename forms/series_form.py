@@ -8,31 +8,27 @@ from models.series import Series
 
 class SeriesForm(Form):
     """Clase para el formulario de registro de series"""
-    season = IntegerField('N_Temporada', 
-                                [validators.DataRequired("El campo es obligatorio"), 
-                                validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
-                                default=1, 
-                            )
     title  = StringField('Título', [
                                     validators.InputRequired(), 
                                     validators.Length(min=1, max=50), 
                                 ])
-
-    def validate_title(self, title):
-        """Función para validar el título"""
-        serie = Series(DATA_BASE)
-        titles = serie.select(["Titulo"], {"Titulo": title.data})
-
-        if len(titles) != 0:
-            local_storage.setItem("Titulo", title.data)
+    season = IntegerField('N_Temporada', 
+                            [validators.DataRequired("El campo es obligatorio"), 
+                            validators.NumberRange(min=1, max=100, message="El campo debe ser un número entre 1 y 100")],
+                            default=1, 
+                        )
 
     def validate_season(self, season):
         """Función para validar la temporada"""
         serie = Series(DATA_BASE)
         titles = serie.select(["Titulo"], {"Titulo": local_storage.getItem("Titulo"), "N_Temporada": season.data})
 
-        if len(titles) != 0:
+        print(local_storage.getItem("Titulo"))
+
+        if len(titles) != 0 and local_storage.getItem("action") != "edit":
+            local_storage.removeItem("Titulo")
             raise validators.ValidationError('Ya existe esa temporada')
+
     
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 

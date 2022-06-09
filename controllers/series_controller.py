@@ -52,10 +52,11 @@ def series_process():
     form = SeriesForm(request.POST) 
     series = Series(DATA_BASE)
     error = ""
+    local_storage.setItem("Titulo", form.title.data)
 
     if not isinstance(form.cover_page.data, FileUpload): 
         error = "Debe seleccionar una imagen"
-    elif form.submit.data and form.validate() and error == "":
+    if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/series/{image_data.filename}"
 
@@ -78,6 +79,7 @@ def series_process():
             'Capitulos' : form.chapters.data
         }
         
+
         series.insert(form_data)
         redirect('/admin/series')
 
@@ -265,6 +267,8 @@ def series_process_edit(cod):
     form = SeriesForm(request.POST)
     series = Series(DATA_BASE)
     file_path = ""
+    local_storage.setItem("Titulo", form.title.data)
+    local_storage.setItem("action", "edit")
 
     if form.submit.data and form.cover_page and form.validate():
 
@@ -274,6 +278,8 @@ def series_process_edit(cod):
 
             with open(file_path, 'wb') as file:
                 file.write(image_data.file.read())
+        
+        local_storage.setItem("Titulo", form.title.data)
 
         form_data = {
             'N_Temporada' : form.season.data,
@@ -294,10 +300,11 @@ def series_process_edit(cod):
             remove(img_path)
             form_data['Portada'] = file_path
 
+        local_storage.removeItem("action")
         series.update(form_data, {'Cod_Serie': cod})
         redirect('/admin/series')
 
-    return template('series_form', form=form, error="")
+    return template('series_form', form=form, error="", title = "Editar Serie",path=f'/admin/series/edit/{cod}')
 
 @get('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)

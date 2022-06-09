@@ -2,6 +2,7 @@
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
 from config.config import GENRES, AGE_RATING, DATA_BASE
+from config.local_storage import local_storage
 from models.film import Film
 
 class FilmsForm(Form):
@@ -16,7 +17,7 @@ class FilmsForm(Form):
         film = Film(DATA_BASE)
         titles = film.select(["Titulo"], {"Titulo": title.data})
 
-        if len(titles) != 0:
+        if len(titles) != 0 and local_storage.getItem("action") != "edit":
             raise validators.ValidationError('Ya existe esa película')
 
     age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
