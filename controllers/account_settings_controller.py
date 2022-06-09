@@ -107,7 +107,10 @@ def delete_account_process():
     if form.delete.data and form.validate():
 
         account = Account(DATA_BASE)
+        profile = Profile(DATA_BASE)
         account.delete({'Correo': local_storage.getItem("email")})
+        profile.delete({'Correo': local_storage.getItem("email")})
+        
         local_storage.removeItem("email")
         local_storage.removeItem("profile")
         redirect('/')
