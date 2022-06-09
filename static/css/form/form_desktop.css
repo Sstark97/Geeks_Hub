@@ -145,3 +145,8 @@ select {
 .links{
   padding-bottom: 1%;
 }
+
+.mensaje{
+  font-size: 1.8rem;
+  margin-bottom: 1%;
+}

@@ -312,3 +312,12 @@ select{
     opacity: 1;
     transition: 0.5s;
 }
+
+.mensaje{
+    font-size: 1rem;
+    color: var(--main_color);
+    font-style: italic;
+    text-decoration: underline;
+
+    margin-bottom: 3%;
+}
