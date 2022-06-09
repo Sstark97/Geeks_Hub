@@ -85,6 +85,7 @@ p{
 
 .content_container #buttons button{
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .content_container #buttons .heart,
