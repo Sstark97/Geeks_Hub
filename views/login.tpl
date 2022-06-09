@@ -37,7 +37,7 @@
     <img src="/static/img/logo.png" alt="logo">
     <h1>{{title}}</h1>
     %if message != '':
-        <p>{{message}}</p>
+        <p class="mensaje">{{message}}</p>
     %end
 
     % if form.errors:

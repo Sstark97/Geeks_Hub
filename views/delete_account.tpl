@@ -16,7 +16,7 @@
 
             <form method="POST" action="/account_settings/delete_account">
                 <fieldset class="account_settings">
-                    <div class="input">
+                    <div class="email_input input">
                         {{ form.email }}
                         {{ form.email.label }}
                     </div>

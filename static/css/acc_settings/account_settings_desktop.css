@@ -38,6 +38,10 @@
     font-size: 1.3rem;
 }
 
+.container_settings .account_settings .email_input label{
+    transform: translateY(0.4rem);
+}
+
 #form-submit, #profile_submit,
 .container_settings .btn_cancel a,
 .container_settings .button input {
