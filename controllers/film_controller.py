@@ -51,10 +51,8 @@ def films_process():
 
     form = FilmsForm(request.POST) 
     films = Film(DATA_BASE)
-    error = ""
+    error = "Debe seleccionar una imagen" if not isinstance(form.cover_page.data, FileUpload) else ""
 
-    if not isinstance(form.cover_page.data, FileUpload): 
-        error = "Debe seleccionar una imagen"
     if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
@@ -374,11 +372,10 @@ def home_films():
         top_ten = films.top_content(fields, 10)
 
         # Contenido por Genero
-        content_by_genre = {}
-
-        for genre in GENRES_FIELDS:
-            content = films.select(fields,{"Genero":genre})
-            content_by_genre[genre] = content
+        content_by_genre = {
+            genre: films.select(fields,{"Genero":genre})
+            for genre in GENRES_FIELDS
+        }
         
 
         local_storage.setItem("path","films")

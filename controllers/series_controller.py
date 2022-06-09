@@ -54,10 +54,8 @@ def series_process():
 
     form = SeriesForm(request.POST)
     series = Series(DATA_BASE)
-    error = ""
+    error = "Debes seleccionar una imagen" if not isinstance(form.cover_page.data, FileUpload) else ""
 
-    if not isinstance(form.cover_page.data, FileUpload):
-        error = "Debe seleccionar una imagen"
     if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/series/{image_data.filename}"
@@ -183,6 +181,7 @@ def procces_series(cod):
 
             profile_favorites = favorites.content(
                 cod_profile_perfil, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+
             cod_favorites = [row[0] for row in profile_favorites]
 
             if cod not in cod_favorites:
@@ -195,6 +194,7 @@ def procces_series(cod):
 
             profile_history = history.content(
                 user, ["Cod_Serie", "N_Temporada"], ["Cod_Pelicula"])
+
             cod_history = [row[0] for row in profile_history]
 
             if cod not in cod_history:
@@ -315,12 +315,13 @@ def series_process_edit(cod):
         redirect('/admin/series')
 
     return template(
-                    'series_form', 
-                    form=form,
-                    title="Editar Serie", 
-                    path=f'/admin/series/edit/{cod}', 
-                    error=""
-                    )
+        'series_form',
+        form=form,
+        title="Editar Serie",
+        path=f'/admin/series/edit/{cod}',
+        error=""
+    )
+
 
 @get('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)
@@ -401,23 +402,22 @@ def home_series():
         top_ten = series.top_content(fields, 10)
 
         # Contenido por Genero
-        content_by_genre = {}
-
-        for genre in GENRES_FIELDS:
-            content = series.select(fields, {"Genero": genre})
-            content_by_genre[genre] = content
+        content_by_genre = {
+            genre: series.select(fields, {"Genero": genre})
+            for genre in GENRES_FIELDS
+        }
 
         local_storage.setItem("path", "series")
 
         return template(
-                        'home',
-                        title="Geeks Hub - Series",
-                        slider=top_carrousel, 
-                        favorites=profile_favorites, 
-                        top_ten=top_ten, 
-                        all_content=content_by_genre, 
-                        avatar=avatar_perfil
-                        )
+            'home',
+            title="Geeks Hub - Series",
+            slider=top_carrousel,
+            favorites=profile_favorites,
+            top_ten=top_ten,
+            all_content=content_by_genre,
+            avatar=avatar_perfil
+        )
 
     redirect('/')
     return None
