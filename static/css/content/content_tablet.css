@@ -20,12 +20,12 @@
     font-size: 1.2rem;
 }
 
-.content_container #seasons{
-    height: 4em
+.content_container #seasons select{
+    font-size: 1.5rem;
 }
 
-.content_container #seasons::after{
-    top: 0.5em;
+.content_container #seasons option{
+    font-size: 1rem;
 }
 
 .content_container #other_content div h4{
