@@ -11,8 +11,6 @@ def hash_password(password):
 def check_password(password, hashed_password):
     """Función que comprueba si la contraseña es correcta""" 
     passwd = password.encode()
+    hashed_passwd = hashed_password.encode() if isinstance(hashed_password, str) else hashed_password
 
-    if isinstance(hashed_password, str):
-        hashed_password = hashed_password.encode()
-
-    return checkpw(passwd, hashed_password)
+    return checkpw(passwd, hashed_passwd)

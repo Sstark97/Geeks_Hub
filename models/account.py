@@ -1,7 +1,7 @@
 """Fichero para el modelo Account."""
 import sqlite3
 from models.model import Model
-from config.config import ACCOUNT, PROFILE, HISTORY, FAVORITES, FAVORITES_CONTENT, SERIES, FILM
+from config.config import ACCOUNT, PROFILE
 
 class Account(Model):
     """Clase que maneja la Tabla Cuenta."""
