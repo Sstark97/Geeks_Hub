@@ -100,7 +100,7 @@ def delete_account():
         profile = Profile(DATA_BASE)
         personal_profile = profile.select(['Imagen'], {'Cod_Perfil': profile_code})
 
-        return template('delete_account', form=form, email=local_storage.getItem("email"), avatar=personal_profile[0][0])
+        return template('delete_account', form=form, email=local_storage.getItem("email"), title="Geeks Hub - Cuenta", avatar=personal_profile[0][0])
 
 @post('/account_settings/delete_account')
 def delete_account_process():
@@ -122,7 +122,7 @@ def delete_account_process():
     profile = Profile(DATA_BASE)
     profile_code = local_storage.getItem("profile")
     personal_profile = profile.select(['Imagen'], {'Cod_Perfil': profile_code})
-    return template('delete_account', form=form, email=local_storage.getItem("email"), avatar=personal_profile[0][0])
+    return template('delete_account', form=form, title="Geeks Hub - Cuenta", email=local_storage.getItem("email"), avatar=personal_profile[0][0])
 
 @get('/account_settings/profile')
 def account_settings_profile():
