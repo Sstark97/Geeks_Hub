@@ -75,6 +75,9 @@
                 <li>
                     <a href="/admin/accounts">Cuentas</a>
                 </li>
+                <li class="return">
+                    <a href="/">Volver a Geeks Hub</a>
+                </li>
             </ul>
         </nav>
     </header>

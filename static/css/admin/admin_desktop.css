@@ -22,13 +22,28 @@ header nav {
 }
 
 header nav ul {
+  width: 100%;
   display: flex;
   align-items: center;
   min-height: auto;
 }
 
+header nav ul .logo_nav{
+  width: 10%;
+}
+
 header nav ul li {
   height: 100%;
+}
+
+header .return{
+  width: 73%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header .return a{
+  width: 100%;
 }
 
 header a {
