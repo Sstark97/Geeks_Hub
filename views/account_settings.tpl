@@ -54,7 +54,7 @@
                 </fieldset>
                 <div class="button">
                     {{ form.submit }}
-                    <button class="btn_cancel"><a href="/">Cancelar</a></button>     
+                    <button class="btn_cancel"><a href="/account_settings/delete_account">Eliminar</a></button>     
                 </div>
             </form>
 
