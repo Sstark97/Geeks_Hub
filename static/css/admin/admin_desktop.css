@@ -46,6 +46,10 @@ header .return a{
   width: 100%;
 }
 
+header label{
+  display: none;
+}
+
 header a {
   color: inherit;
   text-decoration: none;
