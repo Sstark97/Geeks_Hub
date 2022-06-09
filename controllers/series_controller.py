@@ -54,10 +54,8 @@ def series_process():
 
     form = SeriesForm(request.POST)
     series = Series(DATA_BASE)
-    error = ""
+    error = "Debes seleccionar una imagen" if not isinstance(form.cover_page.data, FileUpload) else ""
 
-    if not isinstance(form.cover_page.data, FileUpload):
-        error = "Debe seleccionar una imagen"
     if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/series/{image_data.filename}"

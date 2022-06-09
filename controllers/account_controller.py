@@ -74,10 +74,7 @@ def register_process():
 
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
-    error=""
-
-    if not request.POST.get('new_suscription'):
-        error = "Seleccione una Suscripción"
+    error="Seleccione una Suscripción" if not request.POST.get('new_suscription') else ""
 
     if form.register.data and form.validate() and error == "":
         password = hash_password(form.password.data)
@@ -229,8 +226,6 @@ def change_password_confirm_process():
 
     form = ConfirmForm(request.POST)
     account = Account(DATA_BASE)
-
-    print(local_storage.getItem("code"))
 
     if form.btn_continue.data and form.validate():
         if local_storage.getItem("code") == form.code.data:
