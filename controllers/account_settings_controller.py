@@ -3,8 +3,11 @@ import sys
 from bottle import get, request, template, redirect, post
 from models.account import Account
 from models.profile import Profile
+from models.favorites import Favorites
+from models.history import History
 from forms.account_settings_form import AccountSettingsForm
 from forms.profile_form import ProfileForm
+from forms.delete_account_form import DeleteAccountForm
 from utils.hash_password import hash_password
 from config.config import DATA_BASE, ACCOUNT_FIELDS, AVATARS
 from config.local_storage import local_storage
@@ -85,7 +88,42 @@ def account_settings_process():
                     fields=ACCOUNT_FIELDS, 
                     avatar=personal_profile[0][0]
                     )
-    
+
+@get('/account_settings/delete_account')
+def delete_account():
+    """Elimina la cuenta de usuario"""
+
+    profile_code = local_storage.getItem("profile")
+
+    if profile_code:
+        form = DeleteAccountForm(request.GET)
+        profile = Profile(DATA_BASE)
+        personal_profile = profile.select(['Imagen'], {'Cod_Perfil': profile_code})
+
+        return template('delete_account', form=form, email=local_storage.getItem("email"), avatar=personal_profile[0][0])
+
+@post('/account_settings/delete_account')
+def delete_account_process():
+    """Procesa el formulario de eliminación de cuenta"""
+
+    form = DeleteAccountForm(request.POST)
+
+    if form.delete.data and form.validate():
+
+        account = Account(DATA_BASE)
+        profile = Profile(DATA_BASE)
+        account.delete({'Correo': local_storage.getItem("email")})
+        profile.delete({'Correo': local_storage.getItem("email")})
+
+        local_storage.removeItem("email")
+        local_storage.removeItem("profile")
+        redirect('/')
+
+    profile = Profile(DATA_BASE)
+    profile_code = local_storage.getItem("profile")
+    personal_profile = profile.select(['Imagen'], {'Cod_Perfil': profile_code})
+    return template('delete_account', form=form, email=local_storage.getItem("email"), avatar=personal_profile[0][0])
+
 @get('/account_settings/profile')
 def account_settings_profile():
     """Página de inicio de Configuración de Perfil"""
@@ -108,6 +146,25 @@ def account_settings_profile():
                         profile_code=codigo_perfil,
                         avatar=personal_profile[0][0]
                         )
+
+    if request.GET.get("btn_delete") and request.GET.get("profile_code"):
+        profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+        historial = History(DATA_BASE)
+
+        codigo_actual = local_storage.getItem("profile")
+        codigo_perfil = request.GET.get("profile_code")
+
+        cod_favorite = profile.select(['Cod_Favoritos'], {'Cod_Perfil': codigo_perfil})
+
+        favorites.delete_favorite_content(cod_favorite[0][0])
+        favorites.delete({'Cod_Favoritos': cod_favorite[0][0]})
+        historial.delete({'Cod_Perfil': codigo_perfil})
+        profile.delete({'Cod_Perfil': codigo_perfil})
+
+        if codigo_actual == codigo_perfil:
+            redirect('/select_profile')
+
     redirect('/account_settings')
 
 @post('/account_settings/profile')

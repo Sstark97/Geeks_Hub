@@ -1,8 +1,7 @@
 """Formulario de Registro de Peliculas"""
 import decimal
 from wtforms import Form, StringField, IntegerField, DateField, SubmitField , TextAreaField, SelectField, DecimalField, FileField, validators
-from config.config import GENRES, AGE_RATING, DATA_BASE
-from models.film import Film
+from config.config import GENRES, AGE_RATING
 
 class FilmsForm(Form):
     """Clase para el formulario de registro de peliculas"""
@@ -11,17 +10,7 @@ class FilmsForm(Form):
                                     validators.Length(min=1, max=100)
                                     ])
 
-    def validate_title(self, title):
-        """Función para validar el título"""
-        film = Film(DATA_BASE)
-        titles = film.select(["Titulo"], {"Titulo": title.data})
-
-        if len(titles) != 0:
-            raise validators.ValidationError('Ya existe esa película')
-
-    age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [
-                                                                                    validators.InputRequired()
-                                                                                    ])
+    age_rating = SelectField(label='Calificación', choices=AGE_RATING, validators = [validators.InputRequired()])
 
     GENRES = SelectField(label='Genero', choices=GENRES, validators = [
                                                                         validators.InputRequired()

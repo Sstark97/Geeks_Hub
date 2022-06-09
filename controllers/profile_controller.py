@@ -14,13 +14,16 @@ sys.path.append('forms')
 def profile():
     """Página para mostrar el formulario"""
 
-    form = ProfileForm(request.POST)
-    return template(
-                    'profile', 
-                    rows=AVATARS, 
-                    form=form, 
-                    error=""
-                    )
+    personal_profile = Profile(DATA_BASE)
+    correo = local_storage.getItem("email")
+    perfiles = personal_profile.select(["*"], {"Correo": correo})
+    
+    if correo and len(perfiles) < 5:
+        form = ProfileForm(request.POST)
+        return template('profile', rows=AVATARS, form=form, error="")
+    
+    redirect("/")
+    return None
 
 @post('/profiles')
 def profile_process():
@@ -55,21 +58,22 @@ def profile_process():
                     error=error
                     )
 
+
 @get('/select_profile')
 def select_profile():
     """Página para mostrar la selección de perfiles"""
 
     correo = local_storage.getItem("email")
-    personal_profile = Profile(DATA_BASE)
-    rows = personal_profile.select(['*'], {'Correo': correo})
-    form = ProfileForm(request.POST) 
 
-    return template(
-                    'select_profiles', 
-                    rows=rows, 
-                    form=form, 
-                    error=""
-                    )
+    if correo:
+        personal_profile = Profile(DATA_BASE)
+        rows = personal_profile.select(['*'], {'Correo': correo})
+        form = ProfileForm(request.POST) 
+
+        return template('select_profiles', rows=rows, form=form, error="")
+    
+    redirect("/")
+    return None
 
 @post('/select_profile')
 def select_profile_process():

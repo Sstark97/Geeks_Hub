@@ -55,7 +55,7 @@ def films_process():
 
     if not isinstance(form.cover_page.data, FileUpload): 
         error = "Debe seleccionar una imagen"
-    elif form.submit.data and form.validate() and error == "":
+    if form.submit.data and form.validate() and error == "":
         image_data = request.files.get('cover_page')
         file_path = f"static/img/movies/{image_data.filename}"
 
@@ -76,7 +76,7 @@ def films_process():
             'Trailer' : form.trailer.data,
             'Duracion' : form.duration.data
         }
-        
+
         films.insert(form_data)
         redirect('/admin/films')
 
@@ -263,6 +263,7 @@ def films_process_edit(cod):
     form = FilmsForm(request.POST)
     films = Film(DATA_BASE)
     file_path = ""
+
     if form.submit.data and form.cover_page and form.validate():
         if form.cover_page and request.files.get('cover_page'):
             image_data = request.files.get('cover_page')
@@ -291,6 +292,7 @@ def films_process_edit(cod):
 
         films.update(form_data, {'Cod_Pelicula': cod})
         redirect('/admin/films')
+        
     return template(
                     'films_form', 
                     form=form, 
