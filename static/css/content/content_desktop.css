@@ -73,14 +73,6 @@ p{
     height: 75vh;
 }
 
-.content_container #seasons{
-    height: 4em
-}
-
-.content_container #seasons::after{
-    top: 0.5em;
-}
-
 .content_container #buttons{
     margin-top: 2vh;
     height: 10vh;

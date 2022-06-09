@@ -7,9 +7,14 @@ from models.account import Account
 
 class LoginForm(Form):
     """Clase para la realización del formulario de inicio"""
-    email = StringField('Correo', [validators.InputRequired(), validators.Length(min=6, max=60), validators.Email()])
+    email = StringField('Correo', [
+                                    validators.InputRequired(), 
+                                    validators.Length(min=6, max=60), 
+                                    validators.Email(message="El email no es válido")
+                                    ])
     password = PasswordField('Contraseña', [
-        validators.DataRequired()])
+                                            validators.DataRequired()
+                                            ])
 
     def validate_email(self, email):
         """Función para validar el email"""

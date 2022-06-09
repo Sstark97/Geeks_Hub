@@ -21,11 +21,23 @@ def history_index():
 
         # Historial del Perfil
         avatar_perfil = personal_profile.select(
-            ["Imagen"], {"Cod_Perfil": user})[0][0]
-        profile_history = history.content(user, ["Portada", "Trailer", "Titulo", "Genero", "Cod_Serie", "N_Temporada"],
-                                          ["Portada", "Trailer", "Titulo", "Genero", "Cod_Pelicula"])
+            ["Imagen"], 
+            {"Cod_Perfil": user}
+        )[0][0]
+        profile_history = history.content(
+            user, 
+            ["Portada", "Trailer", "Titulo", "Genero", "Cod_Serie", "N_Temporada"],
+            ["Portada", "Trailer", "Titulo", "Genero", "Cod_Pelicula"]
+        )
 
     else:
         redirect('/')
 
-    return template('list_content', rows_content=profile_history, search=False, title="Historial", avatar=avatar_perfil)
+    return template(
+                    'list_content', 
+                    rows_content=profile_history, 
+                    search=False, 
+                    title="Geeks Hub - Historial",
+                    head="Historial", 
+                    avatar=avatar_perfil
+                    )

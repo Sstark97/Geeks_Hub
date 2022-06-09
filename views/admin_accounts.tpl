@@ -16,7 +16,7 @@
             <td id="only_view">
                 <form action="/admin/accounts/{{row[0]}}" method="GET">
                     <button class="btn_view" type="submit" name="view">
-                        <i class='bx bxs-low-vision icons' ></i>
+                        <i class='bx bxs-low-vision icons'></i>
                     </button>
                 </form>
             </td>

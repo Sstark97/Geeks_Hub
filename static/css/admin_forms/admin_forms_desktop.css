@@ -60,6 +60,13 @@ select,
   height: auto;
   padding: 0.3rem;
   font-size: 1vw;
+  opacity: 0.9;
+  color: black;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .delete_form {

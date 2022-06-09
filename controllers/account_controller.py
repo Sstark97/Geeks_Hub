@@ -24,7 +24,11 @@ def admin_accounts():
     cuenta = Account(DATA_BASE)
     rows = cuenta.select(list(ACCOUNT_FIELDS))
 
-    return template('admin_accounts', rows=rows, fields=ACCOUNT_FIELDS)
+    return template(
+                    'admin_accounts',
+                    rows=rows, 
+                    fields=ACCOUNT_FIELDS
+                    )
 
 @get('/admin/accounts/<email>')
 @auth_basic(is_authenticated_user)
@@ -48,28 +52,34 @@ def register():
     """Pagina de inicio de Registro"""
 
     user = local_storage.getItem("profile")
-    if not user:
 
+    if not user:
         form = RegistrationForm(request.POST)
         suscriptions_data = Suscription(DATA_BASE)
         suscriptions = suscriptions_data.select(["*"])
 
-        return template('register', form=form, error="", rows=suscriptions)
+        return template(
+                        'register', 
+                        form=form, 
+                        error="", 
+                        rows=suscriptions
+                        )
+
     redirect("/home")
     return None
 
 @post('/register')
 def register_process():
     """Procesa el formulario de Registro de Cuentas"""
+
     form = RegistrationForm(request.POST)
     account = Account(DATA_BASE)
     error=""
 
-    print(request.POST.get('new_suscription'))
-    
-    if request.POST.get('new_suscription') == None:
+    if not request.POST.get('new_suscription'):
         error = "Seleccione una Suscripción"
-    elif form.register.data and form.validate() and error == "":
+
+    if form.register.data and form.validate() and error == "":
         password = hash_password(form.password.data)
 
         form_data = {
@@ -90,7 +100,12 @@ def register_process():
     suscriptions_data = Suscription(DATA_BASE)
     suscriptions = suscriptions_data.select(["*"])
         
-    return template('register', rows=suscriptions, error=error, form=form)
+    return template(
+                    'register', 
+                    rows=suscriptions,
+                    error=error, 
+                    form=form
+                    )
 
 @get('/login')
 def login():
@@ -100,7 +115,14 @@ def login():
     if not user:
 
         form = LoginForm(request.POST)
-        return template('login', form=form, title="Inicia Sesión", path="/login", action="/select_profile",message="")
+        return template(
+                        'login', 
+                        form=form, 
+                        title="Inicia Sesión", 
+                        path="/login", 
+                        action="/select_profile",
+                        message=""
+                        )
     
     redirect("/home")
     return None
@@ -123,7 +145,14 @@ def login_process():
             redirect('/select_profile')
 
     if error:
-        return template('login', form=form, title="Inicia Sesión", path="/login", action="/select_profile",message="")
+        return template(
+                        'login', 
+                        form=form, 
+                        title="Inicia Sesión",
+                        path="/login", 
+                        action="/select_profile",
+                        message=""
+                        )
 
     return None
 
@@ -135,7 +164,14 @@ def change_password():
     if not user:
             
         form = RemembermeForm(request.POST)
-        return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password",message="")
+        return template(
+                        'login', 
+                        form=form, 
+                        title="Introduce el Correo", 
+                        path="/change_password", 
+                        action="/change_password",
+                        message=""
+                        )
 
     redirect("/home")
     return None
@@ -154,10 +190,23 @@ def change_password_process():
 
         send_change_password(form.email.data, code)
 
-        return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password",
-        message="Revisa el Correo")
+        return template(
+                        'login', 
+                        form=form, 
+                        title="Introduce el Correo", 
+                        path="/change_password", 
+                        action="/change_password",
+                        message="Revisa el Correo"
+                        )
     
-    return template('login', form=form, title="Introduce el Correo", path="/change_password", action="/change_password", message="")
+    return template(
+                    'login', 
+                    form=form, 
+                    title="Introduce el Correo", 
+                    path="/change_password", 
+                    action="/change_password", 
+                    message=""
+                    )
 
 @get('/change_password_process')
 def change_password_confirm():
@@ -166,7 +215,10 @@ def change_password_confirm():
     user = local_storage.getItem("profile")
     if not user:
         form = ConfirmForm(request.POST)
-        return template('confirm_change_password', form=form)
+        return template(
+                        'confirm_change_password', 
+                        form=form
+                        )
 
     redirect("/home")
     return None
@@ -186,7 +238,10 @@ def change_password_confirm_process():
             local_storage.removeItem("code")
             redirect('/login')
             
-    return template('confirm_change_password', form=form)
+    return template(
+                    'confirm_change_password', 
+                    form=form
+                    )
 
 
 @post('/logout')

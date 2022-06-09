@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cambio de Perfil">
+    <meta name="keywords" content="geeks hub, streaming, películas, series">
+    <meta name="author" content="Sara Cabrera, Aitor Santana, Javier Martel"/>
+    <meta name="copyright" content="Geeks Hub"/>
+    <meta http-equiv="expires" content="43200"/>
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <title>Selección de Perfil</title>
     <!-- Estilos -->
 

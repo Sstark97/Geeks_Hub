@@ -18,4 +18,8 @@ def admin():
     films = films.top_content(["Cod_Pelicula","Portada","Titulo"], 5)
     series = series.top_content(["Cod_Serie","Portada","Titulo"], 5)
     
-    return template('admin_index', films=films, series=series)
+    return template(
+                    'admin_index', 
+                    films=films, 
+                    series=series
+                    )

@@ -13,6 +13,7 @@ sys.path.append('forms')
 @get('/profiles')
 def profile():
     """Página para mostrar el formulario"""
+
     personal_profile = Profile(DATA_BASE)
     correo = local_storage.getItem("email")
     perfiles = personal_profile.select(["*"], {"Correo": correo})
@@ -50,7 +51,12 @@ def profile_process():
         redirect("/select_profile")
 
     error = "Seleccione un avatar"
-    return template('profile', rows=AVATARS, form=form, error=error)
+    return template(
+                    'profile', 
+                    rows=AVATARS,
+                    form=form, 
+                    error=error
+                    )
 
 
 @get('/select_profile')
@@ -85,4 +91,9 @@ def select_profile_process():
         redirect('/home')
 
     error = "Seleccione un avatar"
-    return template('select_profiles', rows=rows, form=form, error=error)
+    return template(
+                    'select_profiles', 
+                    rows=rows, 
+                    form=form, 
+                    error=error
+                    )

@@ -20,7 +20,7 @@
                 %end
             </section>
         %else:
-            <h1 class="title">{{title}}</h1>
+            <h1 class="title">{{head}}</h1>
             <section class="content_search">
                 %for row in rows_content:
                     %if row[5] == 0 or row[5] == 1:

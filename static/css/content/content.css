@@ -185,7 +185,7 @@
 
 .content_container #other_content div{
     width: 20%;
-    color: var(--base_color);
+    color: #efefef;
 }
 
 .content_container #other_content div p{
@@ -193,51 +193,26 @@
     margin-top: 7%;
 }
 
-.content_container #seasons{
+#seasons{
     width: 100%;
-}
+    height: 8vh;
 
-.content_container #seasons select,
-.content_container #seasons select option{
-    width: 100%;
-    margin-left: 10%;
-
-    border-radius: 0.7rem;
-
-    appearance:none;
-    outline:0;
-    box-shadow:none;
-    border:0!important;
-    background: var(--background_color);
-    background-image: none;
-    flex: 1;
-    color: var(--base_color);
-    cursor: pointer;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.content_container #seasons select::-ms-expand {
-    display: none;
-}
-
-.content_container #seasons {
-    position: relative;
     display: flex;
-    height: 3em;
-    line-height: 3;
-    background: var(--background_color);
-} 
+    align-items: center;
+    justify-content: center;
 
-.content_container #seasons::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 10%;
-    background: var(--background_color);
-    cursor:pointer;
-    pointer-events:none;
-    transition:.25s all ease;
+    cursor: pointer;
+    background-color: var(--background_color);
+}
+
+#seasons select{
+    width: 80%;
+    
+    font-size: 1em;
+    color: var(--base_color);
+    border: none;
+    outline:0;
+    background-color: var(--background_color);
 }
 
 footer{

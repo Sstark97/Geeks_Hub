@@ -385,6 +385,7 @@ def home_films():
 
         return template(
                         'home',
+                        title="Geeks Hub - Películas",
                         slider=top_carrousel, 
                         favorites=profile_favorites, 
                         top_ten=top_ten, 

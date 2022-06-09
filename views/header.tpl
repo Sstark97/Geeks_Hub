@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
+    <meta name="description" content="Aplicación del Usuario">
+    <meta name="keywords" content="geeks hub, streaming, películas, series">
+    <meta name="author" content="Sara Cabrera, Aitor Santana, Javier Martel"/>
+    <meta name="copyright" content="Geeks Hub"/>
+    <meta http-equiv="expires" content="43200"/>
+
+    <title>{{title}}</title>
 
     <!-- Fuentes -->
 
@@ -81,20 +87,20 @@
                 </li>
 
                 <li class="menu_desktop">
-                    <a href="/search">
+                    <a href="/search" aria-label="Buscador">
                         <i class='bx bx-search-alt-2 search'></i>
                     </a>
                     <div class="dropdown">
                         <img src="{{avatar}}" alt="avatar">
                         <i class='bx bxs-chevron-down arrow'></i>
                         <ul>
-                            <li><a href="/select_profile"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
+                            <li><a href="/select_profile" aria-label="Perfiles"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li><a href="/account_settings"><i class='bx bx-user'></i>Cuenta</a></li>
-                            <li><a href="/favorites"><i class='bx bxs-heart'></i>Favoritos</a></li>
-                            <li><a href="/history"><i class='bx bx-history'></i>Historial</a></li>
+                            <li><a href="/account_settings" aria-label="Cuenta"><i class='bx bx-user'></i>Cuenta</a></li>
+                            <li><a href="/favorites" aria-label="Favoritos"><i class='bx bxs-heart'></i>Favoritos</a></li>
+                            <li><a href="/history" aria-label="Historial"><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li><a onclick="logout()"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
+                            <li><a onclick="logout()" aria-label="Cerrar Sesión"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 

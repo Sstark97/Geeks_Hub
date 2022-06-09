@@ -55,11 +55,12 @@ select {
   height: 4vh;
 
   font-size: 1.3vw;
-  opacity: 0.7;
+  opacity: 0.8;
   transition: 0.5s;
 }
 
-.button input:hover {
+.button a input:hover {
+  cursor: pointer;
   opacity: 1;
   transition: 0.5s;
 }
@@ -74,11 +75,12 @@ select {
 
 .links input {
   font-size: 1vw;
-  opacity: 0.7;
+  opacity: 0.9;
   transition: 0.5s;
 }
 
 .links input:hover {
+  cursor: pointer;
   opacity: 1;
   transition: 0.5s;
 }
@@ -90,7 +92,10 @@ select {
 
 .avatar {
   width: 50%;
-  margin-top: 1%;
+}
+
+.avatar div{
+  margin-top: 2%;
 }
 
 .avatar img:hover {
@@ -98,6 +103,7 @@ select {
   border-style: solid;
   border-color: var(--base_color);
 
+  cursor: pointer;
   opacity: 0.7;
   transition: 0.5s;
 }
@@ -128,4 +134,14 @@ select {
 .btn {
   font-size: 1.6vw;
   padding: 1.3rem;
+  opacity: 0.8;
+}
+
+.btn:hover, #btn_continue:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.links{
+  padding-bottom: 1%;
 }

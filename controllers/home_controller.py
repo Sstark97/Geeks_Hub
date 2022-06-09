@@ -26,10 +26,19 @@ def home_index():
         top_carrousel = films.union_content(4)
 
         # Favoritos del Perfil
-        cod_perfil = personal_profile.select(["Cod_Favoritos"],{"Cod_Perfil":user})[0][0]
-        avatar_perfil = personal_profile.select(["Imagen"],{"Cod_Perfil":user})[0][0]
-        profile_favorites = favorites.content(cod_perfil, ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], 
-            ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"])
+        cod_perfil = personal_profile.select(
+            ["Cod_Favoritos"],
+            {"Cod_Perfil":user}
+        )[0][0]
+        avatar_perfil = personal_profile.select(
+            ["Imagen"],
+            {"Cod_Perfil":user}
+        )[0][0]
+        profile_favorites = favorites.content(
+            cod_perfil, 
+            ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], 
+            ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"]
+        )
 
         # Top 10 Contenido
         top_ten = films.union_content(10)
@@ -46,6 +55,7 @@ def home_index():
     
     return template(
                     'home',
+                    title="Geeks Hub",
                     slider=top_carrousel, 
                     favorites=profile_favorites, 
                     top_ten=top_ten, 

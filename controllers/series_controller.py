@@ -314,8 +314,13 @@ def series_process_edit(cod):
         series.update(form_data, {'Cod_Serie': cod})
         redirect('/admin/series')
 
-    return template('series_form', form=form, error="", title="Editar Serie", path=f'/admin/series/edit/{cod}')
-
+    return template(
+                    'series_form', 
+                    form=form,
+                    title="Editar Serie", 
+                    path=f'/admin/series/edit/{cod}', 
+                    error=""
+                    )
 
 @get('/admin/series/delete/<cod>')
 @auth_basic(is_authenticated_user)
@@ -405,13 +410,14 @@ def home_series():
         local_storage.setItem("path", "series")
 
         return template(
-            'home',
-            slider=top_carrousel,
-            favorites=profile_favorites,
-            top_ten=top_ten,
-            all_content=content_by_genre,
-            avatar=avatar_perfil
-        )
+                        'home',
+                        title="Geeks Hub - Series",
+                        slider=top_carrousel, 
+                        favorites=profile_favorites, 
+                        top_ten=top_ten, 
+                        all_content=content_by_genre, 
+                        avatar=avatar_perfil
+                        )
 
     redirect('/')
     return None

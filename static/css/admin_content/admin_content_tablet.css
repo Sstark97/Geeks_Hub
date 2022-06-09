@@ -24,6 +24,11 @@
   justify-content: space-around;
 }
 
+#content_info li span,
+#sinopsis span{
+  font-size: 1.2rem;
+}
+
 .content_container .image img {
   width: 35%;
 }

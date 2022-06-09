@@ -18,17 +18,17 @@
             %end
             <td class="td_flex">
                 <form action="/admin/{{content}}/{{row[0]}}" method="GET">
-                    <button class="btn_view" type="submit" name="view">
+                    <button class="btn_view" type="submit" name="view" aria-label="Ver">
                         <i class='bx bxs-low-vision icons' ></i>
                     </button>
                 </form>
                 <form action="/admin/{{content}}/edit/{{row[0]}}" method="GET">
-                    <button class="btn_edit" type="submit" name="save">
+                    <button class="btn_edit" type="submit" name="save" aria-label="Editar">
                         <i class='bx bxs-edit-alt icons'></i>
                     </button>
                 </form>
                 <form action="/admin/{{content}}/delete/{{row[0]}}" method="GET">
-                    <button class="btn_delete" type="submit" name="delete">
+                    <button class="btn_delete" type="submit" name="delete" aria-label="Eliminar">
                         <i class='bx bxs-trash icons'></i>
                     </button>
                 </form>

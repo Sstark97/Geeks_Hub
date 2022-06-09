@@ -21,7 +21,7 @@
             %end
         </div>
 
-        <h3>Series mejor valoradas</h3>
+        <h3 class="series_h3">Series mejor valoradas</h3>
         <div class="series_container">
             %for serie in series:
                 <div class="serie_container">

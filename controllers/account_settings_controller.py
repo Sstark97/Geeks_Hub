@@ -37,6 +37,7 @@ def account_settings():
         form.suscription.data = rows[0][6]
 
         return template('account_settings', 
+                        title= "Geeks Hub - Cuenta",
                         rows=rows, 
                         rows_profile=rows_profile, 
                         form=form, 
@@ -79,7 +80,8 @@ def account_settings_process():
     rows = account.select(['*'], {'Correo': email})
     rows_profile = profile.select(['*'], {'Correo': email})
     
-    return template('account_settings', 
+    return template('account_settings',
+                    title= "Geeks Hub - Cuenta", 
                     rows=rows, 
                     rows_profile=rows_profile, 
                     form=form, 
@@ -138,6 +140,7 @@ def account_settings_profile():
         return template(
                         'profile_settings', 
                         rows=AVATARS, 
+                        title= "Geeks Hub - Perfil",
                         rows_profile=rows_profile, 
                         form=form, 
                         profile_code=codigo_perfil,

@@ -21,4 +21,10 @@ def search_content():
     else:
         redirect('/')
 
-    return template('list_content', rows_content=rows_content, search=True, avatar=avatar_perfil)
+    return template(
+                    'list_content', 
+                    title= "Geeks Hub - Buscador",
+                    rows_content=rows_content, 
+                    search=True, 
+                    avatar=avatar_perfil
+                    )

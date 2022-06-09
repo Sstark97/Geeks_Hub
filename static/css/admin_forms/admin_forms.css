@@ -36,7 +36,11 @@ fieldset{
     margin-bottom: 5%;
 }
 
-.edit_input input, select, .textarea_input textarea, .file, .date_input input{
+.edit_input input, 
+select, 
+.textarea_input textarea, 
+.file, 
+.date_input input{
     width: 70%;
     border: solid 1.5px var(--main_color);
     border-radius: 1rem;
@@ -45,12 +49,16 @@ fieldset{
     font-size: 1rem;
     color: var(--background_color);
     transition: border 150ms cubic-bezier(0.4,0,0.2,1);
-    opacity: 0.6;
+    opacity: 0.8;
 
     overflow: hidden;
 }
 
-.edit_input label, .input label, .textarea_input label, .file_input p, .date_input label{
+.edit_input label, 
+.input label, 
+.textarea_input label, 
+.file_input p, 
+.date_input label{
     position: absolute;
     color: var(--background_color);
     pointer-events: none;
@@ -73,14 +81,14 @@ fieldset{
     transform: translateY(-50%) scale(0.8);
     background-color: var(--base_color);
     padding: 0 .2em;
-    color: var(--main_color);
+    color: var(--shadow_color);
 }
 
 .input select ~ label, .date_input input ~ label{
     transform: translateY(-50%) scale(0.8);
     background-color: var(--base_color);
     padding: 0 .2em;
-    color: var(--main_color);
+    color: var(--shadow_color);
 }
 
 .file_input {
@@ -163,6 +171,11 @@ textarea {
 }
 
 /* Delete Form*/
+
+.delete_form p {
+    text-align: center;
+}
+
 .delete_form {
     display: flex;
     flex-direction: column;
@@ -196,11 +209,7 @@ textarea {
     height: 3.4vh;
     border: none;
     border-radius: 10px;
-    font-size: 2.5vw;
+    font-size: 2.8vw;
     margin-right: 1rem;
-}
-
-.btn:hover {
-    cursor: pointer;
-    opacity: 0.7;
+    color: #000;
 }
