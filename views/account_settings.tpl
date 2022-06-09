@@ -77,7 +77,8 @@
             %end
         </div>
         <div class="button">
-            <input type="submit" class="profile_submit" name="btn_continue" value="Continuar">
+            <input type="submit" class="profile_submit" name="btn_continue" value="Configurar">
+            <input type="submit" class="profile_submit" name="btn_delete" value="Eliminar">
         </div>
     </form>
     %end
