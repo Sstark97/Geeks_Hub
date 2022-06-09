@@ -92,7 +92,10 @@ select {
 
 .avatar {
   width: 50%;
-  margin-top: 1%;
+}
+
+.avatar div{
+  margin-top: 2%;
 }
 
 .avatar img:hover {
