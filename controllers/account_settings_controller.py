@@ -3,6 +3,8 @@ import sys
 from bottle import get, request, template, redirect, post
 from models.account import Account
 from models.profile import Profile
+from models.favorites import Favorites
+from models.history import History
 from forms.account_settings_form import AccountSettingsForm
 from forms.profile_form import ProfileForm
 from forms.delete_account_form import DeleteAccountForm
@@ -110,7 +112,7 @@ def delete_account_process():
         profile = Profile(DATA_BASE)
         account.delete({'Correo': local_storage.getItem("email")})
         profile.delete({'Correo': local_storage.getItem("email")})
-        
+
         local_storage.removeItem("email")
         local_storage.removeItem("profile")
         redirect('/')
@@ -144,9 +146,17 @@ def account_settings_profile():
 
     if request.GET.get("btn_delete") and request.GET.get("profile_code"):
         profile = Profile(DATA_BASE)
+        favorites = Favorites(DATA_BASE)
+        historial = History(DATA_BASE)
+
         codigo_actual = local_storage.getItem("profile")
         codigo_perfil = request.GET.get("profile_code")
 
+        cod_favorite = profile.select(['Cod_Favoritos'], {'Cod_Perfil': codigo_perfil})
+        print(cod_favorite)
+
+        favorites.delete_favorite_content(cod_favorite[0][0])
+        historial.delete({'Cod_Perfil': codigo_perfil})
         profile.delete({'Cod_Perfil': codigo_perfil})
 
         if codigo_actual == codigo_perfil:

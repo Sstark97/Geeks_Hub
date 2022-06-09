@@ -38,9 +38,6 @@
 
     <!-- Script para leer el Dark Mode -->
     <script src="/static/js/load_dark_mode.js"></script>
-
-    <!-- Script para cambiar el Dark Mode -->
-    <script src="/static/js/dark_mode.js"></script>
     </body>
 
     </html>
