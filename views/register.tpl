@@ -106,7 +106,7 @@
                 % cont = 1
                 %for suscription in rows:
                     <div class="box">
-                        <input type="radio" name="new_suscription" id={{ f"radio{cont}" }} value="{{ suscription[0] }}">
+                        <input class="hidden" type="radio" name="new_suscription" id={{ f"radio{cont}" }} value="{{ suscription[0]}}" tabindex="0">
                         <label for={{ f"radio{cont}" }}>
                             <div class="{{suscription[0]}}">
                                 <h1>{{suscription[0]}}</h1>
@@ -121,7 +121,7 @@
             </div>
 
             <div class="button">
-                <a href="/profiles">
+                <a href="/profiles" tabindex="-1">
                     {{ form.register }}
                 </a>
             </div>         

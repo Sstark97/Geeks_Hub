@@ -150,3 +150,14 @@ select {
   font-size: 1.8rem;
   margin-bottom: 1%;
 }
+
+.suscription .hidden[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap; /* added line */
+  border: 0; 
+}
