@@ -58,7 +58,7 @@
                 % cont = 1
                 % for avatar in rows:
                 <div>
-                    <input type="radio" name="avatar" id={{ f"radio{cont}" }} value="{{ avatar }}">
+                    <input type="radio" name="avatar" class="hidden" id={{ f"radio{cont}" }} value="{{ avatar }}">
                     <label for={{ f"radio{cont}" }}>
                         <img src="{{ avatar }}" alt={{ f"avatar{cont}" }}>
                     </label>
@@ -68,7 +68,7 @@
             </div>
             <div class="button">
                 {{ form.btn_continue }}
-                <a href="/select_profile">
+                <a href="/select_profile" tabindex="-1">
                     <input type="button" value="Cancelar"/>
                 </a>
             </div>    
