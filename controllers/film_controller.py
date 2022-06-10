@@ -142,13 +142,8 @@ def view_films(cod):
         cod_favorites = [row[0] for row in profile_favorites]
         cod_history = [row[0] for row in profile_history]
 
-        favorite = False
-        history = False
-        if cod in cod_favorites:
-            favorite = True
-        
-        if cod in cod_history:
-            history = True
+        favorite = cod in cod_favorites
+        history = cod in cod_history
 
         film = {
             'Cod_Contenido': row[0],
