@@ -65,7 +65,7 @@
                 </div>
             %end
             <div class="button">
-                <a href="{{action}}">
+                <a href="{{action}}" tabindex="-1">
                     {{ form.btn_continue }}
                 </a>
             </div>
@@ -74,14 +74,14 @@
         %if path == '/login':
             <div class="links">
                 <p>Si aún no estás registrado,&nbsp</p>
-                <a href="/register">
+                <a href="/register" tabindex="-1">
                     <input type="button" value="regístrate aquí" />
                 </a>
             </div>
 
             <div class="links">
                 <p>¿Has olvidado tu contraseña?&nbsp</p>
-                <a href="/change_password">
+                <a href="/change_password" tabindex="-1">
                     <input type="button" value="Haz click aquí" />
                 </a>
             </div>
