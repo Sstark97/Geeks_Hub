@@ -12,7 +12,6 @@
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Dirección</th>
-                <th>Contraseña</th>
                 <th>Teléfono</th>
                 <th>Tipo Suscripción</th>
                 <th>Número de Perfiles</th>
@@ -21,7 +20,9 @@
         %for row in rows:
         <tr>
             %for col in row:
-            <td>{{ col }}</td>
+                %if row.index(col) != 4:
+                <td>{{ col }}</td>
+                %end
             %end
             <td>{{num_profiles}}</td>
         </tr>

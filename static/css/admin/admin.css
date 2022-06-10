@@ -134,6 +134,10 @@ button:hover {
   cursor: pointer;
 }
 
+button:focus {
+  border: 1px solid var(--base_color);
+}
+
 #only_view {
   text-align: center;
 }
