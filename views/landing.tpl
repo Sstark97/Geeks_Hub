@@ -41,8 +41,8 @@
     <main class="main">
         <section class="background">
             <article class="button_login">
-                <a href="/login">
-                    <button class="login">Iniciar Sesión</button>
+                <a href="/login" tabindex="-1">
+                    <button class="login" tabindex="1">Iniciar Sesión</button>
                 </a>
             </article>
             <article class="logo">
@@ -65,7 +65,7 @@
             </article>
         </section>
         <div class="button_submit">
-            <a href="/register">
+            <a href="/register" tabindex="-1">
                 <input class="submit" type="button" value="Suscríbete ahora">
             </a>
         </div>
