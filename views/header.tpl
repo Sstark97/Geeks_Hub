@@ -90,17 +90,17 @@
                     <a href="/search" aria-label="Buscador">
                         <i class='bx bx-search-alt-2 search'></i>
                     </a>
-                    <div class="dropdown">
+                    <div class="dropdown" tabindex="0">
                         <img src="{{avatar}}" alt="avatar">
                         <i class='bx bxs-chevron-down arrow'></i>
                         <ul>
-                            <li><a href="/select_profile" aria-label="Perfiles"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
+                            <li tabindex="0"><a href="/select_profile" aria-label="Perfiles" tabindex="-1"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li><a href="/account_settings" aria-label="Cuenta"><i class='bx bx-user'></i>Cuenta</a></li>
-                            <li><a href="/favorites" aria-label="Favoritos"><i class='bx bxs-heart'></i>Favoritos</a></li>
-                            <li><a href="/history" aria-label="Historial"><i class='bx bx-history'></i>Historial</a></li>
+                            <li tabindex="0"><a href="/account_settings" aria-label="Cuenta" tabindex="-1"><i class='bx bx-user'></i>Cuenta</a></li>
+                            <li tabindex="0"><a href="/favorites" aria-label="Favoritos" tabindex="-1"><i class='bx bxs-heart'></i>Favoritos</a></li>
+                            <li tabindex="0"><a href="/history" aria-label="Historial" tabindex="-1"><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li><a onclick="logout()" aria-label="Cerrar Sesión"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
+                            <li tabindex="0"><a onclick="logout()" aria-label="Cerrar Sesión" tabindex="-1"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 

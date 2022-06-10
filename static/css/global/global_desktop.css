@@ -98,7 +98,7 @@ head a {
   transition: visibility 0s, opacity 0.5s linear;
 }
 
-.dropdown:hover > ul {
+.dropdown:hover > ul, .dropdown:focus > ul {
   z-index: 1000;
   /* display: block; */
   width: 12%;
