@@ -69,7 +69,7 @@ def send_change_password(email, code):
                 Has solicitado un cambio de contraseña.
                 El Codigo de Confirmación es: {code}
                 Para cambiarla, haz click en el siguiente enlace:
-                http://localhost:8080/change_password_process
+                https://geeks-hubs.herokuapp.com/change_password_process
             '''
         
     texte_mime = MIMEText(texte, 'plain')
