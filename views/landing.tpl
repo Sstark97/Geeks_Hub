@@ -52,11 +52,13 @@
             </article>
         </section>
         <section class="content">
-            <div class="cuadro"></div>
+            <div class="cuadro">
+                <img src="/static/img/devices.png" alt="Dispositivos">
+            </div>
             <article class="info">
                 <h2>Disfruta de Geeks Hub en compañía</h2>
                 <ul>
-                    <li>Noches de series y películas con GroupWatch. Para invitar o que te inviten a GroupWatch, es necesario tener una suscripción.</li>
+                    <li>Hasta 5 perfiles disponibles para tu cuenta.</li>
                     <li>Disfruta de Geeks Hub en compañía, aunque estéis en diferentes lugares.</li>
                     <li>Visualización simultánea con hasta 6 personas.</li>
                     <li>Pausad, rebobinad y reaccionad juntos</li>

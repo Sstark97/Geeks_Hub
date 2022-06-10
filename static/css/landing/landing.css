@@ -81,9 +81,11 @@ html, body{
 }
 
 .cuadro{
-    width: 60%;
-    height: 50%;
-    background-color: antiquewhite;
+    width: 90%;
+}
+
+.cuadro img{
+    width: 100%;
 }
 
 .content .info{
