@@ -56,7 +56,7 @@
                 %cont = 0
                 %for row in rows:
                     <div>
-                        <input type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row[0] }}">
+                        <input class="hidden" type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row[0] }}" tabindex="0">
                         <label for={{ f"profile_code{cont}" }} >
                             <img class="profile_image" src="{{ row[3] }}" alt="Avatar">
                         </label>
