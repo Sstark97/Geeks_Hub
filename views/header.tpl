@@ -68,6 +68,7 @@
     <link rel="stylesheet" href="/static/css/errors/errors_desktop.css" media="only screen and (min-width: 992px)">
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    
 </head>
 
 <body>
@@ -93,14 +94,14 @@
                     <div class="dropdown" tabindex="0">
                         <img src="{{avatar}}" alt="avatar">
                         <i class='bx bxs-chevron-down arrow'></i>
-                        <ul>
-                            <li tabindex="0"><a href="/select_profile" aria-label="Perfiles" tabindex="-1"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
+                        <ul tabindex="0" aria-expanded="true">
+                            <li><a href="/select_profile" aria-label="Perfiles" tabindex="0"><i class='bx bxs-user-account'></i>Ir a Perfiles</a></li>
                             <hr>
-                            <li tabindex="0"><a href="/account_settings" aria-label="Cuenta" tabindex="-1"><i class='bx bx-user'></i>Cuenta</a></li>
-                            <li tabindex="0"><a href="/favorites" aria-label="Favoritos" tabindex="-1"><i class='bx bxs-heart'></i>Favoritos</a></li>
-                            <li tabindex="0"><a href="/history" aria-label="Historial" tabindex="-1"><i class='bx bx-history'></i>Historial</a></li>
+                            <li><a href="/account_settings" aria-label="Cuenta" tabindex="0"><i class='bx bx-user'></i>Cuenta</a></li>
+                            <li><a href="/favorites" aria-label="Favoritos" tabindex="0"><i class='bx bxs-heart'></i>Favoritos</a></li>
+                            <li><a href="/history" aria-label="Historial" tabindex="0"><i class='bx bx-history'></i>Historial</a></li>
                             <hr>
-                            <li tabindex="0"><a onclick="logout()" aria-label="Cerrar Sesión" tabindex="-1"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
+                            <li><a onclick="logout()" aria-label="Cerrar Sesión" tabindex="0"><i class='bx bx-log-out'></i>Cerrar Sesión</a></li>
                         </ul>
                     </div>
 

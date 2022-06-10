@@ -4,6 +4,10 @@
   margin-right: 2%;
 }
 
+.button_login a {
+  height: fit-content;
+}
+
 .login,
 .submit {
   width: 11vw;
@@ -15,6 +19,7 @@
 }
 
 .login:hover {
+  cursor: pointer;
   opacity: 1;
   transition: 0.5s;
 }

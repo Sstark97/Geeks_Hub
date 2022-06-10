@@ -66,6 +66,17 @@ head a {
   color: var(--main_color);
 }
 
+.hidden[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap; /* added line */
+  border: 0; 
+}
+
 /* DESPLEGABLE */
 
 .menu_desktop {
@@ -147,7 +158,7 @@ head a {
   font-size: 2rem;
 }
 
-.dropdown:hover .arrow {
+.dropdown:hover .arrow, .dropdown:focus .arrow {
   transform: rotate(180deg);
   transition: 0.5s;
   color: var(--main_color);

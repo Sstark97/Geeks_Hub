@@ -151,17 +151,6 @@ select {
   margin-bottom: 1%;
 }
 
-.hidden[type="radio"] {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  white-space: nowrap; /* added line */
-  border: 0; 
-}
-
 .suscription input[type="radio"]{
   opacity: 1;
   width: 100%;

@@ -54,7 +54,7 @@
                 </fieldset>
                 <div class="button">
                     {{ form.submit }}
-                    <button class="btn_cancel"><a href="/account_settings/delete_account">Eliminar</a></button>     
+                    <button class="btn_cancel"><a href="/account_settings/delete_account" tabindex="-1">Eliminar</a></button>     
                 </div>
             </form>
 
@@ -67,7 +67,7 @@
             %cont = 0
             %for row_profile in rows_profile:
             <div class="div-avatar">
-                <input type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row_profile[0] }}">
+                <input class="hidden" type="radio" name="profile_code" id={{ f"profile_code{cont}" }} value="{{ row_profile[0] }}">
                 <label for={{ f"profile_code{cont}" }} class="lbl_img">
                     <img class="profile_image" src="{{ row_profile[3] }}" alt="Avatar">
                 </label>
