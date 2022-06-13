@@ -7,7 +7,7 @@
         </ul>
         <ul class="menu">
             <li><a href="/">Inicio</a></li>
-            <li><a href="/">Contáctanos</a></li>
+            <li><a href="https://geeks-hub-docu.super.site/">Documentación</a></li>
         </ul>
         <p>©2022 Geeks Hub | Todos los derechos reservados</p>
         </footer>

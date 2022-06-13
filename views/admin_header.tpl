@@ -9,6 +9,8 @@
     <meta name="keywords" content="geeks hub, streaming, películas, series">
     <meta name="author" content="Sara Cabrera, Aitor Santana, Javier Martel"/>
     <meta name="copyright" content="Geeks Hub"/>
+    <meta property="og:image" content="/static/img/logo.png">
+    <meta property="og:description" content="La mejor plataforma de Streaming para Geeks">
     <meta http-equiv="expires" content="43200"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
