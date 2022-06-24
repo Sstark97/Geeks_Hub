@@ -2,6 +2,7 @@
 import sys
 from random import randint
 from bottle import get, request, template, redirect, post, auth_basic
+from utils.login_decorator import is_login
 from utils.admin_auth import is_authenticated_user
 from utils.email_register import send_register_email, send_change_password
 from utils.hash_password import hash_password, check_password
@@ -48,25 +49,20 @@ def admin_accounts_view(email):
                     )
 
 @get('/register')
+@is_login
 def register():
     """Pagina de inicio de Registro"""
 
-    user = local_storage.getItem("profile")
+    form = RegistrationForm(request.POST)
+    suscriptions_data = Suscription(DATA_BASE)
+    suscriptions = suscriptions_data.select(["*"])
 
-    if not user:
-        form = RegistrationForm(request.POST)
-        suscriptions_data = Suscription(DATA_BASE)
-        suscriptions = suscriptions_data.select(["*"])
-
-        return template(
-                        'register', 
-                        form=form, 
-                        error="", 
-                        rows=suscriptions
-                        )
-
-    redirect("/home")
-    return None
+    return template(
+                    'register', 
+                    form=form, 
+                    error="", 
+                    rows=suscriptions
+                    )
 
 @post('/register')
 def register_process():
@@ -105,24 +101,19 @@ def register_process():
                     )
 
 @get('/login')
+@is_login
 def login():
     """Página para mostrar el formulario"""
 
-    user = local_storage.getItem("profile")
-    if not user:
-
-        form = LoginForm(request.POST)
-        return template(
-                        'login', 
-                        form=form, 
-                        title="Inicia Sesión", 
-                        path="/login", 
-                        action="/select_profile",
-                        message=""
-                        )
-    
-    redirect("/home")
-    return None
+    form = LoginForm(request.POST)
+    return template(
+                    'login', 
+                    form=form, 
+                    title="Inicia Sesión", 
+                    path="/login", 
+                    action="/select_profile",
+                    message=""
+                    )
 
 @post('/login')
 def login_process():
@@ -154,24 +145,19 @@ def login_process():
     return None
 
 @get('/change_password')
+@is_login
 def change_password():
     """Página para cambiar la contraseña"""
-
-    user = local_storage.getItem("profile")
-    if not user:
             
-        form = RemembermeForm(request.POST)
-        return template(
-                        'login', 
-                        form=form, 
-                        title="Introduce el Correo", 
-                        path="/change_password", 
-                        action="/change_password",
-                        message=""
-                        )
-
-    redirect("/home")
-    return None
+    form = RemembermeForm(request.POST)
+    return template(
+                    'login', 
+                    form=form, 
+                    title="Introduce el Correo", 
+                    path="/change_password", 
+                    action="/change_password",
+                    message=""
+                    )
 
 @post('/change_password')
 def change_password_process():
@@ -206,19 +192,15 @@ def change_password_process():
                     )
 
 @get('/change_password_process')
+@is_login
 def change_password_confirm():
     """ Página para procesar el cambio de contraseña """
     
-    user = local_storage.getItem("profile")
-    if not user:
-        form = ConfirmForm(request.POST)
-        return template(
-                        'confirm_change_password', 
-                        form=form
-                        )
-
-    redirect("/home")
-    return None
+    form = ConfirmForm(request.POST)
+    return template(
+                    'confirm_change_password', 
+                    form=form
+                    )
 
 @post('/change_password_process')
 def change_password_confirm_process():

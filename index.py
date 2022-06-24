@@ -1,6 +1,7 @@
 """Archivo de inicio de la aplicación."""
 import os
 from bottle import get, run, template, static_file, error
+from utils.login_decorator import is_login
 from controllers.film_controller import *
 from controllers.series_controller import *
 from controllers.suscription_controller import *
@@ -14,15 +15,12 @@ from controllers.home_controller import *
 from controllers.search_controller import *
 
 @get('/')
+@is_login
 def index():
     """Página de inicio de la aplicación."""
-    user = local_storage.getItem("profile")
+    
+    return template('landing.tpl')
 
-    if not user:
-        return template('landing.tpl')
-        
-    redirect("/home")
-    return None
 
 @get('/correo')
 def email_index():

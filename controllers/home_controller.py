@@ -1,56 +1,54 @@
 """Archivo de Rutas de la paǵina Home."""
 import sys
-from bottle import get, template, redirect
+from bottle import get, template
 from models.profile import Profile
 from models.film import Film
 from models.favorites import Favorites
 # from models.history import History
 from config.config import DATA_BASE, GENRES_FIELDS
 from config.local_storage import local_storage
+from utils.login_decorator import login_required
 sys.path.append('models')
 
 @get('/home')
+@login_required
 def home_index():
     """Página de inicio de la App"""
 
     user = local_storage.getItem("profile")
 
-    if user:
-        personal_profile = Profile(DATA_BASE)
-        films = Film(DATA_BASE)
-        favorites = Favorites(DATA_BASE)
+    personal_profile = Profile(DATA_BASE)
+    films = Film(DATA_BASE)
+    favorites = Favorites(DATA_BASE)
 
-        local_storage.setItem("path", "home")
+    local_storage.setItem("path", "home")
 
-        # Top Contenido para el Slider
-        top_carrousel = films.union_content(4)
+    # Top Contenido para el Slider
+    top_carrousel = films.union_content(4)
 
-        # Favoritos del Perfil
-        cod_perfil = personal_profile.select(
-            ["Cod_Favoritos"],
-            {"Cod_Perfil":user}
-        )[0][0]
-        avatar_perfil = personal_profile.select(
-            ["Imagen"],
-            {"Cod_Perfil":user}
-        )[0][0]
-        profile_favorites = favorites.content(
-            cod_perfil, 
-            ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], 
-            ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"]
-        )
+    # Favoritos del Perfil
+    cod_perfil = personal_profile.select(
+        ["Cod_Favoritos"],
+        {"Cod_Perfil":user}
+    )[0][0]
+    avatar_perfil = personal_profile.select(
+        ["Imagen"],
+        {"Cod_Perfil":user}
+    )[0][0]
+    profile_favorites = favorites.content(
+        cod_perfil, 
+        ["Portada", "Trailer", "Titulo", "Genero", "N_Temporada","Cod_Serie"], 
+        ["Portada", "Trailer", "Titulo", "Genero","Cod_Pelicula"]
+    )
 
-        # Top 10 Contenido
-        top_ten = films.union_content(10)
+    # Top 10 Contenido
+    top_ten = films.union_content(10)
 
-        # Contenido por Genero
-        content_by_genre = {
-            genre: films.union_content(0,{"Genero":genre})
-            for genre in GENRES_FIELDS
-        }
-        
-    else: 
-        redirect('/')
+    # Contenido por Genero
+    content_by_genre = {
+        genre: films.union_content(0,{"Genero":genre})
+        for genre in GENRES_FIELDS
+    }
     
     return template(
                     'home',
