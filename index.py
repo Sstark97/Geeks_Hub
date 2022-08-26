@@ -1,6 +1,6 @@
 """Archivo de inicio de la aplicación."""
 import os
-from bottle import get, run, template, static_file, error
+from bottle import get, run, template, static_file, error, default_app
 from utils.login_decorator import is_login
 from controllers.film_controller import *
 from controllers.series_controller import *
@@ -41,7 +41,9 @@ def html(filepath):
     """Servicio de archivos estáticos."""
     return static_file(filepath, root = "./static")
 
+app = default_app()
+
 if __name__ == '__main__':
-    run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run()
 
     
